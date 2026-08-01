@@ -1,0 +1,9 @@
+vllm
+graph_of_thoughts
+pandas
+xlrd
+openpyxl
+numpy
+scipy
+matplotlib
+tqdm

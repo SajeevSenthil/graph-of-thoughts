@@ -21,11 +21,18 @@ Full detail lives in `idea.md`, `phases.md`, `workflow.md`, and `proposal_docume
 - WS12 unzipped: `SimulatedWS12/hw20.zip` → `anomaly.json` (1,087,311 JSONL events) + `benign.json` (2.4GB). Ubuntu/W10 zips are pulled but **not yet unzipped**.
 - WS12 attack understood by hand (6 annotation files → command text maps to xls stages: recon+backdoor download → Initialize access, reg/netsh/sticky-keys → Persistence, WinBrute → Credential theft, nbtscan → Discovery, PAExec → Lateral movement).
 - vLLM hello-world confirmed working for **all 3 models** (Qwen 2.5 7B, Llama 3.1 8B, Phi-4) via `LLM(...).chat(...)` on GPU 0. Llama 3.1 8B required a Hugging Face access request (gated) — approved, token stored at `~/.cache/huggingface/token`.
-- Not yet started: unzipping Ubuntu/W10, all `src/` code (`parse_ground_truth.py` is next — Phase 1).
+- Not yet started: unzipping Ubuntu/W10 (not needed until Phase 2), `build_graph.py`/`serialize.py`/`scorer.py`/methods (Phase 2 is next).
 
-## Important discovery: WS12 ground-truth ID scheme mismatch
+**Phase 1 is DONE.** `src/parse_ground_truth.py` parses all 5 scenarios' `attack_annotation/*.txt` into `data/ground_truth/{scenario}.json` (+ `all_scenarios.json`). Every one of the 89 total nodes (WS12 6, Ubuntu 8, Sidewinder 15, FIN6 23, APT29 37) has a hand-verified `(stage, match_substring)` pair — see the module docstring for why this couldn't be automated blindly (three different ID-mismatch failure modes found across the five scenarios' `attack_analysis.xls` files, see below). The parser self-validates: every `match_substring` is asserted to be a literal substring of its own node's real command at parse time, so a curation typo fails loudly instead of silently corrupting Phase 3 scoring later (this caught one real typo in WS12/A4 during development — the source file uses literal double backslashes). Two nodes (Ubuntu A4, Sidewinder A12) have `match_substring: null` — their real attacker command is a bare `whoami`, genuinely not distinctive; documented rather than papered over with a fragile heuristic. `src/visualize_ground_truth.py` renders `data/ground_truth/summary.png`, a small-multiples bar chart of node counts per scenario per stage (dataviz-skill palette).
 
-`attack_annotation/A1.txt`...`A6.txt` are numbered sequentially by time within the host, but `attack_analysis.xls`'s ID column uses a **different, non-sequential global ID space** (observed for WS12: `A1`, a blank-ID continuation row, `A7`, `A24`, `A25`, `A32`) — apparently IDs shared across the full attack description, not per-host. **Do not join annotation files to xls rows by ID string equality** — it silently produces wrong stage labels. Join by matching `pCommand` text between the two instead (confirmed working for all 6 WS12 nodes). Check whether Ubuntu/APT29/Sidewinder/FIN6 have the same mismatch before writing `parse_ground_truth.py`'s join logic.
+## Important discovery: ground-truth ID/xls join is scenario-dependent, never trust it blindly
+
+Checked all 5 scenarios by hand before writing the parser. Found three different patterns:
+- **WS12**: `attack_annotation` files are numbered `A1`-`A6` by time, but `attack_analysis.xls`'s ID column uses a **totally different, non-sequential ID space** (`A1`, a blank-ID row, `A7`, `A24`, `A25`, `A32`). ID-string matching silently produces wrong stage labels.
+- **Ubuntu**: xls IDs *do* align 1:1 with annotation filenames, but the **rows are out of numeric order** in the sheet (the `A4` row sits physically after the `A6`/`A7` row).
+- **APT29 / Sidewinder / FIN6**: xls IDs align 1:1 *and* are in order — the clean case. Even here, one node's command text differs slightly between the two sources (APT29 `A34`: xls has a placeholder URL, the annotation file has the real one) — proof pure text-matching isn't airtight either.
+
+Given three different failure modes, `parse_ground_truth.py` resolves every `(stage, match_substring)` by hand once (reading both sources side by side) rather than trusting one automated join rule across all five scenarios. See the module's docstring and `CURATED` table for the resolved values — do not regenerate this table with an automated heuristic without re-verifying against the raw files.
 
 ## Working conventions established so far
 

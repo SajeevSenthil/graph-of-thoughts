@@ -64,7 +64,7 @@ CURATED = {
         "A1": ("Initial Access", "ping www.baidu.com -c 1"),
         "A2": ("Initial Access", "sangforcat.exe"),
         "A3": ("Credential Access", "WinBrute.exe"),
-        "A4": ("Persistence", r"Execution Options\\sethc.exe"),  # source file uses literal double backslashes
+        "A4": ("Persistence", r"Execution Options\sethc.exe"),
         "A5": ("Discovery", "nbtscan.exe"),
         "A6": ("Lateral Movement", r"PAExec.exe \\192.168.0.244"),
     },
@@ -227,9 +227,23 @@ def build_ground_truth(scenario: str) -> list[dict]:
         stage, match_substring = curated[node_id]
         parsed = _parse_annotation_file(f)
         if match_substring is not None and match_substring not in parsed["pCommand"]:
-            raise ValueError(
-                f"{scenario}/{node_id}: curated match_substring {match_substring!r} "
-                f"is not a literal substring of the real command:\n  {parsed['pCommand']!r}"
+            # Fallback: WS12/A4 showed the annotation .txt can itself contain a
+            # double-backslash escaping artifact that the real raw log (the
+            # actual authority -- see build_graph.py) does not have. Accept a
+            # match_substring that's correct against the raw log even if the
+            # annotation file's own text is escaped differently, but only
+            # after collapsing repeated backslashes, and only with a visible
+            # warning -- this must never silently paper over a real typo.
+            normalize = lambda s: re.sub(r"\\+", r"\\", s)
+            if normalize(match_substring) not in normalize(parsed["pCommand"]):
+                raise ValueError(
+                    f"{scenario}/{node_id}: curated match_substring {match_substring!r} "
+                    f"is not a substring of the real command, even after backslash normalization:\n"
+                    f"  {parsed['pCommand']!r}"
+                )
+            print(
+                f"  [note] {scenario}/{node_id}: match_substring only matches the annotation file "
+                f"after backslash normalization -- annotation .txt has a different escaping than the raw log."
             )
         nodes.append(
             {

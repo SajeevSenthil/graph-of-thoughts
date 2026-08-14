@@ -12,18 +12,21 @@ Full detail lives in `idea.md`, `phases.md`, `workflow.md`, and `proposal_docume
 
 ## Current status (update this section as work progresses)
 
+**Detailed phase-by-phase log with input/output for every implemented phase: see `IMPLEMENTATION.md`.** This section stays a short summary; that file has the full explanation, real bugs found and fixed, and exact numbers.
+
 **Phase 0 is DONE.**
 
 - Repo cloned on the remote GPU node at `~/sajeev/graph-of-thoughts` (asaicomputemaster, 2× RTX 6000 Ada 48GB, both GPUs idle as of last check).
 - Planning docs (`idea.md`, `phases.md`, `workflow.md`, `proposal_document.md`, `CLAUDE.md`) committed and pushed.
 - `.venv` created with `uv venv` (Python 3.10.20) + `uv pip install -r requirements.txt` (217 packages, includes vllm 0.26.0, graph-of-thoughts 0.0.2, torch 2.11.0+cu130). `requirements.txt` itself still needs to be `git add`ed/committed — it was untracked as of last check.
 - `PKU-ASAL/Simulated-Data` cloned to `~/sajeev/Simulated-Data` with `git lfs pull` (git-lfs was not preinstalled and there's no sudo on this box — installed the v3.7.1 binary release straight into `~/.local/bin`, no root needed).
-- WS12 unzipped: `SimulatedWS12/hw20.zip` → `anomaly.json` (1,087,311 JSONL events) + `benign.json` (2.4GB). Ubuntu/W10 zips are pulled but **not yet unzipped**.
+- All 5 scenarios now unzipped (WS12, Ubuntu at `realAPTlinux/hw17`, and the shared W10 log at `realAPTWin10/win10` used by APT29/Sidewinder/FIN6).
 - WS12 attack understood by hand (6 annotation files → command text maps to xls stages: recon+backdoor download → Initialize access, reg/netsh/sticky-keys → Persistence, WinBrute → Credential theft, nbtscan → Discovery, PAExec → Lateral movement).
 - vLLM hello-world confirmed working for **all 3 models** (Qwen 2.5 7B, Llama 3.1 8B, Phi-4) via `LLM(...).chat(...)` on GPU 0. Llama 3.1 8B required a Hugging Face access request (gated) — approved, token stored at `~/.cache/huggingface/token`.
-- Not yet started: unzipping Ubuntu/W10 (not needed until Phase 2), `build_graph.py`/`serialize.py`/`scorer.py`/methods (Phase 2 is next).
 
-**Phase 1 is DONE.** `src/parse_ground_truth.py` parses all 5 scenarios' `attack_annotation/*.txt` into `data/ground_truth/{scenario}.json` (+ `all_scenarios.json`). Every one of the 89 total nodes (WS12 6, Ubuntu 8, Sidewinder 15, FIN6 23, APT29 37) has a hand-verified `(stage, match_substring)` pair — see the module docstring for why this couldn't be automated blindly (three different ID-mismatch failure modes found across the five scenarios' `attack_analysis.xls` files, see below). The parser self-validates: every `match_substring` is asserted to be a literal substring of its own node's real command at parse time, so a curation typo fails loudly instead of silently corrupting Phase 3 scoring later (this caught one real typo in WS12/A4 during development — the source file uses literal double backslashes). Two nodes (Ubuntu A4, Sidewinder A12) have `match_substring: null` — their real attacker command is a bare `whoami`, genuinely not distinctive; documented rather than papered over with a fragile heuristic. `src/visualize_ground_truth.py` renders `data/ground_truth/summary.png`, a small-multiples bar chart of node counts per scenario per stage (dataviz-skill palette).
+**Phase 1 is DONE.** `src/parse_ground_truth.py` parses all 5 scenarios' `attack_annotation/*.txt` into `data/ground_truth/{scenario}.json` (+ `all_scenarios.json`). Every one of the 89 total nodes (WS12 6, Ubuntu 8, Sidewinder 15, FIN6 23, APT29 37) has a hand-verified `(stage, match_substring)` pair. Full detail: `IMPLEMENTATION.md`.
+
+**Phase 2 is DONE.** `src/build_graph.py` (evidence graph constructor + reduction filter + hard gate), `src/serialize.py` (graph → text), `src/visualize_graph.py` (figure). All 5 scenarios' hard gate passes (2 known-unscoreable nodes from Phase 1, 1 documented cross-host exception for Ubuntu/A8). Real bugs found and fixed along the way: PID reuse silently overwriting nodes, a dataset field (`is_warn`) that leaks the ground-truth label and must never be touched, two structurally different raw-log schemas (Windows ETW vs. Linux sysdig/Falco), and Chrome-subprocess noise inflating node count ~10x past the planning docs' estimate. Token budget per scenario (16K-58K, tiktoken-measured) is well over `phases.md`'s ~8K estimate but still comfortably inside all three models' context windows. Full detail, exact numbers, and every fix: `IMPLEMENTATION.md`.
 
 ## Important discovery: ground-truth ID/xls join is scenario-dependent, never trust it blindly
 
@@ -39,7 +42,7 @@ Given three different failure modes, `parse_ground_truth.py` resolves every `(st
 - Inference backend: **vLLM** (not Ollama) — chosen for continuous-batching throughput given the many-call ToT/GoT grid (~225 cells).
 - No training/fine-tuning anywhere — inference-only comparison is the whole point.
 - The reduction/candidate-selection step must stay structurally simple (event-type + external-IP rules only) — it must NOT do content-based malicious/benign judgment, or the experiment quietly reintroduces a trained-detector-like component and undermines the "LLM does the investigative work" claim.
-- Repo layout follows `workflow.md`'s recommended structure: `src/{parse_ground_truth,build_graph,serialize,scorer,run_grid}.py`, `src/methods/{cot,tot,got}.py`, `data/` (gitignored), `results/`.
+- Repo layout follows `workflow.md`'s recommended structure: `src/{parse_ground_truth,build_graph,serialize,scorer,run_grid}.py`, `src/methods/{cot,tot,got}.py`. Deviation from `workflow.md`: `data/` (ground truth, evidence graphs, serialized text, figures) is **committed**, not gitignored — these are small, valuable, hand-verified derived artifacts, not the raw dataset. The actual multi-GB `Simulated-Data` clone lives outside the repo at `~/sajeev/Simulated-Data` and is never touched by git here.
 - **Home dir (`/dist_home`) is GlusterFS (network storage), not local disk.** vLLM/Triton's JIT compile cache breaks on it (`errno 61: No data available` writing temp files during autotuning). Always set `VLLM_CACHE_ROOT` and `TRITON_CACHE_DIR` to somewhere on local disk (e.g. `/var/tmp/<user>_cache/...`, confirmed `ext4`) before running vLLM. `/tmp` is also local disk.
 - When invoking `.venv/bin/python` directly (without `source .venv/bin/activate`), prepend `.venv/bin` to `PATH` — some deps (e.g. `ninja`, needed by FlashInfer's JIT kernel build) are only found via `PATH`, not via the interpreter path alone.
 - No system `pip`/`conda` on this machine — use `uv` (`~/.local/bin/uv`) for all Python env/package management.

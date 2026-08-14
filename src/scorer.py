@@ -38,6 +38,28 @@ _IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 # "filename" "0.99", caught by tests/test_scorer.py's known-bad case).
 _FILENAME_RE = re.compile(r"\b[\w\-]+\.[a-zA-Z][a-zA-Z0-9]{1,4}\b")
 
+_BACKSLASH_RUN_RE = re.compile(r"\\+")
+
+
+def _normalize_backslashes(s: str) -> str:
+    """Collapse repeated backslashes to one before substring matching.
+
+    Real finding from Phase 4's first end-to-end run on WS12/Qwen: the model
+    correctly identified the ground-truth PAExec event -- its flagged command
+    was `PAExec.exe \\192.168.0.244 ...` -- but wrote the UNC path with a
+    single backslash, while the raw log (and therefore the ground-truth
+    match_substring, per Phase 2's authority-is-the-raw-log rule) uses two.
+    A cosmetic reformatting difference silently zeroed out an otherwise
+    correct match. This mirrors the identical backslash-escaping quirk
+    already handled in parse_ground_truth.py's self-check (see that file's
+    docstring) -- applying the same normalization here is symmetric across
+    every method and model, not tuned to flatter any specific run's output."""
+    return _BACKSLASH_RUN_RE.sub("\\\\", s)
+
+
+def _contains(match_substring: str, command: str) -> bool:
+    return _normalize_backslashes(match_substring) in _normalize_backslashes(command)
+
 
 def _prf1(tp: int, fp: int, fn: int) -> dict:
     precision = tp / (tp + fp) if (tp + fp) else 0.0
@@ -76,13 +98,13 @@ def score_event_level(flagged_events: list[dict], ground_truth: list[dict]) -> d
     fp_events = 0
     for event in flagged_events:
         cmd = event.get("command", "")
-        if any(ms in cmd for ms in gt_substrings):
+        if any(_contains(ms, cmd) for ms in gt_substrings):
             tp_events += 1
         else:
             fp_events += 1
 
     flagged_commands = [e.get("command", "") for e in flagged_events]
-    found_gt = sum(1 for n in checkable_gt if any(n["match_substring"] in cmd for cmd in flagged_commands))
+    found_gt = sum(1 for n in checkable_gt if any(_contains(n["match_substring"], cmd) for cmd in flagged_commands))
     fn_nodes = len(checkable_gt) - found_gt
 
     metrics = _prf1(tp=tp_events, fp=fp_events, fn=fn_nodes)
@@ -111,7 +133,7 @@ def score_stage_level(flagged_events: list[dict], ground_truth: list[dict]) -> d
         cmd = event.get("command", "")
         event_stage = (event.get("stage") or "").strip().lower()
         matched_correctly = any(
-            n["match_substring"] in cmd and n["stage"].strip().lower() == event_stage for n in checkable_gt
+            _contains(n["match_substring"], cmd) and n["stage"].strip().lower() == event_stage for n in checkable_gt
         )
         if matched_correctly:
             tp_events += 1
@@ -121,7 +143,7 @@ def score_stage_level(flagged_events: list[dict], ground_truth: list[dict]) -> d
     partial_credits = []
     found_and_correct = 0
     for n in checkable_gt:
-        matches = [e for e in flagged_events if n["match_substring"] in e.get("command", "")]
+        matches = [e for e in flagged_events if _contains(n["match_substring"], e.get("command", ""))]
         if not matches:
             partial_credits.append(0.0)
             continue

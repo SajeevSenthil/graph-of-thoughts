@@ -166,6 +166,44 @@ The full per-scenario graph (234-624 nodes) is illegible as a static image, so t
 
 ---
 
-## What's next -- Phase 4
+## Phase 4 -- Reasoning methods (`src/llm_client.py`, `src/methods/`)
 
-CoT first (simplest -- one call, verify end-to-end on WS12), then ToT, then GoT, all via the `spcl/graph-of-thoughts` framework's Graph-of-Operations over the three frozen local models, consuming `data/serialized/{scenario}.txt` and producing output in exactly the `{malicious_events, narrative, _cost}` shape `scorer.py` already expects.
+**Goal:** implement CoT, ToT, and GoT as the only variable, all consuming `data/serialized/{scenario}.txt` and producing `{malicious_events, narrative, _cost}` in exactly the shape `scorer.py` already expects.
+
+### `llm_client.py` -- vLLM wrapper implementing the framework's `AbstractLanguageModel`
+
+Bakes in the Phase 0 environment fixes (`VLLM_CACHE_ROOT`/`TRITON_CACHE_DIR` on local disk, `.venv/bin` on `PATH`) so they hold regardless of how the module is invoked, applied *before* `import vllm` since vLLM reads some of these at import time. Accumulates `prompt_tokens`/`completion_tokens`/`wall_clock_s`/`llm_calls` across every call on the instance, matching what the framework's own `Controller.output_graph()` expects to read.
+
+**A real upstream bug hit immediately:** `graph_of_thoughts==0.0.2`'s `controller/__init__.py` unconditionally imports its `ChatGPT` class, which references `openai.error.OpenAIError` -- an attribute that only existed in `openai<1.0`. Our installed `openai` SDK is newer and has no `.error` submodule, so *any* import from `graph_of_thoughts.controller` failed, even just for `AbstractLanguageModel`, which has nothing to do with OpenAI. Fixed by stubbing a fake `openai.error` module (`OpenAIError = Exception`) before the `graph_of_thoughts` import, rather than downgrading `openai` or patching site-packages -- `ChatGPT` is never instantiated, so the stub only needs to satisfy the class-body-level `@backoff.on_exception(..., openai.error.OpenAIError, ...)` decorator evaluated at import time.
+
+### `methods/prompter.py`, `methods/parser.py` -- shared across all three topologies
+
+One `KillChainPrompter`/`KillChainParser` pair, used identically by CoT, ToT, and GoT -- this is the concrete mechanism behind "reasoning topology is the only variable": the wording of every prompt and the JSON-extraction logic never differs by condition, only which operations are wired together and how many times each prompt is used. `parser.py`'s `extract_json` strips markdown code fences, takes the largest `{...}` block, and validates shape before accepting it; a failed parse increments `lm.parse_retries` (a tracked metric, not a silent failure) and falls back to an empty reconstruction rather than crashing the run.
+
+### `methods/cot.py` -- one `Generate(1,1)` operation via the framework's own `Controller`. Simplest topology, used as-is.
+
+### `methods/tot.py` -- `Generate(1,k)` -> `Score` (scored via a `scoring_function` callable that makes its own small LLM call asking "how well-supported is this reconstruction, 0.0-1.0") -> `KeepBestN(1)`. Uses `graph_of_thoughts.operations.Score`'s documented `scoring_function` bypass (confirmed by reading `Score._execute`: when set, it's called directly on each thought's state, skipping `prompter.score_prompt`/`parser.parse_score_answer` entirely) rather than templating a second prompt shape for what's naturally a single free-form question.
+
+### `methods/got.py` -- segment -> Generate per segment -> Aggregate -> Refine
+
+`split_into_segments()` splits the serialized evidence into a **fixed segment count** (default 4), not a fixed size -- grouping contiguous root-level process trees (a root = a line with no leading indentation in the serializer's output; WS12 has 82 such root blocks). A fixed count, not size, keeps GoT's call count -- and therefore its cost relative to CoT/ToT -- comparable across scenarios ranging from WS12's 82 root blocks to APT29's several hundred.
+
+**Framework-integration limitation, documented rather than hidden:** `graph_of_thoughts`'s `Controller` runs one shared `problem_parameters` dict for an entire graph, which works cleanly for CoT and ToT (one `evidence_text` for the whole run) but not for GoT's fan-out, where each of N independent `Generate` calls needs a genuinely *different* input (its own segment). Each segment's Generate step therefore runs as its own tiny `Controller` (sharing the same `lm` instance, so cost still accumulates correctly across all of them), and the Aggregate/Refine steps replicate `graph_of_thoughts.operations.operations.Aggregate`/`Improve`'s own `_execute` logic directly -- identical `prompter`/`parser` calls, same state-merging -- rather than fighting the single-shared-state assumption with awkward workarounds. Every prompt template still comes from the one shared `KillChainPrompter`.
+
+### End-to-end validation on WS12 (Qwen 2.5 7B) -- and what it found
+
+All three methods ran to completion and produced valid, parseable JSON on the first real run (`parse_ok: True` for all three) -- satisfying Phase 4's literal done-when bar for this model. But "runs without crashing" and "produces sensible output" are different bars, and looking at the actual output surfaced two real, substantively different findings:
+
+**1. A genuine scorer robustness bug (fixed).** CoT correctly identified the ground-truth PAExec lateral-movement event, but wrote its UNC path with a single backslash (`PAExec.exe \192.168.0.244`) where the raw log -- and therefore the ground-truth `match_substring` -- uses two (`PAExec.exe \\192.168.0.244`). A cosmetic reformatting difference silently zeroed out an otherwise-correct match. This is the exact same backslash-escaping quirk already documented in Phase 1's `parse_ground_truth.py` self-check, just showing up on the model-output side instead of the annotation-file side. Fixed by adding `_normalize_backslashes()` + `_contains()` to `scorer.py`, collapsing repeated backslashes on *both* sides of every substring comparison before checking containment -- applied symmetrically to every method and model, not tuned to flatter this one run. **Re-ran the locked unit tests after the change (`tests/test_scorer.py`) -- both still pass, no regression.** Re-scoring the already-saved raw outputs (no LLM calls needed) recovered the match: CoT/ToT event TP went 2 -> 3, stage TP 0 -> 1.
+
+**2. A genuine stage-taxonomy disagreement (not a bug -- left as-is).** The model labeled the `sangforcat.exe` download as `"Execution"` where our ground truth says `"Initial Access"`, and the `sethc.exe` sticky-keys backdoor as `"Defense Evasion"` where ground truth says `"Persistence"` -- both defensible alternative readings of ambiguous MITRE-adjacent techniques, not obviously wrong. This is exactly the phenomenon `recall_partial` (Phase 3) was built to capture separately from strict stage match: `recall_partial = 0.333` (two of six nodes found-but-mislabeled = 2 x 0.5 / 6) vs. strict `stage_recall = 0.167` (one of six found-and-correctly-labeled) -- the two metrics correctly disagree in exactly the way they're supposed to. Nothing here was changed; this is real signal, not noise.
+
+**3. GoT reconstructed a *different*, still-plausible attack story (qualitative finding, kept for Phase 6).** On this single run/seed, GoT's aggregated output matched **zero** of the six ground-truth events -- but not because it failed. It instead built a coherent narrative around a *different* apparent intrusion also present in WS12's log: a phpStudy-backdoor command chain hitting a different C2 IP (`111.229.170.12`, vs. the ground truth's `124.223.85.207`), local user-account creation (`net user nbb ... /add`), and Windows-Defender-adjacent tooling (`MRT.exe`, `wermgr.exe`). Whether this is a second real attack thread NODLINK's authors left unannotated, or the model chasing a red herring, isn't something one seed on one model can answer -- which is exactly why the grid runs multiple seeds. Not treated as a bug and nothing was adjusted to steer GoT toward the ground-truth narrative; saved verbatim as a candidate example for the Phase 6 qualitative case study either way.
+
+**Status: infrastructure fully built and validated end-to-end on Qwen 2.5 7B. Llama 3.1 8B and Phi-4 (the rest of Phase 4's done-when bar) not yet run.**
+
+---
+
+## What's next -- Phase 4 (continued), then Phase 5
+
+Run the same WS12 smoke test on Llama 3.1 8B and Phi-4 to close out Phase 4's done-when bar (valid parseable JSON for all three methods on all three models). Then Phase 5: `src/run_grid.py` (already written, resumable, one OS process per model since vLLM does not reliably free GPU memory when swapping models in-process) and `src/analyze_grid.py` (already written: summary CSVs at three levels of aggregation, per-scenario topology x model bars, the cross-scenario comparison, a scenario x method heatmap, and an accuracy-vs-cost Pareto plot) against the full 5 scenarios x 3 methods x 3 models x N seeds grid.

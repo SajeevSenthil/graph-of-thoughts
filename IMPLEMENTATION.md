@@ -142,6 +142,30 @@ The full per-scenario graph (234-624 nodes) is illegible as a static image, so t
 
 ---
 
-## What's next -- Phase 3
+## Phase 3 -- Scorer (`src/scorer.py`, `tests/test_scorer.py`)
 
-Per the build order in `phases.md`/`workflow.md`: the **scorer** (`src/scorer.py`) is next, and must be written and unit-tested *before* any reasoning method (CoT/ToT/GoT) is implemented, so there is never a temptation to tune model output to flatter the metric. It consumes `data/ground_truth/{scenario}.json` and a model's structured JSON output, producing event-level P/R/F1, stage-level recall, and hallucination rate.
+**Goal:** a deterministic function that grades any reasoning method's output against ground truth, locked with unit tests *before* any reasoning method (CoT/ToT/GoT) is written -- per `phases.md`, so there is never a temptation, conscious or not, to tune a method's output to flatter this metric.
+
+**Input:** a model's structured output `{malicious_events: [{command, stage}], narrative}` + `data/ground_truth/{scenario}.json` + `data/serialized/{scenario}.txt` (for hallucination-checking -- what the model actually saw). **Output:** `{event: {precision, recall, f1, tp, fp, fn}, stage: {precision, recall, f1, tp, fp, fn, recall_partial}, hallucination_rate, cost}`. Ground truth is only ever read here, at grading time -- never shown to a model.
+
+**Event-level** follows `phases.md` literally: a flagged event is TP if its command contains any ground-truth `match_substring`, else FP; a ground-truth node is FN if no flagged event's command contains its substring. Deliberately *not* a strict one-to-one bipartite match -- precision's TP (flagged events that matched something real) and recall's TP (ground-truth nodes that got matched) are counted from two different perspectives, matching what happens when one substring legitimately matches multiple flagged commands, or two ground-truth nodes share a substring (documented in Phase 1 -- e.g. the same scheduled-task command reused three times in APT29).
+
+**Stage-level** adds one requirement on top of event-level: the flagged event's `stage` must also match the ground-truth node's true stage. Reports the strict precision/recall/f1 (workflow.md's contract) *and* a separate `recall_partial` -- phases.md's own name for this metric, "stage-level partial-credit recall" -- which gives a node 1.0 credit if found with the correct stage, 0.5 if found but mislabeled, 0.0 if never found at all. Both are kept, never blended, so "missed entirely" stays distinguishable from "found but mislabeled."
+
+**Hallucination rate:** extract IOCs (IPs via regex, filenames via a `word.ext`-shaped regex) from the model's narrative + flagged commands, and check what fraction never appear anywhere in the serialized evidence text the model actually saw.
+
+**A real bug caught by the test itself, on the first run:** the filename regex `[\w\-]+\.[a-zA-Z0-9]{2,5}` also matched purely-numeric fragments of an IP address -- e.g. `10.0.0.99` spuriously yielded a fake "filename" `0.99`, since a numeric `.99` satisfies "word, dot, 2-5 alnum chars" just as well as a real extension does. Fixed by requiring the extension to start with a letter (`[a-zA-Z][a-zA-Z0-9]{1,4}`), which every real extension in this project already does (`.exe`, `.txt`, `.zip`, ...) and no IP octet ever does. Caught immediately because the known-bad unit test asserted the *exact* missing-IOC set, not just "hallucination_rate > 0" -- a looser assertion would have passed with the bug still present, silently over-counting hallucinations by one on every score.
+
+**Unit tests** (`tests/test_scorer.py`) run against WS12's real 6-node ground truth, not a synthetic stand-in:
+- **Known-good:** all 6 events correctly flagged with correct stages, evidence text built as a superset of the flagged commands by construction (zero hallucination by design) -> asserts a clean P=R=F1=1.0 sweep on both event- and stage-level, `recall_partial = 1.0`, `hallucination_rate = 0.0`.
+- **Known-bad:** one node (`nbtscan`) never flagged at all; one node (`sethc.exe`) flagged with the *correct* command but the *wrong* stage; one fully fabricated event matching no ground-truth substring at all; one fabricated IP deliberately absent from the evidence text. Hand-verified expected values: event `TP=5, FP=1, FN=1`; stage `TP=4, FP=2, FN=2, recall_partial=4.5/6`; exactly one hallucinated IOC (`missing == {"10.0.0.99"}`, asserted as an exact set, which is what caught the regex bug above).
+
+`.venv/bin/python tests/test_scorer.py` -- both pass. Also spot-checked `score_scenario()` (the convenience wrapper that loads ground truth + serialized evidence from disk directly) against all 5 real scenarios with an empty output, confirming every file path resolves correctly end-to-end before Phase 4 needs it.
+
+**scorer.py is now LOCKED.** Any future change to its scoring logic must be justified independently of what it does to any specific reasoning method's numbers.
+
+---
+
+## What's next -- Phase 4
+
+CoT first (simplest -- one call, verify end-to-end on WS12), then ToT, then GoT, all via the `spcl/graph-of-thoughts` framework's Graph-of-Operations over the three frozen local models, consuming `data/serialized/{scenario}.txt` and producing output in exactly the `{malicious_events, narrative, _cost}` shape `scorer.py` already expects.

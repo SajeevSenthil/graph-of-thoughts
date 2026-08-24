@@ -214,7 +214,21 @@ This is a shared GPU machine (confirmed via `nvidia-smi --query-compute-apps`: o
 
 **Llama 3.1 8B validated successfully** on WS12 -- CoT and ToT both produced clean, parseable output (13 and 7 flagged events respectively). **GoT's final Refine step failed to parse** on this run (`parse_ok: False` after 2 retries) -- a real example of the parser's fallback logic working as designed rather than a crash: `parse_improve_answer` returns the prior (pre-Refine) state unchanged when the model's response doesn't parse, rather than discarding good data. That preserved pre-Refine state turned out to be the **best result across every model/method combination tested so far**: event recall 5/7 (~71%), stage `recall_partial` 0.42. Worth flagging plainly: this is one run, one seed, one scenario -- encouraging, not conclusive, and exactly the kind of number multiple seeds exist to confirm or correct.
 
-**Status: infrastructure fully built and validated end-to-end on Qwen 2.5 7B and Llama 3.1 8B, including three real bugs/constraints found and resolved via diagnosis rather than guesswork (GoT segmentation, scorer backslash matching, Phi-4's hard context ceiling). Phi-3.5-mini-instruct (Phi-4's replacement) validation in progress.**
+### Phi-3.5-mini-instruct -- four fix attempts, still blocked
+
+Phi-4's replacement loaded and ran within its context window (unlike Phi-4), but failed to produce parseable output on every method, every attempt. Diagnosed rather than guessed at each step -- `common.py`'s `build_output()` was first fixed to actually preserve the raw model text on a parse failure (it was silently discarding a field the parser had already captured), specifically so this could be investigated instead of re-run blind.
+
+**Attempt 1 -- prompted JSON only (the original design):** failed with `completion_tokens` pegged exactly at `max_tokens`. Raw text showed why: the model copied the full multi-line tree entry -- including its embedded literal `"` -- straight into a `"command"` string value, which is invalid JSON regardless of length.
+
+**Attempt 2 -- vLLM structured/guided decoding** (`StructuredOutputsParams(json=schema)`, applied to every model, not a Phi-3.5-mini-only patch): forces valid JSON *syntax* grammar-token-by-token. This was still worth adding on its own merits (a real, symmetric robustness improvement), but didn't fix this failure -- the grammar closed the string at the embedded quote as designed, then the model, confused by its own broken structure, degenerated into emitting nothing but whitespace/tab tokens for the rest of the budget.
+
+**Attempt 3 -- explicit prompt instruction + worked example** (`prompter.py`'s `TASK_PREAMBLE`, shared by all three methods): told the model exactly what to extract vs. not extract, with a concrete before/after example. No effect -- the model still opened with the same raw tree-line copy pattern.
+
+**Attempt 4 -- `disable_any_whitespace=True`** (targets exactly the whitespace-padding trap): still failed the same way -- the padding persisted, suggesting the flag isn't taking effect for this model/backend combination as expected, or the degenerate state it reaches isn't the one this flag guards against.
+
+**A parallel finding worth keeping separate:** at temperature=0 (greedy), the *same* model produced a *different* failure -- it correctly extracted one clean single-line command this time, then repeated that exact JSON object verbatim until the token budget ran out (a textbook repetition trap). Added `repetition_penalty=1.15` (again, applied to every model symmetrically) to address it -- confirmed it didn't fix the temperature=0.7 whitespace-padding failure, haven't yet re-tested whether it fixes the temperature=0 repetition failure in isolation.
+
+**Status: Qwen 2.5 7B and Llama 3.1 8B fully validated end-to-end (all three methods, valid parseable output). Phi-3.5-mini-instruct reproducibly fails on WS12 regardless of decoding strategy, after four independent, well-targeted fix attempts -- not further guesswork, a genuine open question brought back to the user rather than resolved unilaterally. Phase 4 is NOT fully closed until this is resolved one way or another.**
 
 ---
 

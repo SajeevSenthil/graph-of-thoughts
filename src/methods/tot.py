@@ -40,7 +40,10 @@ def _make_scoring_function(lm, evidence_text: str):
             f"Evidence:\n{evidence_text}\n\nReconstruction:\n{reconstruction}\n\n"
             "Respond with ONLY a single number between 0.0 and 1.0, nothing else."
         )
-        [text] = lm.get_response_texts(lm.query(prompt, num_responses=1))
+        # structured=False: this prompt asks for a single confidence float,
+        # not the {malicious_events, narrative} schema llm_client.py forces
+        # by default -- see query()'s docstring note.
+        [text] = lm.get_response_texts(lm.query(prompt, num_responses=1, structured=False))
         match = _SCORE_RE.search(text)
         if not match:
             return 0.0

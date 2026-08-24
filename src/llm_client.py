@@ -45,6 +45,46 @@ if not hasattr(openai, "error"):
 
 from graph_of_thoughts.controller.abstract_language_model import AbstractLanguageModel  # noqa: E402
 from vllm import LLM, SamplingParams  # noqa: E402
+from vllm.sampling_params import StructuredOutputsParams  # noqa: E402
+
+from src.methods.prompter import STAGES  # noqa: E402
+
+# Every query() call is constrained to this JSON schema via vLLM's
+# structured-outputs decoding, not just prompted for it. Added after two
+# independent real parse failures in one validation session: Llama's GoT
+# Refine step failed to parse on one run, and Phi-3.5-mini failed on EVERY
+# call across all three methods -- not just truncation (completion_tokens
+# exactly hit max_tokens), but malformed JSON even in the completed portion
+# (it copied multi-line indented evidence blocks, including unescaped
+# quotes, verbatim into "command" string values instead of extracting a
+# clean single command). A weaker model's tendency to produce syntactically
+# invalid JSON is a real, expected difference between models -- but letting
+# it silently fail entire runs would confound "the model reasoned badly"
+# with "the model can't format JSON," which is a different, less
+# interesting failure mode for this project's actual research question.
+# Grammar-constrained decoding forces valid JSON syntax (proper escaping,
+# required keys, a closed structure) regardless of a model's own formatting
+# habits, applied identically to all three models -- it does not fix
+# semantic quality (a model can still misidentify or mislabel events), only
+# removes syntax as a source of failure.
+_OUTPUT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "malicious_events": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "command": {"type": "string"},
+                    "stage": {"type": "string", "enum": STAGES},
+                },
+                "required": ["command", "stage"],
+            },
+        },
+        "narrative": {"type": "string"},
+    },
+    "required": ["malicious_events", "narrative"],
+}
 
 MODEL_IDS = {
     "llama3.1-8b": "meta-llama/Llama-3.1-8B-Instruct",
@@ -61,17 +101,21 @@ MODEL_IDS = {
 # proposal/planning doc was updated to Phi-3.5-mini-instruct (3.8B, 128K
 # native context) to match -- see IMPLEMENTATION.md for the full writeup.
 
-# Per-model default gpu_memory_utilization -- cannot be one flat number.
-# Model checkpoint sizes differ enough (Llama/Qwen ~14-15GB, Phi-3.5-mini a
-# much smaller ~7.6GB) that one flat value either wastes headroom or doesn't
-# fit. Llama also needs more here than its weights alone would suggest: at
-# 0.45 (~22GB) it had only 5.1GB left for KV cache, not enough for its
-# 65536-token max_model_len (needs ~8GB) -- hit this directly before raising
-# it to 0.55.
+# Per-model default gpu_memory_utilization -- cannot be one flat number, and
+# checkpoint size is NOT a reliable proxy for how much it needs: smaller
+# parameter count does not mean smaller KV cache. Llama needs more than its
+# ~15GB weights alone would suggest (at 0.45/~22GB, only 5.1GB was left for
+# KV cache, short of the ~8GB its 65536-token max_model_len needs -- raised
+# to 0.55). Phi-3.5-mini is the sharpest example: only ~7.6GB of weights,
+# but its attention head configuration makes its KV cache far more expensive
+# per token than Llama/Qwen's -- 65536 tokens needs ~24GB of KV cache alone,
+# so the naive "small model -> small budget" guess of 0.35 (~16.8GB total)
+# failed outright ("24.01 GiB KV cache is needed... available: 8.72 GiB").
+# Raised to 0.70 to actually cover weights + real KV cache demand.
 MODEL_GPU_MEMORY_UTILIZATION = {
     "llama3.1-8b": 0.55,
     "qwen2.5-7b": 0.45,
-    "phi3.5-mini": 0.35,
+    "phi3.5-mini": 0.70,
 }
 
 # Per-model default max_model_len -- also cannot be one flat number. Forcing
@@ -163,12 +207,47 @@ class VLLMLanguageModel(AbstractLanguageModel):
         # __init__, not the framework's config.json file convention.
         self.config = {}
 
-    def query(self, query: str, num_responses: int = 1) -> List[str]:
+    def query(self, query: str, num_responses: int = 1, structured: bool = True) -> List[str]:
+        # structured=True (the default) is what every framework-driven call
+        # gets, since graph_of_thoughts' Operation._execute calls lm.query()
+        # generically with no way to pass extra args -- Generate/Aggregate/
+        # Improve all want the {malicious_events, narrative} schema. The one
+        # exception is ToT's scoring_function (methods/tot.py), which calls
+        # lm.query() directly and passes structured=False, since it asks for
+        # a single confidence float, not this object shape -- forcing the
+        # schema there would silently corrupt the score.
         params = SamplingParams(
             n=num_responses,
             temperature=self.temperature,
             max_tokens=self.max_tokens,
             seed=self.seed,
+            # A textbook fix for a textbook degenerate-decoding failure:
+            # Phi-3.5-mini at temperature=0 (greedy) correctly extracted one
+            # clean command, then repeated that exact same JSON object
+            # verbatim until the token budget ran out, never progressing --
+            # a classic LLM repetition trap, distinct from the whitespace-
+            # padding failure at temperature=0.7 (see disable_any_whitespace
+            # above). Applied to every model, not just Phi-3.5-mini: a mild
+            # repetition penalty is standard practice and doesn't advantage
+            # any one model's reasoning, only discourages verbatim looping.
+            repetition_penalty=1.15,
+            structured_outputs=(
+                # disable_any_whitespace: a known failure mode of grammar-
+                # constrained JSON decoding -- when a weaker model's own next-
+                # token preference conflicts with the grammar (here: Phi-3.5-
+                # mini kept trying to continue text that the grammar had
+                # already forced closed with a premature string-terminating
+                # quote), whitespace is often the only token still grammar-
+                # valid at every position, so the model can get stuck
+                # emitting nothing but whitespace for the rest of the
+                # budget -- observed directly (completion_tokens pegged at
+                # exactly max_tokens, response tail was 1000+ tab
+                # characters). Disabling optional whitespace removes that
+                # escape hatch, forcing genuine structural progress instead.
+                StructuredOutputsParams(json=_OUTPUT_SCHEMA, disable_any_whitespace=True)
+                if structured
+                else None
+            ),
         )
         start = time.perf_counter()
         [output] = self.llm.chat([{"role": "user", "content": query}], params, use_tqdm=False)

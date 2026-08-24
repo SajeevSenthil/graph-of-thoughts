@@ -6,12 +6,20 @@ before the run too and pass the delta; see methods/*.py for the pattern)."""
 
 
 def build_output(state: dict, cost: dict) -> dict:
-    return {
+    output = {
         "malicious_events": state.get("malicious_events", []),
         "narrative": state.get("narrative", ""),
         "_parse_ok": state.get("_parse_ok", True),
         "_cost": cost,
     }
+    # Preserve the raw model text on a parse failure -- previously silently
+    # dropped here even though the parser had already captured it, which
+    # cost a diagnostic re-run when Phi-3.5-mini failed to parse on every
+    # method (see IMPLEMENTATION.md). A failed run should carry enough to
+    # debug it without needing to reproduce it first.
+    if "_raw_text" in state:
+        output["_raw_text"] = state["_raw_text"]
+    return output
 
 
 def cost_delta(before: dict, after: dict) -> dict:

@@ -228,7 +228,9 @@ Phi-4's replacement loaded and ran within its context window (unlike Phi-4), but
 
 **A parallel finding worth keeping separate:** at temperature=0 (greedy), the *same* model produced a *different* failure -- it correctly extracted one clean single-line command this time, then repeated that exact JSON object verbatim until the token budget ran out (a textbook repetition trap). Added `repetition_penalty=1.15` (again, applied to every model symmetrically) to address it -- confirmed it didn't fix the temperature=0.7 whitespace-padding failure, haven't yet re-tested whether it fixes the temperature=0 repetition failure in isolation.
 
-**Status: Qwen 2.5 7B and Llama 3.1 8B fully validated end-to-end (all three methods, valid parseable output). Phi-3.5-mini-instruct reproducibly fails on WS12 regardless of decoding strategy, after four independent, well-targeted fix attempts -- not further guesswork, a genuine open question brought back to the user rather than resolved unilaterally. Phase 4 is NOT fully closed until this is resolved one way or another.**
+**Resolution: model lineup finalized at 2, not 3.** Brought back to the user as a decision rather than a fifth unilateral fix attempt; chose to proceed with Qwen 2.5 7B and Llama 3.1 8B only rather than try a third replacement model. Every proposal/planning doc (`idea.md`, `phases.md`, `workflow.md`, `proposal_document.md`, `README.md`) and the relevant `src/` files updated to match -- Phi-3.5-mini-instruct's `MODEL_IDS`/`MODEL_GPU_MEMORY_UTILIZATION`/`MODEL_MAX_MODEL_LEN` entries removed, `run_grid.py`/`analyze_grid.py`'s model lists trimmed. The `disable_any_whitespace`/`repetition_penalty`/structured-decoding additions were kept (they're symmetric robustness improvements, not Phi-3.5-mini-specific, and don't hurt Qwen/Llama).
+
+**Status: Phase 4 is DONE. Both models in the final lineup (Qwen 2.5 7B, Llama 3.1 8B) fully validated end-to-end on WS12 -- all three methods, valid parseable output.**
 
 ---
 

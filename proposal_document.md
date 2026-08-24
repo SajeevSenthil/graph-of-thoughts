@@ -22,7 +22,7 @@ Modern enterprise hosts generate on the order of **10⁵–10⁶ log events per 
 Two forces make this the right moment for this project:
 
 - **Industry driver:** cloud intrusion volume grew ~75% between 2022 and 2023 (CrowdStrike Global Threat Report, 2024), while analyst headcount has not scaled proportionally — automated investigation support is a direct, near-term SOC need, not a speculative one.
-- **Technology driver:** open-weight LLMs (Llama 3.1, Qwen 2.5, Phi-3.5-mini) are now strong enough to run locally at low cost and reason over structured evidence, and a family of *prompting topologies* — Chain-of-Thought, Tree-of-Thoughts, Graph-of-Thoughts — has emerged that changes not what the model knows, but *how it is allowed to combine what it's given*. Whether this structural choice matters for a real investigative task, rather than only for math/puzzle benchmarks, is untested.
+- **Technology driver:** open-weight LLMs (Llama 3.1, Qwen 2.5) are now strong enough to run locally at low cost and reason over structured evidence, and a family of *prompting topologies* — Chain-of-Thought, Tree-of-Thoughts, Graph-of-Thoughts — has emerged that changes not what the model knows, but *how it is allowed to combine what it's given*. Whether this structural choice matters for a real investigative task, rather than only for math/puzzle benchmarks, is untested.
 
 This project sits at the intersection: it uses cyber-attack reconstruction as a rigorous testbed to answer a reasoning-methodology question with direct SOC relevance.
 
@@ -170,7 +170,7 @@ flowchart TD
 
 **Dataset:** NODLINK Simulated-Data (`PKU-ASAL/Simulated-Data`) — chosen over network-flow IDS catalogs (CIC-IDS, CSE-CIC-IDS) because those provide per-flow feature rows with a single label and no command-line kill chain to reconstruct, whereas this dataset provides host command-line ground truth, explicit kill-chain stage labels, and two published baselines (OCR-APT 0.96, NodLink 0.248) on the identical data for direct comparison.
 
-**Models:** Llama 3.1 8B, Qwen 2.5 7B, Phi-3.5-mini-instruct — open-weight, run locally via **vLLM** (OpenAI-compatible serving endpoint), no fine-tuning.
+**Models:** Llama 3.1 8B, Qwen 2.5 7B — open-weight, run locally via **vLLM** (OpenAI-compatible serving endpoint), no fine-tuning.
 
 **Hardware:** Single RTX 6000 Ada (48 GB VRAM) — holds any of these models at full/near-full precision; vLLM's continuous batching keeps the many-call ToT/GoT grid and multi-seed repetition computationally affordable.
 

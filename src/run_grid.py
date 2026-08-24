@@ -37,7 +37,7 @@ RAW_DIR = RESULTS_DIR / "raw"
 CSV_PATH = RESULTS_DIR / "grid_results.csv"
 
 SCENARIOS = ["WS12", "Ubuntu", "Sidewinder", "FIN6", "APT29"]
-MODELS = ["qwen2.5-7b", "llama3.1-8b", "phi3.5-mini"]
+MODELS = ["qwen2.5-7b", "llama3.1-8b"]
 DEFAULT_SEEDS = [0, 1, 2]
 
 CSV_FIELDS = [

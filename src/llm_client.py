@@ -89,39 +89,32 @@ _OUTPUT_SCHEMA = {
 MODEL_IDS = {
     "llama3.1-8b": "meta-llama/Llama-3.1-8B-Instruct",
     "qwen2.5-7b": "Qwen/Qwen2.5-7B-Instruct",
-    "phi3.5-mini": "microsoft/Phi-3.5-mini-instruct",
 }
 
-# Phi-4 was the model originally named in idea.md/proposal_document.md, but
-# was dropped after validation: its hard 16384-token context ceiling is
-# smaller than even WS12 alone (~16.4K tokens under Phi-4's own tokenizer --
-# the model failed at the query step, not model load, with "This model's
-# maximum context length is 16384 tokens... your prompt contains at least
-# 16385 input tokens"), and our largest scenarios run ~58K tokens. Every
-# proposal/planning doc was updated to Phi-3.5-mini-instruct (3.8B, 128K
-# native context) to match -- see IMPLEMENTATION.md for the full writeup.
+# The model lineup was originally Phi-4 (idea.md/proposal_document.md), then
+# Phi-3.5-mini-instruct after Phi-4's hard 16384-token context ceiling
+# proved smaller than even WS12 alone. Phi-3.5-mini-instruct was then
+# dropped too: it fit the context window fine, but reproducibly failed to
+# produce parseable output on WS12 across four independent, targeted fix
+# attempts (structured/guided JSON decoding, an explicit prompt example,
+# disable_any_whitespace, repetition_penalty). Two distinct degenerate
+# patterns were observed and neither was resolved -- see IMPLEMENTATION.md
+# for the full diagnostic trail. The project now runs two models, not
+# three: Llama 3.1 8B and Qwen 2.5 7B, both fully validated end-to-end.
 
-# Per-model default gpu_memory_utilization -- cannot be one flat number, and
-# checkpoint size is NOT a reliable proxy for how much it needs: smaller
-# parameter count does not mean smaller KV cache. Llama needs more than its
-# ~15GB weights alone would suggest (at 0.45/~22GB, only 5.1GB was left for
-# KV cache, short of the ~8GB its 65536-token max_model_len needs -- raised
-# to 0.55). Phi-3.5-mini is the sharpest example: only ~7.6GB of weights,
-# but its attention head configuration makes its KV cache far more expensive
-# per token than Llama/Qwen's -- 65536 tokens needs ~24GB of KV cache alone,
-# so the naive "small model -> small budget" guess of 0.35 (~16.8GB total)
-# failed outright ("24.01 GiB KV cache is needed... available: 8.72 GiB").
-# Raised to 0.70 to actually cover weights + real KV cache demand.
+# Per-model default gpu_memory_utilization -- cannot be one flat number.
+# Llama needs more than its ~15GB weights alone would suggest (at 0.45/~22GB,
+# only 5.1GB was left for KV cache, short of the ~8GB its 65536-token
+# max_model_len needs -- raised to 0.55).
 MODEL_GPU_MEMORY_UTILIZATION = {
     "llama3.1-8b": 0.55,
     "qwen2.5-7b": 0.45,
-    "phi3.5-mini": 0.70,
 }
 
 # Per-model default max_model_len -- also cannot be one flat number. Forcing
 # a larger context than a model actually supports is unsafe (degraded
-# quality at best, a hard error at worst -- see the Phi-4 note above), so
-# this reflects each model's real, verified ceiling, not a knob to tune away.
+# quality at best, a hard error at worst), so this reflects each model's
+# real, verified ceiling, not a knob to tune away.
 #
 # Qwen's vLLM-detected default is only 32768 -- fine for WS12 (~16K tokens)
 # and Ubuntu (~19K), but APT29/Sidewinder/FIN6 are ~58K tokens (they share
@@ -134,7 +127,6 @@ MODEL_GPU_MEMORY_UTILIZATION = {
 MODEL_MAX_MODEL_LEN = {
     "llama3.1-8b": 65536,  # native 131072, capped down to fit the KV cache budget
     "qwen2.5-7b": 65536,  # native default 32768, raised -- see note above
-    "phi3.5-mini": 65536,  # native 128K -- far more room than needed, capped down only to bound KV cache size
 }
 
 

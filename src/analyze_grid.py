@@ -25,7 +25,7 @@ PLOTS_DIR = RESULTS_DIR / "plots"
 
 SCENARIO_ORDER = ["WS12", "Ubuntu", "Sidewinder", "FIN6", "APT29"]
 METHOD_ORDER = ["CoT", "ToT", "GoT"]
-MODEL_ORDER = ["qwen2.5-7b", "llama3.1-8b", "phi4"]
+MODEL_ORDER = ["qwen2.5-7b", "llama3.1-8b", "phi3.5-mini"]
 
 # -- palette --------------------------------------------------------------
 SURFACE, PAGE = "#fcfcfb", "#f9f9f7"
@@ -33,7 +33,7 @@ INK, INK_SOFT, INK_MUTED = "#0b0b0b", "#52514e", "#898781"
 GRIDLINE, BASELINE = "#e1e0d9", "#c3c2b7"
 
 METHOD_COLOR = {"CoT": "#3f7cac", "ToT": "#b9791f", "GoT": "#a6373a"}
-MODEL_COLOR = {"qwen2.5-7b": "#2a78d6", "llama3.1-8b": "#eb6834", "phi4": "#1baf7a"}
+MODEL_COLOR = {"qwen2.5-7b": "#2a78d6", "llama3.1-8b": "#eb6834", "phi3.5-mini": "#1baf7a"}
 
 
 def _style_axis(ax):

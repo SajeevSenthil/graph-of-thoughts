@@ -49,7 +49,48 @@ from vllm import LLM, SamplingParams  # noqa: E402
 MODEL_IDS = {
     "llama3.1-8b": "meta-llama/Llama-3.1-8B-Instruct",
     "qwen2.5-7b": "Qwen/Qwen2.5-7B-Instruct",
-    "phi4": "microsoft/phi-4",
+    "phi3.5-mini": "microsoft/Phi-3.5-mini-instruct",
+}
+
+# Phi-4 was the model originally named in idea.md/proposal_document.md, but
+# was dropped after validation: its hard 16384-token context ceiling is
+# smaller than even WS12 alone (~16.4K tokens under Phi-4's own tokenizer --
+# the model failed at the query step, not model load, with "This model's
+# maximum context length is 16384 tokens... your prompt contains at least
+# 16385 input tokens"), and our largest scenarios run ~58K tokens. Every
+# proposal/planning doc was updated to Phi-3.5-mini-instruct (3.8B, 128K
+# native context) to match -- see IMPLEMENTATION.md for the full writeup.
+
+# Per-model default gpu_memory_utilization -- cannot be one flat number.
+# Model checkpoint sizes differ enough (Llama/Qwen ~14-15GB, Phi-3.5-mini a
+# much smaller ~7.6GB) that one flat value either wastes headroom or doesn't
+# fit. Llama also needs more here than its weights alone would suggest: at
+# 0.45 (~22GB) it had only 5.1GB left for KV cache, not enough for its
+# 65536-token max_model_len (needs ~8GB) -- hit this directly before raising
+# it to 0.55.
+MODEL_GPU_MEMORY_UTILIZATION = {
+    "llama3.1-8b": 0.55,
+    "qwen2.5-7b": 0.45,
+    "phi3.5-mini": 0.35,
+}
+
+# Per-model default max_model_len -- also cannot be one flat number. Forcing
+# a larger context than a model actually supports is unsafe (degraded
+# quality at best, a hard error at worst -- see the Phi-4 note above), so
+# this reflects each model's real, verified ceiling, not a knob to tune away.
+#
+# Qwen's vLLM-detected default is only 32768 -- fine for WS12 (~16K tokens)
+# and Ubuntu (~19K), but APT29/Sidewinder/FIN6 are ~58K tokens (they share
+# one W10 log; see IMPLEMENTATION.md Phase 2), which would exceed it.
+# Qwen2.5-7B-Instruct's own config supports much longer context via rope
+# scaling, so raising it to match Llama's cap is expected to be safe -- but
+# this hasn't been empirically verified yet on this project's larger
+# scenarios. If it errors, the fix is scenario-specific truncation, not a
+# silent lower cap that would make CoT unable to see full evidence.
+MODEL_MAX_MODEL_LEN = {
+    "llama3.1-8b": 65536,  # native 131072, capped down to fit the KV cache budget
+    "qwen2.5-7b": 65536,  # native default 32768, raised -- see note above
+    "phi3.5-mini": 65536,  # native 128K -- far more room than needed, capped down only to bound KV cache size
 }
 
 
@@ -70,8 +111,16 @@ class VLLMLanguageModel(AbstractLanguageModel):
         temperature: float = 0.7,
         max_tokens: int = 1024,
         seed: int | None = None,
-        gpu_memory_utilization: float = 0.45,
+        gpu_memory_utilization: float | None = None,
+        max_model_len: int | None = None,
     ):
+        # None means "use this model's known-safe default" (see
+        # MODEL_GPU_MEMORY_UTILIZATION / MODEL_MAX_MODEL_LEN above) --
+        # explicit args still override per-call if a caller ever needs to.
+        if gpu_memory_utilization is None:
+            gpu_memory_utilization = MODEL_GPU_MEMORY_UTILIZATION[model_key]
+        if max_model_len is None:
+            max_model_len = MODEL_MAX_MODEL_LEN[model_key]
         self.logger = None  # AbstractLanguageModel.__init__ sets this properly below
         self.model_key = model_key
         self.temperature = temperature
@@ -91,13 +140,23 @@ class VLLMLanguageModel(AbstractLanguageModel):
 
         model_id = MODEL_IDS[model_key]
         # This is a shared GPU machine with other users' processes already
-        # resident. vLLM's default gpu_memory_utilization=0.9 is a fraction of
-        # TOTAL device memory, not free memory, so it would try to grab ~43GB
-        # on a 48GB card regardless of what else is already running there --
-        # a good way to OOM another tenant. 0.45 (~22GB: comfortably covers
-        # this project's ~14GB weights + KV cache for short outputs) leaves
-        # real headroom instead.
-        self.llm = LLM(model=model_id, dtype="bfloat16", gpu_memory_utilization=gpu_memory_utilization)
+        # resident (confirmed via nvidia-smi). vLLM's default
+        # gpu_memory_utilization=0.9 is a fraction of TOTAL device memory, not
+        # free memory, so it would try to grab it regardless of what else is
+        # already running there -- a good way to OOM another tenant. Both
+        # gpu_memory_utilization and max_model_len are per-model (see
+        # MODEL_GPU_MEMORY_UTILIZATION / MODEL_MAX_MODEL_LEN docstrings above)
+        # rather than one flat number, because the three models differ enough
+        # in checkpoint size (Phi-4's 27.3GB vs. ~14-15GB for the other two)
+        # and native context window (Phi-4's 16384 vs. Llama's 131072) that a
+        # single value either OOMs one model or wastes headroom on another --
+        # both failure modes were hit directly while validating this.
+        self.llm = LLM(
+            model=model_id,
+            dtype="bfloat16",
+            gpu_memory_utilization=gpu_memory_utilization,
+            max_model_len=max_model_len,
+        )
 
     def load_config(self, path):
         # Overridden no-op: this project passes model config directly via

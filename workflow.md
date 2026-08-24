@@ -162,7 +162,7 @@ OUTPUT: {precision, recall, f1,            # event-level
 ```
 FOR scenario IN [WS12, Ubuntu, APT29, Sidewinder, FIN6]:
   FOR method IN [CoT, ToT, GoT]:
-    FOR model IN [llama3.1-8b, qwen2.5-7b, phi4]:
+    FOR model IN [llama3.1-8b, qwen2.5-7b, phi3.5-mini]:
       FOR seed IN [1..N]:
         run STEP 5 → STEP 6, store result
 ```

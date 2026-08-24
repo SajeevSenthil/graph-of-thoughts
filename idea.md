@@ -41,7 +41,7 @@ Five multi-stage attacks across Windows Server 2012, Ubuntu, and Windows 10 (APT
 3. **Efficiency:** LLM calls, tokens, wall-clock latency per investigation (the accuracy-cost tradeoff).
 
 ## Models
-Llama 3.1 8B, Qwen 2.5 7B, Phi-4 — open-weight, run locally, no fine-tuning.
+Llama 3.1 8B, Qwen 2.5 7B, Phi-3.5-mini-instruct — open-weight, run locally, no fine-tuning.
 
 ## Hardware
 Single RTX 6000 Ada (48 GB VRAM). Holds any of these models at full/near-full precision. Inference is effectively free, so the full evaluation grid + multiple seeds is affordable.

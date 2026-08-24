@@ -11,7 +11,7 @@ Tasks:
 - Clone the dataset: `git clone https://github.com/PKU-ASAL/Simulated-Data.git`
 - **Important:** Ubuntu and W10 zips are Git LFS pointers. Run `git lfs install && git lfs pull` to get the real data (Ubuntu ~369 MB, W10 ~134 MB). WS12 (83 MB) downloads directly.
 - Unzip each host (note: nested zips inside, e.g. `SimulatedWS12/hw20.zip` → `benign.json` + `anomaly.json`).
-- Set up local inference: install **Ollama** (or vLLM), pull `llama3.1:8b`, `qwen2.5:7b`, `phi4`.
+- Set up local inference: install **Ollama** (or vLLM), pull `llama3.1:8b`, `qwen2.5:7b`, `phi3.5:3.8b`.
 - Install the GoT framework: `pip install graph_of_thoughts` (repo: `spcl/graph-of-thoughts`).
 - **By hand:** open `doc/SimulatedWS12-attack/attack_annotation/A1.txt`...`A6.txt` and `attack_analysis.xls`. Read the 6-step WS12 kill chain until you understand it completely. This is your reference attack.
 

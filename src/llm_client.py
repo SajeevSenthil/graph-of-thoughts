@@ -64,7 +64,14 @@ class VLLMLanguageModel(AbstractLanguageModel):
     an AbstractLanguageModel instance.
     """
 
-    def __init__(self, model_key: str, temperature: float = 0.7, max_tokens: int = 1024, seed: int | None = None):
+    def __init__(
+        self,
+        model_key: str,
+        temperature: float = 0.7,
+        max_tokens: int = 1024,
+        seed: int | None = None,
+        gpu_memory_utilization: float = 0.45,
+    ):
         self.logger = None  # AbstractLanguageModel.__init__ sets this properly below
         self.model_key = model_key
         self.temperature = temperature
@@ -83,7 +90,14 @@ class VLLMLanguageModel(AbstractLanguageModel):
         self.cost = 0.0
 
         model_id = MODEL_IDS[model_key]
-        self.llm = LLM(model=model_id, dtype="bfloat16")
+        # This is a shared GPU machine with other users' processes already
+        # resident. vLLM's default gpu_memory_utilization=0.9 is a fraction of
+        # TOTAL device memory, not free memory, so it would try to grab ~43GB
+        # on a 48GB card regardless of what else is already running there --
+        # a good way to OOM another tenant. 0.45 (~22GB: comfortably covers
+        # this project's ~14GB weights + KV cache for short outputs) leaves
+        # real headroom instead.
+        self.llm = LLM(model=model_id, dtype="bfloat16", gpu_memory_utilization=gpu_memory_utilization)
 
     def load_config(self, path):
         # Overridden no-op: this project passes model config directly via

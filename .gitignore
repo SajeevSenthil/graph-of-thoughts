@@ -40,3 +40,4 @@ nohup.out
 # Informal dev-time scratch output (e.g. one-off smoke tests) -- not the
 # official Phase 5 grid, which lives in results/ and is committed.
 dev_notes/
+

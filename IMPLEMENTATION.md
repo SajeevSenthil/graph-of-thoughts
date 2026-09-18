@@ -232,8 +232,55 @@ Phi-4's replacement loaded and ran within its context window (unlike Phi-4), but
 
 **Status: Phase 4 is DONE. Both models in the final lineup (Qwen 2.5 7B, Llama 3.1 8B) fully validated end-to-end on WS12 -- all three methods, valid parseable output.**
 
+### Phase 5 smoke test on Sidewinder found a second, model-architecture context limit
+
+Before committing to the full unattended grid, ran one more de-risking smoke test: Qwen 2.5 7B + CoT + seed 0 on Sidewinder (`data/serialized/Sidewinder.txt`, 162,532 chars, ~58K tokens -- APT29/Sidewinder/FIN6 share one large W10 log, see Phase 2). This exercised a code path flagged as unverified in an earlier comment: Qwen's `max_model_len` had been raised from vLLM's detected default of 32768 to 65536, to match Llama's cap, on the assumption ("Qwen2.5-7B-Instruct's own config supports much longer context via rope scaling") that this was safe. It was not.
+
+vLLM refused to even load the model:
+
+```
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+  Value error, User-specified max_model_len (65536) is greater than the derived max_model_len
+  (max_position_embeddings=32768.0 or model_max_length=None in model's config.json). To allow
+  overriding this maximum, set the env var VLLM_ALLOW_LONG_MAX_MODEL_LEN=1.
+  VLLM_ALLOW_LONG_MAX_MODEL_LEN must be used with extreme caution. If the model uses relative
+  position encoding (RoPE), positions exceeding derived_max_model_len lead to nan. If the model
+  uses absolute position encoding, positions exceeding derived_max_model_len will cause a CUDA
+  array out-of-bounds error.
+```
+
+This is a hard load-time failure, not a runtime degeneracy like Phi-3.5-mini's -- and critically, the suggested override is not a safe workaround: exceeding a RoPE model's trained position range risks silently producing NaN output, which would be far worse than a loud crash (a confounding factor indistinguishable from "the model reasoned badly" without deliberately checking for it). Qwen 2.5 7B-Instruct's real, config.json-derived native ceiling is 32768 tokens -- comfortably above WS12 (~16K) and Ubuntu (~19K), but well under APT29/Sidewinder/FIN6's ~58K. CoT and ToT both require the full evidence in a single call, so there is no safe way to fit those three scenarios for Qwen without either the NaN risk above or truncating evidence in a way that would confound "worse reasoning" with "never saw the evidence" -- exactly the failure mode this project's fixed-evidence-pipeline principle exists to prevent.
+
+Brought back to the user as a decision point (same pattern as the Phi-4/Phi-3.5-mini swap) rather than silently capping `max_model_len` back down and calling it fixed, since it changes the grid's actual scope. **Decision (2026-08-24): Qwen runs WS12 + Ubuntu only; Llama runs all 5 scenarios** (native 131072 context, safely covers even the largest scenario at the 65536 cap -- not independently re-verified on Sidewinder yet, but has 2x the real margin Qwen would have needed). Fixed `llm_client.py`'s `MODEL_MAX_MODEL_LEN["qwen2.5-7b"]` back to 32768 (the real safe value, not a truncation workaround) and added `run_grid.py`'s `MODEL_SCENARIO_ALLOWLIST` to enforce the split in code, with skip messages printed per run rather than silently omitted rows. The resulting grid is intentionally asymmetric: full 2-model comparison is only valid on WS12/Ubuntu; the 5-scenario comparison is Llama-only.
+
 ---
 
-## What's next -- Phase 4 (continued), then Phase 5
+### Phase 5 first full run (2026-08-24): 63 runs, 5 scenarios, 3 seeds
 
-Run the same WS12 smoke test on Llama 3.1 8B and Phi-4 to close out Phase 4's done-when bar (valid parseable JSON for all three methods on all three models). Then Phase 5: `src/run_grid.py` (already written, resumable, one OS process per model since vLLM does not reliably free GPU memory when swapping models in-process) and `src/analyze_grid.py` (already written: summary CSVs at three levels of aggregation, per-scenario topology x model bars, the cross-scenario comparison, a scenario x method heatmap, and an accuracy-vs-cost Pareto plot) against the full 5 scenarios x 3 methods x 3 models x N seeds grid.
+WS12+Ubuntu (both models, 36 runs) then Sidewinder/FIN6/APT29 (Llama only per the allowlist, 27 runs) -- all via `src/run_grid.py`, summarized with `src/analyze_grid.py` into `results/summary_*.csv` and `results/plots/*.png`.
+
+**Headline pattern, holds across all 3 seeds:** models find roughly a quarter to half of real malicious events (`event_f1` 0.15-0.44 on WS12/Ubuntu) but almost never assign the *exact* correct kill-chain stage (`stage_recall` mostly 0.00-0.12; `stage_recall_partial`, 0.5 credit for right-event-wrong-stage, sits 2-4x higher). This is a stage-vocabulary/labeling gap, not a detection gap. Qwen's CoT and ToT hit an exact stage_recall of 0.000 across all 6 WS12+Ubuntu runs each (not just low -- a hard, repeated zero); GoT breaks that pattern for Qwen (0.079-0.111), consistent with segmentation changing its output style.
+
+**Found while investigating why Sidewinder/FIN6/APT29 score so much worse than WS12/Ubuntu (event_f1 collapses to 0.04-0.23, stage_recall to 0.00-0.07):** `data/serialized/Sidewinder.txt`, `FIN6.txt`, and `APT29.txt` are byte-identical (confirmed via md5sum -- same hash, same 165,345-byte size). Traced upstream: `data/evidence_graph/{Sidewinder,FIN6,APT29}.json` all have exactly 624 nodes and 933 edges (file sizes differ by <1%, likely just the `scenario`/`hard_gate` metadata fields, not node/edge content) -- so the post-reduction evidence these three scenarios present to every reasoning method is the same, only the ground-truth annotation (which subset of that shared evidence counts as "malicious" for each of the 3 different attack narratives) differs. This is the concrete consequence of the already-documented "APT29/Sidewinder/FIN6 share one W10 log" data characteristic (Phase 2, `IMPLEMENTATION.md`) -- not a newly-introduced bug in `serialize.py`/`build_graph.py`, but its first real impact on inference results: models are being asked to pick 3 different "correct" attack narratives out of literally the same reduced evidence, then graded against 3 different, mutually-exclusive answer keys. Read the low Sidewinder/FIN6/APT29 scores with that in mind -- they conflate "the model reasoned badly" with "the task's evidence doesn't actually disambiguate which of 3 narratives is being asked for," which is a harder and different failure mode than WS12/Ubuntu's numbers reflect. Not fixed or altered here (Phase 2 is locked, and this reflects the real dataset, not a processing bug) -- flagged for the write-up as a genuine interpretive caveat on the 5-scenario comparison.
+
+Full comparison tables: `results/summary_by_scenario_method_model.csv` (63 rows -> 21 aggregated cells) and `results/summary_by_method_model.csv`.
+
+### Significance testing and the interpretability follow-up (2026-08-24)
+
+Ran paired Wilcoxon signed-rank tests (paired by scenario+seed) on every method-vs-method comparison, every metric, every slice of the grid. **Not one comparison clears p<0.05** -- the closest is CoT vs. ToT on Llama/WS12+Ubuntu event_f1 (p=0.062, n=6), and even that reverses direction once the other 3 scenarios are added (p=0.177). Effect sizes (0.03-0.18) are consistently smaller than the standard deviation of the paired differences (0.09-0.32). Conclusion: at this sample size, method-to-method differences are statistically indistinguishable from seed-to-seed sampling noise.
+
+More seeds would sharpen these estimates but would not address the actual bottleneck, per a direct read of `results/raw/*.json` against `data/ground_truth/*.json` (`src/analyze_stage_confusion.py`, checking every ground-truth node with a `match_substring` against every flagged event across the whole 63-run grid, independent of topology):
+
+- **Detection is the primary failure, not labeling.** Only 138 of 900 checkable ground-truth events (15.3%) were ever flagged by any method/model/seed at all. 84.7% are missed outright, before stage assignment is even relevant.
+- **Of the events that are found, exact stage accuracy is ~24%** (33/138) -- barely above the ~10% baseline for picking one of 10 MITRE stages at random.
+- **Two distinct, non-random causes, from `results/stage_confusion_matrix.csv`:**
+  1. Some "wrong" labels are defensible alternate readings of genuinely dual-purpose techniques -- e.g. the `sethc.exe` Image File Execution Options hijack (ground truth: Persistence) predicted as Privilege Escalation 17x (MITRE T1546.008 legitimately spans both); PowerShell download-and-execute payloads (ground truth: Execution) predicted as Command and Control 13x (a fileless downloader is simultaneously both). The ground truth's single-label taxonomy is stricter than some techniques' actual ambiguity.
+  2. **Each model has a stable label prior that's miscalibrated to this dataset -- not noise.** WS12+Ubuntu's ground truth is 72% "Initial Access" or "Lateral Movement" (5/11 + 3/11 checkable nodes). Across every event Qwen ever flagged (`results/stage_prediction_distribution.csv`), "Initial Access" is 3.9% of its output and "Lateral Movement" is 1.1% -- it essentially never reaches for the two labels this dataset needs most, biasing instead toward Persistence/Command-and-Control/Execution (22.8%/18.9%/18.3%). This is the precise, quantified explanation for Qwen's flat 0.000 stage_recall on CoT/ToT (`summary_by_method_model.csv`) -- a systematic prior, not sampling variance. Llama shows a different but equally systematic skew (22% Command and Control, 15.7% Defense Evasion, only 2.7% Initial Access).
+
+**Implication for the project's actual conclusion**: at 7-8B model scale, the bottleneck for this task is event detection recall and MITRE-stage label calibration -- both properties of the base model, not of how many reasoning steps wrap around it. Reasoning topology (CoT/ToT/GoT) shows no statistically defensible effect on top of that ceiling with the current data. This is a legitimate, interesting finding in its own right, not a failed experiment -- but it reframes the project's likely conclusion away from "topology X wins" toward "topology has limited effect at this model scale; the base model's stage-vocabulary calibration is the dominant bottleneck." Artifacts: `results/stage_confusion_matrix.csv`, `results/stage_prediction_distribution.csv`, `results/plots/stage_confusion_heatmap_{model}.png`.
+
+---
+
+## What's next -- Phase 5
+
+`src/run_grid.py` (resumable, one OS process per model, `MODEL_SCENARIO_ALLOWLIST`-aware) and `src/analyze_grid.py` (summary CSVs at three levels of aggregation, per-scenario topology x model bars, the cross-scenario comparison, a scenario x method heatmap, and an accuracy-vs-cost Pareto plot) are running/ready against the grid: Qwen on WS12+Ubuntu, Llama on all 5 scenarios, both across all 3 methods and seeds 0/1/2. First launch (2026-08-24): WS12 + Ubuntu, both models, 3 seeds (36 runs) -- a fully symmetric slice to answer the user's "try another scenario and 3 seeds" request without yet committing to the multi-hour full run across the 3 large Llama-only scenarios. Once that completes and results look sane, extend to the remaining 3 scenarios (Llama only) via `--scenarios Sidewinder FIN6 APT29 --seeds 0 1 2` (no `--model` needed; the allowlist will naturally skip Qwen for those).

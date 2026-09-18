@@ -40,6 +40,21 @@ SCENARIOS = ["WS12", "Ubuntu", "Sidewinder", "FIN6", "APT29"]
 MODELS = ["qwen2.5-7b", "llama3.1-8b"]
 DEFAULT_SEEDS = [0, 1, 2]
 
+# Qwen 2.5 7B's real, vLLM-verified native context ceiling is 32768 tokens
+# (see llm_client.py's MODEL_MAX_MODEL_LEN). APT29/Sidewinder/FIN6 share one
+# W10 log and serialize to ~58K tokens each -- well over that limit. CoT/ToT
+# need the full evidence in a single call, so there is no safe way to run
+# Qwen on those three scenarios: forcing a longer context risks NaN output
+# on this RoPE model past its trained length, and truncating evidence would
+# confound "the model reasoned badly" with "the model never saw the
+# evidence." Decision (with user, 2026-08-24): Qwen runs on WS12 + Ubuntu
+# only (both fit under 32768 tokens); Llama runs all 5 scenarios (native
+# 131072 context safely covers even the largest scenario at the 65536 cap).
+MODEL_SCENARIO_ALLOWLIST = {
+    "qwen2.5-7b": ["WS12", "Ubuntu"],
+    "llama3.1-8b": SCENARIOS,
+}
+
 CSV_FIELDS = [
     "scenario", "method", "model", "seed",
     "event_precision", "event_recall", "event_f1", "event_tp", "event_fp", "event_fn",
@@ -114,6 +129,15 @@ def run_for_one_model(model_key: str, scenarios: list[str], methods: list[str], 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     done = _load_done_combos()
 
+    allowed_scenarios = MODEL_SCENARIO_ALLOWLIST.get(model_key, scenarios)
+    skipped_scenarios = [s for s in scenarios if s not in allowed_scenarios]
+    if skipped_scenarios:
+        print(
+            f"[{model_key}] skipping {skipped_scenarios} -- exceeds this model's safe "
+            f"context window (see MODEL_SCENARIO_ALLOWLIST)"
+        )
+    scenarios = [s for s in scenarios if s in allowed_scenarios]
+
     todo = [
         (s, m, seed)
         for s in scenarios
@@ -172,7 +196,11 @@ def main():
     for model_key in MODELS:
         print(f"\n{'=' * 70}\nStarting subprocess for model: {model_key}\n{'=' * 70}")
         cmd = [
-            sys.executable, str(Path(__file__).resolve()),
+            # -u: without it, the child's stdout is fully buffered (not a
+            # TTY once redirected to a log file), so progress prints only
+            # flush in one burst at process exit instead of incrementally --
+            # made per-combo progress invisible mid-run on a real grid run.
+            sys.executable, "-u", str(Path(__file__).resolve()),
             "--model", model_key,
             "--scenarios", *args.scenarios,
             "--methods", *args.methods,

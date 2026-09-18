@@ -116,17 +116,25 @@ MODEL_GPU_MEMORY_UTILIZATION = {
 # quality at best, a hard error at worst), so this reflects each model's
 # real, verified ceiling, not a knob to tune away.
 #
-# Qwen's vLLM-detected default is only 32768 -- fine for WS12 (~16K tokens)
-# and Ubuntu (~19K), but APT29/Sidewinder/FIN6 are ~58K tokens (they share
-# one W10 log; see IMPLEMENTATION.md Phase 2), which would exceed it.
-# Qwen2.5-7B-Instruct's own config supports much longer context via rope
-# scaling, so raising it to match Llama's cap is expected to be safe -- but
-# this hasn't been empirically verified yet on this project's larger
-# scenarios. If it errors, the fix is scenario-specific truncation, not a
-# silent lower cap that would make CoT unable to see full evidence.
+# Qwen2.5-7B-Instruct's config.json caps max_position_embeddings at 32768 --
+# NOT extendable via rope scaling by default (an earlier version of this
+# comment assumed otherwise; that was wrong). Confirmed empirically: vLLM
+# hard-refuses to start with max_model_len=65536 for this model
+# (pydantic ValidationError, not a runtime failure), and its own error text
+# explains why raising past the derived max is unsafe even if forced via
+# VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 -- RoPE positions beyond the trained range
+# can produce NaN output, i.e. silently corrupted results, not just an
+# error. 32768 is fine for WS12 (~16K tokens) and Ubuntu (~19K), but
+# APT29/Sidewinder/FIN6 are ~58K tokens (they share one W10 log; see
+# IMPLEMENTATION.md Phase 2) -- comfortably over Qwen's real ceiling with no
+# safe way to fit them for CoT/ToT, which need the full evidence in one
+# call. Decision (with user, 2026-08-24): Qwen runs on WS12 + Ubuntu only;
+# Llama runs all 5 scenarios, since its native 131072 context safely covers
+# even the largest scenario at the 65536 cap below. See
+# run_grid.py's MODEL_SCENARIO_ALLOWLIST, which enforces this split.
 MODEL_MAX_MODEL_LEN = {
     "llama3.1-8b": 65536,  # native 131072, capped down to fit the KV cache budget
-    "qwen2.5-7b": 65536,  # native default 32768, raised -- see note above
+    "qwen2.5-7b": 32768,  # native/derived max -- do not raise, see note above
 }
 
 

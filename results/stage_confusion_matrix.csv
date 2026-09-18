@@ -1,0 +1,45 @@
+true_stage,pred_stage,count
+collection,collection,4
+collection,credential access,1
+command and control,command and control,10
+command and control,defense evasion,1
+credential access,collection,2
+credential access,discovery,2
+credential access,credential access,2
+credential access,privilege escalation,2
+credential access,command and control,1
+defense evasion,privilege escalation,5
+defense evasion,command and control,4
+defense evasion,lateral movement,1
+defense evasion,credential access,1
+discovery,discovery,1
+discovery,command and control,1
+discovery,collection,1
+execution,command and control,13
+execution,collection,5
+execution,persistence,4
+execution,credential access,3
+execution,execution,2
+initial access,credential access,19
+initial access,command and control,17
+initial access,execution,13
+initial access,persistence,10
+initial access,defense evasion,9
+initial access,discovery,4
+initial access,initial access,3
+initial access,collection,2
+initial access,lateral movement,1
+lateral movement,command and control,11
+lateral movement,execution,4
+lateral movement,privilege escalation,2
+lateral movement,initial access,1
+persistence,privilege escalation,17
+persistence,persistence,8
+persistence,collection,3
+persistence,defense evasion,2
+persistence,discovery,1
+privilege escalation,privilege escalation,3
+privilege escalation,persistence,2
+privilege escalation,command and control,1
+privilege escalation,collection,1
+privilege escalation,lateral movement,1

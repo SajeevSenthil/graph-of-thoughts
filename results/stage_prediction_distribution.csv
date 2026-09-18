@@ -1,0 +1,21 @@
+model,stage,count,frac
+llama3.1-8b,command and control,156,0.22033898305084745
+llama3.1-8b,defense evasion,111,0.15677966101694915
+llama3.1-8b,collection,80,0.11299435028248588
+llama3.1-8b,discovery,77,0.10875706214689265
+llama3.1-8b,privilege escalation,74,0.10451977401129943
+llama3.1-8b,credential access,63,0.08898305084745763
+llama3.1-8b,persistence,50,0.07062146892655367
+llama3.1-8b,execution,39,0.05508474576271186
+llama3.1-8b,lateral movement,39,0.05508474576271186
+llama3.1-8b,initial access,19,0.026836158192090395
+qwen2.5-7b,persistence,41,0.22777777777777777
+qwen2.5-7b,command and control,34,0.18888888888888888
+qwen2.5-7b,execution,33,0.18333333333333332
+qwen2.5-7b,discovery,25,0.1388888888888889
+qwen2.5-7b,privilege escalation,17,0.09444444444444444
+qwen2.5-7b,credential access,11,0.06111111111111111
+qwen2.5-7b,defense evasion,8,0.044444444444444446
+qwen2.5-7b,initial access,7,0.03888888888888889
+qwen2.5-7b,collection,2,0.011111111111111112
+qwen2.5-7b,lateral movement,2,0.011111111111111112

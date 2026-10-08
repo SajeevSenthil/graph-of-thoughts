@@ -273,6 +273,27 @@ class VLLMLanguageModel(AbstractLanguageModel):
 
         return [o.text for o in output.outputs]
 
+    def query_batch(self, queries: List[str], json_schema: dict, max_tokens: int) -> List[str]:
+        """One response per query, submitted to vLLM as a single batch and
+        constrained to json_schema. Counts as len(queries) LLM calls."""
+        params = SamplingParams(
+            n=1,
+            temperature=self.temperature,
+            max_tokens=max_tokens,
+            seed=self.seed,
+            repetition_penalty=1.15,
+            structured_outputs=StructuredOutputsParams(json=json_schema, disable_any_whitespace=True),
+        )
+        conversations = [[{"role": "user", "content": q}] for q in queries]
+        start = time.perf_counter()
+        outputs = self.llm.chat(conversations, params, use_tqdm=False)
+        self.wall_clock_s += time.perf_counter() - start
+        self.num_calls += len(queries)
+        self.prompt_tokens += sum(len(o.prompt_token_ids) for o in outputs)
+        self.completion_tokens += sum(len(c.token_ids) for o in outputs for c in o.outputs)
+        self.cost = self.wall_clock_s
+        return [o.outputs[0].text for o in outputs]
+
     def get_response_texts(self, query_responses) -> List[str]:
         return query_responses  # query() already returns List[str]
 

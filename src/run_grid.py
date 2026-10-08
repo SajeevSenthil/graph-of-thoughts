@@ -132,6 +132,7 @@ def run_for_one_model(
     max_tokens: int = BASELINE_MAX_TOKENS,
     prompt_variant: str = "base",
     gpu_mem_util: float | None = None,
+    triage: bool = False,
 ):
     # Imports deferred to here: this function only ever runs inside a child
     # process dedicated to one model, so vLLM/torch only ever get imported
@@ -140,7 +141,8 @@ def run_for_one_model(
     from src.methods.cot import run_cot
     from src.methods.tot import run_tot
     from src.methods.got import run_got
-    from src.scorer import score_scenario
+    from src.scorer import score_scenario, _contains
+    from src.methods.triage import run_triage
     import src.methods.prompter as prompter_mod
     import torch
 
@@ -183,13 +185,37 @@ def run_for_one_model(
         "max_tokens": max_tokens,
         "prompt_variant": prompt_variant,
         "gpu": torch.cuda.get_device_name(0),
+        "triage": triage,
     }
+
+    def triaged_evidence(scenario: str, seed: int, full_text: str) -> str:
+        # Once per (scenario, model, seed), persisted, so all three topologies
+        # -- including after a job restart -- reason over the identical subset.
+        path = RESULTS_DIR / "triage" / f"{scenario}__{model_key}__seed{seed}.json"
+        if path.exists():
+            return json.loads(path.read_text())["evidence_text"]
+        lm.seed = seed
+        result = run_triage(full_text, lm)
+        gt = [n for n in json.loads((REPO_ROOT / "data" / "ground_truth" / f"{scenario}.json").read_text()) if n["match_substring"]]
+        result["gt_in_full"] = sum(1 for n in gt if _contains(n["match_substring"], full_text))
+        result["gt_after_triage"] = sum(1 for n in gt if _contains(n["match_substring"], result["evidence_text"]))
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(result, indent=2))
+        print(
+            f"  [triage] {scenario} seed{seed}: kept {result['n_flagged']}/{result['n_blocks']} processes, "
+            f"{result['chars_after']:,}/{result['chars_before']:,} chars, "
+            f"ground truth kept {result['gt_after_triage']}/{result['gt_in_full']} "
+            f"({result['cost']['wall_clock_s']:.1f}s)"
+        )
+        return result["evidence_text"]
 
     evidence_cache = {}
     for i, (scenario, method, seed) in enumerate(todo, 1):
         if scenario not in evidence_cache:
             evidence_cache[scenario] = (SERIALIZED_DIR / f"{scenario}.txt").read_text()
         evidence_text = evidence_cache[scenario]
+        if triage:
+            evidence_text = triaged_evidence(scenario, seed, evidence_text)
 
         lm.seed = seed
         t0 = time.time()
@@ -223,9 +249,10 @@ def main():
     parser.add_argument("--max-tokens", type=int, default=BASELINE_MAX_TOKENS)
     parser.add_argument("--prompt-variant", choices=["base", "stagedefs"], default="base")
     parser.add_argument("--gpu-mem-util", type=float, default=None, help="Override per-model default (e.g. on an exclusive SLURM GPU)")
+    parser.add_argument("--triage", action="store_true", help="Filter evidence to model-flagged process subtrees first (variant v4)")
     args = parser.parse_args()
 
-    if not args.variant and (args.max_tokens != BASELINE_MAX_TOKENS or args.prompt_variant != "base"):
+    if not args.variant and (args.max_tokens != BASELINE_MAX_TOKENS or args.prompt_variant != "base" or args.triage):
         parser.error("non-baseline settings require --variant, so they never mix into the v1 baseline results")
     _set_variant(args.variant)
 
@@ -233,7 +260,7 @@ def main():
         run_for_one_model(
             args.model, args.scenarios, args.methods, args.seeds,
             variant=args.variant, max_tokens=args.max_tokens,
-            prompt_variant=args.prompt_variant, gpu_mem_util=args.gpu_mem_util,
+            prompt_variant=args.prompt_variant, gpu_mem_util=args.gpu_mem_util, triage=args.triage,
         )
         return
 
@@ -258,6 +285,8 @@ def main():
             cmd += ["--variant", args.variant]
         if args.gpu_mem_util is not None:
             cmd += ["--gpu-mem-util", str(args.gpu_mem_util)]
+        if args.triage:
+            cmd += ["--triage"]
         result = subprocess.run(cmd, cwd=str(REPO_ROOT))
         if result.returncode != 0:
             print(f"WARNING: subprocess for {model_key} exited with code {result.returncode}", file=sys.stderr)

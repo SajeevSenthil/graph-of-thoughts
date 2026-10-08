@@ -133,6 +133,7 @@ def run_for_one_model(
     prompt_variant: str = "base",
     gpu_mem_util: float | None = None,
     triage: bool = False,
+    got_link_hints: bool = False,
 ):
     # Imports deferred to here: this function only ever runs inside a child
     # process dedicated to one model, so vLLM/torch only ever get imported
@@ -151,7 +152,7 @@ def run_for_one_model(
     method_fns = {
         "CoT": run_cot,
         "ToT": lambda e, l: run_tot(e, l, k=3),
-        "GoT": lambda e, l: run_got(e, l, n_segments=4),
+        "GoT": lambda e, l: run_got(e, l, n_segments=4, link_hints=got_link_hints),
     }
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -186,6 +187,7 @@ def run_for_one_model(
         "prompt_variant": prompt_variant,
         "gpu": torch.cuda.get_device_name(0),
         "triage": triage,
+        "got_link_hints": got_link_hints,
     }
 
     def triaged_evidence(scenario: str, seed: int, full_text: str) -> str:
@@ -249,10 +251,11 @@ def main():
     parser.add_argument("--max-tokens", type=int, default=BASELINE_MAX_TOKENS)
     parser.add_argument("--prompt-variant", choices=["base", "stagedefs"], default="base")
     parser.add_argument("--gpu-mem-util", type=float, default=None, help="Override per-model default (e.g. on an exclusive SLURM GPU)")
-    parser.add_argument("--triage", action="store_true", help="Filter evidence to model-flagged process subtrees first (variant v4)")
+    parser.add_argument("--triage", action="store_true", help="Filter evidence to model-flagged processes first (variant v4)")
+    parser.add_argument("--got-link-hints", action="store_true", help="Give GoT's Aggregate the cross-segment structural links (variant v5)")
     args = parser.parse_args()
 
-    if not args.variant and (args.max_tokens != BASELINE_MAX_TOKENS or args.prompt_variant != "base" or args.triage):
+    if not args.variant and (args.max_tokens != BASELINE_MAX_TOKENS or args.prompt_variant != "base" or args.triage or args.got_link_hints):
         parser.error("non-baseline settings require --variant, so they never mix into the v1 baseline results")
     _set_variant(args.variant)
 
@@ -261,6 +264,7 @@ def main():
             args.model, args.scenarios, args.methods, args.seeds,
             variant=args.variant, max_tokens=args.max_tokens,
             prompt_variant=args.prompt_variant, gpu_mem_util=args.gpu_mem_util, triage=args.triage,
+            got_link_hints=args.got_link_hints,
         )
         return
 
@@ -287,6 +291,8 @@ def main():
             cmd += ["--gpu-mem-util", str(args.gpu_mem_util)]
         if args.triage:
             cmd += ["--triage"]
+        if args.got_link_hints:
+            cmd += ["--got-link-hints"]
         result = subprocess.run(cmd, cwd=str(REPO_ROOT))
         if result.returncode != 0:
             print(f"WARNING: subprocess for {model_key} exited with code {result.returncode}", file=sys.stderr)

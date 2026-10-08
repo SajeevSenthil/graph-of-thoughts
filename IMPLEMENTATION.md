@@ -606,3 +606,67 @@ Example triage decisions (WS12 / Llama / seed 0) for a few processes:
 - v1 -> v2 mixes in a hardware change (RTX 6000 Ada -> A100); v2 -> v3 and v3 -> v4 are like-for-like.
 - Many paired tests are reported; only v3's stage-recall gain survives multiple-comparison correction.
 - v4's 8 remaining parse failures are all Llama GoT Refine-step failures. The parser falls back to the pre-Refine state, so those runs still carry 18-29 events and are scored normally.
+
+## Phase 6b -- v5: link-aware GoT aggregation (2026-10-08)
+
+**Why:** the one GoT-specific idea left untested. GoT's distinguishing operation is Aggregate: merging findings from segments reasoned about separately. Its premise is that attack evidence is scattered across segments and linked by shared evidence. v1-v4 gave Aggregate only the per-segment findings, never the links between segments.
+
+**Pre-check: does the data contain such links?** (serialized evidence, current char-balanced GoT segmentation into 4 segments)
+
+| Scenario | Attack events spread across | GoT segments holding attack events | Shared IPs/files linking two attack trees |
+|---|---|---|---|
+| WS12 | 2 of 82 process trees | 1 of 3 | 0 |
+| Ubuntu | 6 of 68 trees | 2 of 3 | 0 shared IPs; 1 write-then-use file (`logout.jsp` webshell) |
+| Sidewinder / FIN6 / APT29 (shared log) | 14-19 of 171 trees | 2-3 of 4 | 1 shared IP (the C2 server `124.223.85.207`); write-then-use files incl. `test.hta`, `hooksslx64.dll` |
+
+Shared external IPs between segments are mostly benign Microsoft/Edge/Bing service endpoints. The most attack-specific links are files written in one process tree and executed or referenced in another -- the classic provenance edge, which our evidence graph does not store explicitly. On WS12 all attack events fall in one segment, so Aggregate has nothing to merge there by construction.
+
+**Change:** `find_cross_segment_links()` in `src/methods/got.py`, enabled by `--got-link-hints`. After segmentation it lists, purely structurally (no malice judgment):
+- external IPs contacted by processes in more than one segment, with those processes;
+- files written in one segment whose name (whole-name match) appears in a process line in another segment, with the writing and using processes.
+
+The list (capped at 40, deduplicated) is appended to the Aggregate prompt by `_links_block()` in `src/methods/prompter.py`:
+
+```
+Cross-segment connections found in the evidence structure (each indicator below appears in more than one segment, so no single segment's analysis could see both ends):
+- <link>
+- ...
+Events joined through a shared indicator may belong to the same attack even if each looked benign in its own segment. Use these connections when deciding what to merge, but a connection alone is not proof of malice.
+```
+
+With no links (every earlier variant) the Aggregate prompt is byte-identical to before -- verified against the committed version for both prompt variants.
+
+**Bugs caught before running:** substring matching linked `agent.exe` to `aitagent.exe` (fixed with whole-name matching), and duplicate link lines (deduplicated).
+
+**Run:** v5 = v4 settings + `--got-link-hints`, GoT only (21 runs), via `sbatch slurm/run_grid.sbatch --variant v5_got_links --methods GoT --max-tokens 4096 --prompt-variant stagedefs --triage --got-link-hints`. SLURM job 12631, A100 80GB, 32 min. v4's triage files were copied into `results/variants/v5_got_links/triage/` first, so v5's GoT reasons over exactly the same filtered evidence as v4's CoT/ToT/GoT; the only difference from v4's GoT is the link list. Links found per triaged run: 2 on WS12 and Ubuntu, 8-11 on the Windows 10 scenarios.
+
+**Results -- GoT, v4 -> v5 (paired Wilcoxon on scenario, model, seed):**
+
+| Scope | Metric | v4 GoT | v5 GoT | Diff | p |
+|---|---|---|---|---|---|
+| all (n=21) | event F1 | 0.277 | 0.350 | +0.073 | 0.34 |
+| all (n=21) | event precision | 0.242 | 0.302 | +0.060 | 0.34 |
+| all (n=21) | event recall | 0.429 | 0.502 | +0.074 | 0.24 |
+| all (n=21) | exact stage recall | 0.169 | 0.183 | +0.014 | 0.71 |
+| Qwen (n=6) | event F1 | 0.380 | 0.370 | -0.010 | 0.69 |
+| Llama (n=15) | event F1 | 0.236 | 0.342 | +0.106 | 0.19 |
+| Llama (n=15) | event recall | 0.410 | 0.538 | +0.128 | 0.055 |
+| Llama (n=15) | stage recall (partial) | 0.240 | 0.321 | +0.081 | 0.084 |
+
+| Scenario | Event F1 v4 -> v5 | Exact stage recall v4 -> v5 |
+|---|---|---|
+| WS12 | 0.269 -> 0.270 | 0.286 -> 0.282 |
+| Ubuntu | 0.371 -> 0.553 | 0.145 -> 0.089 |
+| Sidewinder | 0.316 -> 0.214 | 0.156 -> 0.236 |
+| FIN6 | 0.221 -> 0.219 | 0.129 -> 0.116 |
+| APT29 | 0.125 -> 0.372 | 0.036 -> 0.184 |
+
+Parse failures (GoT Refine step): 7 -> 4. Tokens/run unchanged (60.5K -> 60.7K).
+
+**Topology with link-aware GoT** (v5 GoT vs v4 CoT/ToT, identical triaged input): Qwen CoT-GoT +0.01 (p = 1.0), ToT-GoT +0.06 (p = 0.84) on event F1; Llama CoT-GoT +0.01 (p = 0.72), ToT-GoT -0.05 (p = 0.60). Link hints close Llama GoT's gap to CoT (CoT led by +0.12 event F1 in v4, +0.01 in v5) but GoT is not significantly better than either.
+
+**Interpretation:**
+- Direction is positive for Llama (largest on event recall, p = 0.055) and neutral to slightly negative for Qwen. Nothing is significant at n = 21.
+- WS12 is unchanged, as the pre-check predicted: its attack events all sit in one segment, so there is nothing for the links to connect.
+- Scenario-level swings are large and inconsistent (APT29 +0.25 event F1, Sidewinder -0.10, on the same underlying log), which reads as run-to-run noise as much as effect.
+- **For the thesis:** the GoT hypothesis cannot be tested at full strength on this dataset at this evidence granularity. The scattered-but-linked structure that Aggregate is designed to exploit is sparse here -- one attack-related shared IP, a few write-then-use files, and none at all on WS12. Giving Aggregate those links explicitly is the strongest version of GoT this data supports, and it still does not separate from CoT/ToT.

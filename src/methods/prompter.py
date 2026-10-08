@@ -85,6 +85,22 @@ def _format_reconstruction(state: Dict) -> str:
     )
 
 
+def _links_block(links) -> str:
+    # Empty when GoT link hints are off, so the aggregation prompt for every
+    # earlier variant stays byte-identical.
+    if not links:
+        return ""
+    listed = "\n".join(f"- {link}" for link in links)
+    return (
+        "Cross-segment connections found in the evidence structure (each indicator below appears in more "
+        "than one segment, so no single segment's analysis could see both ends):\n"
+        f"{listed}\n"
+        "Events joined through a shared indicator may belong to the same attack even if each looked benign "
+        "in its own segment. Use these connections when deciding what to merge, but a connection alone is "
+        "not proof of malice.\n\n"
+    )
+
+
 class KillChainPrompter(Prompter):
     def generate_prompt(self, num_branches: int, **kwargs) -> str:
         evidence_text = kwargs["evidence_text"]
@@ -101,7 +117,8 @@ class KillChainPrompter(Prompter):
             f"{task_preamble()}\n\nThe evidence was split into {len(state_dicts)} segments and reasoned about "
             f"independently, without visibility into the other segments. Here are the findings from each:\n\n"
             f"{segments}\n\n"
-            "Merge these independent findings into ONE combined, correctly ordered kill chain. In particular, "
+            + _links_block(kwargs.get("links"))
+            + "Merge these independent findings into ONE combined, correctly ordered kill chain. In particular, "
             "look for events that individually seemed uncertain or low-confidence in their own segment but "
             "become clearly part of the same attack once connected to events in another segment. "
             "Output only the merged JSON object."

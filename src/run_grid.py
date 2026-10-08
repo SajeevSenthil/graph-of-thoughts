@@ -110,7 +110,29 @@ def _flatten(scenario, method, model, seed, output, metrics, raw_path) -> dict:
     }
 
 
-def run_for_one_model(model_key: str, scenarios: list[str], methods: list[str], seeds: list[int]):
+BASELINE_MAX_TOKENS = 1536
+
+
+def _set_variant(variant: str | None):
+    """Point all result paths at results/variants/<variant>/ so a variant run
+    can never append to, or overwrite, the v1 baseline under results/."""
+    global RESULTS_DIR, RAW_DIR, CSV_PATH
+    if variant:
+        RESULTS_DIR = REPO_ROOT / "results" / "variants" / variant
+        RAW_DIR = RESULTS_DIR / "raw"
+        CSV_PATH = RESULTS_DIR / "grid_results.csv"
+
+
+def run_for_one_model(
+    model_key: str,
+    scenarios: list[str],
+    methods: list[str],
+    seeds: list[int],
+    variant: str | None = None,
+    max_tokens: int = BASELINE_MAX_TOKENS,
+    prompt_variant: str = "base",
+    gpu_mem_util: float | None = None,
+):
     # Imports deferred to here: this function only ever runs inside a child
     # process dedicated to one model, so vLLM/torch only ever get imported
     # once per process, right before they're needed.
@@ -119,6 +141,10 @@ def run_for_one_model(model_key: str, scenarios: list[str], methods: list[str], 
     from src.methods.tot import run_tot
     from src.methods.got import run_got
     from src.scorer import score_scenario
+    import src.methods.prompter as prompter_mod
+    import torch
+
+    prompter_mod.PROMPT_VARIANT = prompt_variant
 
     method_fns = {
         "CoT": run_cot,
@@ -149,7 +175,15 @@ def run_for_one_model(model_key: str, scenarios: list[str], methods: list[str], 
     if not todo:
         return
 
-    lm = VLLMLanguageModel(model_key, temperature=0.7, max_tokens=1536, seed=seeds[0])
+    lm = VLLMLanguageModel(
+        model_key, temperature=0.7, max_tokens=max_tokens, seed=seeds[0], gpu_memory_utilization=gpu_mem_util
+    )
+    meta = {
+        "variant": variant or "v1_baseline",
+        "max_tokens": max_tokens,
+        "prompt_variant": prompt_variant,
+        "gpu": torch.cuda.get_device_name(0),
+    }
 
     evidence_cache = {}
     for i, (scenario, method, seed) in enumerate(todo, 1):
@@ -168,7 +202,7 @@ def run_for_one_model(model_key: str, scenarios: list[str], methods: list[str], 
         metrics = score_scenario(scenario, output)
 
         raw_path = RAW_DIR / f"{scenario}__{method}__{model_key}__seed{seed}.json"
-        raw_path.write_text(json.dumps({"output": output, "score": metrics}, indent=2))
+        raw_path.write_text(json.dumps({"output": output, "score": metrics, "meta": meta}, indent=2))
 
         _append_row(_flatten(scenario, method, model_key, seed, output, metrics, raw_path))
         print(
@@ -185,10 +219,22 @@ def main():
     parser.add_argument("--scenarios", nargs="*", default=SCENARIOS)
     parser.add_argument("--methods", nargs="*", default=["CoT", "ToT", "GoT"])
     parser.add_argument("--seeds", nargs="*", type=int, default=DEFAULT_SEEDS)
+    parser.add_argument("--variant", default=None, help="Write to results/variants/<name>/ instead of the v1 baseline")
+    parser.add_argument("--max-tokens", type=int, default=BASELINE_MAX_TOKENS)
+    parser.add_argument("--prompt-variant", choices=["base", "stagedefs"], default="base")
+    parser.add_argument("--gpu-mem-util", type=float, default=None, help="Override per-model default (e.g. on an exclusive SLURM GPU)")
     args = parser.parse_args()
 
+    if not args.variant and (args.max_tokens != BASELINE_MAX_TOKENS or args.prompt_variant != "base"):
+        parser.error("non-baseline settings require --variant, so they never mix into the v1 baseline results")
+    _set_variant(args.variant)
+
     if args.model is not None:
-        run_for_one_model(args.model, args.scenarios, args.methods, args.seeds)
+        run_for_one_model(
+            args.model, args.scenarios, args.methods, args.seeds,
+            variant=args.variant, max_tokens=args.max_tokens,
+            prompt_variant=args.prompt_variant, gpu_mem_util=args.gpu_mem_util,
+        )
         return
 
     # No --model: dispatch one child process per model so each gets a clean
@@ -205,7 +251,13 @@ def main():
             "--scenarios", *args.scenarios,
             "--methods", *args.methods,
             "--seeds", *[str(s) for s in args.seeds],
+            "--max-tokens", str(args.max_tokens),
+            "--prompt-variant", args.prompt_variant,
         ]
+        if args.variant:
+            cmd += ["--variant", args.variant]
+        if args.gpu_mem_util is not None:
+            cmd += ["--gpu-mem-util", str(args.gpu_mem_util)]
         result = subprocess.run(cmd, cwd=str(REPO_ROOT))
         if result.returncode != 0:
             print(f"WARNING: subprocess for {model_key} exited with code {result.returncode}", file=sys.stderr)

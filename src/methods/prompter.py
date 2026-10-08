@@ -22,14 +22,51 @@ STAGES = [
     "Collection", "Command and Control",
 ]
 
-TASK_PREAMBLE = (
-    "You are a security analyst investigating a potentially compromised host. "
-    "Below is evidence extracted from the host's activity log: process executions, "
-    "external network connections, and suspicious file writes, arranged to show which "
-    "process spawned which. Identify the events that are part of a malicious attack, and "
-    "classify each into exactly one of these kill-chain stages:\n"
-    + ", ".join(STAGES)
-    + "\n\nRespond with ONLY a JSON object in this exact shape, nothing else before or after it:\n"
+# Paraphrased from MITRE ATT&CK's own one-line tactic descriptions. Deliberately
+# generic: no examples drawn from, or tuned toward, NODLINK's ground-truth
+# labeling conventions -- that would be fitting the prompt to the test set.
+STAGE_DEFINITIONS = {
+    "Initial Access": "the adversary gets its first foothold on the host or network",
+    "Execution": "the adversary runs adversary-controlled code",
+    "Persistence": "the adversary keeps its foothold across restarts, changed credentials, or other interruptions",
+    "Privilege Escalation": "the adversary gains higher-level permissions",
+    "Defense Evasion": "the adversary avoids being detected or blocked",
+    "Credential Access": "the adversary steals account names, passwords, or other credentials",
+    "Discovery": "the adversary learns about the host and network environment",
+    "Lateral Movement": "the adversary moves from this host to other systems",
+    "Collection": "the adversary gathers data of interest to its goal",
+    "Command and Control": "the adversary communicates with compromised systems to control them",
+}
+
+# Set by run_grid.py from --prompt-variant. "base" is the prompt every v1
+# result was produced with; "stagedefs" adds STAGE_DEFINITIONS. Identical across
+# CoT/ToT/GoT either way, so topology stays the only within-variant difference.
+PROMPT_VARIANT = "base"
+
+
+def _stage_block() -> str:
+    if PROMPT_VARIANT == "stagedefs":
+        defs = "\n".join(f"- {s}: {STAGE_DEFINITIONS[s]}" for s in STAGES)
+        return (
+            f"{defs}\nChoose the stage by the attacker's goal at that step, not by which tool was used."
+        )
+    return ", ".join(STAGES)
+
+
+def task_preamble() -> str:
+    return (
+        "You are a security analyst investigating a potentially compromised host. "
+        "Below is evidence extracted from the host's activity log: process executions, "
+        "external network connections, and suspicious file writes, arranged to show which "
+        "process spawned which. Identify the events that are part of a malicious attack, and "
+        "classify each into exactly one of these kill-chain stages:\n"
+        + _stage_block()
+        + _TASK_PREAMBLE_TAIL
+    )
+
+
+_TASK_PREAMBLE_TAIL = (
+    "\n\nRespond with ONLY a JSON object in this exact shape, nothing else before or after it:\n"
     '{"malicious_events": [{"command": "<the exact command line from the evidence>", '
     '"stage": "<one stage name from the list above>"}, ...], '
     '"narrative": "<a short paragraph describing the attack you reconstructed>"}'
@@ -52,7 +89,7 @@ class KillChainPrompter(Prompter):
     def generate_prompt(self, num_branches: int, **kwargs) -> str:
         evidence_text = kwargs["evidence_text"]
         return (
-            f"{TASK_PREAMBLE}\n\nEvidence:\n{evidence_text}\n\n"
+            f"{task_preamble()}\n\nEvidence:\n{evidence_text}\n\n"
             "Reason step by step about which events are malicious and why, then output only the JSON object."
         )
 
@@ -61,7 +98,7 @@ class KillChainPrompter(Prompter):
             f"--- Segment {i + 1} findings ---\n{_format_reconstruction(s)}" for i, s in enumerate(state_dicts)
         )
         return (
-            f"{TASK_PREAMBLE}\n\nThe evidence was split into {len(state_dicts)} segments and reasoned about "
+            f"{task_preamble()}\n\nThe evidence was split into {len(state_dicts)} segments and reasoned about "
             f"independently, without visibility into the other segments. Here are the findings from each:\n\n"
             f"{segments}\n\n"
             "Merge these independent findings into ONE combined, correctly ordered kill chain. In particular, "
@@ -74,7 +111,7 @@ class KillChainPrompter(Prompter):
         evidence_text = kwargs["evidence_text"]
         current = _format_reconstruction(kwargs)
         return (
-            f"{TASK_PREAMBLE}\n\nFull evidence:\n{evidence_text}\n\n"
+            f"{task_preamble()}\n\nFull evidence:\n{evidence_text}\n\n"
             f"Your current reconstructed kill chain:\n{current}\n\n"
             "Review this once more against the full evidence. Fix any missed events, wrong stage labels, or "
             "events that don't actually belong. Output a revised JSON object in the same shape -- if it is "

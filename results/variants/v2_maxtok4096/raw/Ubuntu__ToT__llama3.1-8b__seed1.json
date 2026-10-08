@@ -1,0 +1,90 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wget --version > /dev/null",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wget --version",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header='Metadata:true' -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q -O - http://169.254.169.254/latest/meta-data/instance-id",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ssh (not shown), but examples like sshd -D -R suggest possible SSH tunneling for lateral movement.",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "./sunway-x86 -client -ipv4 -targetport 502,",
+        "stage": "Collection"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c echo start:b3033461-3342-4b36-87af-780ffe63cd09",
+        "stage": "Initial Access"
+      }
+    ],
+    "narrative": "The attacker appears to have gained initial access via an unknown vector (possibly phishing or exploitation). They proceeded to conduct discovery operations using tools such as `wget` and `curl` to gather information about the target environment. Following this, they likely employed defense evasion techniques to conceal their activities. Their ultimate goal seems to be gaining persistent access through various means, including establishing SSH tunnels for potential lateral movement and executing commands on remote hosts.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 79870,
+      "completion_tokens": 1622,
+      "total_tokens": 81492,
+      "wall_clock_s": 14.823,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1,
+      "recall": 0.14285714285714285,
+      "f1": 0.11764705882352941,
+      "tp": 1,
+      "fp": 9,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 10,
+      "fn": 7,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 79870,
+      "completion_tokens": 1622,
+      "total_tokens": 81492,
+      "wall_clock_s": 14.823,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

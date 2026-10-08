@@ -52,6 +52,7 @@ def collect():
     pred_freq = collections.defaultdict(collections.Counter)  # model -> stage -> count
     missed = 0
     matched = 0
+    node_correct = 0
     gt_cache = {}
 
     for f in sorted(RAW_DIR.glob("*.json")):
@@ -75,11 +76,13 @@ def collect():
                 missed += 1
                 continue
             matched += 1
+            if any((e.get("stage") or "").strip().lower() == true_stage for e in hits):
+                node_correct += 1
             for e in hits:
                 pred_stage = (e.get("stage") or "").strip().lower()
                 confusion[(true_stage, pred_stage)] += 1
 
-    return confusion, pred_freq, matched, missed
+    return confusion, pred_freq, matched, missed, node_correct
 
 
 def write_csvs(confusion, pred_freq):
@@ -137,11 +140,11 @@ def plot_heatmap(confusion, model_matched_subset, model_name, gt_stage_universe)
 
 
 def main():
-    confusion, pred_freq, matched, missed = collect()
+    confusion, pred_freq, matched, missed, node_correct = collect()
     write_csvs(confusion, pred_freq)
 
     total = matched + missed
-    correct = sum(c for (t, p), c in confusion.items() if t == p)
+    correct = node_correct
     print(f"\nMatched (event found at all): {matched}/{total} ({matched/total:.1%})")
     print(f"Of matched, exact stage correct: {correct}/{matched} ({correct/matched:.1%})")
 

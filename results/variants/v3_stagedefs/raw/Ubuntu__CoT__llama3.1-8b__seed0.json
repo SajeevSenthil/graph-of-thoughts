@@ -1,0 +1,82 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "ssh -D -R",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "systemctl kill -s HUP rsyslog.service",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "apt-get -qq -y install <some-package>;",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "httprunner --proxy-host 193.165.133.217 --proxy-port 8080 --verify-proxy False",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The attackers gain initial access through SSH reverse tunnel (-D option). Once inside, they escalate their privileges through deletion of files within Tomcat. They also perform credential harvesting using SQL query execution. In an attempt to evade detection, they disable rsyslog service. Later, they use apt-get to fetch new packages as per instructions received over Command and Control channel.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 378,
+      "total_tokens": 20259,
+      "wall_clock_s": 6.829,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 7
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 7,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.16666666666666666,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19881,
+      "completion_tokens": 378,
+      "total_tokens": 20259,
+      "wall_clock_s": 6.829,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

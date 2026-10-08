@@ -1,0 +1,16 @@
+scope,metric,pairs,mean_v1_baseline,mean_v2_maxtok4096,mean_diff,wilcoxon_p
+all,event_f1,63,0.227,0.239,0.012,0.6114
+all,event_recall,63,0.279,0.295,0.016,0.5439
+all,stage_recall,63,0.043,0.056,0.014,0.1011
+all,stage_recall_partial,63,0.134,0.147,0.012,0.4121
+all,hallucination_rate,63,0.147,0.13,-0.017,0.9711
+qwen2.5-7b,event_f1,18,0.3,0.299,-0.001,0.824
+qwen2.5-7b,event_recall,18,0.345,0.375,0.03,0.3135
+qwen2.5-7b,stage_recall,18,0.026,0.054,0.028,0.1025
+qwen2.5-7b,stage_recall_partial,18,0.145,0.182,0.037,0.1148
+qwen2.5-7b,hallucination_rate,18,0.03,0.05,0.02,0.398
+llama3.1-8b,event_f1,45,0.198,0.215,0.017,0.6291
+llama3.1-8b,event_recall,45,0.253,0.263,0.01,0.8123
+llama3.1-8b,stage_recall,45,0.049,0.057,0.008,0.308
+llama3.1-8b,stage_recall_partial,45,0.13,0.132,0.003,0.8307
+llama3.1-8b,hallucination_rate,45,0.194,0.163,-0.031,0.6714

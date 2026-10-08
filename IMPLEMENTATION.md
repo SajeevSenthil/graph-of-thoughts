@@ -670,3 +670,66 @@ Parse failures (GoT Refine step): 7 -> 4. Tokens/run unchanged (60.5K -> 60.7K).
 - WS12 is unchanged, as the pre-check predicted: its attack events all sit in one segment, so there is nothing for the links to connect.
 - Scenario-level swings are large and inconsistent (APT29 +0.25 event F1, Sidewinder -0.10, on the same underlying log), which reads as run-to-run noise as much as effect.
 - **For the thesis:** the GoT hypothesis cannot be tested at full strength on this dataset at this evidence granularity. The scattered-but-linked structure that Aggregate is designed to exploit is sparse here -- one attack-related shared IP, a few write-then-use files, and none at all on WS12. Giving Aggregate those links explicitly is the strongest version of GoT this data supports, and it still does not separate from CoT/ToT.
+
+## Phase 6c -- Scale test: larger sibling models with the v4 setup (2026-10-08)
+
+**Why:** every v1-v5 change left detection around 15-21%. This tests whether that ceiling is model size, by running the larger model from each family under the best configuration so far (v4: output limit 4096, stage definitions, per-model triage, all three methods).
+
+**Models** (both 4-bit AWQ so each fits one A100 80GB; downloaded on the master node into the shared HF cache, loaded offline on the compute node):
+
+| Small (v4) | Large | Checkpoint | Size | Context cap | Scenarios |
+|---|---|---|---|---|---|
+| Qwen 2.5 7B (bf16) | Qwen 2.5 32B | `Qwen/Qwen2.5-32B-Instruct-AWQ` | 19 GB | 32,768 (native) | WS12, Ubuntu |
+| Llama 3.1 8B (bf16) | Llama 3.1 70B | `hugging-quants/Meta-Llama-3.1-70B-Instruct-AWQ-INT4` | 38 GB | 65,536 (native 131,072) | all 5 |
+
+`meta-llama/Llama-3.3-70B-Instruct` was not usable (gated, not approved for this account); full-precision Llama 3.1 70B (282 GB on disk) does not fit one GPU. Quantization is therefore a second difference from the small models, not just size.
+
+**Code:** `llm_client.py` registers `qwen2.5-32b-awq` and `llama3.1-70b-awq`; `run_grid.py` keeps them out of default runs (`LARGE_MODELS`, selected with `--models`) and gives them the same scenario allowlist as their small siblings. `slurm/run_grid.sbatch` takes a `UTIL_CAP` environment variable (default 0.85) because the 70B needs 0.92 to fit a 65K-token context.
+
+**Run:** `sbatch --export=ALL,UTIL_CAP=0.92 --gres=gpu:a100:1 --time=16:00:00 --job-name=got-scale slurm/run_grid.sbatch --variant scale_v4 --models qwen2.5-32b-awq llama3.1-70b-awq --max-tokens 4096 --prompt-variant stagedefs --triage`. SLURM job 12649, A100 80GB (node02), 1h48m, 63 runs, 0 parse failures. The 32B was smoke-tested directly on an RTX 6000 first; the 70B (40 GB weights + ~20 GB context) only fits on the A100, so the job was its first load. Results: `results/variants/scale_v4/`.
+
+**Triage behaves very differently at scale:**
+
+| Model | Text kept by triage | Real attack events lost by triage |
+|---|---|---|
+| Qwen 7B (v4) | 44-63% | 0 of 36 |
+| Qwen 32B | 41-57% | 0 of 36 |
+| Llama 8B (v4) | 46-74% | 6 of 258 |
+| Llama 70B | 21-33% | **58 of 258 (22%)** -- e.g. APT29 kept 28/37, Sidewinder 9-10/14 |
+
+The 70B is a much stricter filter, and on the three Windows 10 scenarios it throws away roughly a third of the real attack events before any reasoning happens. Its recall is therefore capped by triage, not by its reasoning.
+
+**Results -- large vs small model, same v4 setup (paired Wilcoxon on scenario, method, seed):**
+
+| Pair | Metric | Small | Large | Diff | p |
+|---|---|---|---|---|---|
+| Qwen 7B -> 32B (n=18) | event F1 | 0.399 | 0.440 | +0.041 | 0.70 |
+| | event precision | 0.457 | 0.379 | -0.079 | 0.50 |
+| | event recall | 0.412 | 0.568 | +0.155 | **0.017** |
+| | exact stage recall | 0.154 | 0.299 | +0.145 | **0.012** |
+| | partial stage recall | 0.243 | 0.396 | +0.153 | **0.018** |
+| | hallucination rate | 0.019 | 0.007 | -0.013 | 0.36 |
+| Llama 8B -> 70B (n=45) | event F1 | 0.295 | 0.334 | +0.039 | 0.41 |
+| | event precision | 0.278 | 0.379 | +0.101 | **0.022** |
+| | event recall | 0.381 | 0.354 | -0.026 | 0.52 |
+| | exact stage recall | 0.145 | 0.177 | +0.033 | 0.22 |
+| | partial stage recall | 0.200 | 0.236 | +0.036 | 0.13 |
+| | hallucination rate | 0.194 | 0.060 | -0.133 | **0.0013** |
+
+Cost: Qwen 32B 31.6K tokens/run (7B: 32.4K), 41 s/run (7B: 19 s). Llama 70B 35.2K tokens/run (8B: 76.0K -- smaller because its stricter triage leaves less evidence), 89 s/run (8B: 55 s).
+
+**Topology at scale (within each large model, paired on scenario+seed):**
+
+| Model | Metric | CoT | ToT | GoT | CoT-GoT p | ToT-GoT p |
+|---|---|---|---|---|---|---|
+| Qwen 32B (n=6 per method) | event F1 | 0.408 | 0.410 | 0.502 | 0.44 | 0.094 |
+| | exact stage recall | 0.294 | 0.238 | 0.365 | 0.63 | 0.31 |
+| Llama 70B (n=15 per method) | event F1 | 0.291 | 0.314 | 0.396 | 0.073 | 0.17 |
+| | exact stage recall | 0.173 | 0.145 | 0.214 | 0.29 | 0.075 |
+
+**Interpretation:**
+- **Scale is the first lever that clearly moves detection and labeling.** Qwen 32B nearly doubles exact stage recall and raises event recall by 0.16, both significant, with no attack events lost in triage.
+- **Llama 70B improves precision and sharply cuts hallucination, but its recall is limited by its own triage**, which drops 22% of real attack events before reasoning. Its v4 result understates what the 70B can do; a fair read of its reasoning needs a run without triage (or with a recall-safe triage).
+- **Topology: for the first time GoT is the best method for both large models**, on both metrics, by margins of 0.07-0.11 event F1. None of these differences is significant (closest: Llama 70B CoT vs GoT event F1, p = 0.073), so this is a trend, not a finding -- but it is the opposite of the small models, where CoT was as good or better. It is consistent with GoT's merge step needing a stronger model to pay off.
+- Caveats: one seed set of 3, one dataset; large models are 4-bit quantized; Qwen 32B covers only WS12+Ubuntu (n=6 per topology cell).
+

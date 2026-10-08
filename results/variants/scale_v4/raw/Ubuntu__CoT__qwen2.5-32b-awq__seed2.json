@@ -1,0 +1,236 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "base64 -d",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash",
+        "stage": "Discovery"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ifconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ping -c 1 10.67.200.200",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "flock -u 99",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "flock -xn 99",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "rm -f /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/vscode-remote-lock.root.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247",
+        "stage": "Persistence"
+      },
+      {
+        "command": "locale-check C.UTF-8",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mesg n",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "uname -rsv",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cat /etc/os-release",
+        "stage": "Discovery"
+      },
+      {
+        "command": "grep -a -E ^ID=",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sed s/^[Ii][Dd]=//g",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sed s/\"//g",
+        "stage": "Discovery"
+      },
+      {
+        "command": "uname -s",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ldconfig /sbin/ldconfig -p",
+        "stage": "Collection"
+      },
+      {
+        "command": "grep libstdc++",
+        "stage": "Collection"
+      },
+      {
+        "command": "sed s/^.* => //i",
+        "stage": "Collection"
+      },
+      {
+        "command": "ldconfig.real -p",
+        "stage": "Collection"
+      },
+      {
+        "command": "cat /lib/x86_64-linux-gnu/libstdc++.so.6",
+        "stage": "Collection"
+      },
+      {
+        "command": "grep -a -o -E GLIBCXX_[[:digit:]]+\\.\\.[[:digit:]]+\\.([[:digit:]])?",
+        "stage": "Collection"
+      },
+      {
+        "command": "sed s/GLIBCXX_//gi",
+        "stage": "Collection"
+      },
+      {
+        "command": "ldd /usr/bin/ldd --version",
+        "stage": "Discovery"
+      },
+      {
+        "command": "head -n1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ls -1 -t /root/.vscode-server/bin",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tail -n +6",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cat /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.pid",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ps ax",
+        "stage": "Discovery"
+      },
+      {
+        "command": "grep ^\\s*294557\\s",
+        "stage": "Discovery"
+      },
+      {
+        "command": "grep /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh",
+        "stage": "Discovery"
+      },
+      {
+        "command": "grep -v grep",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "wc -l",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tr -d [:space:]",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "printenv",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sed s/^/ /",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "date +%s%N",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "rm /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "touch /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Persistence"
+      },
+      {
+        "command": "chmod 0700 /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Persistence"
+      },
+      {
+        "command": "server.sh sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "sh -c wget --version > /dev/null\nif [$? -eq 0]\nthensetenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/path/to/library\nwget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11\nelseshell > /dev/null\ncurl --version > /dev/null\nif [$? -eq 0]\nthen\nsetenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/path/to/library\ncurl --connect-timeout 7 -s --header Metadata:true http://169.254.169.254/metadata/instance?api-version=2019-03-11\nfifi\nexitsuccess",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sh -c wget --version > /dev/null\nif [$? -eq 0]\nthen\nwget --connect-timeout=7 --tries=1 --dns-timeout=7 -q --header=Metadata:true -O - http://169.254.169.254/metadata/instance?api-version=2019-03-11\nelse\nshell > /dev/null\ncurl --version > /dev/null\nif [$? -eq  soggetto]\nsotto] = 0]\nsito shell > /dev/null\ncurl --connect-timeout 7 -s --header MetaData:true http://169.254.169.254/metadata/instance?api-version=2019-03-11\nfini\nesci exit successsuccess",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The sequence starts with an initial access using encoded commands over Bash. Once executed, various discovery actions were performed to understand the system environment (OS type, running processes). The attacker also tried to evade detection through several defensive measures like removing logs and changing permissions. Additionally, there seems to be a persistence mechanism established to maintain long-term access. Network communication attempts indicate further command and control operations.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 13315,
+      "completion_tokens": 2128,
+      "total_tokens": 15443,
+      "wall_clock_s": 45.014,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.021739130434782608,
+      "recall": 0.14285714285714285,
+      "f1": 0.03773584905660378,
+      "tp": 1,
+      "fp": 45,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.021739130434782608,
+      "recall": 0.14285714285714285,
+      "f1": 0.03773584905660378,
+      "tp": 1,
+      "fp": 45,
+      "fn": 6,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 13315,
+      "completion_tokens": 2128,
+      "total_tokens": 15443,
+      "wall_clock_s": 45.014,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

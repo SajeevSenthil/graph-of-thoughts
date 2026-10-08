@@ -38,6 +38,8 @@ CSV_PATH = RESULTS_DIR / "grid_results.csv"
 
 SCENARIOS = ["WS12", "Ubuntu", "Sidewinder", "FIN6", "APT29"]
 MODELS = ["qwen2.5-7b", "llama3.1-8b"]
+# Scale test (larger siblings, 4-bit AWQ); never run by default, only via --models.
+LARGE_MODELS = ["qwen2.5-32b-awq", "llama3.1-70b-awq"]
 DEFAULT_SEEDS = [0, 1, 2]
 
 # Qwen 2.5 7B's real, vLLM-verified native context ceiling is 32768 tokens
@@ -53,6 +55,8 @@ DEFAULT_SEEDS = [0, 1, 2]
 MODEL_SCENARIO_ALLOWLIST = {
     "qwen2.5-7b": ["WS12", "Ubuntu"],
     "llama3.1-8b": SCENARIOS,
+    "qwen2.5-32b-awq": ["WS12", "Ubuntu"],  # same 32K native limit as the 7B
+    "llama3.1-70b-awq": SCENARIOS,
 }
 
 CSV_FIELDS = [
@@ -243,7 +247,8 @@ def run_for_one_model(
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", choices=MODELS, default=None, help="Run only this model (used internally by the per-model subprocess dispatch)")
+    parser.add_argument("--model", choices=MODELS + LARGE_MODELS, default=None, help="Run only this model (used internally by the per-model subprocess dispatch)")
+    parser.add_argument("--models", nargs="*", choices=MODELS + LARGE_MODELS, default=MODELS, help="Models to dispatch, one subprocess each")
     parser.add_argument("--scenarios", nargs="*", default=SCENARIOS)
     parser.add_argument("--methods", nargs="*", default=["CoT", "ToT", "GoT"])
     parser.add_argument("--seeds", nargs="*", type=int, default=DEFAULT_SEEDS)
@@ -270,7 +275,7 @@ def main():
 
     # No --model: dispatch one child process per model so each gets a clean
     # GPU memory state, rather than trying to load/unload models in-process.
-    for model_key in MODELS:
+    for model_key in args.models:
         print(f"\n{'=' * 70}\nStarting subprocess for model: {model_key}\n{'=' * 70}")
         cmd = [
             # -u: without it, the child's stdout is fully buffered (not a

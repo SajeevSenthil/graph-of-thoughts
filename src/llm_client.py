@@ -89,6 +89,11 @@ _OUTPUT_SCHEMA = {
 MODEL_IDS = {
     "llama3.1-8b": "meta-llama/Llama-3.1-8B-Instruct",
     "qwen2.5-7b": "Qwen/Qwen2.5-7B-Instruct",
+    # Scale test: the larger sibling of each model above, 4-bit AWQ so each
+    # fits one 80GB A100 (Llama 70B in bf16 is ~140GB). Quantization is a
+    # second difference from the small models, not just size.
+    "llama3.1-70b-awq": "hugging-quants/Meta-Llama-3.1-70B-Instruct-AWQ-INT4",
+    "qwen2.5-32b-awq": "Qwen/Qwen2.5-32B-Instruct-AWQ",
 }
 
 # The model lineup was originally Phi-4 (idea.md/proposal_document.md), then
@@ -109,6 +114,10 @@ MODEL_IDS = {
 MODEL_GPU_MEMORY_UTILIZATION = {
     "llama3.1-8b": 0.55,
     "qwen2.5-7b": 0.45,
+    # Large models only run under SLURM on an exclusive A100 80GB, where
+    # slurm/run_grid.sbatch passes --gpu-mem-util explicitly.
+    "llama3.1-70b-awq": 0.90,
+    "qwen2.5-32b-awq": 0.85,
 }
 
 # Per-model default max_model_len -- also cannot be one flat number. Forcing
@@ -135,6 +144,8 @@ MODEL_GPU_MEMORY_UTILIZATION = {
 MODEL_MAX_MODEL_LEN = {
     "llama3.1-8b": 65536,  # native 131072, capped down to fit the KV cache budget
     "qwen2.5-7b": 32768,  # native/derived max -- do not raise, see note above
+    "llama3.1-70b-awq": 65536,  # same cap as the 8B, native 131072
+    "qwen2.5-32b-awq": 32768,  # same native limit as the 7B
 }
 
 

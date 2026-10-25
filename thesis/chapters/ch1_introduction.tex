@@ -1,0 +1,52 @@
+\chapter{Introduction}
+\label{ch:intro}
+
+\section{Background}
+Modern enterprise hosts generate on the order of $10^{5}$ to $10^{6}$ log events per day: process starts, file operations and network connections. A multi-stage attack (initial access, execution, discovery, credential theft, lateral movement and persistence) leaves only a handful of malicious events inside that volume. In the five attack scenarios used in this thesis the attack is between 6 and 37 annotated events, hidden in logs of between 1.1 and 3.8 million raw events. Turning those scattered events into a coherent, stage-labelled account of the intrusion is called \emph{kill-chain reconstruction}. Security operations centers (SOCs) still do much of it by hand, and it is among the most time-consuming tasks an analyst performs.
+
+\section{Motivation}
+Two developments make the question timely.
+
+\paragraph{Industry driver.} Cloud intrusion volume grew by roughly 75\% between 2022 and 2023~\cite{crowdstrike2024}, while analyst headcount has not grown in proportion. Automated investigation support is therefore a near-term operational need.
+
+\paragraph{Technology driver.} Open-weight language models such as Llama 3.1 and Qwen 2.5 are now capable enough to run on local hardware and read structured evidence, which matters when logs are sensitive. A family of \emph{prompting topologies} has also appeared: Chain-of-Thought (CoT)~\cite{wei2022cot}, Tree-of-Thoughts (ToT)~\cite{yao2023tot} and Graph-of-Thoughts (GoT)~\cite{besta2024got}. These do not change what the model knows; they change how it may combine what it is given. GoT adds an \emph{Aggregate} operation that merges several independently reasoned partial results into one. Attack evidence is scattered: a file written early may be executed much later, and the same external address may appear in unrelated parts of a log. That makes attack investigation a natural test for aggregation. Whether the structure helps on a real investigative task, and not only on sorting and puzzle benchmarks, has not been tested under controlled conditions.
+
+\section{Problem Statement}
+Systems for automated attack reconstruction, such as OCR-APT~\cite{aly2025ocrapt}, rely on a separately trained detector to isolate malicious subgraphs and use the language model only to narrate what the detector found. It is therefore unknown whether a language model's own reasoning can perform the investigative step unassisted, and whether the topology of that reasoning changes reconstruction quality. This work removes the trained detector, holds the evidence, its serialization and the model weights fixed, and measures kill-chain reconstruction quality as a function of reasoning topology.
+
+\section{Research Questions and Hypothesis}
+\begin{description}[leftmargin=2.6em,style=nextline]
+\item[RQ1] With evidence, prompt, model and scoring held fixed, does GoT achieve higher stage-level recall than CoT and ToT?
+\item[RQ2] If not, where does reconstruction fail, and which factors (prompt vocabulary, evidence reduction, model size, input length) change the results?
+\item[RQ3] Does a security-tuned model of the same size and architecture change the conclusion?
+\end{description}
+
+\textbf{Hypothesis H1.} Graph-of-Thoughts, through its Aggregate operation, reconstructs multi-stage attacks with higher stage-level recall than Chain-of-Thought or Tree-of-Thoughts. Aggregation can connect attack steps that look benign in isolation but become clearly malicious once linked, which a chain or a tree cannot do in one step.
+
+\textbf{Null hypothesis H0.} Stage-level recall does not differ significantly among CoT, ToT and GoT once evidence, model weights and prompt content are fixed. Any observed difference is noise.
+
+\section{Objectives}
+\begin{enumerate}
+\item Build a fixed evidence pipeline that reduces each host's log of about one million events to a candidate set serialized identically for all three methods, verified by a hard gate that 100\% of ground-truth attack events survive reduction.
+\item Implement CoT, ToT and GoT on the same local models with the \texttt{graph-of-thoughts} framework, and obtain valid, parseable structured output for every scenario, method and model combination.
+\item Score reconstruction with event-level precision, recall and F$_1$, a stage-level recall, a hallucination rate and cost measures, as means over several seeds.
+\item Test H1 with paired significance tests across scenarios, seeds and models.
+\item Characterise the accuracy--cost trade-off of each topology.
+\item Diagnose the failures and test targeted improvements one at a time.
+\end{enumerate}
+
+\section{Scope}
+\textbf{In scope:} inference-only comparison of CoT, ToT and GoT on a fixed, rule-based candidate evidence set; the NODLINK Simulated-Data benchmark (five multi-stage attacks on Windows Server 2012, Ubuntu and Windows~10); open-weight local models with no fine-tuning; event-level, stage-level and cost evaluation.
+
+\textbf{Out of scope:} training or fine-tuning any model; building a new detector (the reduction step is deliberately structural and identical for all methods); real-time detection; claims beyond the five scenarios evaluated.
+
+\section{Contributions}
+\begin{itemize}
+\item A controlled experimental design in which all three topologies receive identical evidence and are scored identically (Chapters~\ref{ch:method} and~\ref{ch:protocol}).
+\item A result that GoT's stage recall is not reliably higher than CoT's or ToT's at 7B to 70B model scale, while stage definitions in the prompt, evidence triage and model size have clearer effects (Chapter~\ref{ch:results}).
+\item A failure analysis based on reading raw outputs against ground truth, identifying detection recall, stage calibration, input length and output-format failures as the limiting factors.
+\item A record of the defects found and fixed during the work, several of which would have invalidated the comparison silently (Chapter~\ref{ch:audit}).
+\end{itemize}
+
+\section{Organisation of the Thesis}
+Chapter~\ref{ch:lit} reviews related work and states the research gap. Chapter~\ref{ch:cyber} gives the cyber-security background. Chapter~\ref{ch:framework} defines the three reasoning topologies, the hypothesis and the statistical tests. Chapter~\ref{ch:method} describes the pipeline. Chapter~\ref{ch:protocol} specifies the data, models, metrics and protocol. Chapter~\ref{ch:audit} records verification and corrections. Chapter~\ref{ch:results} reports the results, Chapter~\ref{ch:discussion} explains where and why the methods fail, and Chapter~\ref{ch:conclusion} concludes.

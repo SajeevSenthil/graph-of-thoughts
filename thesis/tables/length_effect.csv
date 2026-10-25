@@ -1,0 +1,9 @@
+model,input,metric,value
+Llama 3.1 8B,"16-19K tokens (WS12, Ubuntu)",event_recall,0.502
+Llama 3.1 8B,58K tokens (Windows 10 x3),event_recall,0.221
+Llama 3.1 70B (AWQ),"16-19K tokens (WS12, Ubuntu)",event_recall,0.479
+Llama 3.1 70B (AWQ),58K tokens (Windows 10 x3),event_recall,0.087
+Llama 3.1 8B,"16-19K tokens (WS12, Ubuntu)",event_precision,0.3
+Llama 3.1 8B,58K tokens (Windows 10 x3),event_precision,0.184
+Llama 3.1 70B (AWQ),"16-19K tokens (WS12, Ubuntu)",event_precision,0.442
+Llama 3.1 70B (AWQ),58K tokens (Windows 10 x3),event_precision,0.161

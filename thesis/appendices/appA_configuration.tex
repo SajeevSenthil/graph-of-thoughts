@@ -1,0 +1,18 @@
+\chapter{Configuration}
+\label{app:config}
+\begin{table}[H]
+\centering
+\caption{Per-model settings used in the grids.}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Model} & \textbf{Max model length} & \textbf{GPU memory share} \\
+\midrule
+Llama 3.1 8B & 65{,}536 & 0.55 (shared node) \\
+Qwen 2.5 7B & 32{,}768 (native) & capped per model \\
+Llama-Primus-Reasoning & 65{,}536 & 0.55 default; 0.85 cap on SLURM \\
+Large models (AWQ) & per model & sized from free memory, cap 0.85 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Common settings: maximum output 4096 tokens for variants v2 onward (1536 in the baseline); three seeds per cell; one shared prompt and parser; grammar-constrained JSON for models without an internal reasoning trace.

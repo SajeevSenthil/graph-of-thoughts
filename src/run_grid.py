@@ -38,9 +38,15 @@ CSV_PATH = RESULTS_DIR / "grid_results.csv"
 
 SCENARIOS = ["WS12", "Ubuntu", "Sidewinder", "FIN6", "APT29"]
 MODELS = ["qwen2.5-7b", "llama3.1-8b"]
-# Scale test (larger siblings, 4-bit AWQ); never run by default, only via --models.
-LARGE_MODELS = ["qwen2.5-32b-awq", "llama3.1-70b-awq"]
+# Non-default models (scale test + cyber-domain variants); never run by
+# default, only when named explicitly via --models.
+LARGE_MODELS = ["qwen2.5-32b-awq", "llama3.1-70b-awq", "llama-primus-reasoning"]
 DEFAULT_SEEDS = [0, 1, 2]
+
+# v4_triage variant directory -- used as the fallback source when a run
+# specifies --triage-model llama3.1-8b to reuse pre-computed triage files
+# rather than re-running triage with a different model.
+V4_TRIAGE_DIR = REPO_ROOT / "results" / "variants" / "v4_triage"
 
 # Qwen 2.5 7B's real, vLLM-verified native context ceiling is 32768 tokens
 # (see llm_client.py's MODEL_MAX_MODEL_LEN). APT29/Sidewinder/FIN6 share one
@@ -52,9 +58,11 @@ DEFAULT_SEEDS = [0, 1, 2]
 # evidence." Decision (with user, 2026-08-24): Qwen runs on WS12 + Ubuntu
 # only (both fit under 32768 tokens); Llama runs all 5 scenarios (native
 # 131072 context safely covers even the largest scenario at the 65536 cap).
+# Llama-Primus-Reasoning shares the same Llama 3.1 8B base and 131072 context.
 MODEL_SCENARIO_ALLOWLIST = {
     "qwen2.5-7b": ["WS12", "Ubuntu"],
     "llama3.1-8b": SCENARIOS,
+    "llama-primus-reasoning": SCENARIOS,
     "qwen2.5-32b-awq": ["WS12", "Ubuntu"],  # same 32K native limit as the 7B
     "llama3.1-70b-awq": SCENARIOS,
 }
@@ -138,6 +146,7 @@ def run_for_one_model(
     gpu_mem_util: float | None = None,
     triage: bool = False,
     got_link_hints: bool = False,
+    triage_model: str | None = None,
 ):
     # Imports deferred to here: this function only ever runs inside a child
     # process dedicated to one model, so vLLM/torch only ever get imported
@@ -194,10 +203,25 @@ def run_for_one_model(
         "got_link_hints": got_link_hints,
     }
 
+    # The model key used for triage file lookup. When --triage-model is given
+    # (e.g. "llama3.1-8b" for a Primus run), the run borrows pre-computed
+    # triage decisions rather than re-running triage with the reasoning model.
+    triage_key = triage_model if triage_model else model_key
+
     def triaged_evidence(scenario: str, seed: int, full_text: str) -> str:
-        # Once per (scenario, model, seed), persisted, so all three topologies
-        # -- including after a job restart -- reason over the identical subset.
-        path = RESULTS_DIR / "triage" / f"{scenario}__{model_key}__seed{seed}.json"
+        # Once per (scenario, triage_key, seed), persisted, so all three
+        # topologies -- including after a job restart -- reason over the
+        # identical subset.
+        fname = f"{scenario}__{triage_key}__seed{seed}.json"
+        path = RESULTS_DIR / "triage" / fname
+        if not path.exists() and triage_model:
+            # Fallback: look for a previously computed triage file from the
+            # v4_triage run (where llama3.1-8b triage files already exist).
+            fallback = V4_TRIAGE_DIR / "triage" / fname
+            if fallback.exists():
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(fallback.read_text())
+                print(f"  [triage] {scenario} seed{seed}: reusing {triage_key} triage from v4_triage/")
         if path.exists():
             return json.loads(path.read_text())["evidence_text"]
         lm.seed = seed
@@ -257,6 +281,10 @@ def main():
     parser.add_argument("--prompt-variant", choices=["base", "stagedefs"], default="base")
     parser.add_argument("--gpu-mem-util", type=float, default=None, help="Override per-model default (e.g. on an exclusive SLURM GPU)")
     parser.add_argument("--triage", action="store_true", help="Filter evidence to model-flagged processes first (variant v4)")
+    parser.add_argument("--triage-model", default=None, choices=MODELS + LARGE_MODELS,
+                        help="Use this model's pre-computed triage files instead of running triage with the main model. "
+                             "Useful for reasoning models (e.g. llama-primus-reasoning) that should borrow "
+                             "llama3.1-8b's triage decisions rather than burning thinking tokens on each process.")
     parser.add_argument("--got-link-hints", action="store_true", help="Give GoT's Aggregate the cross-segment structural links (variant v5)")
     args = parser.parse_args()
 
@@ -269,12 +297,13 @@ def main():
             args.model, args.scenarios, args.methods, args.seeds,
             variant=args.variant, max_tokens=args.max_tokens,
             prompt_variant=args.prompt_variant, gpu_mem_util=args.gpu_mem_util, triage=args.triage,
-            got_link_hints=args.got_link_hints,
+            got_link_hints=args.got_link_hints, triage_model=args.triage_model,
         )
         return
 
     # No --model: dispatch one child process per model so each gets a clean
     # GPU memory state, rather than trying to load/unload models in-process.
+    failed = []
     for model_key in args.models:
         print(f"\n{'=' * 70}\nStarting subprocess for model: {model_key}\n{'=' * 70}")
         cmd = [
@@ -296,11 +325,16 @@ def main():
             cmd += ["--gpu-mem-util", str(args.gpu_mem_util)]
         if args.triage:
             cmd += ["--triage"]
+        if args.triage_model:
+            cmd += ["--triage-model", args.triage_model]
         if args.got_link_hints:
             cmd += ["--got-link-hints"]
         result = subprocess.run(cmd, cwd=str(REPO_ROOT))
         if result.returncode != 0:
             print(f"WARNING: subprocess for {model_key} exited with code {result.returncode}", file=sys.stderr)
+            failed.append(model_key)
+    if failed:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

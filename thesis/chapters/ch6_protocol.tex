@@ -1,0 +1,187 @@
+\chapter{Data, Evaluation Protocol and Implementation}
+\label{ch:protocol}
+
+Results are only as trustworthy as the protocol behind them. This chapter specifies the data, the ground truth, the models, the experimental grid, the metrics and the software used for every number in Chapter~\ref{ch:results}.
+
+\section{Dataset}
+\subsection{Source and Collection}
+We use the Simulated-Data release that accompanies NODLINK~\cite{li2024nodlink}. Each scenario is a monitored host on which the dataset's authors executed a known multi-stage attack, so the log contains the genuine background activity of a working machine (browsers, database services, system processes) mixed with attack activity. For each scenario the release provides the raw audit log (\texttt{anomaly.json}, one JSON record per event), annotation files with the attack commands and their times, and an attack-analysis spreadsheet that names the stage of each step. Five scenarios are used (Table~\ref{tab:scenarios}). WS12 is a Windows server and Ubuntu is a Linux host. Sidewinder, FIN6 and APT29 emulate three different threat groups but were executed on the same Windows~10 host, so they share one raw log.
+
+\begin{table}[H]
+\centering
+\caption{Scenarios, annotated attack events and the models run in the baseline grid.}
+\label{tab:scenarios}
+\small
+\begin{tabularx}{\textwidth}{@{}l Y r l@{}}
+\toprule
+\textbf{Scenario} & \textbf{Platform} & \textbf{GT events} & \textbf{Baseline models} \\
+\midrule
+WS12 & Windows Server 2012 & 6 & Llama, Qwen \\
+Ubuntu & Linux & 8 & Llama, Qwen \\
+Sidewinder & Windows 10 (shared log) & 15 & Llama \\
+FIN6 & Windows 10 (shared log) & 23 & Llama \\
+APT29 & Windows 10 (shared log) & 37 & Llama \\
+\midrule
+\textbf{Total} & & \textbf{89} & \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Raw Log Statistics}
+Table~\ref{tab:rawstats} shows the size of each log and the effect of reduction. Across the five scenarios the pipeline streams about 8.7 million raw events (the shared Windows~10 log is counted once per scenario), and the whole graph-building step takes about 24 seconds.
+
+\begin{table}[H]
+\centering
+\caption{Raw log size and the effect of reduction. ``Process starts'' are process-creation events; ``collapsed'' counts exact repeats merged into one node.}
+\label{tab:rawstats}
+\small
+\begin{tabularx}{\textwidth}{@{}Y r r r r r@{}}
+\toprule
+\textbf{Scenario} & \textbf{Raw events} & \textbf{Process starts} & \textbf{Collapsed} & \textbf{Nodes} & \textbf{Edges} \\
+\midrule
+WS12 & 1{,}087{,}311 & 3{,}139 & 2{,}905 & 234 & 255 \\
+Ubuntu & 3{,}832{,}342 & 2{,}901 & 2{,}515 & 386 & 478 \\
+Windows 10 (Sidewinder, FIN6, APT29) & 1{,}878{,}778 & 2{,}365 & 1{,}741 & 624 & 933 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Reduced Evidence Graph}
+After reduction the graph has three edge types: \texttt{spawned}, \texttt{connected\_to} and \texttt{wrote} (Section~\ref{sec:evidence}). For WS12, 31{,}971 raw external TCP events collapse into 79 \texttt{connected\_to} edges and 3{,}335 raw file writes into 24 \texttt{wrote} edges, because one long-lived connection writes a log line per packet. Token counts use the \texttt{cl100k\_base} tokenizer and are larger than our initial plan of about 8K tokens because every process-start node is kept by design.
+
+\begin{table}[H]
+\centering
+\caption{Composition of the reduced evidence graph and the length of its serialization.}
+\label{tab:graphstats}
+\small
+\begin{tabularx}{\textwidth}{@{}Y r r r r r r@{}}
+\toprule
+\textbf{Scenario} & \textbf{Nodes} & \textbf{Edges} & \textbf{spawned} & \textbf{connected\_to} & \textbf{wrote} & \textbf{Tokens} \\
+\midrule
+WS12 & 234 & 255 & 152 & 79 & 24 & 16{,}197 \\
+Ubuntu & 386 & 478 & 328 & 2 & 148 & 19{,}411 \\
+Sidewinder, FIN6, APT29 & 624 & 933 & 453 & 229 & 251 & 58{,}396 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Ground-Truth Statistics}
+The 89 annotated attack events cover ten stage names (Table~\ref{tab:stagedist}). WS12 and Ubuntu concentrate on Initial Access and Lateral Movement (8 of their 14 combined events, 57\%), while the three Windows~10 scenarios are dominated by Execution, Defense Evasion and Discovery. The attack is a small share of its graph: 6 of 234 nodes (2.6\%) in WS12 and 37 of 624 (5.9\%) for APT29. This sparsity is why detection, and not only labelling, is hard. The class counts are small and uneven, so we report stage metrics aggregated over events and not per-stage F$_1$.
+
+\begin{table}[H]
+\centering
+\caption{Ground-truth events per stage and scenario.}
+\label{tab:stagedist}
+\small
+\begin{tabularx}{\textwidth}{@{}Y r r r r r r@{}}
+\toprule
+\textbf{Stage} & \textbf{WS12} & \textbf{Ubuntu} & \textbf{Sidewinder} & \textbf{FIN6} & \textbf{APT29} & \textbf{Total} \\
+\midrule
+Initial Access & 2 & 3 & 0 & 0 & 1 & 6 \\
+Execution & 0 & 0 & 3 & 6 & 5 & 14 \\
+Persistence & 1 & 1 & 2 & 2 & 5 & 11 \\
+Privilege Escalation & 0 & 1 & 0 & 2 & 4 & 7 \\
+Defense Evasion & 0 & 0 & 2 & 5 & 8 & 15 \\
+Credential Access & 1 & 1 & 0 & 3 & 1 & 6 \\
+Discovery & 1 & 0 & 6 & 3 & 7 & 17 \\
+Lateral Movement & 1 & 2 & 0 & 0 & 1 & 4 \\
+Collection & 0 & 0 & 0 & 2 & 1 & 3 \\
+Command and Control & 0 & 0 & 2 & 0 & 4 & 6 \\
+\midrule
+\textbf{Total} & 6 & 8 & 15 & 23 & 37 & 89 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Shared-log caveat.} The reduced evidence files of Sidewinder, FIN6 and APT29 are byte-identical (624 nodes, 933 edges); only the ground truth differs. For these three the model must choose one of three narratives from the same evidence, which is a harder and different task from WS12 and Ubuntu. We keep the scenarios and treat this as an interpretive limit.
+
+\subsection{Ground-Truth Construction}
+\label{sec:gt}
+Each attack event was assigned a stage and a match substring by reading the scenario's annotation files next to its attack-analysis spreadsheet. We did this by hand because the identifier join differs by scenario. In WS12 the spreadsheet uses a different, non-sequential ID space, so matching by ID silently gives wrong stages. In Ubuntu the IDs align but the rows are out of numeric order. In the other three they align, yet one command text still differs slightly between the two sources. Two nodes cannot be scored because no matching text is present in the log; they are excluded for every method.
+
+\subsection{Data Pitfalls}
+\begin{itemize}
+\item The dataset field \texttt{is\_warn} encodes the ground-truth label. It is never used as evidence or as a filter.
+\item Windows and Linux logs have structurally different schemas and need separate parsers.
+\item PID reuse overwrote graph nodes in the first implementation; nodes are now keyed on process identity.
+\item Browser subprocess noise inflated the node count roughly tenfold over the planning estimate.
+\end{itemize}
+
+\section{Models}
+Table~\ref{tab:models} lists the models and the constraint that decided how each is used. The models are open-weight, run locally with vLLM, and are not fine-tuned by us.
+
+\begin{table}[H]
+\centering
+\caption{Models and the constraints that decided their use.}
+\label{tab:models}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.8cm} >{\raggedright\arraybackslash}p{3.8cm} Y@{}}
+\toprule
+\textbf{Model} & \textbf{Role} & \textbf{Constraint} \\
+\midrule
+Llama 3.1 8B~\cite{dubey2024llama3} & Main baseline & 131K native context; all five scenarios at a 65{,}536 cap \\
+Qwen 2.5 7B~\cite{yang2024qwen25} & Second family & 32K native context; WS12 and Ubuntu only \\
+Qwen 2.5 32B (AWQ) & Scale test & Needs one A100 80\,GB \\
+Llama 3.1 70B (AWQ) & Scale test & Needs one A100 80\,GB \\
+Llama-Primus-Reasoning 8B & Security-tuned, same architecture as Llama 8B & Writes a reasoning trace; constrained decoding off \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two further models were tried and dropped. Phi-4 has a 16K context window, smaller than even the WS12 evidence. Phi-3.5-mini failed to produce parseable output on WS12 across four symmetric fixes (grammar-constrained JSON, an explicit instruction with a worked example, restricted whitespace, and a repetition penalty); we stopped there rather than tune for one model. Forcing Qwen 7B beyond its native context with a position override was rejected because it can silently produce invalid output.
+
+\section{Experimental Grid}
+The baseline grid has three methods and three seeds over Llama 3.1 8B on five scenarios and Qwen 2.5 7B on two, giving 63 runs. Variants v2, v3 and v4 repeat this grid with one change each (63 runs each); v5 reruns GoT only (21 runs). The scale test runs Qwen 32B and Llama 70B on the same cells with the v4 setup, and the Primus run covers all five scenarios (45 runs).
+
+\section{Evaluation Metrics}
+\label{sec:metrics}
+Let the checkable ground-truth events be $g_1,\dots,g_n$ and the events a method reports be $e_1,\dots,e_k$. A reported event \emph{matches} a ground-truth event if the ground-truth match substring occurs in the reported command text, after repeated backslashes are collapsed. A match is \emph{stage-correct} if the stage label is also right.
+
+\subsection{Event-Level Precision, Recall and F1}
+\begin{align}
+P&=\frac{\#\{\text{reported events that match some } g\}}{k},\\
+R&=\frac{\#\{g\text{ matched by some reported event}\}}{n},\\
+F_1&=\frac{2PR}{P+R}.
+\end{align}
+Precision is counted from the method's side and recall from the answer key's side, so one substring that legitimately matches several commands, or two ground-truth nodes sharing a substring (as with APT29's reused scheduled-task command), is not penalised by a one-to-one matching rule. \emph{Why these metrics:} the first question an analyst asks is whether the true attack steps were found (recall) and how much noise must be read to find them (precision); $F_1$ summarises both for ranking.
+
+\subsection{Stage-Level Recall}
+\begin{equation}
+\mathrm{SR}=\frac{\#\{g\text{ matched by a reported event with the correct stage}\}}{n}.
+\end{equation}
+Because ``missed entirely'' and ``found but mislabelled'' are different failures, we also report a partial-credit recall in which a ground-truth event scores 1 if found with the correct stage, 0.5 if found with a wrong stage and 0 if not found. \emph{Why:} stage recall is the quantity the hypothesis is about, and the gap between $R$ and $\mathrm{SR}$ isolates labelling errors from detection errors. Exact $\mathrm{SR}$ is the headline.
+
+\subsection{Hallucination Rate}
+\begin{equation}
+H=\frac{\#\{\text{indicators in the output that do not occur in the evidence}\}}{\#\{\text{indicators in the output}\}},
+\end{equation}
+where indicators are IPv4 addresses and file names of the form \texttt{name.ext} found by regular expression in the narrative and reported commands. \emph{Why:} a fabricated address or file name sends an analyst after something that does not exist, so unsupported claims are scored on their own and not folded into precision. The file-name pattern requires an extension that starts with a letter so that fragments of an IP address are not mistaken for file names.
+
+\subsection{Why Not One Composite Score}
+Detection ($R$), labelling (SR), noise ($P$) and fabrication ($H$) fail for different reasons and respond to different interventions (Chapter~\ref{ch:results}). A composite would hide which of them moved, so we never combine them.
+
+\subsection{Cost and Averaging}
+Cost is reported as LLM calls, prompt and completion tokens, and wall-clock seconds. Scores are averaged over seeds within a scenario, model and method, then over cells. Grand means weight each run equally, so scenarios run for two models weigh more; per-scenario tables are therefore also given.
+
+\section{Statistics}
+Methods and variants are compared with the paired Wilcoxon signed-rank test described in Section~\ref{sec:tests}. With three seeds per cell, small effects cannot be separated from seed variation, and we say so where it applies. No result is called significant without a reported $p$.
+
+\section{Software and Hardware}
+\begin{table}[H]
+\centering
+\caption{Software and hardware.}
+\label{tab:software}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{5.2cm} Y@{}}
+\toprule
+\textbf{Item} & \textbf{Value} \\
+\midrule
+GPUs (development) & 2$\times$ RTX 6000 Ada, 48\,GB (shared node) \\
+GPU (variant and scale jobs) & 1$\times$ A100 80\,GB through SLURM \\
+Inference engine & vLLM 0.26.0 \\
+GoT framework & graph-of-thoughts 0.0.2 \\
+Environment & Python 3.10, managed with \texttt{uv} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+The home directory is network storage and breaks Triton and vLLM compilation caches, so those caches are placed on local disk. Because the node is shared, each model's GPU memory share is capped, and SLURM jobs size the share from the memory that is free.

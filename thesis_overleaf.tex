@@ -1,0 +1,499 @@
+\%AMRITA UNIVERSITY thesis template (single-file version for Overleaf)
+% Upload with: images/univA.png  (same folder layout as the template).
+% All chapters are inlined and the bibliography is embedded, so only this file + the logo are needed.
+% Items marked TODO need your details or the final Llama-Primus numbers.
+
+\documentclass[a4paper, 12pt]{report}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{bold-extra}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{setspace}
+\onehalfspacing
+\graphicspath{{images/}}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{titletoc}
+\theoremstyle{definition}
+\newtheorem{Definition}{Definition}[section]
+
+\begin{document}
+	\pagenumbering{gobble}
+	\thispagestyle{empty}
+	\begin{large}
+		\begin{center}
+			{\Large\bfseries{COMPARING CHAIN-, TREE- AND GRAPH-OF-THOUGHTS REASONING FOR CYBER-ATTACK KILL-CHAIN RECONSTRUCTION WITH LOCAL LARGE LANGUAGE MODELS}}\\
+			\vspace{1.3cm}
+			A Thesis \\
+			\vspace{.1cm}
+			Submitted in partial fulfilment for the Degree of\\
+			\vspace{.1cm}
+			BACHELOR OF TECHNOLOGY\\
+			\vspace{.1cm}
+            in
+            \vspace{.1cm}
+            \\ COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE) \\
+			\vspace{1cm}
+			by\\ \vspace{0.2cm}
+			\vspace{.1cm}
+			{\Large\bfseries{WRITE YOUR NAME (ROLL NUMBER)}} \\
+            {\Large\bfseries{WRITE YOUR NAME (ROLL NUMBER)}} \\
+            {\Large\bfseries{WRITE YOUR NAME (ROLL NUMBER)}} \\
+            {\Large\bfseries{WRITE YOUR NAME (ROLL NUMBER)}} \\
+            \vspace{3cm}
+
+			\includegraphics[scale=0.8]{univA.png}\\
+			\vfill
+			DEPARTMENT OF ARTIFICIAL INTELLIGENCE\\
+			\Large{\textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+			{\large COIMBATORE CAMPUS (INDIA)}\\
+			\vspace*{.3cm}
+			October 2026
+		\end{center}
+	\end{large}
+	%------------------------------------------------------------------------------------
+	% bonafide certificate
+	\newpage
+	\begin{center}
+
+		{\large DEPARTMENT OF ARTIFICIAL INTELLIGENCE}\\
+		\Large{ \textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+			{\large COIMBATORE CAMPUS}\\
+		\vspace*{2.2cm}
+		\includegraphics[scale=0.8]{univA.png}\\
+		\vspace*{1.5cm}
+		{\Large \textbf{BONAFIDE CERTIFICATE}}
+	\end{center}
+	\vspace*{.8cm}
+	\noindent This is to certify that the thesis entitled \enquote{\textbf{Comparing Chain-, Tree- and Graph-of-Thoughts Reasoning for Cyber-Attack Kill-Chain Reconstruction with Local Large Language Models}} submitted by \textbf{Name of the Student., Roll. No:............}, \textbf{Name of the Student., Roll. No:............}, \textbf{Name of the Student., Roll. No:............} and \textbf{Name of the Student., Roll. No:............} for the award of the \textbf{Degree of Bachelor of Technology} under the \textbf{Faculty of Engineering} is a bonafide record of the work carried out by him/her under my guidance and supervision at \enquote{Department of Artificial Intelligence}, Amrita Vishwa Vidyapeetham, Coimbatore Campus.\\
+    \vfill
+    Submitted for the examination held on .........
+    \vfill
+    \textbf{INTERNAL EXAMINER}    \hspace{5cm}      \textbf{EXTERNAL EXAMINER}
+    \vfill
+\begin{center}
+		\textbf{Name of the Thesis Advisor}\\
+	Thesis Advisor,\\
+	Thesis advisor's designation,\\
+	Department of Artificial Intelligence,\\
+	Amrita Vishwa Vidyapeetham,\\
+	Coimbatore Campus,\\
+	India.
+\end{center}
+
+	%-------------------------------------------------------------------------------
+	% Declaration page
+	\newpage
+	\begin{center}
+	{\large DEPARTMENT OF ARTIFICIAL INTELLIGENCE}\\
+	\Large{ \textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+
+	{\large COIMBATORE CAMPUS}\\
+
+
+		\vspace*{2.5cm}
+		\large {\textbf{DECLARATION}}
+		\vspace*{.3cm}
+	\end{center}
+
+	\noindent We,\textbf{ Name of the Student.},  \textbf{Reg. No:......}, \textbf{ Name of the Student.},  \textbf{Reg. No:......}, \textbf{ Name of the Student.},  \textbf{Reg. No:......} and \textbf{ Name of the Student.},  \textbf{Reg. No:......} hereby declare that this thesis entitled \enquote{\textbf{Comparing Chain-, Tree- and Graph-of-Thoughts Reasoning for Cyber-Attack Kill-Chain Reconstruction with Local Large Language Models}} is the record of the original work done by us under the guidance of \textbf{Name of Thesis Advisor}, his/her designation, Department of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Coimbatore Campus. To the best of our knowledge, this work has not formed the basis for the award of any degree/diploma/associateship/fellowship or a similar award to any candidate in any University.\\\\
+
+	\vspace*{1cm}
+	\noindent{\bf Place:\hfill Signature of the Students} \\
+	\noindent {\bf Date: }
+	\vfill
+	\begin{center}
+		\large{COUNTERSIGNED}\\
+	\end{center}
+	\vspace{0.6in}
+
+\begin{center}
+		\textbf{Dr. K.P Soman}\\
+	Professor and Dean, \\
+	Department of Artificial Intelligence \\ Amrita Vishwa Vidyapeetham,\\
+	Coimbatore Campus,\\
+	India.
+\end{center}
+
+	%-----------------------------------------------------------------------------
+	\clearpage
+	\pagenumbering{roman}
+	\tableofcontents
+
+	\chapter*{Acknowledgements}
+	\addcontentsline{toc}{chapter}{Acknowledgements}
+	We thank our thesis advisor for guidance throughout this work, and the Department of Artificial Intelligence for access to the GPU cluster on which every experiment was run. We also thank the authors of the NODLINK Simulated-Data release, whose attack logs and annotations made a controlled comparison possible. TODO: add personal acknowledgements.\\
+	\vspace{1cm}
+	\begin{flushright}
+		(YOUR NAMES IN CAPS)
+	\end{flushright}
+	\listoffigures
+	\addcontentsline{toc}{chapter}{List of figures}
+	\listoftables
+	\addcontentsline{toc}{chapter}{List of tables}
+	\newpage
+\section*{{\huge Abbreviations}\hfill} \addcontentsline{toc}{chapter}{\textbf{Abbreviations}}
+\vspace{1.2cm}
+\begin{tabular}{lll}
+LLM ~~~~&--&~~~~ Large Language Model	\\
+CoT ~~~~&--&~~~~ Chain-of-Thought\\
+ToT ~~~~&--&~~~~ Tree-of-Thoughts\\
+GoT ~~~~&--&~~~~ Graph-of-Thoughts\\
+APT ~~~~&--&~~~~ Advanced Persistent Threat\\
+IOC ~~~~&--&~~~~ Indicator of Compromise\\
+MITRE ATT\&CK ~~~~&--&~~~~ Adversarial Tactics, Techniques and Common Knowledge\\
+EDR ~~~~&--&~~~~ Endpoint Detection and Response\\
+ETW ~~~~&--&~~~~ Event Tracing for Windows\\
+AWQ ~~~~&--&~~~~ Activation-aware Weight Quantization\\
+SLURM ~~~~&--&~~~~ Simple Linux Utility for Resource Management\\
+\end{tabular}
+\newpage
+\section*{{\huge List of symbols}\hfill} \addcontentsline{toc}{chapter}{\textbf{List of symbols}}
+\vspace{1.2cm}
+\begin{tabular}{lll}
+$ G=(V,E) $ ~~~~&--&~~~~ Provenance (evidence) graph with nodes $V$ and edges $E$\\
+$ \mathcal{E}^{*} $ ~~~~&--&~~~~ Set of ground-truth attack events\\
+$ \hat{\mathcal{E}} $ ~~~~&--&~~~~ Set of events reported by a reasoning method\\
+$ P, R, F_1 $ ~~~~&--&~~~~ Precision, recall and their harmonic mean\\
+$ p $ ~~~~&--&~~~~ $p$-value of a paired significance test\\
+\end{tabular}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Reconstructing a multi-stage cyber attack from host audit logs is a task that analysts still do largely by hand. Recent work has shown that structured prompting topologies (Chain-, Tree- and Graph-of-Thoughts) can improve large language model (LLM) performance on reasoning tasks, but it is not known whether the extra structure helps when the evidence is a long, noisy provenance log. This thesis isolates that question. We build a pipeline in which ground truth, evidence construction, reduction, serialization, prompt, parser and scorer are identical for all three topologies, so that the reasoning topology is the only variable. The pipeline is evaluated on five attack scenarios from the NODLINK Simulated-Data release (89 annotated attack events), using locally hosted open models served with vLLM, with no training or fine-tuning. Our hypothesis was that the Aggregate operation of Graph-of-Thoughts would raise stage-level recall. Across 63 baseline runs, no pairwise difference between topologies was statistically significant. Reading raw outputs against ground truth showed why: only 15.3\% of true attack events were ever detected, and exact stage labels were correct about 20\% of the time, because each model carries a stable stage-label prior that does not match the data. Adding MITRE ATT\&CK stage definitions to the shared prompt doubled exact stage recall (0.056 to 0.123, $p=0.0015$), per-process triage reduced false positives, and scaling the model (Qwen 2.5 7B to 32B) raised exact stage recall from 0.15 to 0.30. Graph-of-Thoughts was the top method for both large models but never significantly. We conclude that at the 7--70B scale, base-model detection and stage calibration, not reasoning topology, are the dominant bottlenecks, and that input length is a confound that earlier topology comparisons may have missed.
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+%==============================================================================
+\chapter{Introduction}
+\label{chap.1}
+\section{Motivation}
+A modern intrusion rarely consists of one malicious event. An attacker gains initial access, establishes persistence, steals credentials, explores the network and moves laterally; each step may be minutes or days apart and may be performed by different processes. Host-level monitoring records all of this as provenance data (processes, files, sockets and the system calls that relate them), but the same log also holds an enormous volume of benign activity. A single desktop session in our data produces hundreds of processes and close to a thousand relationships even after aggressive filtering.
+
+Trained provenance-based detectors such as NODLINK \cite{li2024nodlink} identify suspicious nodes, but they need training data from the target environment and they output scores rather than an explanation. An analyst still has to turn flagged nodes into an account of what happened. Large language models are attractive for that second step because they can read heterogeneous text and write a narrative, and open-weight models can be hosted locally, which matters when the logs are sensitive.
+
+\section{Research Problem and Hypothesis}
+Prompting techniques that give the model an explicit reasoning structure are now common: Chain-of-Thought (CoT) \cite{wei2022cot}, Tree-of-Thoughts (ToT) \cite{yao2023tot} and Graph-of-Thoughts (GoT) \cite{besta2024got}. GoT adds an Aggregate operation that merges several partial analyses into one. Attack evidence is exactly the kind of material where merging should matter, because the clues for one attack are scattered: a file written early may be executed much later, and the same external address may appear in different parts of the log.
+
+We therefore state the hypothesis tested in this thesis:
+
+\begin{quote}
+\textbf{H1.} Holding evidence, prompt, model and scoring fixed, Graph-of-Thoughts achieves higher stage-level recall than Chain-of-Thought and Tree-of-Thoughts on kill-chain reconstruction, because its Aggregate operation can link scattered evidence.
+\end{quote}
+
+\section{Objectives}
+\begin{enumerate}
+	\item Build a controlled pipeline in which only the reasoning topology differs between methods.
+	\item Define scoring that separates event detection, stage labelling and hallucination, and fix it before any method is written.
+	\item Evaluate CoT, ToT and GoT on five attack scenarios with open models of different families and sizes, with repeated seeds and paired significance tests.
+	\item Diagnose where and why the methods fail, and test targeted improvements one at a time.
+\end{enumerate}
+
+\section{Contributions}
+\begin{itemize}
+	\item A reproducible experimental design that guarantees all three topologies see identical evidence and are scored identically, including a hard gate that every ground-truth event survives evidence reduction.
+	\item A negative but informative result: reasoning topology does not significantly change results at 7--70B scale, whereas stage definitions in the prompt, triage and model scale do.
+	\item A diagnosis, based on reading raw outputs against ground truth, that detection recall and stage-label calibration are the main limits.
+	\item Evidence that input length confounds topology comparisons: on very long inputs a 70B model performs worse than an 8B model, and anything that shortens the input helps.
+\end{itemize}
+
+\section{Organisation of the Thesis}
+Chapter~2 reviews the reasoning topologies and related work. Chapter~3 defines the problem, dataset and ground truth. Chapter~4 describes the pipeline. Chapter~5 gives the experimental setup. Chapter~6 reports results and Chapter~7 discusses them. Chapter~8 concludes.
+
+%==============================================================================
+\chapter{Background and Related Work}
+\label{chap.2}
+\section{Introduction}
+This chapter introduces the three reasoning topologies compared in this work, and the security and systems background needed to follow the rest of the thesis.
+
+\section{Reasoning Topologies for LLMs}
+\subsection{Chain-of-Thought}
+Chain-of-Thought prompting asks the model to produce intermediate reasoning steps before the final answer \cite{wei2022cot}. The structure is a single path: one prompt, one generation. It is cheap, but any early mistake carries through to the answer, and with a long input the model has no mechanism to revisit parts of it.
+
+\subsection{Tree-of-Thoughts}
+Tree-of-Thoughts \cite{yao2023tot} generalises the chain by letting the model propose several candidate continuations at a step, evaluate them, and keep or discard branches. It trades extra calls for the ability to explore alternatives and recover from poor choices. Branches are independent of each other, so information discovered in one branch is not combined with another except by selection.
+
+\subsection{Graph-of-Thoughts}
+In Graph-of-Thoughts \cite{besta2024got} a reasoning process is a graph whose vertices are intermediate thoughts and whose edges are dependencies. Beyond generating and scoring thoughts, GoT allows \emph{aggregation}, in which several thoughts are merged into one that carries information from all of them, and \emph{refinement}, in which a thought is improved in a feedback loop. The authors implement these as a controller that executes a user-defined graph of operations. We use their open implementation.
+
+\subsection{Why Topology Might Matter Here}
+Table~\ref{tab:topo} summarises how each topology is realised in this thesis. The motivating idea is that if an attack is spread over the log, analysing segments separately and then aggregating should surface links that one pass over a very long input misses. Whether that holds in practice is the empirical question.
+
+\begin{table}[h]
+\centering
+\caption{The three reasoning topologies as implemented in this work.}
+\label{tab:topo}
+\begin{tabular}{p{2.2cm}p{4.2cm}p{7.5cm}}
+\toprule
+Method & Structure & Realisation \\
+\midrule
+CoT & Single chain & One call over the full serialized evidence. \\
+ToT & Branch, score, select & Several independent candidate analyses, then selection or merge by score. \\
+GoT & Split, analyse, \textbf{aggregate}, refine & Evidence split into size-balanced segments; each analysed separately; Aggregate merges results (in a later variant, with cross-segment links); Refine follows. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Provenance-Based Attack Investigation}
+System provenance records which process created which file, opened which connection or spawned which child. Research on provenance-based detection includes NODLINK \cite{li2024nodlink}, which uses the dataset we build on. These systems rely on learned models. Our setting differs: we use no training and ask whether a general-purpose LLM can do the investigative step.
+
+\section{Kill Chains and MITRE ATT\&CK}
+A kill chain describes an attack as a sequence of stages. We use the stage vocabulary of the dataset's own attack-analysis annotations (for example Initialize access, Persistence, Credential theft, Discovery and Lateral movement), and, in one improvement round, short stage definitions taken from the MITRE ATT\&CK knowledge base \cite{mitre}.
+
+\section{LLM Serving}
+All models are served with vLLM \cite{kwon2023vllm}, whose paged attention and continuous batching make the many-call ToT and GoT grids practical on a shared GPU. Models used are Llama 3.1 \cite{dubey2024llama3} and Qwen 2.5 \cite{yang2024qwen25}, plus a security-tuned Llama variant described in Chapter~5.
+
+\section{Gap Addressed}
+Prior work on thought topologies evaluates them on tasks with short inputs, such as sorting or puzzles. We are not aware of a controlled comparison of the three on long provenance logs in which the evidence, serialization and scoring are held identical. This thesis supplies one.
+
+%==============================================================================
+\chapter{Problem Formulation, Dataset and Ground Truth}
+\label{chap.3}
+\section{Problem Statement}
+Given a serialized provenance graph $G=(V,E)$ for one host, the reasoning method must output (i) a set of events $\hat{\mathcal{E}}\subseteq V$ it believes belong to the attack, each with a kill-chain stage, and (ii) a short narrative. The ground truth is a set $\mathcal{E}^{*}$ of annotated attack events with stages.
+
+\section{Dataset}
+We use the Simulated-Data release accompanying NODLINK. It contains five attack scenarios: WS12 (Windows), Ubuntu (Linux), and three scenarios, Sidewinder, FIN6 and APT29, that were executed on the same Windows~10 host and therefore share a single raw log. The scenarios hold 6, 8, 15, 23 and 37 annotated attack events respectively, 89 in total.
+
+\textbf{Shared-log caveat.} Because Sidewinder, FIN6 and APT29 share one log, their reduced evidence files are byte-identical (624 nodes and 933 edges); only the ground truth differs. For these scenarios the model must pick one of three possible narratives from the same evidence, which is a harder task than WS12 or Ubuntu. We report this as an interpretive caveat rather than correcting it.
+
+\section{Ground Truth Construction}
+Each annotated attack event was matched to a stage by hand, using the scenario's annotation files and its attack-analysis spreadsheet. We did this manually because the identifier join between the two sources behaves differently in each scenario: in WS12 the spreadsheet uses a different, non-sequential ID space; in Ubuntu IDs align but rows are out of order; in the other three they align cleanly, yet one command text still differs slightly between sources. An automated join rule would have produced silently wrong labels. Every one of the 89 events has a verified (stage, match-substring) pair. Two events are known to be unscoreable and are excluded consistently for all methods.
+
+\section{Data Pitfalls Found}
+Several properties of the raw logs would have invalidated the comparison if unnoticed:
+\begin{itemize}
+	\item A dataset field (\texttt{is\_warn}) encodes the ground-truth label. It is never used as evidence.
+	\item Windows ETW logs and Linux sysdig/Falco logs have structurally different schemas and need separate parsers.
+	\item Process identifiers are reused, so keying graph nodes on the PID alone silently overwrites nodes.
+	\item Browser subprocess noise inflated the node count roughly tenfold beyond what the initial plan assumed.
+\end{itemize}
+
+%==============================================================================
+\chapter{System Design}
+\label{chap.4}
+\section{Pipeline Overview}
+The pipeline has six phases. Phases 1--3 and 6 are identical for every method; only the reasoning step differs.
+\begin{enumerate}
+	\item \textbf{Ground truth parser.} Produces per-scenario JSON of stage and match substring.
+	\item \textbf{Evidence graph construction and reduction.} Builds the provenance graph and filters it using structural rules only (event types and external-IP rules).
+	\item \textbf{Serializer.} Converts the reduced graph to text. The result is 16K--58K tokens per scenario.
+	\item \textbf{Reasoning.} CoT, ToT or GoT, sharing one prompt template and one output parser.
+	\item \textbf{Scorer.} Compares output with ground truth.
+	\item \textbf{Grid runner and analysis.} Runs scenario $\times$ method $\times$ model $\times$ seed, resumably, and computes summaries and paired tests.
+\end{enumerate}
+
+\section{Reduction and the Hard Gate}
+Reduction must be simple on purpose. If it judged content (``this looks malicious'') it would reintroduce a detector and undermine the claim that the LLM does the investigative work. We therefore filter by event type and external-IP rules only. A hard gate requires that 100\% of ground-truth events survive reduction. All five scenarios pass it, with one documented cross-host exception in the Ubuntu scenario and the two unscoreable events noted earlier.
+
+\section{Shared Prompt and Parser}
+All three methods use one prompt and one parser so that differences cannot come from wording. The model returns JSON with a list of malicious events and a narrative. Where grammar-constrained JSON decoding is available it is used for all models; for the security-tuned reasoning model, which emits a thinking trace first, it is disabled and the parser strips the trace. When a later step fails to parse, the parser keeps the previous valid state rather than discarding it.
+
+\section{Method Realisations}
+\textbf{CoT:} one call. \textbf{ToT:} several candidate analyses followed by selection. \textbf{GoT:} the evidence is divided into segments balanced by character count (an earlier version balanced by block count and let one segment absorb 78\% of the evidence, which we found by checking that segment's output independently); each segment is analysed; Aggregate merges; Refine follows.
+
+\section{Improvement Variants}
+After the baseline we added changes one at a time, so each effect could be measured separately:
+\begin{itemize}
+	\item \textbf{v2:} output limit raised from 1536 to 4096 tokens (tests truncation).
+	\item \textbf{v3:} short MITRE ATT\&CK stage definitions added to the shared prompt.
+	\item \textbf{v4:} per-process triage before labelling.
+	\item \textbf{v5:} GoT's Aggregate receives cross-segment structural links (shared external IPs, write-then-use files).
+\end{itemize}
+
+\section{Scorer}
+The scorer reports event-level precision, recall and $F_1$; stage-level precision, recall and $F_1$ with a partial-credit recall; and a hallucination rate for indicators that appear in the output but not in the evidence. These are never blended into a composite. The scorer was locked before any method was written. Two bugs were caught by tests: a regex that treated fragments of an IP address as fake filenames, and a backslash-escaping mismatch between model output and ground truth. Both fixes apply to all methods alike.
+
+%==============================================================================
+\chapter{Experimental Setup}
+\label{chap.5}
+\section{Compute}
+Development used a shared node with two RTX 6000 Ada (48 GB) GPUs. Large-model and variant grids ran as SLURM jobs on a single A100 80 GB. The home directory is network storage, so compilation caches for vLLM and Triton are placed on local disk. Because the node is shared, each model's GPU memory share is capped, and SLURM jobs size vLLM's share from the memory actually free on the allocated card.
+
+\section{Software}
+Python 3.10 environment managed with \texttt{uv}; vLLM 0.26 for inference; the \texttt{graph-of-thoughts} package (v0.0.2) for GoT control flow. That package imports an attribute that exists only in \texttt{openai} $<1.0$ even though it never uses it, so we provide a stub module instead of downgrading the SDK.
+
+\section{Models}
+Table~\ref{tab:models} lists the models and the reason for each.
+
+\begin{table}[h]
+\centering
+\caption{Models used and constraints observed.}
+\label{tab:models}
+\begin{tabular}{p{3.6cm}p{4.2cm}p{6cm}}
+\toprule
+Model & Role & Constraint \\
+\midrule
+Llama 3.1 8B & Main baseline & 131K context, so it runs all five scenarios. \\
+Qwen 2.5 7B & Second family & 32K native context, so WS12 and Ubuntu only; extending context risks invalid output. \\
+Qwen 2.5 32B, Llama 3.1 70B (4-bit AWQ) & Scale test & Needs A100 80 GB. \\
+Llama-Primus-Reasoning (8B) & Security-tuned, same architecture as Llama 8B & Emits a thinking trace. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two further models were tried and dropped. Phi-4 has a 16K context, smaller than even the WS12 evidence. Phi-3.5-mini failed to produce parseable output across four symmetric fixes (guided JSON decoding, an explicit instruction with example, whitespace restriction, and a repetition penalty). We stopped at that point instead of tuning for one model.
+
+\section{Grid and Statistics}
+The baseline grid has 63 runs: Llama on all five scenarios and Qwen on two, each with three methods and three seeds. Methods are compared with paired tests over matched (scenario, seed, model) cells; we use the Wilcoxon signed-rank test \cite{wilcoxon1945}. With three seeds, small effects cannot be separated from seed noise, and we say so when it applies.
+
+\section{Metrics}
+Event recall is the share of ground-truth events reported. Stage recall is the share of ground-truth stages correctly reported (exact), and partial recall gives credit for related stages. Precision penalises events reported that are not in the ground truth. We emphasise stage recall because it is the quantity named in the hypothesis.
+
+\textbf{Unannotated activity.} All methods independently surfaced a second command chain in WS12 (a different C2 address and a user-account creation). We checked it against WS12's official attack description: it is not part of that attack, but it is real activity in the log. It lowers precision about equally for all methods and is therefore not a topology effect.
+
+%==============================================================================
+\chapter{Results}
+\label{chap.6}
+\section{Baseline Grid}
+Across the 63 baseline runs, no paired method comparison reached $p<0.05$. Differences between CoT, ToT and GoT are statistically indistinguishable from seed noise with three seeds. Sidewinder, FIN6 and APT29 score much lower than WS12 and Ubuntu (event $F_1$ 0.04--0.23), which is consistent with the shared-log caveat of Chapter~3.
+
+\section{Improvement Rounds}
+Table~\ref{tab:rounds} gives the effect of each change relative to the previous variant.
+
+\begin{table}[h]
+\centering
+\caption{Effect of each improvement round (paired tests).}
+\label{tab:rounds}
+\begin{tabular}{p{2.6cm}p{5.2cm}p{5.2cm}}
+\toprule
+Round & Change & Main effect \\
+\midrule
+v2 & Output limit 4096 & No significant change. \\
+v3 & MITRE stage definitions & Exact stage recall 0.056 $\to$ 0.123 ($p=0.0015$, $n=63$). \\
+v4 & Per-process triage & Precision 0.245 $\to$ 0.329 ($p=0.04$); event $F_1$ 0.268 $\to$ 0.325 ($p=0.08$); detection 19.9\% $\to$ 21.3\%. \\
+v5 & Link-aware GoT Aggregate & Llama event recall 0.41 $\to$ 0.54 ($p=0.055$); event $F_1$ 0.277 $\to$ 0.350 ($p=0.34$). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Topology remained non-significant under every variant. In v5, GoT still did not separate from CoT and ToT. A pre-check showed why: in WS12 all attack events fall into one segment, so the scattered-but-linked structure that Aggregate targets is largely absent from this data.
+
+\section{Scale Test}
+Table~\ref{tab:scale} reports the larger models under the v4 setup.
+
+\begin{table}[h]
+\centering
+\caption{Effect of model scale (v4 setup).}
+\label{tab:scale}
+\begin{tabular}{p{3.6cm}p{9.2cm}}
+\toprule
+Comparison & Result \\
+\midrule
+Qwen 7B $\to$ 32B & Exact stage recall 0.15 $\to$ 0.30 ($p=0.012$); event recall 0.41 $\to$ 0.57 ($p=0.017$). \\
+Llama 8B $\to$ 70B & Precision 0.28 $\to$ 0.38 ($p=0.022$); hallucination 0.19 $\to$ 0.06 ($p=0.001$); recall flat. \\
+Llama 70B without triage & Event $F_1$ 0.33 $\to$ 0.23 ($p=0.0015$); recall on $\sim$58K-token inputs falls to 0.09 (8B: 0.22). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+GoT was the top method for both large models but never significantly (best $p=0.073$ for Qwen, $p=0.064$ for Llama 70B). For the Llama 70B, stricter triage dropped 22\% of true attack events before reasoning, which explains why its recall did not improve.
+
+\section{Security-Tuned Model (Llama-Primus-Reasoning)}
+\textbf{TODO -- insert final numbers.} This grid (45 runs: three methods, five scenarios, three seeds, with Llama 8B triage reused) was still running at the time of writing; the completed results and paired tests against Llama 3.1 8B will be placed here. An earlier attempt failed at model load because of an incomplete offline model cache, and was repeated after re-downloading it.
+
+%==============================================================================
+\chapter{Analysis and Discussion}
+\label{chap.7}
+\section{Why Topology Did Not Matter}
+We read raw outputs against ground truth directly. Two facts explain the null result. First, only 15.3\% of true attack events are ever detected, regardless of method: a method cannot aggregate evidence that no segment flagged. Second, among the events that were found, exact stage accuracy is about 20\%, against a 10\% random baseline.
+
+\section{Stage-Label Miscalibration}
+Each model has a stable prior over stage names that does not match this data. For example Qwen 2.5 7B predicts Initial Access in only 3.9\% of its output and Lateral Movement in 1.1\%, while those two stages are 62\% of WS12 and Ubuntu ground truth combined. This accounts for Qwen's 0.000 stage recall under CoT and ToT. It also explains why adding stage definitions (v3) was the first change to give a significant gain: it addresses the labelling failure directly.
+
+\section{Input Length as a Hidden Confound}
+The 70B results show that length, not only reasoning shape, matters. On 16--19K-token inputs the 70B beats the 8B (precision 0.44 against 0.30); on $\sim$58K-token inputs its recall collapses. Triage, and plausibly GoT's segmentation, help because they shorten what the model must read. A fair reading of any GoT advantage must therefore separate the benefit of splitting from the benefit of aggregating. The proposed test is a \emph{segmented CoT} baseline using the same split with no LLM merge.
+
+\section{Limits of the Study}
+\begin{itemize}
+	\item Only three seeds per cell: small effects are undetectable.
+	\item Five scenarios, three of which share one log.
+	\item In WS12 the attack lies in a single segment, so the data barely exercises the scattered structure GoT targets.
+	\item Qwen 7B could not be run on the three long scenarios, so the cross-model comparison covers WS12 and Ubuntu only.
+	\item Models of 7--70B parameters only; conclusions about larger or reasoning-specialised models are limited to what is reported for the security-tuned model.
+\end{itemize}
+
+\section{Threats to Validity}
+Reduction is structural and identical for all methods, which protects the comparison, but it also means the evidence represents one design choice. Ground-truth matching uses substrings, so a correct event described differently would be counted as a miss; this affects all methods equally. The label-leaking dataset field was excluded throughout.
+
+%==============================================================================
+\chapter{Conclusion and Scope for further Research}
+\label{chap.8}
+\section{Conclusion}
+We built a controlled pipeline to ask whether Graph-of-Thoughts improves kill-chain reconstruction over Chain- and Tree-of-Thoughts. With evidence, prompt and scoring held fixed, the answer from our data is that topology effects are not statistically significant, so H1 is not supported. What did matter was the prompt's stage vocabulary (stage recall doubled), triage (precision rose), and model scale (Qwen 32B doubled exact stage recall). The dominant limits are low detection recall and stage miscalibration, not reasoning shape. GoT was nominally best for the large models, which is suggestive but not conclusive.
+
+\section{Scope for Further Research}
+\begin{enumerate}
+	\item Run a segmented-CoT baseline to separate the effect of splitting from the effect of aggregation.
+	\item Add scenarios in which attack events are genuinely scattered across segments.
+	\item Correct stage priors, for example with few-shot examples or calibration on held-out scenarios.
+	\item Increase seeds where effects are near the significance threshold, and report effect sizes with confidence intervals.
+	\item Evaluate larger or reasoning-specialised models on the long scenarios.
+\end{enumerate}
+
+\appendix
+\chapter{Reproducibility Notes}
+\section{Run Commands}
+Each grid is launched with \texttt{src/run\_grid.py} using a \texttt{--variant} name, \texttt{--prompt-variant}, \texttt{--max-tokens}, and optionally \texttt{--triage} and \texttt{--triage-model}. Runs are resumable: a resubmitted job skips runs already recorded in the variant's results file. Results are stored under \texttt{results/variants/}.
+
+\section{Failure Handling}
+The grid runner starts one process per model. It now exits with a non-zero status if any model process fails, so SLURM reports the job as failed rather than completed.
+
+%==============================================================================
+\newpage
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{References}
+\begin{thebibliography}{99}
+
+\bibitem{li2024nodlink}
+S.~Li, F.~Dong, X.~Xiao, H.~Wang, F.~Shao, J.~Chen, Y.~Guo, X.~Chen, and D.~Li, "NODLINK: An online system for fine-grained APT attack investigation and recovery with lightweight provenance graph," in \textit{Proc. Network and Distributed System Security Symposium (NDSS)}, 2024. TODO: verify venue and author list before submission.
+
+\bibitem{wei2022cot}
+J.~Wei, X.~Wang, D.~Schuurmans, M.~Bosma, B.~Ichter, F.~Xia, E.~Chi, Q.~Le, and D.~Zhou, "Chain-of-thought prompting elicits reasoning in large language models," in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, 2022.
+
+\bibitem{yao2023tot}
+S.~Yao, D.~Yu, J.~Zhao, I.~Shafran, T.~L. Griffiths, Y.~Cao, and K.~Narasimhan, "Tree of thoughts: Deliberate problem solving with large language models," in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, 2023.
+
+\bibitem{besta2024got}
+M.~Besta, N.~Blach, A.~Kubicek, R.~Gerstenberger, M.~Podstawski, L.~Gianinazzi, J.~Gajda, T.~Lehmann, H.~Niewiadomski, P.~Nyczyk, and T.~Hoefler, "Graph of thoughts: Solving elaborate problems with large language models," in \textit{Proc. AAAI Conference on Artificial Intelligence}, 2024.
+
+\bibitem{kwon2023vllm}
+W.~Kwon, Z.~Li, S.~Zhuang, Y.~Sheng, L.~Zheng, C.~H. Yu, J.~Gonzalez, H.~Zhang, and I.~Stoica, "Efficient memory management for large language model serving with PagedAttention," in \textit{Proc. ACM Symposium on Operating Systems Principles (SOSP)}, 2023.
+
+\bibitem{dubey2024llama3}
+A.~Dubey \textit{et~al.}, "The Llama 3 herd of models," arXiv preprint arXiv:2407.21783, 2024.
+
+\bibitem{yang2024qwen25}
+A.~Yang \textit{et~al.}, "Qwen2.5 technical report," arXiv preprint arXiv:2412.15115, 2024.
+
+\bibitem{mitre}
+The MITRE Corporation, "MITRE ATT\&CK knowledge base," available online: https://attack.mitre.org.
+
+\bibitem{wilcoxon1945}
+F.~Wilcoxon, "Individual comparisons by ranking methods," \textit{Biometrics Bulletin}, vol.~1, no.~6, pp.~80--83, 1945.
+
+\end{thebibliography}
+
+\chapter*{List of Publications \\ \large(Based on the Research Work)}
+\addcontentsline{toc}{chapter}{List of Publications Based on the Research Work}
+\textbf{\Large Papers Published}
+\begin{enumerate}
+	\item TODO: none yet.
+\end{enumerate}\vspace{0.4cm}
+
+\noindent \textbf{\Large Papers Communicated}
+\begin{enumerate}
+	\item TODO: none yet.
+\end{enumerate}
+
+\end{document}

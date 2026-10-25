@@ -1,0 +1,40 @@
+\chapter{Conclusion and Future Work}
+\label{ch:conclusion}
+
+\section{Conclusion}
+We built a pipeline in which Chain-, Tree- and Graph-of-Thoughts receive identical evidence and are scored identically, and used it to test whether Graph-of-Thoughts improves attack kill-chain reconstruction on provenance logs. Across five scenarios, 89 annotated events and models from 7B to 70B parameters, GoT's stage recall, the metric the hypothesis names, is not reliably higher than that of CoT or ToT (2 of 15 comparisons below 0.05 uncorrected, none after correction), so the hypothesis is not supported and the null hypothesis is not rejected. GoT does recover more events (uncorrected $p<0.05$ in 5 of 10 comparisons) at lower precision for the 7B and 8B models, which suggests that splitting the evidence, not aggregating it, is what helps. What did matter was the prompt's stage vocabulary (exact stage recall doubled), per-process triage (precision rose from 0.245 to 0.329) and model size (Qwen's stage recall doubled from 7B to 32B). The limiting factors are low detection recall (15.3\% of true events found), stage miscalibration (about 20\% exact accuracy among found events), input length, and, for the security-tuned model, output-format failures. A security-tuned 8B model did worse than the general model (event F$_1$ 0.101 against 0.295).
+
+\section{Objectives Revisited}
+\begin{table}[H]
+\centering
+\caption{Status of the objectives of Chapter~\ref{ch:intro}.}
+\label{tab:objectives}
+\small
+\begin{tabularx}{\textwidth}{@{}c >{\raggedright\arraybackslash}p{6.2cm} Y@{}}
+\toprule
+\textbf{No.} & \textbf{Objective} & \textbf{Status} \\
+\midrule
+1 & Fixed evidence pipeline with hard gate & Done; all five scenarios pass \\
+2 & CoT, ToT, GoT on the same models & Done; parseable output on every cell run \\
+3 & Event, stage, hallucination and cost metrics & Done; scorer locked before any method \\
+4 & Test H1 with paired tests & Done; not supported. The aggregation ablation was not run \\
+5 & Accuracy--cost trade-off & Done (Table~\ref{tab:cost}, Figure~\ref{fig:pareto}) \\
+6 & Diagnose failures and test improvements & Done (Chapters~\ref{ch:results} and~\ref{ch:discussion}) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Future Work}
+\begin{enumerate}
+\item \textbf{Aggregation ablation and segmented-CoT control.} GoT without Aggregate, and the same split with answers concatenated rather than merged by a model, to separate the effect of splitting from the effect of aggregating.
+\item \textbf{Data where Aggregate has work to do.} Scenarios in which attack events are spread over segments, reporting how many true event pairs cross a segment boundary.
+\item \textbf{Calibrating stage labels.} Few-shot examples, or correcting the model's stage preferences on held-out scenarios.
+\item \textbf{Enforced output format for reasoning models.} Free reasoning followed by a constrained answer-extraction call, so that format failures do not mask a model's detection ability.
+\item \textbf{More seeds where effects are marginal,} with effect sizes and confidence intervals.
+\item \textbf{Independent scenarios.} Give Sidewinder, FIN6 and APT29 separate evidence so they become independent tests.
+\item \textbf{Fine-tuning the best reasoning model and inspecting its layers.} Take the strongest reasoning model from this study and fine-tune it on kill-chain reconstruction, then examine its internal layers (for example which layers and attention heads respond to attack-related processes and stage names) to see where detection and stage labelling succeed or fail and to guide what to train.
+\item \textbf{Larger and reasoning-specialised models} with a context window that covers the long scenarios.
+\end{enumerate}
+
+\section{Practical Takeaways}
+For a practitioner with a local model and a long log, our results suggest putting effort first into shortening and filtering the input, supplying the stage vocabulary in the prompt, and using the largest model that fits, before adding multi-call reasoning structures whose benefit we could not demonstrate.

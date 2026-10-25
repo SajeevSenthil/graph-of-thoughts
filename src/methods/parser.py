@@ -12,15 +12,32 @@ from graph_of_thoughts.parser.parser import Parser
 
 _JSON_BLOCK_RE = re.compile(r"\{.*\}", re.DOTALL)
 _CODE_FENCE_RE = re.compile(r"```(?:json)?\s*(.*?)\s*```", re.DOTALL)
+# Reasoning models (e.g. Llama-Primus-Reasoning) emit a <think>...</think>
+# block before their actual JSON output. Strip it before any JSON search so
+# a {…} inside the think block can never be mistaken for the answer.
+_THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)
 
 EMPTY_RECONSTRUCTION = {"malicious_events": [], "narrative": ""}
 
 
+def _strip_thinking(text: str) -> str:
+    """Remove <think>…</think> reasoning traces. Also handles the case where
+    the model stopped generating mid-thought (no closing tag)."""
+    stripped = _THINK_RE.sub("", text).strip()
+    # Unclosed <think> tag: drop everything from it onward (the model never
+    # finished reasoning and there is no answer text after it).
+    lower = stripped.lower()
+    if "<think>" in lower:
+        stripped = stripped[: lower.index("<think>")].strip()
+    return stripped
+
+
 def extract_json(text: str) -> dict | None:
-    """Best-effort JSON extraction from a model response: strips a markdown
-    code fence if present, then takes the largest {...} block and parses it.
-    Returns None (never raises) if nothing parseable is found -- callers
-    treat that as a failed attempt and count a retry."""
+    """Best-effort JSON extraction from a model response: strips reasoning
+    traces and markdown code fences if present, then takes the largest {...}
+    block and parses it.  Returns None (never raises) if nothing parseable is
+    found -- callers treat that as a failed attempt and count a retry."""
+    text = _strip_thinking(text)
     fenced = _CODE_FENCE_RE.search(text)
     candidate_text = fenced.group(1) if fenced else text
 

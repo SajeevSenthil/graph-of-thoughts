@@ -769,3 +769,93 @@ On short inputs the 70B matches the 8B's recall with much higher precision. On ~
 - Anything that shortens what the model reads at once -- triage, or GoT's segmentation -- helps it. This gives a concrete, testable account of when GoT should beat CoT: when the model degrades on long context, splitting the evidence pays off. It also predicts the earlier small-model result (GoT no better than CoT), since the 8B degrades less sharply with length.
 - A direct test of the mechanism would be "segmented CoT": the same 4-way split as GoT, with the segment findings simply concatenated instead of merged by an LLM call. If that matches GoT, the gain comes from segmentation, not Aggregate.
 
+---
+
+## Phase 7 — Cyber-domain reasoning model: Llama-Primus-Reasoning (2026-10-25)
+
+**Why:** every v1–v5 improvement came from changing what the model *sees* (stage vocabulary, less input via triage) — never from topology. The Phase 5 root-cause analysis found two distinct failure modes, both properties of the base model:
+1. **Detection** — only 15–21% of real attack events ever flagged (the model doesn't recognise that `certutil`, `nbtscan`, `PAExec` etc. are malicious)
+2. **Stage calibration** — Qwen predicts "Initial Access" in 3.9% and "Lateral Movement" in 1.1% of its output; WS12+Ubuntu's ground truth is 38% those two combined; Llama has its own systematic skew
+
+Both failures are *base-model* properties, not reasoning-topology properties. Llama-Primus-Reasoning directly targets both: it was continuously pre-trained on cybersecurity corpora (Primus-Seed, Primus-FineWeb), instruction-tuned on security Q&A (Primus-Instruct), then had chain-of-thought reasoning distilled from o1-preview and DeepSeek-R1 specifically on cybersecurity problems (Primus-Reasoning). Its MITRE ATT&CK stage vocabulary should be calibrated to the actual distribution of attack techniques, not the general web.
+
+**Model selection rationale (literature survey 2026-10-25):**
+
+| Model | Overall cyber benchmark avg | Base | Context | License |
+|---|---|---|---|---|
+| XekRung-8B | 81.04% | Qwen3-8B | 128K | Gated (HF 401) |
+| Foundation-Sec-8B-Reasoning | 68.54% | Llama 3.1 8B | 131K | Proprietary (Cisco) |
+| **Llama-Primus-Reasoning** | **62.88%** | Llama 3.1 8B | 131K | MIT |
+
+XekRung is the strongest but inaccessible (gated). Foundation-Sec is the best accessible model but has a proprietary license. Llama-Primus-Reasoning is chosen: MIT license (safe for thesis), same Llama 3.1 8B architecture as our existing validated model (no new infrastructure), 131K context covers all 5 scenarios including the 58K-token Windows scenarios.
+
+CTI-relevant benchmark scores (from XekRung technical report, Table 5):
+
+| Benchmark | Foundation-Sec | Llama-Primus | Notes |
+|---|---|---|---|
+| CTIBench-RCM | 74.10% | 73.70% | ATT&CK technique → kill-chain mapping, closest to our task |
+| CTIBench-ATE | 54.45% | 27.22% | ATT&CK technique extraction from text |
+| CTIBench-MCQ | 50.80% | 65.16% | Multiple-choice CTI knowledge |
+| SecEval | 59.26% | 44.68% | General security knowledge |
+
+CTIBench-RCM is the closest analogue to our task (mapping a described action to a kill-chain stage). Llama-Primus is within 0.4% of Foundation-Sec on that specific benchmark.
+
+**Experimental design:**
+
+Variant name: `primus_v4`. Same v4 configuration as the best existing setup:
+- Output limit: 4,096 tokens
+- MITRE stage definitions in prompt (`--prompt-variant stagedefs`)
+- Per-process triage: **reused from v4_triage's llama3.1-8b files** — not re-run. Rationale: triage is a quick boolean filter; running it through a reasoning model would burn thinking tokens on each of 234–624 processes per scenario, adding 3–4× more wall-clock time for no measurement benefit. The triage decision (what to keep) is the same regardless of who labels it; what changes is the reasoning step that follows.
+- All 5 scenarios (131K context safely covers even the 58K Windows ones)
+- 3 seeds (0, 1, 2), all 3 methods (CoT, ToT, GoT)
+- Total: 45 runs (vs 45 Llama 3.1 8B v4 runs for direct comparison)
+
+**Grid:** Qwen 2.5 7B (WS12+Ubuntu, v4), Llama 3.1 8B (all 5, v4), **Llama-Primus-Reasoning (all 5, primus_v4)**. Primus is a direct like-for-like replacement for Llama 3.1 8B in the grid: same architecture scale, same prompts, same evidence, same triage, different domain pre-training and reasoning fine-tuning.
+
+**Code changes (2026-10-25):**
+
+Three files changed, no new files:
+
+**`src/methods/parser.py`:**
+- Added `_THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)`
+- Added `_strip_thinking(text)`: removes closed `<think>…</think>` blocks and truncates at any unclosed `<think>` tag (model stopped mid-thought — no answer text follows it anyway)
+- `extract_json()` calls `_strip_thinking()` as its first step, before code-fence stripping and JSON search. Rationale: a `{…}` inside the thinking block must never be mistaken for the answer JSON. For non-thinking models the function is a no-op (no think tags present).
+
+**`src/llm_client.py`:**
+- `MODEL_IDS["llama-primus-reasoning"] = "trendmicro-ailab/Llama-Primus-Reasoning"`
+- `MODEL_GPU_MEMORY_UTILIZATION["llama-primus-reasoning"] = 0.55` (same as llama3.1-8b — same 8B Llama architecture)
+- `MODEL_MAX_MODEL_LEN["llama-primus-reasoning"] = 65536` (same cap as llama3.1-8b; native 131K)
+- Added `MODELS_WITH_THINKING = {"llama-primus-reasoning"}` — set of models that emit thinking traces
+- Added `self.use_structured_outputs = model_key not in MODELS_WITH_THINKING` in `__init__`
+- `query()` now conditions structured output on `structured and self.use_structured_outputs`. For Primus, grammar-constrained decoding is **disabled** so the model can follow its trained reasoning flow (`<think>` first, then JSON). Forcing the schema from token 1 would suppress the think block (the first valid grammar token would be `{`, never `<`) and likely degrade reasoning quality. `parser.py`'s `_strip_thinking()` handles the traces on the output side.
+
+**`src/run_grid.py`:**
+- `"llama-primus-reasoning"` added to `LARGE_MODELS` (selectable via `--models`, never in the default baseline run)
+- `MODEL_SCENARIO_ALLOWLIST["llama-primus-reasoning"] = SCENARIOS` (all 5)
+- Added `V4_TRIAGE_DIR` constant pointing at `results/variants/v4_triage/`
+- Added `--triage-model` CLI argument: when given, `triaged_evidence()` looks up triage files keyed to that model rather than the current model
+- `triaged_evidence()` updated: if file not found in the current variant dir, checks `V4_TRIAGE_DIR/triage/{scenario}__{triage_model}__seed{N}.json` as fallback, copies it on first use. If neither exists, falls back to generating triage with the current `lm` (guarantees the run always completes).
+
+**SLURM job:** 13606, A100 80GB, `--time=08:00:00`, `--variant primus_v4 --models llama-primus-reasoning --max-tokens 4096 --prompt-variant stagedefs --triage --triage-model llama3.1-8b`
+
+**Results (2026-10-25, job 13610, 45/45 runs, 1h26m; first attempt 13606 failed on an incomplete offline model cache):**
+
+| (v4 setup, 45 matched runs) | Precision | Recall | Event F1 | Stage recall | Halluc. |
+|---|---|---|---|---|---|
+| Llama 3.1 8B | 0.278 | 0.381 | 0.295 | 0.145 | 0.194 |
+| Llama-Primus-Reasoning | 0.140 | 0.096 | 0.101 | 0.034 | 0.087 |
+
+- Paired Wilcoxon vs Llama 8B: event recall/F1 p<0.001, stage recall p=0.0001, precision p=0.002, hallucination p=0.005. Primus is significantly **worse**.
+- **17/45 runs (38%) produced no parseable answer** (parsed: CoT 10/15, ToT 11/15, GoT 7/15; Sidewinder all scored 0). Parsed-only runs (28): event F1 0.126, recall 0.120, stage recall 0.031 -- still below Llama 8B, so format failures explain only part of the gap. Constrained decoding is off for this model by design.
+- Topology within Primus: GoT/ToT > CoT on recall (0.119/0.123 vs 0.048), none significant (p>=0.12).
+- Per-run records: `results/variants/primus_v4/grid_results.csv`. Also fixed: `run_grid.py` now exits non-zero if a model subprocess fails (13606 had shown COMPLETED); added `slurm/run_primus.sbatch`.
+- Correction: stage prior shares quoted earlier as "62%" / "38%" for Initial Access + Lateral Movement are inconsistent; from the ground-truth JSON it is 8 of 14 (57%) for WS12+Ubuntu.
+- Suggested follow-up: two-stage Primus (free reasoning, then constrained extraction call) so format failures stop masking detection.
+
+---
+
+---
+
+## Thesis statistics re-check (2026-10-25)
+
+`thesis/scripts/make_figures.py` re-ran the topology tests pairing every (scenario, model, seed) run (n=21 per experiment, n=15 for Primus). Result differs from the earlier "none clear p<0.05" statement, which used a different pairing: 8 of 30 comparisons are below 0.05 uncorrected -- GoT vs CoT/ToT on **event recall** in baseline, v3 and scale (5 of 10), and stage recall in only 2 of 15 (v3 GoT-CoT p=0.049; scale GoT-ToT p=0.028). None survives Bonferroni (threshold 0.0017; smallest Holm-adjusted p = 0.18). Treating seeds as independent pairs is anti-conservative. The thesis reports these numbers (`thesis/tables/topology_tests.csv`). Reading: primary hypothesis (stage recall) still not supported; GoT's event-recall edge with lower 7B/8B precision is consistent with splitting rather than aggregation.

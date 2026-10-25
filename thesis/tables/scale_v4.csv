@@ -1,0 +1,7 @@
+model,method,event_f1,stage_recall
+llama3.1-70b-awq,CoT,0.291,0.173
+llama3.1-70b-awq,GoT,0.396,0.214
+llama3.1-70b-awq,ToT,0.314,0.145
+qwen2.5-32b-awq,CoT,0.408,0.294
+qwen2.5-32b-awq,GoT,0.502,0.365
+qwen2.5-32b-awq,ToT,0.41,0.238

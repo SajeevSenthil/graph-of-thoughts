@@ -1,0 +1,51 @@
+\chapter{Literature Review}
+\label{ch:lit}
+
+The literature is grouped into three themes: reasoning topologies, which are the independent variable of this study; automated attack reconstruction on provenance and audit logs, which is the task; and language-model agents for security investigation, which is the closest contrast case.
+
+\section{Theme A: Reasoning Topologies}
+\begin{table}[H]
+\centering
+\caption{Work on language-model reasoning topologies.}
+\label{tab:lit-a}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{3.2cm} Y Y@{}}
+\toprule
+\textbf{Work} & \textbf{Method} & \textbf{Reported result} & \textbf{Limitation for this task} \\
+\midrule
+Wei et al.~\cite{wei2022cot}, NeurIPS 2022 & Single generation with intermediate reasoning steps before the answer & Large gains over direct prompting on arithmetic, commonsense and symbolic reasoning & No mechanism to revisit an early wrong step; errors propagate to the answer \\
+Yao et al.~\cite{yao2023tot}, NeurIPS 2023 & Generate, self-evaluate and prune over branching thoughts & Game of 24 success from 4\% (CoT) to 74\% (ToT) with GPT-4 & Each node has one parent, so evidence explored in a pruned branch is lost to the others \\
+Besta et al.~\cite{besta2024got}, AAAI 2024 & Adds Aggregate (many parents, one child) and Refine (self-loop) to Generate and Evaluate & +70\% quality over CoT and +62\% over ToT on sorting, with over 31\% lower cost than ToT & Evaluated only on abstract tasks with clean, fully specified inputs, never on noisy real evidence \\
+Zhang et al.~\cite{zhang2024cpo}, NeurIPS 2024 & Fine-tunes a model on ToT's search preferences so a single chain approximates ToT & Chain-level inference cost with tree-level accuracy after fine-tuning & Needs training, which an inference-only design excludes; does not test aggregation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Theme B: Attack Reconstruction on Provenance Logs}
+\begin{table}[H]
+\centering
+\caption{Work on automated attack reconstruction.}
+\label{tab:lit-b}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{3.2cm} Y Y@{}}
+\toprule
+\textbf{Work} & \textbf{Method} & \textbf{Reported result} & \textbf{Limitation for this task} \\
+\midrule
+Li et al.~\cite{li2024nodlink}, NDSS 2024 & Online provenance-graph anomaly detection and investigation; releases the Simulated-Data benchmark used here & High detection accuracy at production-level throughput; event-level F$_1$ of about 0.248 reported in later comparative work & No language-model reasoning; output is a graph, not a stage-labelled narrative \\
+Aly et al.~\cite{aly2025ocrapt}, CCS 2025 & A trained graph network flags anomalous subgraphs; a language model then narrates the flagged subgraph & F$_1$ of about 0.96 on this dataset family, above NODLINK & The model never detects or links; it summarises what a separate detector isolated, so reasoning topology is not a variable \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Theme C: Language-Model Agents for Security Investigation}
+Wu et al.~\cite{wu2026excytin} evaluate agents that issue SQL queries against 57 Microsoft Sentinel log tables, graded against investigation-graph ground truth (7,542 generated questions, 589 in the test split). The best model reaches a reward of 0.606. The authors report that query-writing success drives most of the reward variance, so the benchmark cannot separate investigative reasoning from tool-use skill. This is the contrast case for our design, which gives every method the same evidence and no tools.
+
+\section{Research Gap}
+\begin{enumerate}
+\item \textbf{No work isolates reasoning topology as the only variable in attack reconstruction.} OCR-APT removes the question by giving detection to a trained network. ExCyTIn-Bench lets the model reason but confounds reasoning with query skill. No benchmark holds evidence, model and detection fixed while varying only chain, tree or graph structure on a multi-stage attack task.
+\item \textbf{GoT's aggregation has not been tested where it should matter most.} The topologies were validated on sorting, keyword counting and Game of 24. None of these has the structure of attack investigation: causally related evidence scattered across a large noisy log, where each piece looks weak alone and becomes conclusive only when merged with a separately reasoned piece.
+\item \textbf{The chain-to-tree trade-off has been attacked by fine-tuning, not by topology comparison under a no-training constraint.} Whether GoT's aggregation adds something a tree cannot express, with weights fixed, is the more diagnostic question about why structure matters.
+\end{enumerate}
+
+\section{Summary}
+Prior work establishes the topologies, the benchmark and detector-assisted reconstruction separately. This thesis combines them into one controlled comparison: an inference-only test of chain, tree and graph reasoning on real provenance evidence, with significance testing across models and scenarios.

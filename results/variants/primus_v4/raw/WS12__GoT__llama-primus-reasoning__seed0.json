@@ -1,0 +1,60 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "\"C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data\\SwReporter\\99.279.200\\software_reporter_tool.exe\" --engine=2 --scan-locations=1,2,3,4,5,6,7,8,10 --disabled-locations=9,11 --session-id=YzNf24YYZfuvRHVbjuMFf3GpplnJ+CDak8V6SAZz --registry-suffix=ESET --enable-crash-reporting --srt-field-trial-group-name=NewCleanerUIExperiment\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "connected to \u2192 72.246.150.129:443",
+        "stage": "Command and Control"
+      }
+    ],
+    "narrative": "Attackers leverage the Google Chrome SwReporter utility for execution and persistence via DLL injection. Simultaneously, they establish command-and-control communications with a remote server via network connections.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 23867,
+      "completion_tokens": 11069,
+      "total_tokens": 34936,
+      "wall_clock_s": 208.721,
+      "parse_retries": 4
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 2,
+      "fn": 6,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 23867,
+      "completion_tokens": 11069,
+      "total_tokens": 34936,
+      "wall_clock_s": 208.721,
+      "parse_retries": 4
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

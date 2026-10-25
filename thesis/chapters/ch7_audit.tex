@@ -1,0 +1,35 @@
+\chapter{Verification, Audit and Corrections}
+\label{ch:audit}
+
+A comparison that differs only in reasoning topology is easy to break by accident. This chapter lists the defects found while building and running the pipeline, because each would have changed the results and because a reader should be able to see that the fixes are real.
+
+\section{Defects in Data Handling}
+\begin{itemize}
+\item \textbf{PID reuse.} WS12 has 3,139 process-start events but only 593 distinct PIDs. Keying nodes on PID alone silently overwrote earlier processes, including any that were part of the attack. Nodes are now keyed on process identity including start time.
+\item \textbf{Label leakage.} The dataset field \texttt{is\_warn} carries the ground-truth label. It is never read.
+\item \textbf{Two raw schemas.} Windows ETW and Linux sysdig/Falco records differ structurally; one parser could not serve both.
+\item \textbf{Edge explosion.} One database process produced 23,010 raw TCP send events for 64 distinct targets. Edges are now deduplicated to one per process and target.
+\item \textbf{Evidence bulk.} Browser helper processes raised WS12's node count about tenfold; exact repeats are now collapsed, and the hard gate confirms that no attack event is lost.
+\item \textbf{Ground-truth text mismatch.} For one WS12 node the match text agreed with the annotation file but not with the raw log. The raw log is the authority, because it is what the model sees.
+\end{itemize}
+
+\section{Defects in the Scorer}
+Unit tests with a known-good and a known-bad WS12 case caught a hallucination pattern that matched numeric fragments of an IP address as file names; the test asserted the exact set of missing indicators, which is what exposed it. A later run exposed a backslash mismatch between model output (single backslash in a network path) and ground truth (double), which counted a correct detection as a miss. Both fixes apply to all methods at once and the unit tests were re-run.
+
+\section{Defects in the Methods}
+\begin{itemize}
+\item \textbf{GoT segmentation.} The first version split the evidence by root-block \emph{count}. One segment received about 78\% of the text and all six WS12 attack events while three others were nearly empty. GoT missed every WS12 event, and checking that large segment's own independent output (which also found none) located the cause. Balancing by character count fixed it, and GoT's WS12 event recall rose from 0 of 6 to 1 of 6 on the test run.
+\item \textbf{Unparseable refinement.} In one Llama run the Refine step failed to parse. The parser now keeps the last valid state rather than discarding it; that preserved the best result seen at that stage.
+\item \textbf{Library incompatibility.} The \texttt{graph-of-thoughts} package imports an attribute that exists only in \texttt{openai} before version~1.0. A stub avoids a downgrade.
+\end{itemize}
+
+\section{Defects in Infrastructure}
+\begin{itemize}
+\item \textbf{Cache on network storage.} vLLM and Triton compilation failed with \texttt{errno 61} on the network home directory; caches are now on local disk.
+\item \textbf{Shared GPU.} Default vLLM memory settings would exhaust memory used by other users; the share is now capped per model and sized from free memory.
+\item \textbf{Silent job failure.} The first SLURM job for the security-tuned model reported \texttt{COMPLETED} after 76 seconds although the model had failed to load (an incomplete offline cache combined with offline mode). The grid runner now exits non-zero when any model process fails, and the model was downloaded again before rerunning.
+\item \textbf{Context limits.} Phi-4 and Qwen 7B cannot read the longest scenarios, so the grid is deliberately asymmetric (Chapter~\ref{ch:protocol}).
+\end{itemize}
+
+\section{Claims Withdrawn or Qualified}
+We initially expected GoT's Aggregate to give the best stage recall. The data do not support this (Chapter~\ref{ch:results}). The three Windows~10 scenarios are not three independent tests, because they share their evidence. And a second command chain that every method reports in WS12 is not hallucination: we checked it against WS12's official attack description, and it is real but unannotated activity (a different command-and-control address and a local account creation). It lowers precision about equally for all methods and is not a topology effect.

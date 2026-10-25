@@ -1,0 +1,45 @@
+\chapter{Cyber-Security Background}
+\label{ch:cyber}
+
+This chapter introduces the security concepts the rest of the thesis relies on, for readers whose background is machine learning.
+
+\section{Advanced Persistent Threats and the Kill Chain}
+An advanced persistent threat (APT) is a well-resourced attacker who stays inside a network for an extended period to reach a specific goal. APT operations are staged: each step prepares the next and may be separated from it by minutes or days. A \emph{kill chain} describes the attack as an ordered sequence of such stages. The MITRE ATT\&CK knowledge base~\cite{mitre} catalogues the attacker's goals at each stage as \emph{tactics} and the concrete methods as \emph{techniques}. The ground truth of our dataset names ten tactics, listed in Table~\ref{tab:tactics} with the short definitions used in our stage-definition prompt variant.
+
+\begin{table}[H]
+\centering
+\caption{Stage names in the ground truth and their meaning.}
+\label{tab:tactics}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.4cm} Y@{}}
+\toprule
+\textbf{Stage (tactic)} & \textbf{Attacker's goal} \\
+\midrule
+Initial Access & Get a first foothold on the host, for example by delivering and running a backdoor \\
+Execution & Run attacker-controlled code or commands \\
+Persistence & Keep access across reboots and logouts, for example through registry keys or scheduled tasks \\
+Privilege Escalation & Obtain higher rights than the initial foothold \\
+Defense Evasion & Avoid detection, for example by disabling or bypassing security tools \\
+Credential Access & Steal account names and passwords or their hashes \\
+Discovery & Learn about the system and network, for example by scanning for other hosts \\
+Lateral Movement & Move to other machines using stolen credentials or remote execution tools \\
+Collection & Gather data of interest before exfiltration \\
+Command and Control & Communicate with attacker-run infrastructure to receive instructions \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{A Worked Example: the WS12 Attack}
+The smallest scenario, WS12, shows how a kill chain appears in a log. We analysed it by hand before any automation. Its six annotated events map to stages as follows: reconnaissance and download of a backdoor (Initial Access); registry, firewall and sticky-keys changes (Persistence); a brute-force tool (Credential Access); \texttt{nbtscan} (Discovery); and \texttt{PAExec} against a second host (Lateral Movement). Individually several of these are ordinary administrative commands. Only the sequence, and in some cases a shared file or network address, shows that they belong together. This is the property the Aggregate operation is meant to exploit.
+
+\section{Host Audit Logs and Provenance}
+Host monitoring records system activity as events. On Windows, Event Tracing for Windows (ETW) provides process-start, TCP/IP and file-write events; on Linux, tools such as sysdig and Falco record system calls. A \emph{provenance graph} turns these events into a graph whose nodes are system entities (processes, files, network endpoints) and whose edges are causal relations (a process spawns a process, writes a file, connects to an address). Provenance graphs support forensic questions such as how a given file came to exist. Their weakness is volume: the raw logs used here hold between 1.1 and 3.8 million events per host.
+
+\section{Indicators and Common Attacker Tooling}
+An indicator of compromise (IOC) is an observable that suggests intrusion, such as an external IP address, a file name or a command line. Attackers often use legitimate system utilities (for example \texttt{certutil} to download files) because these blend into normal activity. Recognising that a given utility is being used maliciously depends on knowledge of attacker practice and on context, which is why the task is difficult for a general language model and why we test a security-tuned model in RQ3.
+
+\section{Detection versus Investigation}
+Detection answers whether and where something suspicious occurred; investigation answers what happened, in which order and through which stages. Trained provenance detectors address the first~\cite{li2024nodlink}. This thesis addresses the second without a trained detector, by asking a language model to read a structurally reduced evidence set and name the attack events with their stages.
+
+\section{Why Evaluation Needs Annotated Attacks}
+Scoring an investigation requires knowing which events are truly part of the attack. The NODLINK Simulated-Data benchmark provides this because the attacks were executed by the dataset's authors from known plans, and each step is annotated with its command and stage. That is why we use it in preference to flow-level intrusion-detection datasets, which carry one label per network flow and no command-line kill chain to reconstruct.

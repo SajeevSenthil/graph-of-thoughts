@@ -1,0 +1,16 @@
+scenario,method,event_f1,stage_recall
+APT29,CoT,0.088,0.018
+APT29,GoT,0.027,0.009
+APT29,ToT,0.069,0.046
+FIN6,CoT,0.049,0.029
+FIN6,GoT,0.029,0.029
+FIN6,ToT,0.0,0.0
+Sidewinder,CoT,0.0,0.0
+Sidewinder,GoT,0.0,0.0
+Sidewinder,ToT,0.0,0.0
+Ubuntu,CoT,0.089,0.0
+Ubuntu,GoT,0.347,0.159
+Ubuntu,ToT,0.14,0.0
+WS12,CoT,0.048,0.056
+WS12,GoT,0.218,0.056
+WS12,ToT,0.408,0.111

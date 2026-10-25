@@ -1,0 +1,22 @@
+\begin{tabular}{@{}llrrrrrrr@{}}
+\toprule
+ & & \multicolumn{2}{c}{GoT vs CoT} & \multicolumn{2}{c}{GoT vs ToT} & \multicolumn{2}{c}{ToT vs CoT} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Experiment & Metric & $\Delta$ & $p$ & $\Delta$ & $p$ & $\Delta$ & $p$ & $n$ \\
+\midrule
+Baseline (v1) & Stage recall & +0.011 & 0.386 & +0.043 & 0.113 & -0.031 & 0.161 & 21 \\
+ & Event recall & +0.175 & 0.009 & +0.113 & 0.023 & +0.063 & 0.278 & 21 \\
+\addlinespace
+v3 stage definitions & Stage recall & +0.089 & 0.049 & +0.071 & 0.256 & +0.017 & 0.445 & 21 \\
+ & Event recall & +0.166 & 0.013 & +0.077 & 0.232 & +0.090 & 0.031 & 21 \\
+\addlinespace
+v4 triage & Stage recall & +0.022 & 0.727 & +0.042 & 0.102 & -0.020 & 0.328 & 21 \\
+ & Event recall & +0.048 & 0.478 & +0.069 & 0.191 & -0.022 & 0.629 & 21 \\
+\addlinespace
+Scale: Qwen 32B, Llama 70B & Stage recall & +0.049 & 0.201 & +0.085 & 0.028 & -0.036 & 0.260 & 21 \\
+ & Event recall & +0.142 & 0.007 & +0.149 & 0.006 & -0.007 & 0.975 & 21 \\
+\addlinespace
+Llama-Primus 8B & Stage recall & +0.030 & 0.348 & +0.019 & 0.600 & +0.011 & 0.684 & 15 \\
+ & Event recall & +0.072 & 0.126 & -0.003 & 0.859 & +0.075 & 0.123 & 15 \\
+\bottomrule
+\end{tabular}

